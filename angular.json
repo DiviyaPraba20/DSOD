@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "dsod",
       "schematics": {
         "@ngrx/schematics:component": {
           "styleext": "scss"
