@@ -1,8 +1,8 @@
-import { Action, State, StateContext, Store } from "@ngxs/store";
-import * as actions from '../actions'
+import { Action, State, StateContext, Store } from '@ngxs/store';
+import * as actions from '../actions';
 
 export interface State {
-    init: boolean
+    init: boolean;
 }
 
 @State<State>({
@@ -15,8 +15,7 @@ export class AppState {
     constructor(private store: Store) { }
 
     @Action(actions.AppInit)
-    appInit(ctx:StateContext<State>){
-        ctx.patchState({ init:true });
+    appInit(ctx: StateContext<State>) {
+        ctx.patchState({ init: true });
     }
-   
 }

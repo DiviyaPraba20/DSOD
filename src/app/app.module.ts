@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
-import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { states } from "./states";
+import { states } from './states';
 
 @NgModule({
   declarations: [AppComponent],

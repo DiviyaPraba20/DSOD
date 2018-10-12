@@ -1,5 +1,5 @@
 export enum AppActionTypes {
-  INIT = "[App] Init"
+  INIT = '[App] Init'
 }
 
 export class AppInit {
@@ -7,4 +7,4 @@ export class AppInit {
   constructor() {}
 }
 
-export type Actions = AppInit
+export type Actions = AppInit;
