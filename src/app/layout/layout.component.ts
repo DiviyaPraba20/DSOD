@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-layout',
+  selector: 'dsod-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })

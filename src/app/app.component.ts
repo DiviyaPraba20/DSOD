@@ -3,7 +3,7 @@ import { Store } from '@ngxs/store';
 import * as actions from './actions';
 
 @Component({
-  selector: 'app-root',
+  selector: 'dsod-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

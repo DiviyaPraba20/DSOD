@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'dsod-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
