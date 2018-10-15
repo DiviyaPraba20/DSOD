@@ -24,8 +24,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/assets/styles/base"
-              ]
+                  "src/assets/styles/base"
+                ] 
             },
             "assets": [
               "src/favicon.ico",
