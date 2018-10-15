@@ -21,11 +21,11 @@ export class CarouselComponent implements OnInit {
       autoheight: false,
       autoplay: 8000,
       animationTimingFunc: 'ease',
-      animationDuration: 3000,
+      animationDuration: 1000,
       padding: 0,
       gap: 0,
       dragDistance: 100
     }).mount({ Autoplay, Controls, Anchors });
-    
+
   }
 }
