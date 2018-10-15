@@ -1,3 +1,46 @@
-<p>
-  navbar works!
-</p>
+<div class="nav-wrapper">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between">
+
+      <div class="brand">
+        <img src="./assets/images/dso-logo.png">
+      </div>
+
+      <div class="col-sm-10">
+        <div class="nav-menu">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngFor="let nav of navigation">
+                  <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active">{{nav.title}}</a>
+                </li>
+                <li class="nav-item search-area">
+                  <div class="btn-group" dropdown>
+                    <button id="button-basic" dropdownToggle type="button" class="nav-link" aria-controls="dropdown-basic">
+                      <img src="./assets/images/search-icon.png">
+                    </button>
+                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                      aria-labelledby="button-basic">
+                      <li role="menuitem">
+                        <input type="text" class="form-control">
+                      </li>                      
+                    </ul>
+                  </div>
+
+                </li>
+                <li class="nav-item login-wrap">
+                  <a [routerLink]="['login']" class="nav-link">Login</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
