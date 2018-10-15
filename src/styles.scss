@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+//glid js 
+// Required Core Stylesheet
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+
+// Optional Theme Stylesheet
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
 
 * {
@@ -19,4 +25,8 @@ h2{
 
 body{
     font-size: 13px;
+}
+
+a{
+    text-decoration: none !important;
 }
