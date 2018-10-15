@@ -1,0 +1,101 @@
+@import "variables";
+
+.login-container {
+  background-image: url('../../../../assets/images/login.png');
+  height: calc(100vh - 40px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  .overlay {
+    position: absolute;
+    width: 50%;
+    height: calc(100vh - 40px);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(255, 255, 255, 0));
+  }
+  .content-container {
+    position: absolute;
+    top: 250px;
+    left: 250px;
+    width: 400px;
+    .header-container {
+      text-align: center;
+      color: $color-white;
+      margin-bottom: 10px;
+      .title {
+        font-size: 60px;
+        font-weight: 300;
+      }
+      .title-comment {
+        font-size: 24px;
+        font-weight: 300;
+      }
+    }
+    .form-container {
+      width: 100%;
+      color: $color-white;
+      .btn-linkedin {
+        display: flex;
+        align-items: center;
+        background-color: $deep-cerulean;
+        .social-image {
+          height: 35px;
+        }
+        .title {
+          width: 100%;
+          font-size: 20px;
+        }
+      }
+      .text-or {
+        text-align: center;
+        margin: 5px 0;
+      }
+      .login-control {
+        height: 50px;
+        margin-bottom: 10px;
+        i {
+          border-radius: 0;
+          background-color: $color-white;
+          width: 50px;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+        }
+        input {
+          border-left: 0;
+          height: 50px;
+          border-radius: 0;
+        }
+      }
+      .remember-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        label {
+          margin-bottom: 0;
+          display: flex;
+          align-items: center;
+          input {
+            margin-right: 5px;
+          }
+        }
+        .forgot-pass {
+          cursor: pointer;
+        }
+      }
+      .btn-login {
+        margin: 20px 0;
+        background-color: $regent-gray;
+      }
+      .join-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .btn-join {
+          background-color: #ffffff4d;
+          margin: 0 10px;
+          width: 140px;
+        }
+      }
+    }
+  }
+}
