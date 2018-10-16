@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 //glid js 
 // Required Core Stylesheet
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
 
 // Optional Theme Stylesheet
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
 
+@import './assets/styles/index.scss';
 
 * {
   margin: 0;
@@ -29,4 +30,28 @@ body{
 
 a{
     text-decoration: none !important;
+}
+
+.container {
+  max-width: 1710px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 15px;
+}
+
+h2.section-title {
+  font-size: 30px;
+  color: $boulder_grey;
+  padding: 0 0 16px 20px;
+  border-bottom: 1px solid #c0cad1;
+  font-family: $helvetica_font;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+// Generic Media Querries for
+@media only screen and (max-width:1680px) {
+  h2.section-title {
+    font-size: 26px;
+  }
 }

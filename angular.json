@@ -34,7 +34,6 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/font-awesome/scss/font-awesome.scss",
-              "src/assets/styles/index.scss",
               "src/styles.scss"
             ],
             "scripts": []

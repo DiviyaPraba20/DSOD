@@ -1,14 +1,60 @@
+// Fonts
 @font-face {
-  font-family: NeueHaasGroteskRegular;
-  src: url('../fonts/NeueHaasGroteskRegular.ttf');
+  font-family: 'Haas Grot Disp 75';
+  src: url("/assets/fonts/HaasGrotDisp-75Bold.eot");
+  src: url("/assets/fonts/HaasGrotDisp-75Bold.eot?#iefix") format('embedded-opentype'), url("/assets/fonts/HaasGrotDisp-75Bold.woff2") format('woff2'), url("/assets/fonts/HaasGrotDisp-75Bold.woff") format('woff'), url("/assets/fonts/HaasGrotDisp-75Bold.ttf") format('truetype'), url("/assets/fonts/HaasGrotDisp-75Bold.svg#HaasGrotDisp-75Bold") format('svg');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: NeueHaasGroteskMedium;
-  src: url('../fonts/NeueHaasGroteskMedium.ttf');
+  font-family: 'NeueHaasGroteskText Pro';
+  src: url("/assets/fonts/NHaasGroteskTXPro-55Rg.eot");
+  src: url("/assets/fonts/NHaasGroteskTXPro-55Rg.eot?#iefix") format('embedded-opentype'),
+  url("/assets/fonts/NHaasGroteskTXPro-55Rg.woff2") format('woff2'),
+  url("/assets/fonts/NHaasGroteskTXPro-55Rg.woff") format('woff'),
+  url("/assets/fonts/NHaasGroteskTXPro-55Rg.ttf") format('truetype'),
+  url("/assets/fonts/NHaasGroteskTXPro-55Rg.svg#NHaasGroteskTXPro-55Rg") format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: NeueHaasGroteskBold;
-  src: url('../fonts/NeueHaasGroteskBold.ttf');
+  font-family: 'Haas Grot Disp 45';
+  src: url("/assets/fonts/HaasGrotDisp-45Light.eot");
+  src: url("/assets/fonts/HaasGrotDisp-45Light.eot?#iefix") format('embedded-opentype'), url("/assets/fonts/HaasGrotDisp-45Light.woff2") format('woff2'), url("/assets/fonts/HaasGrotDisp-45Light.woff") format('woff'), url("/assets/fonts/HaasGrotDisp-45Light.ttf") format('truetype'), url("/assets/fonts/HaasGrotDisp-45Light.svg#HaasGrotDisp-45Light") format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Haas Grot Disp 95';
+  src: url("/assets/fonts/HaasGrotDisp-95Black.eot");
+  src: url("/assets/fonts/HaasGrotDisp-95Black.eot?#iefix") format('embedded-opentype'), url("/assets/fonts/HaasGrotDisp-95Black.woff2") format('woff2'), url("/assets/fonts/HaasGrotDisp-95Black.woff") format('woff'), url("/assets/fonts/HaasGrotDisp-95Black.ttf") format('truetype'), url("/assets/fonts/HaasGrotDisp-95Black.svg#HaasGrotDisp-95Black") format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Haas Grot Disp 35';
+  src: url("/assets/fonts/HaasGrotDisp-35Thin.eot");
+  src: url("/assets/fonts/HaasGrotDisp-35Thin.eot?#iefix") format('embedded-opentype'), url("/assets/fonts/HaasGrotDisp-35Thin.woff2") format('woff2'), url("/assets/fonts/HaasGrotDisp-35Thin.woff") format('woff'), url("/assets/fonts/HaasGrotDisp-35Thin.ttf") format('truetype'), url("/assets/fonts/HaasGrotDisp-35Thin.svg#HaasGrotDisp-35Thin") format('svg');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Haas Grot Disp 65';
+  src: url("/assets/fonts/HaasGrotDisp-65Medium.eot");
+  src: url("/assets/fonts/HaasGrotDisp-65Medium.eot?#iefix") format('embedded-opentype'), url("/assets/fonts/HaasGrotDisp-65Medium.woff2") format('woff2'), url("/assets/fonts/HaasGrotDisp-65Medium.woff") format('woff'), url("/assets/fonts/HaasGrotDisp-65Medium.ttf") format('truetype'), url("/assets/fonts/HaasGrotDisp-65Medium.svg#HaasGrotDisp-65Medium") format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Haas Grot Disp 55 Roman';
+  src: url("/assets/fonts/HaasGrotDisp-55Roman.eot");
+  src: url("/assets/fonts/HaasGrotDisp-55Roman.eot?#iefix") format('embedded-opentype'), url("/assets/fonts/HaasGrotDisp-55Roman.woff2") format('woff2'), url("/assets/fonts/HaasGrotDisp-55Roman.woff") format('woff'), url("/assets/fonts/HaasGrotDisp-55Roman.ttf") format('truetype'), url("/assets/fonts/HaasGrotDisp-55Roman.svg#HaasGrotDisp-55Roman") format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
