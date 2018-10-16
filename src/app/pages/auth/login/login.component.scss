@@ -2,20 +2,20 @@
 
 .login-container {
   background-image: url('../../../../assets/images/login.png');
-  height: calc(100vh - 40px);
+  height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   .overlay {
     position: absolute;
     width: 50%;
-    height: calc(100vh - 40px);
+    height: 100%;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(255, 255, 255, 0));
   }
   .content-container {
     position: absolute;
-    top: 250px;
-    left: 250px;
+    top: 200px;
+    left: 200px;
     width: 400px;
     .header-container {
       text-align: center;
@@ -33,6 +33,7 @@
     .form-container {
       width: 100%;
       color: $color-white;
+      font-size: 15px;
       .btn-linkedin {
         display: flex;
         align-items: center;
@@ -85,6 +86,7 @@
       .btn-login {
         margin: 20px 0;
         background-color: $regent-gray;
+        letter-spacing: 1px;
       }
       .join-container {
         display: flex;
