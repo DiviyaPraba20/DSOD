@@ -1,10 +1,8 @@
 @import 'variables.scss';
-// Featured Topics Section
 
-.feautred-topics {
-  font-family: $helvetica_neue;
-
-  .feautred-block {
+:host {
+.feautred-block {
+		font-family: $helvetica_neue;
     margin: 15px 0;
     background: #f8f8f8;
 
@@ -111,10 +109,9 @@
       }
     }
   }
-}
 
 @media only screen and (max-width:1680px) {
-  .feautred-topics {
+
     .feautred-block {
       .feautred-block-header {
         h4 {
