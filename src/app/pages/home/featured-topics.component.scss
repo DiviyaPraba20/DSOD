@@ -1,5 +1,4 @@
-@import 'variables.scss';
-// Featured Topics Section
+@import 'variables';
 
 .feautred-topics {
   font-family: $helvetica_neue;
@@ -16,30 +15,6 @@
       h4 {
         color: $color-primary;
         font-size: 22px;
-      }
-
-      .topic-rating {
-        margin-left: 10px;
-        min-width: 117px;
-
-        span {
-          display: inline-block;
-          height: 20px;
-          width: 20px;
-          line-height: 20px;
-          text-align: center;
-          border-radius: 3px;
-
-          &.filled {
-            color: #fff;
-            background: $color-primary;
-          }
-
-          &.un-filled {
-            color: #fff;
-            background: #d1d1d1;
-          }
-        }
       }
     }
 
