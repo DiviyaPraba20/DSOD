@@ -262,6 +262,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@glidejs/glide@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.2.3.tgz#93ba9e0282fcdba072f9e0275250b888d475119b"
+
 "@ngrx/effects@^6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.1.0.tgz#3c1e1ab1e5a86c6d9c29d4f3771e42cc9bd8576c"
