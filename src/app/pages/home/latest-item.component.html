@@ -1,0 +1,23 @@
+<div class="latest-block latest-layout-row">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="latest-block-thumbnail">
+        <img src={{latestItem.image}} class="img-fluid" alt="Feautred Thumbnail Large">
+        <a href="" class="read-about">
+          <img src="{{latestItem.icon}}" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="col-md-7 pr-5">
+      <div class="latest-block-header">
+        <h4>{{latestItem.title}}</h4>
+        <dsod-rating></dsod-rating>
+      </div>
+      <div class="latest-block-content">
+        <h2 class="topic-title mb-3">{{latestItem.summary}}</h2>
+        <em>by {{latestItem.by}} </em>
+        <p class="mt-4">{{latestItem.description}}<a href="#">[more]</a></p>
+      </div>
+    </div>
+  </div>
+</div>
