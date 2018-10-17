@@ -1,0 +1,22 @@
+@import 'variables';
+
+ul {
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 27px;
+    color: $boulder_grey;
+    padding: 17px 36px;
+    line-height: 30px;
+
+    span {
+      font-size: 20px;
+      color: $color-primary;
+      margin-left: 20px;
+    }
+
+    &:nth-child(odd) {
+      background: $color-strokes;
+    }
+  }
+}

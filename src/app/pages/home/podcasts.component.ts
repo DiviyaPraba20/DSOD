@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
 	styleUrls: ['./podcasts.component.scss']
 })
 
-export class DsodPodcastsComponent{
+export class DSODPodcastsComponent{
 
 	constructor(){}
 }

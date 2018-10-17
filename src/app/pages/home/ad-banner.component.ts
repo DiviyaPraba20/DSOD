@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
               </section>`,
   styles: [`.sensodyne-gsk {padding: 30px 0 42px;}`]
 })
-export class DsodHomeAdComponent implements OnInit {
+export class DSODHomeAdComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
