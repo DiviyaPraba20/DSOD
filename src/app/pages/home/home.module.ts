@@ -8,6 +8,7 @@ import { DSOFeaturedTopicsComponent } from './featured-topics.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {DsodLatestComponent} from './latest.component'
 import {DsodLatestItemComponent} from './latest-item.component'
+import { DsodHomeAdComponent } from './ad-banner.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import {DsodLatestItemComponent} from './latest-item.component'
     HomeRoutingModule,
     SharedModule
   ],
-  declarations: [HomeComponent, CarouselComponent, DSOFeaturedTopicsComponent, DsodLatestComponent, DsodLatestItemComponent]
+  declarations: [HomeComponent, CarouselComponent, DSOFeaturedTopicsComponent, DsodLatestComponent, DsodLatestItemComponent, DsodHomeAdComponent]
 })
 export class HomeModule { }
