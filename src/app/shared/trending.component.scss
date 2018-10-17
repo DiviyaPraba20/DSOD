@@ -1,0 +1,60 @@
+@import 'variables.scss';
+  .trending-block {
+    margin: 15px 0 33px;
+    background: #f8f8f8;
+
+    .trending-block-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 21px 15px 9px;
+
+      h4 {
+        color: $color-primary;
+        font-size: 22px;
+      }
+    }
+
+    .trending-block-video {
+      position: relative;
+      border-top: 3px solid $mine_grey;
+      position: relative;
+
+      >img {
+        width: 100%;
+      }
+
+      a.play-icon {
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .trending-block-caption {
+      background: $regent-gray;
+      padding: 5px 15px;
+
+      h4 {
+        color: $color-white;
+      }
+    }
+  }
+
+  .ad-wrap {
+    padding: 15px 0;
+    border: 1px solid $regent-gray;
+    border-width: 1px 0;
+    margin: 20px 0;
+  }
+
+@media only screen and (max-width:1680px) {
+    .trending-block {
+      .trending-block-header {
+        h4 {
+          font-size: 20px;
+        }
+      }
+    }
+  }

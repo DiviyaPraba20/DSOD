@@ -54,7 +54,12 @@ export class DsodLatestComponent implements OnInit {
         'Sometimes the dentist hires on to a DSO from the outset, while other times the DSO purchases an existing practice and shapes it in their image. For dentists as well as patients, risk management and patient safety are priorities. …'
     }
 	];
-	
+  trendingVideos = [
+    { title: 'Oral Health', url: '/assets/images/dental-erosion.png', caption: 'Acid erosion'}, 
+    { title: 'Implant Dentistty', url: '/assets/images/teeth-xray.png', caption: 'Anterior Implant'},
+    { title: 'Periodontics', url: '/assets/images/reduce-plaque.png', caption: 'Reduce plaque'},
+    { title: 'Practice Management', url: '/assets/images/social-media.png', caption: 'Social media'}
+    ]
   constructor() {}
 
   ngOnInit() {}
