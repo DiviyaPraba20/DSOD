@@ -23,5 +23,13 @@
         </div>
       </section>
     </div>
+    <div class="'col-xl-4'">
+      <section class="trending-videos">
+        <h2 class="section-title">Trending Videos</h2>
+        <div *ngFor="let item of trendingVideos">
+          <dsod-trending-item [trendingItem]="item"></dsod-trending-item>
+        </div>
+      </section>
+    </div>
   </div>
 </div>
