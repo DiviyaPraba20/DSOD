@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'dsod-login',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
   }
 
+  loginWithLinkedIn() {
+    // window.open(environment.LinkedIn.authUrl);
+  }
 }

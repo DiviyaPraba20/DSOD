@@ -5,6 +5,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ logger: console, collapsed: false }),
     NgxsModule.forRoot(states),
+    LocalStorageModule.withConfig({prefix: environment.localStorage.prefix, storageType: 'localStorage'}),
     AppRoutingModule,
     LayoutModule,
     AuthModule,
