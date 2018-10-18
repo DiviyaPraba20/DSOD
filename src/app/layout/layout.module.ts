@@ -7,11 +7,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarService } from './navbar/services';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DSODFooterComponent } from './footer/footer.component';
+import { SearchBoxDirective } from './directives/search-box.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, BsDropdownModule.forRoot()],
-  declarations: [LayoutComponent, NavbarComponent, DSODFooterComponent],
-  exports: [NavbarComponent, DSODFooterComponent],
+  declarations: [
+    LayoutComponent,
+    NavbarComponent,
+    DSODFooterComponent,
+    SearchBoxDirective
+  ],
+  exports: [NavbarComponent, DSODFooterComponent, SearchBoxDirective],
   providers: [NavbarService]
 })
 export class LayoutModule {}
