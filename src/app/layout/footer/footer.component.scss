@@ -63,3 +63,21 @@ footer {
     }
   }
 }
+
+@media only screen and (max-width:1440px) {
+  footer {
+    background: $emulsion-grey;
+    padding: 64px 0 20px;
+    margin-top: 52px;
+
+    ul.ftr-nav {
+      li {
+        margin: 0 12px;
+
+        a {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
