@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -27,6 +28,7 @@ import { SharedModule } from './shared/shared.module';
     NgxsModule.forRoot(states),
     LocalStorageModule.withConfig({prefix: environment.localStorage.prefix, storageType: 'localStorage'}),
     AppRoutingModule,
+    HttpClientModule,
     LayoutModule,
     AuthModule,
     SharedModule
