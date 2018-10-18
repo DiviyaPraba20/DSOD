@@ -1,0 +1,52 @@
+@import 'variables';
+
+.our-sponsors {
+  padding: 13px 0;
+
+  .our-sponsors-header {
+    padding: 21px 0 9px;
+    border-bottom: 1px solid $regent-gray;
+
+    h4 {
+      display: flex;
+      color: $color-primary;
+      font-size: 22px;
+      padding-right: 30px;
+
+      img {
+        align-self: center;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.sponsors-ortho {
+  font-family: $helvetica_neue;
+
+  .sponsors-ortho-block {
+    margin: 15px 0 33px;
+    background: #f8f8f8;
+
+    .sponsors-ortho-block-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 21px 15px 9px;
+
+      h4 {
+        color: $color-primary;
+        font-size: 22px;
+      }
+    }
+
+    .sponsors-ortho-block-video {
+      position: relative;
+      border-top: 3px solid $mine_grey;
+      position: relative;
+
+      >img {
+        width: 100%;
+      }
+    }
+  }
+}

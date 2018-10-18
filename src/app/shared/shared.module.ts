@@ -4,7 +4,8 @@ import { DSODRatingComponent } from './rating.component';
 import { DSODTopicComponent } from './topic.component';
 import { DSODTrendingComponent } from './trending.component';
 import { DSODSponsoredAdComponent } from './sponsored-ad.component';
-import { DSODContentComponent } from './content-placeholder.component';
+import { DSODMediaContentComponent } from './media-placeholder.component';
+import { DSODContnetComponent } from './content-placeholder.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -13,14 +14,16 @@ import { DSODContentComponent } from './content-placeholder.component';
     DSODTopicComponent,
     DSODTrendingComponent,
     DSODSponsoredAdComponent,
-    DSODContentComponent
+    DSODMediaContentComponent,
+    DSODContnetComponent
   ],
   exports: [
     DSODRatingComponent,
     DSODTopicComponent,
     DSODTrendingComponent,
     DSODSponsoredAdComponent,
-    DSODContentComponent
+    DSODMediaContentComponent,
+    DSODContnetComponent
   ]
 })
 export class SharedModule {}

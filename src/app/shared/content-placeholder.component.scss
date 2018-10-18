@@ -1,0 +1,29 @@
+ @import 'variables';
+
+ .our-content {
+   padding: 15px 30px 25px 0;
+
+   h2.topic-title {
+     font-weight: 500;
+     font-size: 35px;
+     color: $black;
+   }
+
+   em {
+     font-size: 20px;
+     font-weight: 500;
+
+     a.read-about {
+       margin-left: 10px;
+     }
+   }
+
+   p {
+     font-size: 22px;
+     line-height: 36px;
+
+     a {
+       color: $deep-cerulean;
+     }
+   }
+ }
