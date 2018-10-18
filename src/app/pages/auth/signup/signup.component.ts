@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Store } from '@ngxs/store';
 
-import { AuthActions } from '../actions';
-import { Actions, ofActionDispatched } from '@ngxs/store';
-import { Login } from '../actions/auth.actions';
+import { SignUp } from '../actions';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -23,26 +20,29 @@ export class CustomValidators {
 })
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup = this.fb.group({
-    full_name: ['', Validators.required],
-    username: ['', [Validators.required, Validators.email]],
-    password: ['', [
+    full_name: ['test', Validators.required],
+    username: ['test@email.com', [Validators.required, Validators.email]],
+    password: ['Yoon1104@', [
       Validators.required,
-      CustomValidators.pattern(/^(?=.*\d)[A-Za-z\d#$@!%&*?]{6,}$/g)
-    ]]
+      CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,}$/g)
+    ]],
+    is_student: '0',
+    client_id: 'fooClientIdPassword'
   });
 
   constructor(
     private fb: FormBuilder,
-    private authActions: Actions
+    private store: Store
   ) { }
 
   ngOnInit() {
   }
 
   signUp() {
-    console.log(this.signUpForm.value);
-    this.authActions.pipe(ofActionDispatched(Login)).subscribe(res => {
-      console.log(res);
+    this.store.dispatch(new SignUp(this.signUpForm.value)).subscribe(res => {
+      if (res.auth.error) {
+        alert(res.auth.error);
+      }
     });
   }
 }

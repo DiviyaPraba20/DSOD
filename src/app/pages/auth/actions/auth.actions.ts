@@ -1,4 +1,4 @@
-import { LoginPayload, SignUpPayload } from '../../../core/models/auth';
+import { LoginPayload, SignUpPayload, LoginResponse, SignUpResponse } from '../../../core/models/auth';
 
 export enum AuthActionTypes {
   Login = '[Auth] Login',
@@ -16,10 +16,34 @@ export class Login {
   constructor(public payload: LoginPayload) {}
 }
 
+export class LoginSuccess {
+  static readonly type = AuthActionTypes.LoginSuccess;
+
+  constructor(public payload: LoginResponse) {}
+}
+
+export class LoginFailure {
+  static readonly type = AuthActionTypes.LoginFailure;
+
+  constructor(public payload?: any) {}
+}
+
 export class SignUp {
   static readonly type = AuthActionTypes.SignUp;
 
   constructor(public payload: SignUpPayload) {}
+}
+
+export class SignUpSuccess {
+  static readonly type = AuthActionTypes.SignUpSuccess;
+
+  constructor(public payload: SignUpResponse) {}
+}
+
+export class SignUpFailure {
+  static readonly type = AuthActionTypes.SignUpFailure;
+
+  constructor(public payload?: any) {}
 }
 
 export class Logout {
@@ -27,5 +51,9 @@ export class Logout {
 }
 
 export type AuthActions = Login
+  | LoginSuccess
+  | LoginFailure
   | SignUp
+  | SignUpSuccess
+  | SignUpFailure
   | Logout;

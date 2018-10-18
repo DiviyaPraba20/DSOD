@@ -1,8 +1,9 @@
 import { Response } from './common';
 
 export interface LoginPayload {
-  email: string;
+  username: string;
   password: string;
+  client_id: string;
 }
 
 export interface LoginResponse extends Response {
@@ -10,9 +11,11 @@ export interface LoginResponse extends Response {
 }
 
 export interface SignUpPayload {
-  userName: string;
-  email: string;
+  full_name: string;
+  username: string;
   password: string;
+  is_student: string;
+  client_id: string;
 }
 
 export interface SignUpResponse extends Response {

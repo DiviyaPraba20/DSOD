@@ -1,5 +1,5 @@
 export interface Response {
-  code: string;
+  code: number;
   msg: string;
   resultMap: any;
 }

@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
-import { environment } from 'src/environments/environment';
+import { Store } from '@ngxs/store';
+
+import { Login } from '../actions';
+
+export class CustomValidators {
+  public static pattern(reg: RegExp): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      const value = <string>control.value;
+      return value.match(reg) ? null : { 'pattern': { value } };
+    };
+  }
+}
 
 @Component({
   selector: 'dsod-login',
@@ -9,14 +20,30 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup = this.fb.group({
+    username: ['test@email.com', [Validators.required, Validators.email]],
+    password: ['Yoon1104@', [
+      Validators.required,
+      CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,}$/g)
+    ]],
+    client_id: 'fooClientIdPassword'
+  });
 
   constructor(
+    private fb: FormBuilder,
+    private store: Store
   ) { }
 
   ngOnInit() {
   }
 
-  loginWithLinkedIn() {
-    // window.open(environment.LinkedIn.authUrl);
+  login() {
+    this.store.dispatch(new Login(this.loginForm.value)).subscribe(res => {
+      if (res.auth.error) {
+        alert(res.auth.error);
+      }
+    });
   }
+
+  loginWithLinkedIn() {}
 }

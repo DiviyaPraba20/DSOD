@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse } from '../models';
+import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse, Response } from '../models';
+import { handleAPIResponse } from '../functions/common.function';
 
 @Injectable({
   providedIn: 'root'
@@ -29,18 +30,24 @@ export class AuthService {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/login`;
     return this.http.post<LoginResponse>(url, payload).pipe(
       map((res: LoginResponse) => {
-        this.localStorageService.set(environment.localStorage.accessToken, res.accesstoken);
+        if (res.code === 0) {
+          this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
+        }
         return res;
       })
     );
   }
 
-  signup(payload: SignUpPayload): Observable<SignUpResponse> {
-    const url = `${environment.api}/profile/profileservice/v1/userAccount/login`;
-    return this.http.post<SignUpResponse>(url, payload).pipe(
-      map((res: SignUpResponse) => {
-        this.localStorageService.set(environment.localStorage.accessToken, res.accesstoken);
-        return res;
+  signup(payload: SignUpPayload): Observable<Response> {
+    const url = `${environment.api}/profile/profileservice/v1/userAccount/register`;
+    return this.http.post<Response>(url, payload).pipe(
+      // map((res: Response) => {
+      //   return handleAPIResponse(res);
+      // }),
+      tap(res => {
+        if (res.code === 0) {
+          this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
+        }
       })
     );
   }
