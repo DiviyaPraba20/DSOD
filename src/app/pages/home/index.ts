@@ -7,6 +7,7 @@ import { DSODFeaturedTopicsComponent } from './featured-topics.component';
 import { DSODPodcastsComponent } from './podcasts.component';
 import { DSODPodcastItemsComponent } from './podcast-items.component';
 import { DSODPodcastsByComponent } from './podcasts-by.component';
+import { DSODEventsComponent } from './events.component';
 
 export const HOME_COMPONENTS = [
   DSODCarouselComponent,
@@ -16,6 +17,7 @@ export const HOME_COMPONENTS = [
   DSODFeaturedTopicsComponent,
   DSODPodcastsComponent,
   DSODPodcastItemsComponent,
-  DSODPodcastsByComponent
+  DSODPodcastsByComponent,
+  DSODEventsComponent
 ];
 export const HOME_CONTAINERS = [HomeComponent];
