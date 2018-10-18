@@ -2,17 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
-import { DSODCarouselComponent } from './carousel.component';
-import { DSODFeaturedTopicsComponent } from './featured-topics.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DSODLatestComponent } from './latest.component';
-import { DSODLatestItemComponent } from './latest-item.component';
-import { DSODHomeAdComponent } from './ad-banner.component';
-import { DSODPodcastsComponent } from './podcasts.component';
-import {TabsModule} from 'ngx-bootstrap/tabs'
-import { DSODPodcastItemsComponent } from './podcast-items.component';
-import { DSODPodcastsByComponent } from './podcasts-by.component';
+import { HOME_COMPONENTS, HOME_CONTAINERS } from './index';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   imports: [
@@ -21,16 +13,6 @@ import { DSODPodcastsByComponent } from './podcasts-by.component';
     SharedModule,
     TabsModule.forRoot()
   ],
-  declarations: [
-    HomeComponent,
-    DSODCarouselComponent,
-    DSODFeaturedTopicsComponent,
-    DSODLatestComponent,
-    DSODLatestItemComponent,
-    DSODHomeAdComponent,
-    DSODPodcastsComponent,
-    DSODPodcastItemsComponent,
-    DSODPodcastsByComponent
-  ]
+  declarations: [...HOME_CONTAINERS, ...HOME_COMPONENTS]
 })
 export class HomeModule {}
