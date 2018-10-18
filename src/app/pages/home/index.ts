@@ -8,6 +8,7 @@ import { DSODPodcastsComponent } from './podcasts.component';
 import { DSODPodcastItemsComponent } from './podcast-items.component';
 import { DSODPodcastsByComponent } from './podcasts-by.component';
 import { DSODEventsComponent } from './events.component';
+import { DSODOurSponsorsComponent } from './our-sponsors.component';
 
 export const HOME_COMPONENTS = [
   DSODCarouselComponent,
@@ -18,6 +19,7 @@ export const HOME_COMPONENTS = [
   DSODPodcastsComponent,
   DSODPodcastItemsComponent,
   DSODPodcastsByComponent,
-  DSODEventsComponent
+  DSODEventsComponent,
+  DSODOurSponsorsComponent
 ];
 export const HOME_CONTAINERS = [HomeComponent];

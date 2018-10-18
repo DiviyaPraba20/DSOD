@@ -1,45 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DSODContentType } from './models';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'dsod-content',
-  template: `
-  <div class="trending-block">
-  <div class="trending-block-header">
-  <h4>{{title}}</h4>
-  <dsod-rating></dsod-rating>
-  </div>
-  <div class="trending-block-video">
-  <ng-template #video>
-      <video src="{{url}}"></video>
-  </ng-template>
-  <ng-template #image>
-      <img src="{{url}}" />
-  </ng-template>
-  <div *ngIf="contentType===video" video else image></div>
-            <a href="#" class="play-icon">
-                <img src="assets/images/play.png" alt="">
-            </a>
-        </div>
-        <div class="trending-block-caption">
-            <h4>{{caption}}</h4>
-        </div>
-    </div>`
+  selector: 'dsod-content-placeholder',
+  template: `<div class="our-content">
+                <h2 class="topic-title mb-3">{{title}}</h2>
+                <em>by {{by}} </em>
+                <p class="mt-4">Invisalign® treatment allows dentists and orthodontists to achieve practice growth. Learn
+                  ways to remove patients’ barriers to clear aligner therapy through conveient financing…<a href="#">[more]</a></p>
+              </div>`,
+  styleUrls: ['./content-placeholder.component.scss']
 })
-export class DSODContentComponent implements OnInit {
+export class DSODContnetComponent {
   @Input()
-  title: string;
+  title;
   @Input()
-  placeholderImageSrc: string;
+  others;
   @Input()
-  url: string;
-  @Input()
-  caption: string;
-  @Input()
-  contentType: string;
-  @Input()
-  topic;
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  by;
+  constructor() {}
 }
