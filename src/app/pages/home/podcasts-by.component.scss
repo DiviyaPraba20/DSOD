@@ -1,0 +1,52 @@
+@import 'variables';
+
+.featured-podcasts-block-sm {
+  max-width: 230px;
+  margin: 15px auto;
+
+  .podcasts-block-header {
+    padding: 21px 15px 9px;
+    background: $alabaster_white;
+
+    h4 {
+      color: $color-primary;
+      font-size: 22px;
+    }
+  }
+
+  .podcast-block-thumbnail {
+    position: relative;
+    border-top: 3px solid $mine_grey;
+    max-height: 230px;
+
+    >img {
+      width: 100%;
+    }
+
+    .podcasts-block-caption {
+      background: $dark_grey;
+      padding: 5px 15px;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+
+      h4 {
+        color: $color-white;
+        font-size: 17px;
+      }
+    }
+  }
+
+  .podcast-block-content {
+    background: $alabaster_white;
+    padding: 11px 15px;
+
+    h3 {
+      font-size: 15px;
+      color: $black;
+      text-align: center;
+    }
+  }
+}

@@ -10,7 +10,7 @@ import Glide, {
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit {
+export class DSODCarouselComponent implements OnInit {
 
   constructor() {}
 

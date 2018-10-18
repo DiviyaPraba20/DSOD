@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DsodHomeAdComponent } from './ad-banner.component';
+import { DSODHomeAdComponent } from './ad-banner.component';
 
 describe('DsodHomeAdComponent', () => {
-    let component: DsodHomeAdComponent;
-    let fixture: ComponentFixture<DsodHomeAdComponent>;
+  let component: DSODHomeAdComponent;
+  let fixture: ComponentFixture<DSODHomeAdComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [DsodHomeAdComponent]
+      declarations: [DSODHomeAdComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-      fixture = TestBed.createComponent(DsodHomeAdComponent);
+    fixture = TestBed.createComponent(DSODHomeAdComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

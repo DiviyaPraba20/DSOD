@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
   templateUrl: './featured-topics.component.html',
   styleUrls: ['./featured-topics.component.scss']
 })
-export class DSOFeaturedTopicsComponent {
+export class DSODFeaturedTopicsComponent {
   topics= [
     {
       title: 'Orthodontics',

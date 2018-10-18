@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./latest.component.scss']
 })
 
-export class DsodLatestComponent implements OnInit {
+export class DSODLatestComponent implements OnInit {
   latestItems = [
     {
       title: 'Ergonomics',

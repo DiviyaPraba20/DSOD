@@ -4,6 +4,7 @@
                 Featured Topics
             </h2>
             <div class="row">
+<!-- <dsod-content title="test" caption="text" contentType="video" src="/assets/images/king-chess.png" url="http://example.com"></dsod-content> -->
                 <div class="col-lg-6">
                     <div class="feautred-block">
                         <div class="feautred-block-header">
@@ -27,7 +28,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-xl-6" *ngFor="let topic of topics">
+                        <div class="col-xl-6 col-lg-4" *ngFor="let topic of topics">
                             <dsod-topic [topic]="topic"></dsod-topic>
                         </div>
                     </div>
