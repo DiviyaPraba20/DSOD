@@ -1,13 +1,13 @@
 import { Router } from '@angular/router';
-
-import { Action, State, StateContext, Store } from '@ngxs/store';
-import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Action, State, StateContext, Store, Selector } from '@ngxs/store';
+import { catchError, tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 import * as actions from '../actions';
 import { AuthService } from '../../../core/services/auth.service';
-import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse, Response } from '../../../core/models';
-import { AuthActions, LoginSuccess, LoginFailure, SignUpSuccess, SignUpFailure } from '../actions';
+import { Response } from '../../../core/models';
+import { of } from 'rxjs';
+import { SignUpFailure } from '../actions/auth.actions';
 
 export interface State {
   pending: boolean;
@@ -25,10 +25,13 @@ export interface State {
 })
 
 export class AuthState {
+  @Selector() static isLoggedIn(state: State) { return state.isLoggedIn; }
+
   constructor(
     private store: Store,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   @Action(actions.Login)
@@ -40,23 +43,24 @@ export class AuthState {
     });
 
     return this.authService.login(action.payload).pipe(
+      catchError((err: Response) => {
+        this.toastr.error(err.msg, 'Login');
+        patchState({
+          pending: false,
+          isLoggedIn: false,
+          error: err.msg
+        });
+        throw(err);
+      }),
       tap((result: Response) => {
-        if (result.code === 0) {
-          this.router.navigate(['/']);
-          patchState({
-            pending: false,
-            isLoggedIn: true,
-            error: null
-          });
-        } else {
-          patchState({
-            pending: false,
-            isLoggedIn: true,
-            error: result.msg
-          });
-        }
-      },
-      catchError(err => of(new LoginFailure))
+        this.toastr.success('Login Success!', 'Login');
+        this.router.navigate(['/']);
+        patchState({
+          pending: false,
+          isLoggedIn: true,
+          error: null
+        });
+      }
     ));
   }
 
@@ -69,31 +73,23 @@ export class AuthState {
     });
 
     return this.authService.signup(action.payload).pipe(
+      catchError((err: Response) => {
+        this.toastr.error(err.msg, 'SignUp');
+        patchState({
+          pending: false,
+          isLoggedIn: false,
+          error: err.msg
+        });
+        throw(err);
+      }),
       tap((result: Response) => {
-        if (result.code === 0) {
-          this.router.navigate(['/']);
-          patchState({
-            pending: false,
-            isLoggedIn: true,
-            error: null
-          });
-        } else {
-          patchState({
-            pending: false,
-            isLoggedIn: true,
-            error: result.msg
-          });
-        }
-      },
-      catchError(err => {
-        console.log(err);
+        this.router.navigate(['/']);
         patchState({
           pending: false,
           isLoggedIn: true,
           error: null
         });
-        return of(err);
-      })
+      }
     ));
   }
 }

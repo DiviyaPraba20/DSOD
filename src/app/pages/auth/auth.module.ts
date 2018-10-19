@@ -6,10 +6,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { environment } from '../../../environments/environment';
-import { AuthService } from '../../core/services/auth.service';
-import { AuthGuard } from '../../core/guards/auth.guard';
-import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -19,14 +15,6 @@ import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
     ReactiveFormsModule,
   ],
   declarations: [LoginComponent, SignupComponent],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    AuthService,
-    AuthGuard
-  ]
+  providers: []
 })
 export class AuthModule { }

@@ -26,14 +26,14 @@ export class AuthService {
     return token ? token : '';
   }
 
-  login(payload: LoginPayload): Observable<LoginResponse> {
+  login(payload: LoginPayload): Observable<Response> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/login`;
-    return this.http.post<LoginResponse>(url, payload).pipe(
-      map((res: LoginResponse) => {
-        if (res.code === 0) {
-          this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
-        }
-        return res;
+    return this.http.post<Response>(url, payload).pipe(
+      map((res: Response) => {
+        return handleAPIResponse(res);
+      }),
+      tap(res => {
+        this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
       })
     );
   }
@@ -41,13 +41,11 @@ export class AuthService {
   signup(payload: SignUpPayload): Observable<Response> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/register`;
     return this.http.post<Response>(url, payload).pipe(
-      // map((res: Response) => {
-      //   return handleAPIResponse(res);
-      // }),
+      map((res: Response) => {
+        return handleAPIResponse(res);
+      }),
       tap(res => {
-        if (res.code === 0) {
-          this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
-        }
+        this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
       })
     );
   }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Store } from '@ngxs/store';
+import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 import { SignUp } from '../actions';
 
@@ -18,7 +20,7 @@ export class CustomValidators {
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup = this.fb.group({
     full_name: ['test', Validators.required],
     username: ['test@email.com', [Validators.required, Validators.email]],
@@ -29,20 +31,29 @@ export class SignupComponent implements OnInit {
     is_student: '0',
     client_id: 'fooClientIdPassword'
   });
+  authErrorSub: Subscription = new Subscription();
 
   constructor(
     private fb: FormBuilder,
-    private store: Store
+    private store: Store,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
+    this.authErrorSub = this.store.select(state => state.auth.error).subscribe(error => {
+      // console.log(error);
+      // if (error && error.msg) {
+      //   this.toastr.error('Toastr Test', 'Login');
+      // }
+      // this.toastr.error('Toastr Test', 'Login');
+    });
+  }
+
+  ngOnDestroy() {
+    this.authErrorSub.unsubscribe();
   }
 
   signUp() {
-    this.store.dispatch(new SignUp(this.signUpForm.value)).subscribe(res => {
-      if (res.auth.error) {
-        alert(res.auth.error);
-      }
-    });
+    this.store.dispatch(new SignUp(this.signUpForm.value));
   }
 }
