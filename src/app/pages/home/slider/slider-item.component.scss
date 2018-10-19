@@ -1,6 +1,6 @@
 @import 'variables';
 
-.home-banner {
+:host {
 
   .glide__slide {
     position: relative;
@@ -8,7 +8,7 @@
     overflow: hidden;
 
     >img {
-      width: 100%;   
+      width: 100%;
       height: 100vh;
       object-fit: cover;
     }
@@ -52,15 +52,6 @@
         color: $color-white;
 
       }
-    }
-  }
-
-  .glide__arrows {
-    .glide__arrow {
-      padding: 0;
-      border: 0;
-      outline: none;
-      box-shadow: none;
     }
   }
 }
