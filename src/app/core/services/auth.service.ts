@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -51,13 +51,18 @@ export class AuthService {
   }
 
   loginWithLinkedIn(payload: LoginWithLinkedInPayload): Observable<Response> {
+    const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('code', payload.code);
+    body = body.set('redirectUrl', payload.redirectUrl);
+
     const url = `${environment.api}/profile/profileservice/v1/linkedInLoginOther`;
-    return this.http.post<Response>(url, payload).pipe(
+    return this.http.post<Response>(url, body, {headers: myheader}).pipe(
       map((res: Response) => {
         return handleAPIResponse(res);
       }),
       tap(res => {
-        this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
+        this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.tokenValue);
       })
     );
   }

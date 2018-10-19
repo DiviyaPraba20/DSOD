@@ -22,7 +22,6 @@ export class LinkedinCallbackComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       this.authCode = params.code;
 
       if (this.authCode) {
@@ -31,7 +30,6 @@ export class LinkedinCallbackComponent implements OnInit {
           code: this.authCode,
           redirectUrl: environment.LinkedIn.redirect_uri
         })).subscribe(res => {
-          console.log(res);
           this.spinner.hide();
         });
       } else {
