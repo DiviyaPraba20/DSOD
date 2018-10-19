@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 import { SignUp } from '../actions';
+import { environment } from 'src/environments/environment';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -55,5 +56,12 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   signUp() {
     this.store.dispatch(new SignUp(this.signUpForm.value));
+  }
+
+  loginWithLinkedIn() {
+    const link = `${environment.LinkedIn.authUrl}?response_type=${environment.LinkedIn.response_type}`
+      + `&client_id=${environment.LinkedIn.client_id}&redirect_uri=${environment.LinkedIn.redirect_uri}`
+      + `&state=${environment.LinkedIn.state}`;
+    window.open(link, '_self');
   }
 }

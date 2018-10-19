@@ -21,3 +21,8 @@ export interface SignUpPayload {
 export interface SignUpResponse extends Response {
   accesstoken: string;
 }
+
+export interface LoginWithLinkedInPayload {
+  code: string;
+  redirectUrl: string;
+}

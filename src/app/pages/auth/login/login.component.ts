@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { Login } from '../actions';
 import { AuthService } from '../../../core/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -52,5 +53,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.store.dispatch(new Login(this.loginForm.value));
   }
 
-  loginWithLinkedIn() {}
+  loginWithLinkedIn() {
+    const link = `${environment.LinkedIn.authUrl}?response_type=${environment.LinkedIn.response_type}`
+      + `&client_id=${environment.LinkedIn.client_id}&redirect_uri=${environment.LinkedIn.redirect_uri}`
+      + `&state=${environment.LinkedIn.state}`;
+    window.open(link, '_self');
+  }
 }

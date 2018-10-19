@@ -5,7 +5,7 @@ export const environment = {
     authUrl: 'https://www.linkedin.com/oauth/v2/authorization',
     response_type: 'code',
     client_id: '81nb85ffrekjgr',
-    redirect_uri: 'http://localhost:4200',
+    redirect_uri: 'https://devangular1.dsodentist.com/dsodt/auth/linkedin',
     state: '987654321'
   },
   localStorage: {

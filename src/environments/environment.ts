@@ -8,8 +8,8 @@ export const environment = {
   LinkedIn: {
     authUrl: 'https://www.linkedin.com/oauth/v2/authorization',
     response_type: 'code',
-    client_id: '81nb85ffrekjgr',
-    redirect_uri: 'http://localhost:4200',
+    client_id: '77xn8gu9wv8bfj',
+    redirect_uri: 'http://localhost:4200/auth/linkedin',
     state: '987654321'
   },
   localStorage: {

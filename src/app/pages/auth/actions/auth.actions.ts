@@ -1,4 +1,4 @@
-import { LoginPayload, SignUpPayload, LoginResponse, SignUpResponse } from '../../../core/models/auth';
+import { LoginPayload, SignUpPayload, LoginResponse, SignUpResponse, LoginWithLinkedInPayload } from '../../../core/models/auth';
 
 export enum AuthActionTypes {
   Login = '[Auth] Login',
@@ -8,6 +8,7 @@ export enum AuthActionTypes {
   SignUpSuccess = '[Auth] SignUp Success',
   SignUpFailure = '[Auth] SignUp Failure',
   Logout = '[Auth] Logout',
+  LoginWithLinkedin = '[Auth] Login with LinkedIn'
 }
 
 export class Login {
@@ -50,10 +51,17 @@ export class Logout {
   static readonly type = AuthActionTypes.Logout;
 }
 
+export class LoginWithLinkedIn {
+  static readonly type = AuthActionTypes.LoginWithLinkedin;
+
+  constructor(public payload: LoginWithLinkedInPayload) {}
+}
+
 export type AuthActions = Login
   | LoginSuccess
   | LoginFailure
   | SignUp
   | SignUpSuccess
   | SignUpFailure
-  | Logout;
+  | Logout
+  | LoginWithLinkedIn;
