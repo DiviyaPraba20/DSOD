@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DSODContentType } from './models';
 
 @Component({
   selector: 'dsod-media-content',
