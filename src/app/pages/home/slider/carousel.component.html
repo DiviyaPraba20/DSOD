@@ -1,7 +1,7 @@
 <div class="home-banner">
   <div class="glide__track" data-glide-el="track">
     <ul class="glide__slides" #slider>
-      <dsod-slider-item [content]="con" *ngFor="let con of content">>
+      <dsod-slider-item [content]="con" [loggedIn]="loggedIn" *ngFor="let con of content">>
         <img src="assets/images/home-slide.png" alt="first slide">
       </dsod-slider-item>
     </ul>

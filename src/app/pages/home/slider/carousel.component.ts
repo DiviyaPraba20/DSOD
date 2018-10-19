@@ -1,4 +1,10 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  Input
+} from '@angular/core';
 import Glide, {
   Controls,
   Autoplay,
@@ -14,6 +20,8 @@ import { DSODContentType } from 'src/app/core/models';
 })
 export class DSODCarouselComponent implements AfterViewInit {
   constructor() {}
+  @Input()
+  loggedIn;
   @ViewChild('slider')
   slider: ElementRef;
   content: DSODSliderContent[] = [
@@ -23,7 +31,7 @@ export class DSODCarouselComponent implements AfterViewInit {
       description:
         'Get real-time access to clinical experts and a nationwide community of like-minded professionals — join the DSODentist community TODAY!',
       actionName: 'Join',
-      actionLink: '/join',
+      actionLink: '/signup',
       contentType: DSODContentType.Image,
       src: 'assets/images/home-slide.png',
       url: ''
@@ -34,7 +42,7 @@ export class DSODCarouselComponent implements AfterViewInit {
       description:
         'Get real-time access to clinical experts and a nationwide community of like-minded professionals — join the DSODentist community TODAY!',
       actionName: 'Join',
-      actionLink: '/join',
+      actionLink: '/signup',
       contentType: DSODContentType.Video,
       src: 'assets/images/home-slide.png',
       url: ''
