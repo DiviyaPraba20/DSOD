@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DSODSliderContent } from '../models';
 import { DSODContentType } from 'src/app/core/models';
+import { debug } from 'util';
 
 @Component({
   selector: 'dsod-slider-item',
@@ -12,7 +13,7 @@ import { DSODContentType } from 'src/app/core/models';
       <h1>{{content.title}}</h1>
       <h2>{{content.subtitle}}</h2>
       <p>{{content.description}}</p>
-      <div class="join-wrap">
+      <div class="join-wrap" *ngIf="!loggedIn">
         <a [routerLink]="[content.actionLink]" class="join-btn">{{content.actionName}}</a>
       </div>
     </div>
@@ -30,6 +31,8 @@ import { DSODContentType } from 'src/app/core/models';
 export class DSODSliderItem {
   @Input()
   content: DSODSliderContent;
+  @Input()
+  loggedIn: boolean;
   contentType: string;
   ngOnInit() {
     this.contentType = DSODContentType[this.content.contentType];
