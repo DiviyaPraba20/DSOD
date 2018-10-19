@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-8">
+      <section class="the-latest">
+        <h2 class="section-title">The Latest</h2>
+        <div class="latest-block">
+          <div class="latest-block-header">
+            <h4>Practice Management</h4>
+            <dsod-rating></dsod-rating>
+          </div>
+          <div class="latest-block-thumbnail">
+            <img src="/assets/images/teeth.png" class="img-fluid" alt="Feautred Thumbnail Large">
+            <a href="" class="read-about">
+              <img src="/assets/images/file-icon.png" alt="">
+            </a>
+          </div>
+          <div class="latest-block-caption">
+            <h4>Socket Repair Technique for Type II Sockets | By Asmita Bhekare, DDS</h4>
+          </div>
+        </div>
+        <div *ngFor="let item of latestItems">
+          <dsod-latest-item [latestItem]="item"></dsod-latest-item>
+        </div>
+      </section>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+      <section class="trending-videos">
+        <h2 class="section-title">Trending Videos</h2>
+        <div *ngFor="let item of trendingVideos">
+          <dsod-trending-item [trendingItem]="item"></dsod-trending-item>
+        </div>
+        <dsod-sponsored-ad></dsod-sponsored-ad>
+      </section>
+    </div>
+  </div>
+</div>

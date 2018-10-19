@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
-import { CarouselComponent} from './carousel.component'
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HOME_COMPONENTS, HOME_CONTAINERS } from './index';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule,
+    TabsModule.forRoot()
   ],
-  declarations: [HomeComponent,CarouselComponent]
+  declarations: [...HOME_CONTAINERS, ...HOME_COMPONENTS]
 })
-export class HomeModule { }
+export class HomeModule {}

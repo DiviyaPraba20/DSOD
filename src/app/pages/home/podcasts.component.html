@@ -1,0 +1,48 @@
+<section class="podcasts">
+  <div class="container">
+    <h2 class="section-title">Podcasts</h2>
+    <div class="podcasts-about text-center">
+      <h3>DISCOVER NEW RESOURCES</h3>
+      <h4>Check out what is popular in <span>DSODentist</span> today!</h4>
+    </div>
+    <div class="podcasts-tabs d-flex align-items-center">
+      <h3 class="podcasts-title">Podcasts</h3>
+      <tabset>
+        <tab heading="New" class="mt-2" (select)="onSelect($event)">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="featured-podcasts-block">
+                <div class="podcasts-block-header">
+                  <h4>Featured Podcast</h4>
+                </div>
+                <div class="podcast-block-thumbnail">
+                  <img src="/assets/images/featured-podcast.png" class="img-fluid" alt="Feautred Thumbnail Large">
+                  <div class="podcasts-block-caption">
+                    <h4>Awesome Topic Info | Christina Calleros, RDH, MS</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="podcasts-list">
+                <dsod-podcast-items></dsod-podcast-items>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="row">
+                <div class="col-sm-4" *ngFor="let number of [0,1,2,3,4,5,6,7,8]">
+                  <dsod-podcasts-by></dsod-podcasts-by>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tab>
+        <tab heading="Category" class="mt-2" disabled="true" (select)="onSelect($event)">
+          Cateogory
+        </tab>
+<tab heading="Speakers" class="mt-2" disabled="true" (select)="onSelect($event)">
+          Speakers
+        </tab>
+      </tabset>
+    </div>
+
+  </div>
+</section>

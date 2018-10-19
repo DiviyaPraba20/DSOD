@@ -37,7 +37,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     HttpClientModule,
     LayoutModule,
     AuthModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
