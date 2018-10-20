@@ -6,8 +6,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import { LocalStorageModule } from 'angular-2-local-storage';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { ToastrModule } from 'ngx-toastr';
 
 import { environment } from '../environments/environment';
@@ -20,24 +19,26 @@ import { SharedModule } from './shared/shared.module';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthService } from './core/services/auth.service';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgxsModule.forRoot(states),
     ToastrModule.forRoot({}),
     NgxsReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production
+      disabled: environment.production || false
     }),
     NgxsRouterPluginModule.forRoot(),
-    NgxsModule.forRoot(states),
-    LocalStorageModule.withConfig({prefix: environment.localStorage.prefix, storageType: 'localStorage'}),
-    AppRoutingModule,
+    NgxsStoragePluginModule.forRoot({}),
     HttpClientModule,
     LayoutModule,
     AuthModule,
     SharedModule,
+    CoreModule.forRoot(),
+    AppRoutingModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -7,7 +7,7 @@ export interface LoginPayload {
 }
 
 export interface LoginResponse extends Response {
-  accesstoken: string;
+  resultMap: {accesstoken: string; };
 }
 
 export interface SignUpPayload {

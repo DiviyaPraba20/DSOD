@@ -8,6 +8,7 @@ export enum AuthActionTypes {
   SignUpSuccess = '[Auth] SignUp Success',
   SignUpFailure = '[Auth] SignUp Failure',
   Logout = '[Auth] Logout',
+  Unauthorized = '[Auth] Unauthorized',
 }
 
 export class Login {
@@ -50,10 +51,15 @@ export class Logout {
   static readonly type = AuthActionTypes.Logout;
 }
 
+export class Unauthorized {
+  static readonly type = AuthActionTypes.Unauthorized;
+}
+
 export type AuthActions = Login
   | LoginSuccess
   | LoginFailure
   | SignUp
   | SignUpSuccess
   | SignUpFailure
+  | Unauthorized
   | Logout;
