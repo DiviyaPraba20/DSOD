@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Observable} from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { LoginPayload, LoginResponse, SignUpPayload, Response, SignUpResponse } from '../models';
+import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse } from '../models';
 
 import { Store } from '@ngxs/store';
 import { Logout } from 'src/app/pages/auth/actions';
@@ -16,7 +15,6 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router,
     private store: Store
   ) { }
 

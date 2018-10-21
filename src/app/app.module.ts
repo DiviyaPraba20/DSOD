@@ -40,11 +40,11 @@ import { CoreModule } from './core/core.module';
     CoreModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    AuthService,
-    AuthGuard
-  ],
+  // providers: [
+  //   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  //   AuthService,
+  //   AuthGuard
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

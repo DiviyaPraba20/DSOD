@@ -19,5 +19,5 @@ export interface SignUpPayload {
 }
 
 export interface SignUpResponse extends Response {
-  accesstoken: string;
+  resultMap: {accesstoken: string; };
 }

@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { Login } from '../actions';
 import { AuthService } from '../../../core/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -35,13 +36,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private authService: AuthService
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
-    this.authErrorSub = this.store.select(state => state.auth.error).subscribe(error => {
-      // console.log(error);
-    });
   }
 
   ngOnDestroy() {
