@@ -17,9 +17,6 @@ import { states } from './states';
 import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
-import { AuthGuard } from './core/guards/auth.guard';
-import { AuthService } from './core/services/auth.service';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { CoreModule } from './core/core.module';
 
 @NgModule({

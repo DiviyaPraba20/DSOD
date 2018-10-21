@@ -4,8 +4,19 @@ import { ToastrService } from 'ngx-toastr';
 
 import * as actions from '../actions';
 import { AuthService } from '../../../core/services/auth.service';
-import { LoginResponse, SignUpResponse } from '../../../core/models';
-import { LoginFailure, LoginSuccess, SignUpSuccess, SignUpFailure } from '../actions';
+import {
+  LoginResponse,
+  SignUpResponse,
+  LoginWithLinkedInResponse
+} from '../../../core/models';
+import {
+  LoginFailure,
+  LoginSuccess,
+  SignUpSuccess,
+  SignUpFailure,
+  LoginWithLinkedInSuccess,
+  LoginWithLinkedInFailure
+} from '../actions';
 
 export interface State {
   pending: boolean;
@@ -20,7 +31,7 @@ export interface State {
     pending: false,
     error: null,
     isLoggedIn: false,
-    accessToken: ''
+    accessToken: null
   }
 })
 
@@ -40,7 +51,7 @@ export class AuthState {
       pending: true,
       error: null,
       isLoggedIn: false,
-      accessToken: ''
+      accessToken: null
     });
 
     return this.authService.login(action.payload).pipe(
@@ -54,7 +65,7 @@ export class AuthState {
   }
 
   @Action(actions.LoginSuccess)
-  LoginSuccess({patchState}: StateContext<State>, action: actions.LoginSuccess) {
+  LoginSuccess({ patchState }: StateContext<State>, action: actions.LoginSuccess) {
     this.toastr.success('Login Success!', 'Login');
     patchState({
       pending: false,
@@ -92,7 +103,7 @@ export class AuthState {
   }
 
   @Action(actions.SignUpSuccess)
-  SignUpSuccess({patchState}: StateContext<State>, action: actions.SignUpSuccess) {
+  SignUpSuccess({ patchState }: StateContext<State>, action: actions.SignUpSuccess) {
     this.toastr.success('SignUp Success!', 'SignUp');
     patchState({
       pending: false,
@@ -111,6 +122,17 @@ export class AuthState {
     });
   }
 
+  @Action(actions.Logout)
+  Logout({ patchState }: StateContext<State>, action: actions.Logout) {
+    patchState({
+      pending: false,
+      error: null,
+      isLoggedIn: false,
+      accessToken: null
+    });
+    this.toastr.success('Logout Successfully!', 'Logout');
+  }
+
   @Action(actions.LoginWithLinkedIn)
   loginWithLinkedIn({ patchState, dispatch }: StateContext<State>, action: actions.LoginWithLinkedIn) {
     patchState({
@@ -120,12 +142,31 @@ export class AuthState {
     });
 
     return this.authService.loginWithLinkedIn(action.payload).pipe(
-      exhaustMap((response: LoginResponse) => {
+      exhaustMap((response: LoginWithLinkedInResponse) => {
         if (response.code !== 0) {
-          return dispatch(new LoginFailure(response.msg));
+          return dispatch(new LoginWithLinkedInFailure(response.msg));
         }
-        return dispatch(new LoginSuccess(response));
+        return dispatch(new LoginWithLinkedInSuccess(response));
       })
     );
+  }
+
+  @Action(actions.LoginWithLinkedInSuccess)
+  LoginWithLinkedInSuccess({ patchState }: StateContext<State>, action: actions.LoginWithLinkedInSuccess) {
+    this.toastr.success('Login with LinkedIn Success!', 'SignUp');
+    patchState({
+      pending: false,
+      isLoggedIn: true,
+      accessToken: action.payload.resultMap.tokenValue
+    });
+  }
+
+  @Action(actions.LoginWithLinkedInFailure)
+  LoginWithLinkedInFailure({ patchState }: StateContext<State>, action: actions.LoginWithLinkedInFailure) {
+    this.toastr.error(action.payload, 'SignUp');
+    patchState({
+      pending: false,
+      error: action.payload
+    });
   }
 }

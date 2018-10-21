@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './pages/home/home.module#HomeModule'
-  },
-  {
-    path: 'events',
-    loadChildren: './pages/events/events.module#EventsModule'
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: './pages/home/home.module#HomeModule'
+      },
+      {
+        path: 'events',
+        loadChildren: './pages/events/events.module#EventsModule'
+      },
+    ]
   },
   {
     path: '**',

@@ -26,3 +26,10 @@ export interface LoginWithLinkedInPayload {
   code: string;
   redirectUrl: string;
 }
+
+export interface LoginWithLinkedInResponse extends Response {
+  resultMap: {
+    email: string;
+    tokenValue: string;
+  };
+}

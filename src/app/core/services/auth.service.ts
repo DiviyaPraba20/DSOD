@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Router } from '@angular/router';
-
-import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
-import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse, LoginWithLinkedInPayload } from '../models';
-import { handleAPIResponse } from '../functions/common.function';
-import { Store } from '@ngxs/store';
+import {
+  LoginPayload,
+  LoginResponse,
+  SignUpPayload,
+  SignUpResponse,
+  LoginWithLinkedInPayload,
+  LoginWithLinkedInResponse
+} from '../models';
 import { Logout } from 'src/app/pages/auth/actions';
 
 @Injectable({
@@ -19,8 +21,6 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService,
-    private router: Router,
     private store: Store
   ) { }
 
@@ -34,14 +34,14 @@ export class AuthService {
     return this.http.post<SignUpResponse>(url, payload);
   }
 
-  loginWithLinkedIn(payload: LoginWithLinkedInPayload): Observable<Response> {
+  loginWithLinkedIn(payload: LoginWithLinkedInPayload): Observable<LoginWithLinkedInResponse> {
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let body = new HttpParams();
     body = body.set('code', payload.code);
     body = body.set('redirectUrl', payload.redirectUrl);
 
     const url = `${environment.api}/profile/profileservice/v1/linkedInLoginOther`;
-    return this.http.post<Response>(url, body, {headers: myheader});
+    return this.http.post<LoginWithLinkedInResponse>(url, body, {headers: myheader});
   }
 
   logout() {

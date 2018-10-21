@@ -2,7 +2,7 @@ import { Actions, ofActionDispatched, ofActionSuccessful } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppNavigate } from '../actions';
-import { LoginSuccess, SignUpSuccess, Unauthorized } from '../pages/auth/actions';
+import { LoginSuccess, SignUpSuccess, Unauthorized, LoginWithLinkedInSuccess } from '../pages/auth/actions';
 
 @Injectable({providedIn: 'root'})
 export class RouteHandler {
@@ -14,7 +14,7 @@ export class RouteHandler {
       });
   }
 
-  authSuccess$ = this.actions$.pipe(ofActionSuccessful(LoginSuccess, SignUpSuccess)).subscribe(({payload}) => {
+  authSuccess$ = this.actions$.pipe(ofActionSuccessful(LoginSuccess, SignUpSuccess, LoginWithLinkedInSuccess)).subscribe(({payload}) => {
     this.router.navigate(['/']);
   });
 
