@@ -112,7 +112,7 @@ export class AuthState {
   }
 
   @Action(actions.LoginWithLinkedIn)
-  loginWithLinkedIn({ patchState }: StateContext<State>, action: actions.LoginWithLinkedIn) {
+  loginWithLinkedIn({ patchState, dispatch }: StateContext<State>, action: actions.LoginWithLinkedIn) {
     patchState({
       pending: true,
       error: null,
@@ -120,23 +120,14 @@ export class AuthState {
     });
 
     return this.authService.loginWithLinkedIn(action.payload).pipe(
-      catchError((err: Response) => {
-        this.toastr.error(err.msg, 'Login');
-        patchState({
-          pending: false,
-          isLoggedIn: false,
-          error: err.msg
-        });
-        throw(err);
-      }),
-      tap((result: Response) => {
-        this.router.navigate(['/']);
-        patchState({
-          pending: false,
-          isLoggedIn: true,
-          error: null
-        });
-      }
-    ));
+      exhaustMap((response: LoginResponse) => {
+        if (response.code !== 0) {
+          console.log(response);
+          return dispatch(new LoginFailure(response.msg));
+        }
+        console.log(response);
+        return dispatch(new LoginSuccess(response));
+      })
+    );
   }
 }

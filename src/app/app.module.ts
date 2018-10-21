@@ -7,6 +7,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { LocalStorageModule } from 'angular-2-local-storage';
 import { ToastrModule } from 'ngx-toastr';
 
 import { environment } from '../environments/environment';
@@ -31,20 +32,16 @@ import { CoreModule } from './core/core.module';
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production || false
     }),
-    NgxsRouterPluginModule.forRoot(),
+    // NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({}),
+    LocalStorageModule.withConfig({prefix: environment.localStorage.prefix, storageType: 'localStorage'}),
+    AppRoutingModule,
     HttpClientModule,
     LayoutModule,
     AuthModule,
     SharedModule,
-    CoreModule.forRoot(),
-    AppRoutingModule,
+    CoreModule.forRoot()
   ],
-  // providers: [
-  //   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-  //   AuthService,
-  //   AuthGuard
-  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

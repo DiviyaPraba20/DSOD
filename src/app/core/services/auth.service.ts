@@ -41,14 +41,7 @@ export class AuthService {
     body = body.set('redirectUrl', payload.redirectUrl);
 
     const url = `${environment.api}/profile/profileservice/v1/linkedInLoginOther`;
-    return this.http.post<Response>(url, body, {headers: myheader}).pipe(
-      map((res: Response) => {
-        return handleAPIResponse(res);
-      }),
-      tap(res => {
-        this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.tokenValue);
-      })
-    );
+    return this.http.post<Response>(url, body, {headers: myheader});
   }
 
   logout() {

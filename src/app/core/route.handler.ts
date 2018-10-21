@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { AppNavigate } from '../actions';
 import { LoginSuccess, SignUpSuccess, Unauthorized } from '../pages/auth/actions';
 
-
 @Injectable({providedIn: 'root'})
 export class RouteHandler {
   constructor(private router: Router, private actions$: Actions) {
     this.actions$
       .pipe(ofActionDispatched(AppNavigate))
-      .subscribe(({ payload }) => this.router.navigate([payload]));
+      .subscribe(({ payload }) => {
+        return this.router.navigate([payload]);
+      });
   }
 
   authSuccess$ = this.actions$.pipe(ofActionSuccessful(LoginSuccess, SignUpSuccess)).subscribe(({payload}) => {
