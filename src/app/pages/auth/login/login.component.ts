@@ -2,10 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
 import { Store } from '@ngxs/store';
-import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Login } from '../actions';
-import { AuthService } from '../../../core/services/auth.service';
 import { environment } from 'src/environments/environment';
 
 export class CustomValidators {
@@ -24,32 +23,31 @@ export class CustomValidators {
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup = this.fb.group({
-    username: ['test@email.com', [Validators.required, Validators.email]],
-    password: ['Yoon1104@', [
+    username: ['', [Validators.required, Validators.email]],
+    password: ['', [
       Validators.required,
       CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,}$/g)
     ]],
     client_id: 'fooClientIdPassword'
   });
-  authErrorSub: Subscription = new Subscription();
 
   constructor(
     private fb: FormBuilder,
-    private store: Store
+    private store: Store,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit() {
-    this.authErrorSub = this.store.select(state => state.auth.error).subscribe(error => {
-      // console.log(error);
-    });
   }
 
   ngOnDestroy() {
-    this.authErrorSub.unsubscribe();
   }
 
   login() {
-    this.store.dispatch(new Login(this.loginForm.value));
+    this.spinner.show();
+    this.store.dispatch(new Login(this.loginForm.value)).subscribe(res => {
+      this.spinner.hide();
+    });
   }
 
   loginWithLinkedIn() {

@@ -21,7 +21,6 @@ export class LinkedinCallbackComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('linkedin-onInit');
     this.route.queryParams.subscribe(params => {
       this.authCode = params.code;
 

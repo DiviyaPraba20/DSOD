@@ -9,7 +9,6 @@ const noop = () => () => {};
 })
 export class CoreModule {
   static forRoot() {
-    console.log('blablbal');
     return {
       ngModule: CoreModule,
       providers: [{

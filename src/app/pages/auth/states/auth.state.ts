@@ -122,10 +122,8 @@ export class AuthState {
     return this.authService.loginWithLinkedIn(action.payload).pipe(
       exhaustMap((response: LoginResponse) => {
         if (response.code !== 0) {
-          console.log(response);
           return dispatch(new LoginFailure(response.msg));
         }
-        console.log(response);
         return dispatch(new LoginSuccess(response));
       })
     );

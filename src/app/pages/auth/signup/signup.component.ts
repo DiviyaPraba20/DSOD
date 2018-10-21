@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { SignUp } from '../actions';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -23,9 +24,9 @@ export class CustomValidators {
 })
 export class SignupComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup = this.fb.group({
-    full_name: ['test', Validators.required],
-    username: ['test@email.com', [Validators.required, Validators.email]],
-    password: ['Yoon1104@', [
+    full_name: ['', Validators.required],
+    username: ['', [Validators.required, Validators.email]],
+    password: ['', [
       Validators.required,
       CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,}$/g)
     ]],
@@ -37,17 +38,11 @@ export class SignupComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private toastr: ToastrService
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
-    this.authErrorSub = this.store.select(state => state.auth.error).subscribe(error => {
-      // console.log(error);
-      // if (error && error.msg) {
-      //   this.toastr.error('Toastr Test', 'Login');
-      // }
-      // this.toastr.error('Toastr Test', 'Login');
-    });
+    this.authErrorSub = this.store.select(state => state.auth.error).subscribe(error => { });
   }
 
   ngOnDestroy() {
@@ -55,7 +50,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   signUp() {
-    this.store.dispatch(new SignUp(this.signUpForm.value));
+    this.spinner.show();
+    this.store.dispatch(new SignUp(this.signUpForm.value)).subscribe(res => {
+      this.spinner.hide();
+    });
   }
 
   loginWithLinkedIn() {
