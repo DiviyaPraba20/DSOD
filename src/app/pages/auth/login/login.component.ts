@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store,
-    private authService: AuthService
+    private store: Store
   ) { }
 
   ngOnInit() {

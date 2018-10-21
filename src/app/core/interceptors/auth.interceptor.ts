@@ -2,23 +2,26 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-
 import { AuthService } from '../services/auth.service';
-import { Response } from '../models/common';
+import { catchError } from 'rxjs/operators';
+import { Select, Store } from '@ngxs/store';
+import { AuthState } from '../../pages/auth/states/auth.state';
+import { Logout, Unauthorized } from '../../pages/auth/actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptor implements HttpInterceptor {
 
+  private accessToken: string = this.store.selectSnapshot<string>(AuthState.accessToken);
+
   constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private store: Store
+  ) {}
 
   applyAccessToken(request) {
-    return request.clone({headers: request.headers.set('Authorization', `Bearer ${this.authService.accessToken}`)});
+    return request.clone({headers: request.headers.set('Authorization', `Bearer ${this.accessToken}`)});
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -26,8 +29,8 @@ export class AuthInterceptor implements HttpInterceptor {
     let duplicate = req;
 
     if (req.withCredentials) {
-      if (!this.authService.accessToken) {
-        this.router.navigate(['/login']);
+      if (!this.accessToken) {
+        this.store.dispatch(new Unauthorized());
         return throwError({message: 'Current Session has been expired. Please login again.'});
       }
       duplicate = this.applyAccessToken(req);
@@ -36,7 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(duplicate).pipe(
       catchError(error => {
         if (error.status === 401) {
-          this.authService.logout();
+          this.store.dispatch(new Logout());
         }
         return throwError(error);
       })

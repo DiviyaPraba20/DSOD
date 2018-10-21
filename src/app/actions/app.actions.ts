@@ -1,5 +1,6 @@
 export enum AppActionTypes {
-  INIT = '[App] Init'
+  INIT = '[App] Init',
+  ROUTE_NAVIGATE = '[App] Navigate'
 }
 
 export class AppInit {
@@ -7,4 +8,10 @@ export class AppInit {
   constructor() {}
 }
 
-export type Actions = AppInit;
+
+export class AppNavigate {
+  static readonly type = AppActionTypes.ROUTE_NAVIGATE;
+  constructor(public payload: string) { }
+}
+
+export type AppActions = AppInit | AppNavigate;

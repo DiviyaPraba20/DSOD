@@ -7,8 +7,10 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { LoginPayload, SignUpPayload, Response, LoginWithLinkedInPayload } from '../models';
+import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse, LoginWithLinkedInPayload } from '../models';
 import { handleAPIResponse } from '../functions/common.function';
+import { Store } from '@ngxs/store';
+import { Logout } from 'src/app/pages/auth/actions';
 
 @Injectable({
   providedIn: 'root'
@@ -18,36 +20,18 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) { }
 
-  get accessToken() {
-    const token = this.localStorageService.get(environment.localStorage.accessToken) as string;
-    return token ? token : '';
-  }
-
-  login(payload: LoginPayload): Observable<Response> {
+  login(payload: LoginPayload): Observable<LoginResponse> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/login`;
-    return this.http.post<Response>(url, payload).pipe(
-      map((res: Response) => {
-        return handleAPIResponse(res);
-      }),
-      tap(res => {
-        this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
-      })
-    );
+    return this.http.post<LoginResponse>(url, payload);
   }
 
-  signup(payload: SignUpPayload): Observable<Response> {
+  signup(payload: SignUpPayload): Observable<SignUpResponse> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/register`;
-    return this.http.post<Response>(url, payload).pipe(
-      map((res: Response) => {
-        return handleAPIResponse(res);
-      }),
-      tap(res => {
-        this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
-      })
-    );
+    return this.http.post<SignUpResponse>(url, payload);
   }
 
   loginWithLinkedIn(payload: LoginWithLinkedInPayload): Observable<Response> {
@@ -68,7 +52,6 @@ export class AuthService {
   }
 
   logout() {
-    this.localStorageService.clearAll();
-    this.router.navigate(['login']);
+    return this.store.dispatch(new Logout());
   }
 }

@@ -8,6 +8,7 @@ export enum AuthActionTypes {
   SignUpSuccess = '[Auth] SignUp Success',
   SignUpFailure = '[Auth] SignUp Failure',
   Logout = '[Auth] Logout',
+  Unauthorized = '[Auth] Unauthorized',
   LoginWithLinkedin = '[Auth] Login with LinkedIn'
 }
 
@@ -51,6 +52,10 @@ export class Logout {
   static readonly type = AuthActionTypes.Logout;
 }
 
+export class Unauthorized {
+  static readonly type = AuthActionTypes.Unauthorized;
+}
+
 export class LoginWithLinkedIn {
   static readonly type = AuthActionTypes.LoginWithLinkedin;
 
@@ -64,4 +69,5 @@ export type AuthActions = Login
   | SignUpSuccess
   | SignUpFailure
   | Logout
+  | Unauthorized
   | LoginWithLinkedIn;
