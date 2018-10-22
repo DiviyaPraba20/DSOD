@@ -1,29 +1,109 @@
- @import 'variables';
+@import 'variables';
 
- .our-content {
-   padding: 15px 30px 25px 0;
+:host {
+  .content-block {
+    font-family: $helvetica_neue;
+    margin: 15px 0;
+    background: #f8f8f8;
 
-   h2.topic-title {
-     font-weight: 500;
-     font-size: 35px;
-     color: $black;
-   }
+    .content-block-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 21px 15px 9px;
 
-   em {
-     font-size: 20px;
-     font-weight: 500;
+      h4 {
+        color: $color-primary;
+        font-size: 22px;
+      }
+    }
 
-     a.read-about {
-       margin-left: 10px;
-     }
-   }
+    .content-block-thumbnail {
+      position: relative;
+      border-top: 3px solid $mine_grey;
 
-   p {
-     font-size: 22px;
-     line-height: 36px;
+      >img {
+        width: 100%;
+      }
 
-     a {
-       color: $deep-cerulean;
-     }
-   }
- }
+      a.read-about {
+        position: absolute;
+        display: inline-block;
+        left: 25px;
+        bottom: 25px;
+      }
+    }
+
+    .block-content {
+      padding: 15px 30px;
+
+      h2.topic-title {
+        font-weight: 500;
+        font-size: 35px;
+        color: $black;
+      }
+
+      em {
+        font-size: 20px;
+        font-weight: 500;
+
+        a.read-about {
+          margin-left: 10px;
+        }
+      }
+
+      p {
+        font-size: 22px;
+        line-height: 36px;
+
+        a {
+          color: $deep-cerulean;
+        }
+      }
+    }
+  }
+
+  .content-block-sm {
+    .content-block-thumbnail {
+      a.read-about {
+        bottom: 40px;
+      }
+    }
+
+    .block-content {
+      padding: 15px;
+
+      h2.topic-title {
+        font-size: 22px;
+        border-top: 1px solid #c0cad1;
+        padding-top: 15px;
+        line-height: 30px;
+      }
+
+      p {
+        font-size: 17px;
+        line-height: 25px;
+      }
+    }
+  }
+
+  @media only screen and (max-width:1680px) {
+
+    .content-block {
+      .content-block-header {
+        h4 {
+          font-size: 20px;
+        }
+      }
+
+      .block-content {
+        h2.topic-title {
+          font-size: 20px;
+        }
+
+        em {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

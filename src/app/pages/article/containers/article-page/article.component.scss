@@ -1,0 +1,40 @@
+@import 'variables';
+
+.article-content {
+  .article-header {
+    color: $text-main;
+    padding: 5px 0;
+
+    h2 {
+      font-family: $neue_hgd_Thin;
+      font-size: 75px;
+      line-height: 85px;
+    }
+
+    h3 {
+      font-family: $neue_hgd_Thin;
+      font-size: 47px;
+      line-height: 65px;
+      margin-bottom: 25px;
+    }
+
+    span.by {
+      font-size: 30px;
+      line-height: 26px;
+    }
+  }
+
+  .article-thumbnail {
+    margin-bottom: 55px;
+
+    img {
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: $text-main;
+      font-size: 22px;
+      line-height: 35px;
+    }
+  }
+}

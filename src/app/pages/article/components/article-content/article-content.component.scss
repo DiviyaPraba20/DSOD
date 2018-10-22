@@ -1,0 +1,56 @@
+ @import 'variables';
+
+ .article-content {
+   p {
+     color: $text-main;
+     font-size: 22px;
+     line-height: 35px;
+     margin-bottom: 25px;
+   }
+
+   p.sub-head:first-letter {
+     float: left;
+     font-size: 70px;
+     line-height: 60px;
+     padding-top: 4px;
+     padding-right: 8px;
+     padding-left: 3px;
+   }
+
+   h3.para-title {
+     font-size: 35px;
+     color: $color-primary;
+   }
+
+   ul {
+     counter-reset: li;
+
+     li {
+       counter-increment: li;
+       position: relative;
+       color: $text-main;
+       font-size: 22px;
+       line-height: 35px;
+       padding: 0 50px;
+       margin-bottom: 25px;
+
+       &::before {
+         content: counter(li)".";
+         display: inline-block;
+         font-size: 16px;
+         left: 0;
+         line-height: 26px;
+         position: absolute;
+         top: 0;
+         color: $color-primary;
+         font-size: 22px;
+         line-height: 35px;
+         font-weight: 700;
+       }
+
+       i {
+         color: $color-primary;
+       }
+     }
+   }
+ }

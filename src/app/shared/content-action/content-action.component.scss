@@ -1,0 +1,31 @@
+@import 'variables';
+
+.content-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  ul {
+    padding-right: 45px;
+
+    li {
+      text-align: center;
+      padding-bottom: 1px;
+      min-width: 95px;
+      border-bottom: 2px solid #ccc;
+      padding: 0 20px;
+      margin-bottom: 20px;
+      list-style: none;
+
+      a {
+        display: inline-block;
+        color: $regent-gray;
+        font-size: 12px;
+
+        span {
+          display: block;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
