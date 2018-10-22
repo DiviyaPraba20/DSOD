@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-
-import { LocalStorageService } from 'angular-2-local-storage';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
-import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse, Response } from '../models';
-import { handleAPIResponse } from '../functions/common.function';
+import {
+  LoginPayload,
+  LoginResponse,
+  SignUpPayload,
+  SignUpResponse,
+  LoginWithLinkedInPayload,
+  LoginWithLinkedInResponse
+} from '../models';
+import { Logout } from 'src/app/pages/auth/actions';
 
 @Injectable({
   providedIn: 'root'
@@ -17,43 +21,30 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService,
-    private router: Router
+    private store: Store
   ) { }
-
-  get accessToken() {
-    const token = this.localStorageService.get(environment.localStorage.accessToken) as string;
-    return token ? token : '';
-  }
 
   login(payload: LoginPayload): Observable<LoginResponse> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/login`;
-    return this.http.post<LoginResponse>(url, payload).pipe(
-      map((res: LoginResponse) => {
-        if (res.code === 0) {
-          this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
-        }
-        return res;
-      })
-    );
+    return this.http.post<LoginResponse>(url, payload);
   }
 
-  signup(payload: SignUpPayload): Observable<Response> {
+  signup(payload: SignUpPayload): Observable<SignUpResponse> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/register`;
-    return this.http.post<Response>(url, payload).pipe(
-      // map((res: Response) => {
-      //   return handleAPIResponse(res);
-      // }),
-      tap(res => {
-        if (res.code === 0) {
-          this.localStorageService.set(environment.localStorage.accessToken, res.resultMap.accessToken);
-        }
-      })
-    );
+    return this.http.post<SignUpResponse>(url, payload);
+  }
+
+  loginWithLinkedIn(payload: LoginWithLinkedInPayload): Observable<LoginWithLinkedInResponse> {
+    const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('code', payload.code);
+    body = body.set('redirectUrl', payload.redirectUrl);
+
+    const url = `${environment.api}/profile/profileservice/v1/linkedInLoginOther`;
+    return this.http.post<LoginWithLinkedInResponse>(url, body, {headers: myheader});
   }
 
   logout() {
-    this.localStorageService.clearAll();
-    this.router.navigate(['login']);
+    return this.store.dispatch(new Logout());
   }
 }

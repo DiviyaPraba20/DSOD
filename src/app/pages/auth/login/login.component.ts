@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
 import { Store } from '@ngxs/store';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Login } from '../actions';
+import { environment } from 'src/environments/environment';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -19,10 +21,10 @@ export class CustomValidators {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup = this.fb.group({
-    username: ['test@email.com', [Validators.required, Validators.email]],
-    password: ['Yoon1104@', [
+    username: ['', [Validators.required, Validators.email]],
+    password: ['', [
       Validators.required,
       CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,}$/g)
     ]],
@@ -31,19 +33,27 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store
+    private store: Store,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+  }
+
   login() {
+    this.spinner.show();
     this.store.dispatch(new Login(this.loginForm.value)).subscribe(res => {
-      if (res.auth.error) {
-        alert(res.auth.error);
-      }
+      this.spinner.hide();
     });
   }
 
-  loginWithLinkedIn() {}
+  loginWithLinkedIn() {
+    const link = `${environment.LinkedIn.authUrl}?response_type=${environment.LinkedIn.response_type}`
+      + `&client_id=${environment.LinkedIn.client_id}&redirect_uri=${environment.LinkedIn.redirect_uri}`
+      + `&state=${environment.LinkedIn.state}`;
+    window.open(link, '_self');
+  }
 }

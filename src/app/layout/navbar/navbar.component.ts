@@ -9,12 +9,12 @@ import { Navigation } from './models';
 })
 export class NavbarComponent implements OnInit {
 
-  navigation : Navigation[];
+  navigation: Navigation[];
 
   constructor(private service:NavbarService) { }
 
   ngOnInit() {
-    this.navigation=this.service.getNavItems();
+    this.navigation = this.service.getNavItems();
   }
 
 }

@@ -7,7 +7,7 @@
     </div>
     <div class="form-container">
       <form [formGroup]="signUpForm">
-        <button class="btn btn-default btn-linkedin">
+        <button class="btn btn-default btn-linkedin" (click)="loginWithLinkedIn()">
           <img class="social-image" src="/assets/images/icons/icon-linkedin.png">
           <span class="title">Join using LinkedIn</span>
         </button>
@@ -48,3 +48,4 @@
     </div>
   </div>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-scale-multiple"></ngx-spinner>
