@@ -20,7 +20,9 @@ import { Component, Input } from "@angular/core";
   styleUrls: ['./trending.component.scss']
 })
 export class DSODTrendingComponent {
-  @Input() trendingItem;
+	@Input() trendingItem;
+	@Input() showCaption:boolean;
+	@Input() showSummary:boolean;
 
   constructor() {}
 }
