@@ -1,0 +1,12 @@
+ @import 'variables';
+
+ :host {
+   .form-group {
+     label {
+       font-size: 22px;
+       line-height: 30px;
+       color: $black;
+       font-weight: 500;
+     }
+   }
+ }

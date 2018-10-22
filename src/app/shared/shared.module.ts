@@ -6,6 +6,7 @@ import { DSODTrendingComponent } from './trending.component';
 import { DSODSponsoredAdComponent } from './sponsored-ad.component';
 import { DSODMediaContentComponent } from './media-placeholder.component';
 import { DSODContnetComponent } from './content-placeholder.component';
+import { DSODFilterSelectComponent } from './select/filter-select.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -15,7 +16,8 @@ import { DSODContnetComponent } from './content-placeholder.component';
     DSODTrendingComponent,
     DSODSponsoredAdComponent,
     DSODMediaContentComponent,
-    DSODContnetComponent
+    DSODContnetComponent,
+    DSODFilterSelectComponent
   ],
   exports: [
     DSODRatingComponent,
@@ -23,7 +25,8 @@ import { DSODContnetComponent } from './content-placeholder.component';
     DSODTrendingComponent,
     DSODSponsoredAdComponent,
     DSODMediaContentComponent,
-    DSODContnetComponent
+    DSODContnetComponent,
+    DSODFilterSelectComponent
   ]
 })
 export class SharedModule {}

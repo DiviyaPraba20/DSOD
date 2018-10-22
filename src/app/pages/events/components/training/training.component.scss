@@ -1,0 +1,86 @@
+   @import 'variables';
+
+   .come-with-us {
+     position: relative;
+     padding-top: 30px;
+     margin-bottom: 45px;
+
+     .come-with-content {
+       position: absolute;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       text-align: center;
+       padding: 0 10px 70px;
+       background: rgb(0, 0, 0);
+       background: linear-gradient(0deg, rgba(0, 0, 0, 0.8575805322128851) 0%, rgba(255, 255, 255, 0) 100%);
+
+       h3 {
+         font-size: 65px;
+         line-height: 70px;
+         color: $color-white;
+         border-bottom: 1px solid $color-primary;
+         padding-bottom: 15px;
+         font-family: $helvetica_neue;
+         font-weight: 700;
+         margin-bottom: 15px;
+       }
+
+       h4 {
+         font-size: 45px;
+         color: $color-white;
+         line-height: 55px;
+         font-family: $helvetica_neue;
+       }
+     }
+   }
+
+   .events-training-content {
+     p {
+       line-height: 30px;
+       font-size: 17px;
+       font-family: $helvetica_neue;
+       margin-bottom: 30px;
+     }
+
+     ul {
+       margin-bottom: 10px;
+       padding-left: 35px;
+
+       li {
+         font-size: 17px;
+         line-height: 30px;
+         font-weight: 700;
+         font-family: $helvetica_neue;
+         margin-bottom: 10px;
+       }
+     }
+   }
+
+   .corporate-sponsors {
+     background: $alabaster_white;
+     padding: 15px;
+     text-align: center;
+
+     h3 {
+       font-size: 30px;
+       font-family: $helvetica_neue;
+     }
+
+     ul {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-top: 30px;
+
+       li {
+         border-right: 1px solid $boulder_grey;
+         padding: 10px;
+         list-style: none;
+
+         &:last-child {
+           border-right: none;
+         }
+       }
+     }
+   }
