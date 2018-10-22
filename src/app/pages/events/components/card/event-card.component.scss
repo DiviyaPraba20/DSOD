@@ -1,0 +1,160 @@
+@import 'variables';
+
+.event-card {
+  background: $alabaster_white;
+  margin: 12px 0;
+
+  .event-card-header {
+    background: $boulder_grey;
+    display: flex;
+    align-items: center;
+    padding: 3px 6px;
+
+    span.header-logo {}
+
+    span.sponsored-by {
+      font-size: 20px;
+      color: $color-white;
+      padding: 4px 5px 4px 9px;
+      border-left: 1px solid #fff;
+      margin-left: 13px;
+    }
+  }
+
+  .event-card-level {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $alabaster_white;
+    padding: 9px 7px;
+
+    span.event-level {
+      font-size: 19px;
+      border-radius: 3px;
+      border: 1px solid $color-strokes;
+      color: $text-main;
+      width: 130px;
+      background: $color-white;
+      padding: 5px;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+
+    span.level-text {
+      font-size: 22px;
+      color: $color-primary;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  .card-thumbnail {
+    position: relative;
+    border-top: 3px solid $mine_grey;
+
+    >img {
+      width: 100%;
+    }
+  }
+
+  .card-content {
+    margin-top: 17px;
+    padding: 0 15px;
+    color: $mine_grey;
+
+    h3 {
+      border-top: 1px solid $color-primary;
+      font-size: 22px;
+      line-height: 30px;
+      font-family: $helvetica_neue;
+      padding-top: 8px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    span {
+      font-size: 20px;
+      font-style: italic;
+      line-height: 26px;
+      font-family: $helvetica_neue;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 27px;
+      font-family: $helvetica_font;
+      margin-top: 15px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid $color-primary;
+
+      a {
+        color: $deep-cerulean;
+      }
+    }
+  }
+
+  .event-card-footer {
+    padding: 0 15px;
+
+    .event-timing {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 0 6px;
+
+      span {
+        font-size: 17px;
+        font-family: $helvetica_font;
+        font-weight: 700;
+      }
+    }
+
+    .event-city {
+      font-size: 17px;
+      font-family: $helvetica_font;
+    }
+
+    .register-btn-wrap {
+      display: flex;
+      justify-content: flex-end;
+      padding: 21px 5px 8px;
+
+      a {
+        display: inline-block;
+      }
+
+      a.card-action {
+        font-size: 20px;
+        font-family: $neue_hgd_Roman;
+        color: $color-primary;
+        padding: 2px 15px 0;
+        margin-right: 10px;
+        font-size: 31px;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &::before {
+          position: absolute;
+          height: 42px;
+          width: 1px;
+          background: $color-primary;
+          right: 0;
+          top: -7px;
+          content: "";
+        }
+      }
+
+      a.register-btn {
+        font-size: 20px;
+        font-family: $neue_hgd_Roman;
+        color: $color-white;
+        padding: 6px 12px;
+        background: $color-secondary;
+        align-self: center;
+      }
+    }
+  }
+}

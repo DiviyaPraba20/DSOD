@@ -18,5 +18,13 @@
         <dsod-event-training></dsod-event-training>
       </section>
     </div>
+    <div class="col-md-9">
+      <h2 class="section-title mt-5">Events</h2>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let number of [0,1,2,3,4,5,6,7,8]">
+          <dsod-event-card></dsod-event-card>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
