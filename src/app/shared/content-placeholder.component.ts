@@ -16,7 +16,7 @@ import { Component, Input } from '@angular/core';
 					<em *ngIf="showby">by DSODentist <a href="" class="read-about">
 					</a> </em>
           <p *ngIf="showDescription" class="mt-3">This module will present best practices that allow you to use Invisalign outcome simulator in your practice…<a href="#">[more]</a></p>
-          <a href="#">[more]</a>
+          <a *ngIf="!showDescription" href="#">[more]</a>
 			</div>
 		</div>`,
   styleUrls: ['./content-placeholder.component.scss']
