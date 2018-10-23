@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 
 import { SignUp } from '../actions';
 import { environment } from 'src/environments/environment';
@@ -28,7 +27,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     username: ['', [Validators.required, Validators.email]],
     password: ['', [
       Validators.required,
-      CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,}$/g)
+      CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])[A-Za-z\d#$@!%&*?]{8,}$/g)
     ]],
     is_student: '0',
     client_id: 'fooClientIdPassword'

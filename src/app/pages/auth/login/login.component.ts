@@ -22,12 +22,10 @@ export class CustomValidators {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  isShowPassword = false;
   loginForm: FormGroup = this.fb.group({
     username: ['', [Validators.required, Validators.email]],
-    password: ['', [
-      Validators.required,
-      CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,}$/g)
-    ]],
+    password: ['', [Validators.required, CustomValidators.pattern(/^(?=.*\d)(?=.*?[A-Z])[A-Za-z\d#$@!%&*?]{8,}$/g)]],
     client_id: 'fooClientIdPassword'
   });
 
@@ -41,6 +39,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 
   login() {
