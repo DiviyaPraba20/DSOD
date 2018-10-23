@@ -1,7 +1,8 @@
 @import 'variables';
 
 .the-latest {
-  font-family: $helvetica_neue;
+  font-family: $Arial;
+
   .latest-block {
     margin: 15px 0 33px;
     background: #f8f8f8;
@@ -16,6 +17,7 @@
         font-size: 22px;
       }
     }
+
     .latest-block-thumbnail {
       position: relative;
       border-top: 3px solid $mine_grey;
@@ -70,4 +72,3 @@
     }
   }
 }
-

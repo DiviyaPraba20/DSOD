@@ -1,0 +1,16 @@
+<div class="podcasts-tabs d-flex align-items-center">
+  <h3 class="podcasts-title">Podcasts</h3>
+  <tabset>
+    <tab heading="New" class="mt-2" (select)="onSelect($event)">
+      <div class="podcasts-list">
+        <dsod-podcast-items></dsod-podcast-items>
+      </div>
+    </tab>
+    <tab heading="Category" class="mt-2" disabled="true" (select)="onSelect($event)">
+      Cateogory
+    </tab>
+    <tab heading="Speakers" class="mt-2" disabled="true" (select)="onSelect($event)">
+      Speakers
+    </tab>
+  </tabset>
+</div>
