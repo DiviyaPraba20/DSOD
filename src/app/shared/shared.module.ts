@@ -7,6 +7,7 @@ import { DSODSponsoredAdComponent } from './sponsored-ad.component';
 import { DSODMediaContentComponent } from './media-placeholder.component';
 import { DSODContnetComponent } from './content-placeholder.component';
 import { DSODFilterSelectComponent } from './select/filter-select.component';
+import { DSODContentActionComponent } from './content-action/content-action.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -17,7 +18,8 @@ import { DSODFilterSelectComponent } from './select/filter-select.component';
     DSODSponsoredAdComponent,
     DSODMediaContentComponent,
     DSODContnetComponent,
-    DSODFilterSelectComponent
+    DSODFilterSelectComponent,
+    DSODContentActionComponent
   ],
   exports: [
     DSODRatingComponent,
@@ -26,7 +28,8 @@ import { DSODFilterSelectComponent } from './select/filter-select.component';
     DSODSponsoredAdComponent,
     DSODMediaContentComponent,
     DSODContnetComponent,
-    DSODFilterSelectComponent
+    DSODFilterSelectComponent,
+    DSODContentActionComponent
   ]
 })
 export class SharedModule {}

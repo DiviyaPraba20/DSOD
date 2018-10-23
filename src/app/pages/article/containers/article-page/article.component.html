@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-9">
+      <div class="article-content p-t-115">
+        <div class="top-head d-flex justify-content-between">
+          <ul>
+            <li>Education /</li>
+            <li>Practice Management</li>
+          </ul>
+          <dsod-rating></dsod-rating>
+        </div>
+        <div class="article-header">
+          <div class="row">
+            <div class="col-lg-10">
+              <h2>The Best Way to Start the Day:</h2>
+              <h3>The Morning Huddle</h3>
+              <span class="by">by DSODentist</span>
+            </div>
+            <div class="col-lg-2">
+              <dsos-content-actions></dsos-content-actions>
+            </div>
+          </div>
+        </div>
+        <div class="article-thumbnail">
+          <img src="/assets/images/article-thumb-lg.png" class="img-fluid" alt="">
+          <p><b>Figure.</b>The morning huddle is an important operational 'must do' for the entire team.</p>
+        </div>
+        <dsod-article-content></dsod-article-content>
+      </div>
+      <div class="related-content">
+        <h2 class="section-title">Related Content</h2>
+        <div class="row">
+          <div class="col-lg-4" *ngFor="let number of [0,1,2]">
+            <dsod-content-placeholder [showDescription]="false" [showSummary]="true" [showBy]="false"></dsod-content-placeholder>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 p-t-115">
+      <section class="trending-videos">
+        <h2 class="section-title">Trending Topics</h2>
+        <div *ngFor="let number of [0,1,2]">
+          <dsod-content-placeholder [showDescription]="true" [showSummary]="true"></dsod-content-placeholder>
+        </div>
+        <dsod-sponsored-ad></dsod-sponsored-ad>
+      </section>
+    </div>
+  </div>
+</div>
