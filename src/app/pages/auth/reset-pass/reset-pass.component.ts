@@ -25,7 +25,7 @@ export class CustomValidators {
 export class ResetPassComponent implements OnInit {
   isShowPassword = false;
   isShowConfirmPassword = false;
-  isForgotPass = false;
+  isForgotPass = true;
   forgotForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]]
   });
