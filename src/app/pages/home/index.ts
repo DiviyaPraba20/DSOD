@@ -5,7 +5,6 @@ import { DSODLatestComponent } from './latest.component';
 import { DSODLatestItemComponent } from './latest-item.component';
 import { DSODFeaturedTopicsComponent } from './featured-topics.component';
 import { DSODPodcastsComponent } from './podcasts.component';
-import { DSODPodcastItemsComponent } from './podcast-items.component';
 import { DSODPodcastsByComponent } from './podcasts-by.component';
 import { DSODEventsComponent } from './events.component';
 import { DSODOurSponsorsComponent } from './our-sponsors.component';
@@ -18,7 +17,6 @@ export const HOME_COMPONENTS = [
   DSODLatestItemComponent,
   DSODFeaturedTopicsComponent,
   DSODPodcastsComponent,
-  DSODPodcastItemsComponent,
   DSODPodcastsByComponent,
   DSODEventsComponent,
   DSODOurSponsorsComponent,

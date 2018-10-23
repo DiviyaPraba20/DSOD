@@ -1,0 +1,52 @@
+@import 'variables';
+
+.speakers-content {
+  .speakers-block {
+    margin-bottom: 60px;
+
+    h2 {
+      font-size: 35px;
+      font-family: $Arial;
+      margin-bottom: 45px;
+    }
+
+    p {
+      font-size: 22px;
+      line-height: 36px;
+
+      a {
+        color: $deep-cerulean;
+      }
+    }
+
+    ul {
+      li {
+        padding: 7px 0;
+
+        a {
+          font-size: 27px;
+          color: $text-main;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          line-height: 33px;
+
+          img {
+            margin-right: 15px;
+          }
+
+          span {
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.podcasts-list {
+  padding-top: 15px;
+}

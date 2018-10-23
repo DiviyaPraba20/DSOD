@@ -18,6 +18,10 @@ const routes: Routes = [
       {
         path: 'article',
         loadChildren: './pages/article/article.module#ArticleModule'
+      },
+      {
+        path: 'podcast',
+        loadChildren: './pages/podcast/podcast.module#PodcastModule'
       }
     ]
   },

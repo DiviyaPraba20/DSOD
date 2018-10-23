@@ -1,0 +1,204 @@
+@import 'variables';
+
+
+.podcast-content {
+  .top-head {
+    padding-top: 77px;
+    border-bottom: 2px solid #c0cad1;
+
+    .pod-title {
+      h3 {
+        font-size: 30px;
+        color: $boulder_grey;
+        margin-left: 15px;
+        font-family: $Arial;
+      }
+    }
+
+    >span {
+      font-size: 22px;
+      color: $color-primary;
+      font-family: $Arial;
+    }
+  }
+}
+
+.page-heading {
+  font-size: 42px;
+  color: $color-primary;
+  font-family: $neue_hgd_Thin;
+  margin: 60px 0 50px;
+}
+
+.article-actions-lg {
+  ul {
+    padding-right: 15px;
+
+    li {
+      padding: 5px 0;
+
+      a {
+        font-size: 19px;
+
+        span {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
+
+.podcast-player {
+  margin-bottom: 115px;
+
+  .speaker-thumbnail {
+    img {
+      width: 100%;
+      max-width: 254px;
+    }
+  }
+
+  .speaker-name {
+    background: $alabaster_white;
+    padding: 15px;
+    text-align: center;
+    color: $black;
+    max-width: 255px;
+
+    span {
+      font-size: 15px;
+      line-height: 19px;
+      font-weight: 700;
+    }
+  }
+}
+
+
+.subscribe-today {
+  background: url("/assets/images/join-us.png") no-repeat center center / cover;
+  min-height: 1027px;
+  border: 3px solid $light_grey;
+  margin-top: 20px;
+
+  h3 {
+    color: $color-white;
+    background: $color-primary;
+    text-transform: capitalize;
+    padding: 15px;
+    text-align: center;
+    font-size: 48px;
+  }
+
+  p {
+    color: #fff;
+    font-size: 23px;
+    text-align: center;
+    line-height: 30px;
+    padding: 5px 40px 32px;
+  }
+
+  form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 25px;
+
+    input {
+      border-radius: 0;
+    }
+
+    button {
+      font-size: 23px;
+      color: $color-white;
+      font-family: $neue_hgd_Medium;
+      padding: 15px;
+      border: 2px solid $color-white;
+      background: rgba(0, 0, 0, 0.2);
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      width: 180px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+  }
+}
+
+.ad-wrap {
+  padding: 15px 0;
+  border: 1px solid #8799A7;
+  border-width: 1px 0;
+  margin: 20px 0;
+}
+
+.join-ad {
+  margin-top: 20px;
+  border-top: 1px solid $color-primary;
+  padding-top: 20px;
+
+  .join-ad-inner {
+    background: url("/assets/images/join-bg.png") no-repeat center center / cover;
+    height: 1006px;
+    position: relative;
+    border: 3px solid $light_grey;
+
+    .join-ad-header {
+      padding: 15px;
+    }
+
+    .join-ad-wrap {
+      position: absolute;
+      max-width: 70%;
+      left: 0;
+      bottom: 0;
+      padding: 30px 30px 80px;
+
+      h3 {
+        font-size: 47px;
+        font-family: $neue_hgd_Thin;
+        color: $black;
+        margin-bottom: 35px;
+      }
+
+      h4 {
+        font-size: 30px;
+        color: $black;
+        font-family: $neue_hgd_Medium;
+        max-width: 235px;
+
+        span {
+          font-family: $neue_hgd_Roman;
+          display: block;
+        }
+
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 21px;
+        color: $black;
+        font-family: $neue_hgd_Roman;
+        margin-bottom: 28px;
+        line-height: 25px;
+      }
+
+      a.layout-btn {
+        font-size: 21px;
+        color: $color-white;
+        font-family: $neue_hgd_Roman;
+        background: $color-primary;
+        padding: 11px 15px;
+        display: block;
+        max-width: 234px;
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      a.download-btn {
+        font-family: $neue_hgd_Medium;
+        font-size: 21px;
+        color: $black;
+      }
+    }
+  }
+}
