@@ -12,23 +12,39 @@
           <span class="title">Join using LinkedIn</span>
         </button>
         <p class="text-or">or</p>
-        <div class="input-group join-control">
+        <div class="input-group join-control" [ngClass]="{'invalid-control': fullName.invalid && (fullName.dirty || fullName.touched)}">
           <div class="input-group-prepend">
             <i class="input-group-text fa fa-user"></i>
           </div>
           <input type="text" class="form-control" placeholder="Your name" formControlName="full_name">
+          <div class="invalid-msg-container" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+            <span class="invalid-input" *ngIf="fullName.errors.required">User name can't be blank.</span>
+          </div>
         </div>
-        <div class="input-group join-control">
+        <div class="input-group join-control" [ngClass]="{'invalid-control': username.invalid && (username.dirty || username.touched)}">
           <div class="input-group-prepend">
             <i class="input-group-text fa fa-envelope"></i>
           </div>
           <input type="text" class="form-control" placeholder="Email address" formControlName="username">
+          <div class="invalid-msg-container" *ngIf="username.invalid && (username.dirty || username.touched)">
+            <span class="invalid-input" *ngIf="username.errors.required">The email can't be blank.</span>
+            <span class="invalid-input" *ngIf="username.errors.email">Please input correct email format.</span>
+          </div>
         </div>
-        <div class="input-group join-control">
+        <div class="input-group join-control" [ngClass]="{'invalid-control': password.invalid && (password.dirty || password.touched)}">
           <div class="input-group-prepend">
             <i class="input-group-text fa fa-lock"></i>
           </div>
           <input type="password" class="form-control" placeholder="Password" formControlName="password">
+          <div class="password-visible-wrapper">
+            <a (click)="isShowPassword = !isShowPassword" class="action">{{isShowPassword ? 'Hide' : 'Show'}}</a>
+          </div>
+          <div class="invalid-msg-container" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <span class="invalid-input" *ngIf="password.errors.required">The pasword can't be blank.</span>
+            <span class="invalid-input" *ngIf="password.value.length && password.errors">
+              Password should be at least 8-16 characters in length with at least one uppercase letter and one number.
+            </span>
+          </div>
         </div>
         <div class="pass-requirement-container">
           <label class="checkbox-inline">

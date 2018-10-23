@@ -33,6 +33,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     client_id: 'fooClientIdPassword'
   });
   authErrorSub: Subscription = new Subscription();
+  isShowPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +47,18 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authErrorSub.unsubscribe();
+  }
+
+  get fullName() {
+    return this.signUpForm.get('full_name');
+  }
+
+  get username() {
+    return this.signUpForm.get('username');
+  }
+
+  get password() {
+    return this.signUpForm.get('password');
   }
 
   signUp() {
