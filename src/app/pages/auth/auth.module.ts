@@ -11,6 +11,7 @@ import { LinkedinCallbackComponent } from './linkedin-callback/linkedin-callback
 import { AuthService } from '../../core/services/auth.service';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,12 @@ import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
     ReactiveFormsModule,
     NgxSpinnerModule
   ],
-  declarations: [LoginComponent, SignupComponent, LinkedinCallbackComponent],
+  declarations: [
+    LoginComponent,
+    SignupComponent,
+    LinkedinCallbackComponent,
+    ResetPassComponent
+  ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     AuthService,
