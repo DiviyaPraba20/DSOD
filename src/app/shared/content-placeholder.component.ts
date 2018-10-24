@@ -15,8 +15,8 @@ import { Component, Input } from '@angular/core';
 					<h2 class="topic-title mb-1">Role of Invisalign® Outcome Simulator in Patient Engagement</h2>
 					<em *ngIf="showby">by DSODentist <a href="" class="read-about">
 					</a> </em>
-          <p *ngIf="showDescription" class="mt-3">This module will present best practices that allow you to use Invisalign outcome simulator in your practice…<a href="#">[more]</a></p>
-          <a *ngIf="!showDescription" href="#">[more]</a>
+          <p *ngIf="showDescription" class="mt-3">This module will present best practices that allow you to use Invisalign outcome simulator in your practice…<a [routerLink]="['/article']">[more]</a></p>
+          <a *ngIf="!showDescription" [routerLink]="['/article']">[more]</a>
 			</div>
 		</div>`,
   styleUrls: ['./content-placeholder.component.scss']

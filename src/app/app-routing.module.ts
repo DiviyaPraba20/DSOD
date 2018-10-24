@@ -22,6 +22,10 @@ const routes: Routes = [
       {
         path: 'podcast',
         loadChildren: './pages/podcast/podcast.module#PodcastModule'
+      },
+      {
+        path: 'video',
+        loadChildren: './pages/video/video.module#VideoModule'
       }
     ]
   },
@@ -32,7 +36,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

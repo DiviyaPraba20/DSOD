@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'dsos-content-actions',
+  selector: 'dsod-content-actions',
   templateUrl: './content-action.component.html',
   styleUrls: ['./content-action.component.scss']
 })

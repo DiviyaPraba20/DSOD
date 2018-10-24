@@ -1,0 +1,66 @@
+@import 'variables';
+
+:host {
+  .video-thumbnail {
+    margin-bottom: 55px;
+    position: relative;
+
+    video {
+      width: 100%;
+
+      &:-webkit-full-screen {
+        opacity: 0;
+      }
+    }
+
+    .video-controls {
+
+      button {
+        position: absolute;
+        bottom: 40%;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f8f8;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        color: $text_main;
+        opacity: 0;
+        transition: 0.3s all ease;
+        cursor: pointer;
+
+        &.forward {
+          right: 40%;
+          transform: translateX(50%);
+
+        }
+
+        &.rewind {
+          left: 40%;
+          transform: translateX(-50%);
+
+
+        }
+      }
+    }
+
+    img {
+      margin-bottom: 15px;
+    }
+
+    &:hover {
+      .video-controls {
+
+        button {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
