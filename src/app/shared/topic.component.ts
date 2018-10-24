@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'dsod-topic',
@@ -16,13 +16,14 @@ import { Component, Input } from "@angular/core";
 					<em>by DSODentist <a href="" class="read-about">
 							<img src={{topic.icon}} alt="">
 					</a> </em>
-					<p class="mt-3">{{topic.description}}<a href="#">[more]</a></p>
+					<p class="mt-3">{{topic.description}}<a [routerLink]="['/article']">[more]</a></p>
 			</div>
 		</div>`,
   styleUrls: ['./topic.component.scss']
 })
 export class DSODTopicComponent {
-  @Input() topic;
+  @Input()
+  topic;
 
   constructor() {}
 }

@@ -9,10 +9,14 @@ import { DSODContnetComponent } from './content-placeholder.component';
 import { DSODFilterSelectComponent } from './select/filter-select.component';
 import { DSODContentActionComponent } from './content-action/content-action.component';
 import { DSODAudioPlayerComponent } from './audio-player/audio-player.component';
+import { DSODBookmarkComponent } from './content-action/bookmark.component';
+import { DSODDownloadComponent } from './content-action/download.component';
+import { DSODShareComponent } from './content-action/share.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   declarations: [
     DSODRatingComponent,
     DSODTopicComponent,
@@ -22,7 +26,10 @@ import { FormsModule } from '@angular/forms';
     DSODContnetComponent,
     DSODFilterSelectComponent,
     DSODContentActionComponent,
-    DSODAudioPlayerComponent
+    DSODAudioPlayerComponent,
+    DSODBookmarkComponent,
+    DSODShareComponent,
+    DSODDownloadComponent
   ],
   exports: [
     DSODRatingComponent,
@@ -33,7 +40,10 @@ import { FormsModule } from '@angular/forms';
     DSODContnetComponent,
     DSODFilterSelectComponent,
     DSODContentActionComponent,
-    DSODAudioPlayerComponent
+    DSODAudioPlayerComponent,
+    DSODBookmarkComponent,
+    DSODShareComponent,
+    DSODDownloadComponent
   ]
 })
 export class SharedModule {}
