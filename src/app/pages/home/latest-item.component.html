@@ -16,7 +16,7 @@
       <div class="latest-block-content">
         <h2 class="topic-title mb-3">{{latestItem.summary}}</h2>
         <em>by {{latestItem.by}} </em>
-        <p class="mt-4">{{latestItem.description}}<a href="#">[more]</a></p>
+        <p class="mt-4">{{latestItem.description}}<a [routerLink]="['./article']">[more]</a></p>
       </div>
     </div>
   </div>
