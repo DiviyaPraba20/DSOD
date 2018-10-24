@@ -9,6 +9,7 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +38,8 @@ import { CoreModule } from './core/core.module';
     LayoutModule,
     AuthModule,
     SharedModule,
-    CoreModule.forRoot()
+    CoreModule.forRoot(),
+    NgbModule
   ],
   bootstrap: [AppComponent]
 })

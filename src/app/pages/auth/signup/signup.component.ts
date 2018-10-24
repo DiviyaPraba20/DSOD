@@ -2,10 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { SignUp } from '../actions';
 import { environment } from 'src/environments/environment';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { TermsModalComponent } from '../terms-modal/terms-modal.component';
+import { PolicyModalComponent } from '../policy-modal/policy-modal.component';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -38,7 +41,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -73,5 +77,17 @@ export class SignupComponent implements OnInit, OnDestroy {
       + `&client_id=${environment.LinkedIn.client_id}&redirect_uri=${environment.LinkedIn.redirect_uri}`
       + `&state=${environment.LinkedIn.state}`;
     window.open(link, '_self');
+  }
+
+  showTerms() {
+    this.modalService.open(TermsModalComponent, {
+      size: 'lg',
+      centered: true,
+      backdrop: 'static'
+    });
+  }
+
+  showPolicy() {
+    this.modalService.open(PolicyModalComponent);
   }
 }
