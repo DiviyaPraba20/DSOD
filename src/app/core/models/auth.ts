@@ -33,3 +33,13 @@ export interface LoginWithLinkedInResponse extends Response {
     tokenValue: string;
   };
 }
+
+export interface ForgotPasswordPayload {
+  email: string;
+}
+
+export interface ResetPasswordPayload {
+  email_token: string;
+  username: string;
+  password: string;
+}

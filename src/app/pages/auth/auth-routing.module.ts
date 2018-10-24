@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LinkedinCallbackComponent } from './linkedin-callback/linkedin-callback.component';
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
 
 const routes: Routes = [{
   path: 'login',
@@ -11,6 +12,9 @@ const routes: Routes = [{
 }, {
   path: 'signup',
   component: SignupComponent
+}, {
+  path: 'reset-pass',
+  component: ResetPassComponent
 }, {
   path: 'auth/linkedin',
   component: LinkedinCallbackComponent

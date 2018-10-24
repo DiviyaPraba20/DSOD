@@ -10,8 +10,11 @@ import {
   SignUpPayload,
   SignUpResponse,
   LoginWithLinkedInPayload,
-  LoginWithLinkedInResponse
+  LoginWithLinkedInResponse,
+  ForgotPasswordPayload,
+  ResetPasswordPayload
 } from '../models';
+import { Response } from '../models/common';
 import { Logout } from 'src/app/pages/auth/actions';
 
 @Injectable({
@@ -46,5 +49,19 @@ export class AuthService {
 
   logout() {
     return this.store.dispatch(new Logout());
+  }
+
+  forgotPassword(payload: ForgotPasswordPayload): Observable<Response> {
+    const header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('email', payload.email);
+
+    const url = `${environment.api}/profile/profileservice/v1/emailToken/sendEmail`;
+    return this.http.post<Response>(url, body, {headers: header});
+  }
+
+  resetPassword(payload: ResetPasswordPayload): Observable<Response> {
+    const url = `${environment.api}/profile/profileservice/v1/userAccount/resetPassWord`;
+    return this.http.post<Response>(url, payload);
   }
 }

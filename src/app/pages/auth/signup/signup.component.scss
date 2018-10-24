@@ -15,9 +15,10 @@
   }
   .content-container {
     position: absolute;
-    top: 200px;
+    top: 50%;
     left: 200px;
     width: 400px;
+    transform: translateY(-50%);
     .header-container {
       text-align: center;
       color: $color-white;

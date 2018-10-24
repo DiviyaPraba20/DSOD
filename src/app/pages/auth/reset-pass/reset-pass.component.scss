@@ -1,6 +1,6 @@
 @import "variables";
 
-.login-container {
+.reset-pass-container {
   background-image: url('../../../../assets/images/login.png');
   height: 100vh;
   background-repeat: no-repeat;
@@ -21,13 +21,13 @@
     .header-container {
       text-align: center;
       color: $color-white;
-      margin-bottom: 10px;
+      margin-bottom: 35px;
       .title {
-        font-size: 60px;
+        font-size: 45px;
         font-weight: 300;
       }
       .title-comment {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 300;
       }
     }
@@ -35,23 +35,7 @@
       width: 100%;
       color: $color-white;
       font-size: 15px;
-      .btn-linkedin {
-        display: flex;
-        align-items: center;
-        background-color: $deep-cerulean;
-        .social-image {
-          height: 35px;
-        }
-        .title {
-          width: 100%;
-          font-size: 20px;
-        }
-      }
-      .text-or {
-        text-align: center;
-        margin: 5px 0;
-      }
-      .login-control {
+      .input-control {
         margin-bottom: 10px;
         &.invalid-control {
           border: 2px solid $valencia;
@@ -98,35 +82,17 @@
           border-radius: 0;
         }
       }
-      .remember-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        label {
-          margin-bottom: 0;
-          display: flex;
-          align-items: center;
-          input {
-            margin-right: 5px;
-          }
-        }
-        .forgot-pass {
-          cursor: pointer;
-        }
-      }
-      .btn-login {
-        margin: 20px 0;
+      .btn-action {
+        margin-bottom: 20px;
         background-color: $regent-gray;
-        letter-spacing: 1px;
       }
-      .join-container {
+      .back-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        .btn-join {
-          background-color: #ffffff4d;
-          margin: 0 10px;
-          width: 140px;
+        .back-link {
+          margin-left: 10px;
+
         }
       }
     }
