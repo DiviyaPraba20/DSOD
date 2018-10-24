@@ -61,7 +61,7 @@ export class AuthService {
   }
 
   resetPassword(payload: ResetPasswordPayload): Observable<Response> {
-    const url = `${environment.api}/profile/profileservice/v1/userAccount/resetPassword`;
+    const url = `${environment.api}/profile/profileservice/v1/userAccount/resetPassWord`;
     return this.http.post<Response>(url, payload);
   }
 }
