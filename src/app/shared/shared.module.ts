@@ -8,7 +8,6 @@ import { DSODMediaContentComponent } from './media-placeholder.component';
 import { DSODContnetComponent } from './content-placeholder.component';
 import { DSODFilterSelectComponent } from './select/filter-select.component';
 import { DSODContentActionComponent } from './content-action/content-action.component';
-import { DSODPodcastItemsComponent } from './podcast-items/podcast-items.component';
 import { DSODAudioPlayerComponent } from './audio-player/audio-player.component';
 import { FormsModule } from '@angular/forms';
 
@@ -23,7 +22,6 @@ import { FormsModule } from '@angular/forms';
     DSODContnetComponent,
     DSODFilterSelectComponent,
     DSODContentActionComponent,
-    DSODPodcastItemsComponent,
     DSODAudioPlayerComponent
   ],
   exports: [
@@ -35,7 +33,6 @@ import { FormsModule } from '@angular/forms';
     DSODContnetComponent,
     DSODFilterSelectComponent,
     DSODContentActionComponent,
-    DSODPodcastItemsComponent,
     DSODAudioPlayerComponent
   ]
 })

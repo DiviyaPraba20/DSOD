@@ -9,10 +9,17 @@ ul {
     padding: 17px 36px;
     line-height: 30px;
 
+    a {
+      width: 100%;
+      color: $boulder_grey;
+      display: flex;
+    }
+
     span {
       font-size: 20px;
       color: $color-primary;
       margin-left: 20px;
+      margin-left: auto;
     }
 
     &:nth-child(odd) {

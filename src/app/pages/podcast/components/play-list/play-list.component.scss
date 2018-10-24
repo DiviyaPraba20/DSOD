@@ -1,0 +1,51 @@
+@import 'variables';
+
+ul {
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 27px;
+
+    padding: 11px 21px;
+    line-height: 30px;
+
+    a {
+      font-size: 24px;
+      color: $text_main;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    span {
+      font-size: 20px;
+      margin-left: 20px;
+
+      &.item-number {
+        border: 1px solid $text_main;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      &.pod-avi {
+        padding-right: 20px;
+        border-right: 1px solid $text_main;
+        margin-right: 15px;
+      }
+
+      &.pod-time {
+        margin-left: auto;
+
+        img {
+          margin-left: 40px;
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      background: $color-strokes;
+    }
+  }
+}
