@@ -88,6 +88,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   showPolicy() {
-    this.modalService.open(PolicyModalComponent);
+    this.modalService.open(PolicyModalComponent, {
+      size: 'lg',
+      centered: true,
+      backdrop: 'static'
+    });
   }
 }
