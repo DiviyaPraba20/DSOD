@@ -1,0 +1,111 @@
+@import 'variables';
+
+.add-review {
+  .add-top-head {
+    background: $boulder_grey;
+    padding: 10px 15px;
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 15px;
+      top: 10px;
+      color: $color-white;
+      cursor: pointer;
+      padding: 0 5px;
+    }
+
+    h3 {
+      color: $color-white;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
+  .add-header {
+    background: $alabaster_white;
+    padding: 20px;
+    text-align: center;
+
+    h3 {
+      font-size: 14px;
+      color: $text-alternate;
+      margin-bottom: 5px;
+    }
+
+    h4 {
+      font-size: 18px;
+      color: $text-main;
+      margin-bottom: 5px;
+    }
+
+    h5 {
+      font-size: 14px;
+      color: $text-alternate;
+      margin-bottom: 5px;
+    }
+
+    .topic-rating {
+      margin: 0;
+    }
+  }
+
+  .review-as {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+
+    span.user-ico {
+      height: 30px;
+      width: 30px;
+      color: $color-white;
+      text-align: center;
+      line-height: 30px;
+      background: $boulder_grey;
+      border-radius: 50%;
+      margin-right: 15px;
+      font-size: 18px;
+    }
+
+    h4 {
+      color: $text-alternate;
+      font-size: 16px;
+
+      b {
+        color: $text-main;
+      }
+    }
+  }
+
+  .review-form {
+    padding-bottom: 30px;
+    border-bottom: 1px solid $text-alternate;
+
+    form {
+      padding: 0 15px;
+
+      textarea {
+        color: $text-main;
+        border-radius: 0;
+        border-bottom: 1px solid $text-alternate;
+        border-width: 1px 0;
+        margin-bottom: 30px;
+        resize: none;
+      }
+
+      button {
+        background: $color-primary;
+        color: $color-white;
+        text-align: center;
+        display: block;
+        padding: 5px 15px;
+        border-radius: 3px;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        box-shadow: none;
+        border: none;
+      }
+    }
+  }
+}
