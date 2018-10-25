@@ -262,6 +262,12 @@
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.2.3.tgz#93ba9e0282fcdba072f9e0275250b888d475119b"
 
+"@ng-bootstrap/ng-bootstrap@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-3.3.1.tgz#435eebc57dd4a371d02f342f1e919d1c4bb522a2"
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngrx/effects@^6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.1.0.tgz#3c1e1ab1e5a86c6d9c29d4f3771e42cc9bd8576c"
@@ -6131,6 +6137,10 @@ watchpack@^1.5.0:
     chokidar "^2.0.2"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+
+wavesurfer.js@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/wavesurfer.js/-/wavesurfer.js-2.1.0.tgz#2e833668374e92971893b37069ac7a3f140452f9"
 
 wbuf@^1.1.0, wbuf@^1.7.2:
   version "1.7.3"

@@ -12,6 +12,8 @@ import { AuthService } from '../../core/services/auth.service';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { TermsModalComponent } from './terms-modal/terms-modal.component';
+import { PolicyModalComponent } from './policy-modal/policy-modal.component';
 
 @NgModule({
   imports: [
@@ -25,12 +27,18 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
     LoginComponent,
     SignupComponent,
     LinkedinCallbackComponent,
-    ResetPassComponent
+    ResetPassComponent,
+    TermsModalComponent,
+    PolicyModalComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     AuthService,
     AuthGuard
   ],
+  entryComponents: [
+    TermsModalComponent,
+    PolicyModalComponent
+  ]
 })
 export class AuthModule { }
