@@ -1,0 +1,30 @@
+.header-container {
+  p {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+}
+.body-container {
+  height: 500px;
+  overflow-y: scroll;
+  margin-right: -15px;
+  padding: 0 20px;
+  font-size: 15px;
+  ul {
+    list-style-type: none;
+    li {
+      margin-left: 20px;
+      list-style: initial;
+      margin-bottom: 10px;
+    }
+  }
+}
+.action-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  button {
+    width: 150px;
+    border-radius: 5px;
+  }
+}
