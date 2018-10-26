@@ -1,0 +1,33 @@
+@import 'variables';
+
+:host {
+  .topic-rating {
+    margin-left: 10px;
+    min-width: 117px;
+
+    span {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 3px;
+      margin: 0 1px;
+      font-size: 15px;
+
+      i.fa {
+        pointer-events: none;
+      }
+
+      &.filled {
+        color: #fff;
+        background: $color-primary;
+      }
+
+      &.un-filled {
+        color: #fff;
+        background: #d1d1d1;
+      }
+    }
+  }
+}
