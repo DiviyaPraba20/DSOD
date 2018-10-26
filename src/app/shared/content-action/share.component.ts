@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dsod-share',
   template: ` <li class="share-dropdown">
-        <a href="#">
+        <a>
           <span>
             <img src="assets/images/share-icon.png" alt="">
           </span>
@@ -11,22 +13,57 @@ import { Component } from '@angular/core';
         </a>
         <ul class="share-dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li>
-            <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            <share-button
+              [theme]="'circles-dark'"
+              [button]="'email'"
+              [size]="-7"
+              [url]="currentUrl"
+            ></share-button>
           </li>
           <li>
-            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <share-button
+              [theme]="'circles-dark'"
+              [button]="'facebook'"
+              [size]="-7"
+              [url]="currentUrl"
+            ></share-button>
           </li>
           <li>
-            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <share-button
+              [theme]="'circles-dark'"
+              [button]="'pinterest'"
+              [size]="-7"
+              [url]="currentUrl"
+            ></share-button>
           </li>
           <li>
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <share-button
+              [theme]="'circles-dark'"
+              [button]="'twitter'"
+              [size]="-7"
+              [url]="currentUrl"
+            ></share-button>
           </li>
           <li>
-            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <share-button
+              [theme]="'circles-dark'"
+              [button]="'linkedin'"
+              [size]="-7"
+              [url]="currentUrl"
+            ></share-button>
           </li>
         </ul>
       </li>`,
   styleUrls: ['./actions.scss']
 })
-export class DSODShareComponent {}
+export class DSODShareComponent implements OnInit {
+
+  // currentUrl = window.location.href;
+  currentUrl = 'https://devangular1.dsodentist.com/dsodt';
+  constructor() { }
+
+  ngOnInit() {
+
+  }
+
+}

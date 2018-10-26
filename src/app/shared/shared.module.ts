@@ -14,9 +14,18 @@ import { DSODDownloadComponent } from './content-action/download.component';
 import { DSODShareComponent } from './content-action/share.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ShareButtonsModule } from '@ngx-share/buttons';
+import { ShareButtonModule } from '@ngx-share/button';
+import { ShareModule } from '@ngx-share/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ShareButtonModule.forRoot()
+  ],
   declarations: [
     DSODRatingComponent,
     DSODTopicComponent,
