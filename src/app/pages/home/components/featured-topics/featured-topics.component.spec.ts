@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DSOFeaturedTopicsComponent } from './featured-topics.component';
+import { DSODFeaturedTopicsComponent } from './featured-topics.component';
 
 describe('DSOFeaturedTopicsComponent', () => {
-    let component: DSOFeaturedTopicsComponent;
-    let fixture: ComponentFixture<DSOFeaturedTopicsComponent>;
+    let component: DSODFeaturedTopicsComponent;
+    let fixture: ComponentFixture<DSODFeaturedTopicsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [DSOFeaturedTopicsComponent]
+        declarations: [DSODFeaturedTopicsComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-      fixture = TestBed.createComponent(DSOFeaturedTopicsComponent);
+      fixture = TestBed.createComponent(DSODFeaturedTopicsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

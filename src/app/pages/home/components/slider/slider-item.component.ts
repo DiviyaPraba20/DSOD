@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { DSODSliderContent } from '../models';
+import { Component, Input, OnInit } from '@angular/core';
+import { DSODSliderContent } from '../../models';
 import { DSODContentType } from 'src/app/core/models';
 import { debug } from 'util';
 
@@ -23,17 +23,18 @@ import { debug } from 'util';
   </ng-template>
     <ng-container *ngTemplateOutlet="image; context: contentType === 'Image'"></ng-container>
     <ng-container *ngTemplateOutlet="video; context: contentType === 'Video'"></ng-container>
-      
+
     </li>
   `,
   styleUrls: ['./slider-item.component.scss']
 })
-export class DSODSliderItem {
+export class DSODSliderItemComponent implements OnInit {
   @Input()
   content: DSODSliderContent;
   @Input()
   loggedIn: boolean;
   contentType: string;
+
   ngOnInit() {
     this.contentType = DSODContentType[this.content.contentType];
   }
