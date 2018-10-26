@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-//glid js 
+//glid js
 // Required Core Stylesheet
 @import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
 
@@ -7,6 +7,11 @@
 @import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
 
 @import './assets/styles/index.scss';
+
+@import '~@ngx-share/button/styles/share-buttons';
+@import '~@ngx-share/button/styles/themes/material/material-dark-theme';
+@import '~@ngx-share/button/styles/themes/circles/circles-dark-theme';
+@import '~@ngx-share/button/styles/themes/modern/modern-light-theme';
 
 * {
   margin: 0;
