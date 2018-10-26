@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 					<dsod-rating></dsod-rating>
 			</div>
 			<div class="content-block-thumbnail">
-					<img  src='/assets/images/featured-sm.png' class="img-fluid" alt="Feautred Thumbnail Large">
+					<img  src='assets/images/featured-sm.png' class="img-fluid" alt="Feautred Thumbnail Large">
 			</div>
 			<div *ngIf="showSummary" class="block-content">
 					<h2 class="topic-title mb-1">Role of Invisalign® Outcome Simulator in Patient Engagement</h2>

@@ -28,7 +28,7 @@ export class DSODAudioPlayerComponent implements AfterViewInit {
         barGap: 3
       });
 
-      wavesurfer.load('/assets/be_cool.wav');
+      wavesurfer.load('assets/be_cool.wav');
       wavesurfer.on('audioprocess', () => {
         this.curretTime.nativeElement.innerHTML = this.formatTime(
           wavesurfer.getCurrentTime()
