@@ -10,7 +10,7 @@ import Glide, {
   Autoplay,
   Anchors
 } from '@glidejs/glide/dist/glide.modular.esm';
-import { DSODSliderContent } from '../models';
+import { DSODSliderContent } from '../../models';
 import { DSODContentType } from 'src/app/core/models';
 
 @Component({

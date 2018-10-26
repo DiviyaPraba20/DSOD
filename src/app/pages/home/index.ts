@@ -1,15 +1,15 @@
 import { HomeComponent } from './home.component';
-import { DSODCarouselComponent } from './slider/carousel.component';
-import { DSODHomeAdComponent } from './ad-banner.component';
-import { DSODLatestComponent } from './latest.component';
-import { DSODLatestItemComponent } from './latest-item.component';
-import { DSODFeaturedTopicsComponent } from './featured-topics.component';
-import { DSODPodcastsComponent } from './podcasts.component';
-import { DSODPodcastsByComponent } from './podcasts-by.component';
-import { DSODEventsComponent } from './events.component';
-import { DSODOurSponsorsComponent } from './our-sponsors.component';
-import { DSODSliderItem } from './slider/slider-item.component';
-import { DSODPodcastItemsComponent } from './podcast-items/podcast-items.component';
+import { DSODCarouselComponent } from './components/slider/carousel.component';
+import { DSODHomeAdComponent } from './components/ad-banner/ad-banner.component';
+import { DSODLatestComponent } from './components/latest/latest.component';
+import { DSODLatestItemComponent } from './components/latest-item/latest-item.component';
+import { DSODFeaturedTopicsComponent } from './components/featured-topics/featured-topics.component';
+import { DSODPodcastsComponent } from './components/podcasts/podcasts.component';
+import { DSODPodcastsByComponent } from './components/podcasts-by/podcasts-by.component';
+import { DSODEventsComponent } from './components/events/events.component';
+import { DSODOurSponsorsComponent } from './components/our-sponsors/our-sponsors.component';
+import { DSODSliderItemComponent } from './components/slider/slider-item.component';
+import { DSODPodcastItemsComponent } from './components/podcast-items/podcast-items.component';
 
 export const HOME_COMPONENTS = [
   DSODCarouselComponent,
@@ -21,7 +21,7 @@ export const HOME_COMPONENTS = [
   DSODPodcastsByComponent,
   DSODEventsComponent,
   DSODOurSponsorsComponent,
-  DSODSliderItem,
+  DSODSliderItemComponent,
   DSODPodcastItemsComponent
 ];
 export const HOME_CONTAINERS = [HomeComponent];

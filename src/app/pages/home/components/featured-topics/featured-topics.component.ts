@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'dsod-featured-topics',
@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
   styleUrls: ['./featured-topics.component.scss']
 })
 export class DSODFeaturedTopicsComponent {
-  topics= [
+  topics = [
     {
       title: 'Orthodontics',
       summary: 'Role of Invisalign® Outcome Simulator in Patient Engagement',
@@ -37,6 +37,7 @@ export class DSODFeaturedTopicsComponent {
       icon: '/assets/images/youtube-icon.png',
       description: 'The pursuit of perfessional knowledge enhances social inclusion, peer-to-peer learning, and personal connection. We provide you the best lessons to be…',
     }
-  ]
-  constructor() {}
+  ];
+
+  constructor() { }
 }
