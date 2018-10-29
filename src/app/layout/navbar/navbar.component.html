@@ -29,7 +29,19 @@
                     </button>
                   </div>
                 </li>
-                <li class="nav-item login-wrap">
+                <li class="nav-item login-wrap" *ngIf="loggedIn | async">
+                  <a class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item login-wrap" *ngIf="loggedIn | async">
+                  <div class="nav-link avatar-wrap">
+                    <img class="avatar" src="./assets/images/no-avatar.png">
+                    <span class="user-name">
+                      Rebecca
+                      <small>Clarson</small>
+                    </span>
+                  </div>
+                </li>
+                <li class="nav-item login-wrap" *ngIf="!loggedIn | async">
                   <a [routerLink]="['login']" class="nav-link">Login</a>
                 </li>
               </ul>

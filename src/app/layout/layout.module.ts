@@ -8,6 +8,7 @@ import { NavbarService } from './navbar/services';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DSODFooterComponent } from './footer/footer.component';
 import { SearchBoxDirective } from './directives/search-box.directive';
+import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, BsDropdownModule.forRoot()],
@@ -15,9 +16,15 @@ import { SearchBoxDirective } from './directives/search-box.directive';
     LayoutComponent,
     NavbarComponent,
     DSODFooterComponent,
-    SearchBoxDirective
+    SearchBoxDirective,
+    ProfilePanelComponent
   ],
-  exports: [NavbarComponent, DSODFooterComponent, SearchBoxDirective],
+  exports: [
+    NavbarComponent,
+    DSODFooterComponent,
+    SearchBoxDirective,
+    ProfilePanelComponent
+  ],
   providers: [NavbarService]
 })
 export class LayoutModule {}
