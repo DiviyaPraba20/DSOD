@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-panel.component.scss']
 })
 export class ProfilePanelComponent implements OnInit {
+  isEditMode = false;
 
   constructor() { }
 
