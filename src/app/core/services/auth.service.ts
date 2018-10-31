@@ -16,6 +16,7 @@ import {
 } from '../models';
 import { Response } from '../models/common';
 import { Logout } from 'src/app/pages/auth/actions';
+import { UserInfoPayload } from '../models/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +64,10 @@ export class AuthService {
   resetPassword(payload: ResetPasswordPayload): Observable<Response> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/resetPassWord`;
     return this.http.post<Response>(url, payload);
+  }
+
+  getUserInfo(payload: UserInfoPayload): Observable<Response> {
+    const url = `${environment.api}/profile/profileservice/v1/userProfile/findOneByEmail`;
+    return this.http.post<Response>(url, payload, {withCredentials: true});
   }
 }

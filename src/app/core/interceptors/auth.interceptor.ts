@@ -29,6 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let duplicate = req;
 
     if (req.withCredentials) {
+      console.log('here');
       if (!this.accessToken) {
         this.store.dispatch(new Unauthorized());
         return throwError({message: 'Current Session has been expired. Please login again.'});

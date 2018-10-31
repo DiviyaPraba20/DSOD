@@ -1,4 +1,4 @@
-<div class="profile-panel-container">
+<div class="profile-panel-container" *ngIf="isLoggedIn">
   <div class="profile-container" [ngClass]="{'opened': profilePanel | async}">
     <dsod-profile-view *ngIf="!isEditMode"></dsod-profile-view>
     <dsod-profile-edit-view *ngIf="isEditMode"></dsod-profile-edit-view>

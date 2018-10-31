@@ -1,4 +1,4 @@
-import { Action, State, StateContext, Store, Selector, Actions } from '@ngxs/store';
+import { Action, State, StateContext, Store, Selector } from '@ngxs/store';
 import { catchError, tap, map, exhaustMap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
@@ -7,7 +7,8 @@ import { AuthService } from '../../../core/services/auth.service';
 import {
   LoginResponse,
   SignUpResponse,
-  LoginWithLinkedInResponse
+  LoginWithLinkedInResponse,
+  UserInfoResponse
 } from '../../../core/models';
 import {
   LoginFailure,
@@ -15,7 +16,9 @@ import {
   SignUpSuccess,
   SignUpFailure,
   LoginWithLinkedInSuccess,
-  LoginWithLinkedInFailure
+  LoginWithLinkedInFailure,
+  GetUserInfoFailure,
+  GetUserInfoSuccess
 } from '../actions';
 
 export interface State {
@@ -24,6 +27,7 @@ export interface State {
   isLoggedIn: boolean;
   accessToken: string;
   isOpenedProfilePanel: boolean;
+  userInfo: any;
 }
 
 @State<State>({
@@ -33,7 +37,8 @@ export interface State {
     error: null,
     isLoggedIn: false,
     accessToken: null,
-    isOpenedProfilePanel: false
+    isOpenedProfilePanel: false,
+    userInfo: null
   }
 })
 
@@ -41,6 +46,7 @@ export class AuthState {
   @Selector() static isLoggedIn(state: State) { return state.isLoggedIn; }
   @Selector() static accessToken(state: State) { return state.accessToken; }
   @Selector() static isOpenedProfilePanel(state: State) { return state.isOpenedProfilePanel; }
+  @Selector() static userInfo(state: State) { return state.userInfo; }
 
   constructor(
     private store: Store,
@@ -177,9 +183,46 @@ export class AuthState {
   @Action(actions.ToggleProfilePanel)
   ToggleProfilePanel({ patchState, getState }: StateContext<State>, action: actions.ToggleProfilePanel) {
     const currentState = getState();
-    console.log(currentState);
     patchState({
       isOpenedProfilePanel: !currentState.isOpenedProfilePanel
+    });
+  }
+
+  @Action(actions.GetUserInfo)
+  getUserInfo({ patchState, dispatch }: StateContext<State>, action: actions.GetUserInfo) {
+    patchState({
+      pending: true,
+      error: null,
+      userInfo: null
+    });
+
+    return this.authService.getUserInfo(action.payload).pipe(
+      exhaustMap((response: UserInfoResponse) => {
+        if (response.code !== 0) {
+          return dispatch(new GetUserInfoFailure(response.msg));
+        }
+        return dispatch(new GetUserInfoSuccess(response));
+      })
+    );
+  }
+
+  @Action(actions.GetUserInfoSuccess)
+  getUserInfoSuccess({ patchState }: StateContext<State>, action: actions.GetUserInfoSuccess) {
+    this.toastr.success('GetUserInfo Success!', 'UserInfo');
+    patchState({
+      pending: false,
+      userInfo: action.payload.resultMap
+    });
+  }
+
+  @Action(actions.GetUserInfoFailure)
+  getUserInfoFailure({ patchState }: StateContext<State>, action: actions.GetUserInfoFailure) {
+    const error = action.payload;
+    this.toastr.error(error, 'UserInfo');
+    patchState({
+      pending: false,
+      userInfo: null,
+      error
     });
   }
 }

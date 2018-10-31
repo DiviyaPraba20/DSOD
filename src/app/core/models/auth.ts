@@ -43,3 +43,13 @@ export interface ResetPasswordPayload {
   username: string;
   password: string;
 }
+
+export interface UserInfoPayload {
+  details: any;
+  authenticated: boolean;
+  email: string;
+}
+
+export interface UserInfoResponse extends Response {
+  resultMap: any;
+}

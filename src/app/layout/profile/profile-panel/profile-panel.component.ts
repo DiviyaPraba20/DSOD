@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
+import { GetUserInfo } from '../../../pages/auth/actions/auth.actions';
+import { UserInfoPayload } from 'src/app/core/models';
 
 @Component({
   selector: 'dsod-profile-panel',
@@ -9,6 +11,12 @@ import { Store } from '@ngxs/store';
 })
 export class ProfilePanelComponent implements OnInit {
   isEditMode = false;
+  isLoggedIn = false;
+  userInfo: UserInfoPayload = {
+    details: null,
+    authenticated: true,
+    email: 'test@email.com'
+  };
   profilePanel: Observable<boolean>;
 
   constructor(
@@ -17,6 +25,15 @@ export class ProfilePanelComponent implements OnInit {
 
   ngOnInit() {
     this.profilePanel = this.store.select(state => state.auth.isOpenedProfilePanel);
+
+    this.store.select(state => state.auth.isLoggedIn).subscribe(res => {
+      console.log(res);
+      this.isLoggedIn = res;
+
+      if (this.isLoggedIn) {
+        this.store.dispatch(new GetUserInfo(this.userInfo));
+      }
+    });
   }
 
 }

@@ -4,7 +4,9 @@ import {
   LoginResponse,
   SignUpResponse,
   LoginWithLinkedInPayload,
-  LoginWithLinkedInResponse
+  LoginWithLinkedInResponse,
+  UserInfoPayload,
+  UserInfoResponse
 } from '../../../core/models/auth';
 
 export enum AuthActionTypes {
@@ -19,7 +21,10 @@ export enum AuthActionTypes {
   LoginWithLinkedin = '[Auth] Login with LinkedIn',
   LoginWithLinkedinSuccess = '[Auth] Login with LinkedIn Success',
   LoginWithLinkedinFailure = '[Auth] Login with LinkedIn Failure',
-  ShowProfilePanel = '[Auth] Show Profile Panel'
+  ShowProfilePanel = '[Auth] Show Profile Panel',
+  GetUserInfo = '[Auth] Get UserInfo',
+  GetUserInfoSuccess = '[Auth] Get UserInfo Success',
+  GetUserInfoFailure = '[Auth] Get UserInfo Failure'
 }
 
 export class Login {
@@ -88,6 +93,24 @@ export class ToggleProfilePanel {
   static readonly type = AuthActionTypes.ShowProfilePanel;
 }
 
+export class GetUserInfo {
+  static readonly type = AuthActionTypes.GetUserInfo;
+
+  constructor(public payload: UserInfoPayload) {}
+}
+
+export class GetUserInfoSuccess {
+  static readonly type = AuthActionTypes.GetUserInfoSuccess;
+
+  constructor(public payload: UserInfoResponse) {}
+}
+
+export class GetUserInfoFailure {
+  static readonly type = AuthActionTypes.GetUserInfoFailure;
+
+  constructor(public payload?: any) {}
+}
+
 export type AuthActions = Login
   | LoginSuccess
   | LoginFailure
@@ -99,4 +122,7 @@ export type AuthActions = Login
   | LoginWithLinkedIn
   | LoginWithLinkedInSuccess
   | LoginWithLinkedInFailure
-  | ToggleProfilePanel;
+  | ToggleProfilePanel
+  | GetUserInfo
+  | GetUserInfoSuccess
+  | GetUserInfoFailure;
