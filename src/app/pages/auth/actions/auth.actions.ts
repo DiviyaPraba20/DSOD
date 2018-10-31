@@ -18,7 +18,8 @@ export enum AuthActionTypes {
   Unauthorized = '[Auth] Unauthorized',
   LoginWithLinkedin = '[Auth] Login with LinkedIn',
   LoginWithLinkedinSuccess = '[Auth] Login with LinkedIn Success',
-  LoginWithLinkedinFailure = '[Auth] Login with LinkedIn Failure'
+  LoginWithLinkedinFailure = '[Auth] Login with LinkedIn Failure',
+  ShowProfilePanel = '[Auth] Show Profile Panel'
 }
 
 export class Login {
@@ -83,6 +84,10 @@ export class LoginWithLinkedInFailure {
   constructor(public payload?: any) {}
 }
 
+export class ToggleProfilePanel {
+  static readonly type = AuthActionTypes.ShowProfilePanel;
+}
+
 export type AuthActions = Login
   | LoginSuccess
   | LoginFailure
@@ -93,4 +98,5 @@ export type AuthActions = Login
   | Unauthorized
   | LoginWithLinkedIn
   | LoginWithLinkedInSuccess
-  | LoginWithLinkedInFailure;
+  | LoginWithLinkedInFailure
+  | ToggleProfilePanel;

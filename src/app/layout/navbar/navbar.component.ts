@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { NavbarService } from './services';
 import { Navigation } from './models';
+import * as authActions from '../../pages/auth/actions';
 
 @Component({
   selector: 'dsod-navbar',
@@ -25,4 +26,11 @@ export class NavbarComponent implements OnInit {
     this.loggedIn = this.store.select(state => state.auth.isLoggedIn);
   }
 
+  toggleProfilePanel() {
+    this.store.dispatch(new authActions.ToggleProfilePanel());
+  }
+
+  logout() {
+    this.store.dispatch(new authActions.Logout());
+  }
 }

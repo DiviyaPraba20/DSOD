@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'dsod-profile-panel',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePanelComponent implements OnInit {
   isEditMode = false;
+  profilePanel: Observable<boolean>;
 
-  constructor() { }
+  constructor(
+    private store: Store
+  ) { }
 
   ngOnInit() {
+    this.profilePanel = this.store.select(state => state.auth.isOpenedProfilePanel);
   }
 
 }

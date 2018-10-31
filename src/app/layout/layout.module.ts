@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LayoutComponent } from './layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarService } from './navbar/services';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DSODFooterComponent } from './footer/footer.component';
 import { SearchBoxDirective } from './directives/search-box.directive';
 import { ProfilePanelComponent } from './profile/profile-panel/profile-panel.component';
@@ -13,7 +13,11 @@ import { ProfileViewComponent } from './profile/profile-view/profile-view.compon
 import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-edit-view.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, BsDropdownModule.forRoot()],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule
+  ],
   declarations: [
     LayoutComponent,
     NavbarComponent,

@@ -1,5 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+
 import * as actions from './actions';
 
 @Component({
@@ -8,10 +10,15 @@ import * as actions from './actions';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'DSODDesktop';
+  isOpenedProfilePanel: Observable<boolean>;
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store
+  ) {
     store.dispatch(new actions.AppInit());
   }
+
+  ngOnInit() { }
 }
