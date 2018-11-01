@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ) {}
 
   applyAccessToken(request) {
-    return request.clone({headers: request.headers.set('Authorization', `Bearer ${this.accessToken}`)});
+    return request.clone({headers: request.headers.set('Authorization', `Bearer ${this.accessToken}`), withCredentials: null});
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -29,7 +29,6 @@ export class AuthInterceptor implements HttpInterceptor {
     let duplicate = req;
 
     if (req.withCredentials) {
-      console.log('here');
       if (!this.accessToken) {
         this.store.dispatch(new Unauthorized());
         return throwError({message: 'Current Session has been expired. Please login again.'});

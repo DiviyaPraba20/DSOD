@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import * as actions from '../actions';
 import { AuthService } from '../../../core/services/auth.service';
+import { UserProfileData } from '../../../layout/profile/models/userProfile';
 import {
   LoginResponse,
   SignUpResponse,
@@ -27,7 +28,7 @@ export interface State {
   isLoggedIn: boolean;
   accessToken: string;
   isOpenedProfilePanel: boolean;
-  userInfo: any;
+  userInfo: UserProfileData;
 }
 
 @State<State>({
@@ -208,17 +209,15 @@ export class AuthState {
 
   @Action(actions.GetUserInfoSuccess)
   getUserInfoSuccess({ patchState }: StateContext<State>, action: actions.GetUserInfoSuccess) {
-    this.toastr.success('GetUserInfo Success!', 'UserInfo');
     patchState({
       pending: false,
-      userInfo: action.payload.resultMap
+      userInfo: action.payload.resultMap.data
     });
   }
 
   @Action(actions.GetUserInfoFailure)
   getUserInfoFailure({ patchState }: StateContext<State>, action: actions.GetUserInfoFailure) {
     const error = action.payload;
-    this.toastr.error(error, 'UserInfo');
     patchState({
       pending: false,
       userInfo: null,

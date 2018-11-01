@@ -45,8 +45,6 @@ export interface ResetPasswordPayload {
 }
 
 export interface UserInfoPayload {
-  details: any;
-  authenticated: boolean;
   email: string;
 }
 

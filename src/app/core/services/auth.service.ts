@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from '../../../environments/environment';
 import {
@@ -22,11 +23,25 @@ import { UserInfoPayload } from '../models/auth';
   providedIn: 'root'
 })
 export class AuthService {
+  jwtHelper = new JwtHelperService();
 
   constructor(
     private http: HttpClient,
     private store: Store
   ) { }
+
+  getUserInfoFromToken(accessToken) {
+    const userInfo = this.jwtHelper.decodeToken(accessToken);
+    return userInfo || {};
+  }
+
+  parseFormData(data: any) {
+    const formData: FormData = new FormData();
+    Object.keys(data).map((key: any) => {
+      formData.append(key, data[key]);
+    });
+    return formData;
+  }
 
   login(payload: LoginPayload): Observable<LoginResponse> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/login`;
@@ -68,6 +83,7 @@ export class AuthService {
 
   getUserInfo(payload: UserInfoPayload): Observable<Response> {
     const url = `${environment.api}/profile/profileservice/v1/userProfile/findOneByEmail`;
-    return this.http.post<Response>(url, payload, {withCredentials: true});
+    const formData = this.parseFormData(payload);
+    return this.http.post<Response>(url, formData, {withCredentials: true});
   }
 }

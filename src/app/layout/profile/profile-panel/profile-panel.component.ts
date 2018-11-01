@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 import { GetUserInfo } from '../../../pages/auth/actions/auth.actions';
-import { UserInfoPayload } from 'src/app/core/models';
+import { AuthService } from '../../../core/services/auth.service';
+import { AuthState } from '../../../pages/auth/states/auth.state';
 
 @Component({
   selector: 'dsod-profile-panel',
@@ -12,28 +15,27 @@ import { UserInfoPayload } from 'src/app/core/models';
 export class ProfilePanelComponent implements OnInit {
   isEditMode = false;
   isLoggedIn = false;
-  userInfo: UserInfoPayload = {
-    details: null,
-    authenticated: true,
-    email: 'test@email.com'
-  };
   profilePanel: Observable<boolean>;
+  jwtHelper = new JwtHelperService();
 
   constructor(
-    private store: Store
+    private store: Store,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.profilePanel = this.store.select(state => state.auth.isOpenedProfilePanel);
 
     this.store.select(state => state.auth.isLoggedIn).subscribe(res => {
-      console.log(res);
       this.isLoggedIn = res;
 
       if (this.isLoggedIn) {
-        this.store.dispatch(new GetUserInfo(this.userInfo));
+        const accessToken: string = this.store.selectSnapshot<string>(AuthState.accessToken);
+        const userInfo = this.authService.getUserInfoFromToken(accessToken);
+        this.store.dispatch(new GetUserInfo({
+          email: userInfo.user_name
+        }));
       }
     });
   }
-
 }
