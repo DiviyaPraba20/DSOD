@@ -5,7 +5,7 @@
   <div class="profile-body">
     <div class="section-container">
       <div class="userInfo-container">
-        <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : '/assets/images/no-avatar.png'">
+        <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">
         <div class="userInfo-wrapper">
           <span class="userName">{{userProfile?.full_name}}</span>
           <span class="role">Speciality</span>
@@ -19,7 +19,7 @@
         <div class="body-wrapper">
           <div class="body-item-wrapper">
             <div class="icon-body-item">
-              <img src="/assets/images/icons/icon_location.png">
+              <img src="./assets/images/icons/icon_location.png">
             </div>
             <div class="item-content" *ngIf="userProfile?.practiceAddress; else noPracticeAddress">
               <span class="title">Practice Address</span>
@@ -35,7 +35,7 @@
           </div>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
-              <img src="/assets/images/icons/icon_mobile.png">
+              <img src="./assets/images/icons/icon_mobile.png">
             </div>
             <div class="item-content">
               <span class="title">Mobile Number</span>
@@ -47,7 +47,7 @@
           </div>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
-              <img src="/assets/images/icons/icon_email.png">
+              <img src="./assets/images/icons/icon_email.png">
             </div>
             <div class="item-content">
               <span class="title">Preferred Email Address</span>
@@ -66,7 +66,7 @@
         <div class="body-wrapper" *ngIf="userProfile?.experiences.length; else noExperience">
           <div class="body-item-wrapper" *ngFor="let experience of userProfile?.experiences">
             <div class="icon-body-item gray-background">
-              <img src="/assets/images/icons/icon_experience_active.png">
+              <img src="./assets/images/icons/icon_experience_active.png">
             </div>
             <div class="item-content">
               <span class="title">{{experience.practice_Role?.name}}</span>
@@ -84,7 +84,7 @@
           <div class="body-wrapper">
             <div class="body-item-wrapper">
               <div class="icon-body-item gray-background">
-                <img src="/assets/images/icons/icon_experience_active.png">
+                <img src="./assets/images/icons/icon_experience_active.png">
               </div>
               <div class="item-content">
                 <span class="content">No experience added yet.</span>
@@ -100,7 +100,7 @@
         <div class="body-wrapper" *ngIf="userProfile?.profileResidency.length; else noResidency">
           <div class="body-item-wrapper" *ngFor="let residency of userProfile?.profileResidency">
             <div class="icon-body-item gray-background">
-              <img src="/assets/images/icons/icon_location_active.png">
+              <img src="./assets/images/icons/icon_location_active.png">
             </div>
             <div class="item-content">
               <span class="title">{{residency.dental_School?.name}}</span>
@@ -117,7 +117,7 @@
           <div class="body-wrapper">
             <div class="body-item-wrapper">
               <div class="icon-body-item gray-background">
-                <img src="/assets/images/icons/icon_location_active.png">
+                <img src="./assets/images/icons/icon_location_active.png">
               </div>
               <div class="item-content">
                 <span class="content">No residency added yet.</span>
@@ -133,7 +133,7 @@
         <div class="body-wrapper" *ngIf="userProfile?.educations.length; else noEducation">
           <div class="body-item-wrapper" *ngFor="let education of userProfile?.educations">
             <div class="icon-body-item gray-background">
-              <img src="/assets/images/icons/icon_education_active.png">
+              <img src="./assets/images/icons/icon_education_active.png">
             </div>
             <div class="item-content">
               <span class="title">{{education.school_name}}</span>
@@ -150,7 +150,7 @@
           <div class="body-wrapper">
             <div class="body-item-wrapper">
               <div class="icon-body-item gray-background">
-                <img src="/assets/images/icons/icon_education_active.png">
+                <img src="./assets/images/icons/icon_education_active.png">
               </div>
               <div class="item-content">
                 <span class="content">No education added yet.</span>
