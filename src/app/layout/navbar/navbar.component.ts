@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { NavbarService } from './services';
 import { Navigation } from './models';
 import * as authActions from '../../pages/auth/actions';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'dsod-navbar',
@@ -14,16 +15,16 @@ import * as authActions from '../../pages/auth/actions';
 export class NavbarComponent implements OnInit {
 
   navigation: Navigation[];
-  loggedIn: Observable<boolean>;
+  isLoggedIn$ = this.authService.isLoggedIn$;
 
   constructor(
     private service: NavbarService,
-    private store: Store
+    private store: Store,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.navigation = this.service.getNavItems();
-    this.loggedIn = this.store.select(state => state.auth.isLoggedIn);
   }
 
   toggleProfilePanel() {

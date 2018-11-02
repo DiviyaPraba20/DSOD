@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'dsod-home',
@@ -8,11 +7,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  loggedIn: Observable<boolean>;
+  isLoggedIn$ = this.authService.isLoggedIn$;
 
-  constructor(private store: Store) {}
+  constructor(
+    private authService: AuthService
+  ) {}
 
-  ngOnInit() {
-    this.loggedIn = this.store.select(state => state.auth.isLoggedIn);
-  }
+  ngOnInit() { }
 }

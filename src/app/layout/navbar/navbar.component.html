@@ -29,10 +29,10 @@
                     </button>
                   </div>
                 </li>
-                <li class="nav-item login-wrap" *ngIf="(loggedIn | async)">
+                <li class="nav-item login-wrap" *ngIf="(isLoggedIn$ | async)">
                   <a class="nav-link" (click)="toggleProfilePanel()">Profile</a>
                 </li>
-                <li class="nav-item login-wrap" *ngIf="(loggedIn | async)" ngbDropdown placement="bottom-right">
+                <li class="nav-item login-wrap" *ngIf="(isLoggedIn$ | async)" ngbDropdown placement="bottom-right">
                   <div class="nav-link avatar-wrap" ngbDropdownToggle>
                     <img class="avatar" src="./assets/images/no-avatar.png">
                     <span class="user-name">
@@ -45,7 +45,7 @@
                     <button class="dropdown-item" (click)="logout()">Log Out</button>
                   </div>
                 </li>
-                <li class="nav-item login-wrap" *ngIf="!(loggedIn | async)">
+                <li class="nav-item login-wrap" *ngIf="!(isLoggedIn$ | async)">
                   <a [routerLink]="['login']" class="nav-link">Login</a>
                 </li>
               </ul>

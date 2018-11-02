@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -18,20 +18,31 @@ import {
 import { Response } from '../models/common';
 import { Logout } from 'src/app/pages/auth/actions';
 import { UserInfoPayload } from '../models/auth';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   jwtHelper = new JwtHelperService();
+  isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(this.isLoggedIn);
 
   constructor(
     private http: HttpClient,
-    private store: Store
+    private store: Store,
+    private localStorageService: LocalStorageService
   ) { }
 
-  getUserInfoFromToken(accessToken) {
-    const userInfo = this.jwtHelper.decodeToken(accessToken);
+  get accessToken() {
+    return this.localStorageService.get(environment.localStorage.accessToken) as string;
+  }
+
+  get isLoggedIn() {
+    return !!this.localStorageService.get(environment.localStorage.accessToken);
+  }
+
+  getUserInfoFromToken() {
+    const userInfo = this.jwtHelper.decodeToken(this.accessToken);
     return userInfo || {};
   }
 

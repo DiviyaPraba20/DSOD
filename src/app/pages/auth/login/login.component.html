@@ -48,7 +48,7 @@
         <button class="btn btn-default btn-login" type="submit" [disabled]="loginForm.invalid">Login</button>
         <div class="join-container">
           <span>Need to create an account?</span>
-          <button class="btn btn-default btn-join" routerLink="/signup">Join</button>
+          <button type="button" class="btn btn-default btn-join" (click)="onSignup()">Join</button>
         </div>
       </form>
     </div>

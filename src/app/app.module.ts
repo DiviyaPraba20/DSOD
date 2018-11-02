@@ -5,8 +5,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -31,7 +29,7 @@ import { CoreModule } from './core/core.module';
       disabled: environment.production || false
     }),
     // NgxsRouterPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({}),
+    // NgxsStoragePluginModule.forRoot({}),
     LocalStorageModule.withConfig({prefix: environment.localStorage.prefix, storageType: 'localStorage'}),
     AuthModule,
     AppRoutingModule,

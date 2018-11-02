@@ -12,6 +12,10 @@
     height: 100%;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(255, 255, 255, 0));
   }
+  input:focus {
+    outline: none;
+    box-shadow: none;
+  }
   .content-container {
     position: absolute;
     top: 50%;
