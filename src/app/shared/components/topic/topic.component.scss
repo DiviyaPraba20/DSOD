@@ -3,13 +3,14 @@
 :host {
   .feautred-block {
     font-family: $Arial;
-    margin: 15px 0;
+    // margin: 15px 0;
     background: #f8f8f8;
 
     .feautred-block-header {
       display: flex;
       justify-content: space-between;
       padding: 21px 15px 9px;
+      border-bottom: 1px solid #8799A7;
 
       h4 {
         color: $color-primary;
@@ -60,10 +61,17 @@
     .feautred-block-content {
       padding: 15px 30px;
 
-      h2.topic-title {
+      .topic-title-large {
         font-weight: 500;
         font-size: 35px;
-        color: $black;
+        color: #000000;
+      }
+
+      .topic-title-small {
+        font-size: 22px;
+        border-top: 1px solid #c0cad1;
+        padding-top: 15px;
+        line-height: 30px;
       }
 
       em {
@@ -86,8 +94,19 @@
     }
   }
 
+  .bg-none {
+    background: transparent;
+  }
+
   .feautred-block-sm {
+    height: 100%;
+
     .feautred-block-thumbnail {
+      >img {
+        height: 260px;
+        object-fit: cover;
+      }
+
       a.read-about {
         bottom: 40px;
       }
@@ -103,12 +122,38 @@
         line-height: 30px;
       }
 
-      p {
+      .p-featured-left {
+        font-size: 22px;
+        line-height: 36px;
+      }
+
+      .p-featured-right {
         font-size: 17px;
         line-height: 25px;
       }
+
+      .p-latest {
+        font-size: 22px;
+        line-height: 36px;
+      }
+
+      .p-sponsored {
+        font-size: 22px;
+        line-height: 36px;
+      }
     }
   }
+
+  .feautred-block-lg {
+    .feautred-block-thumbnail {
+      >img {
+        object-fit: unset;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
 
   @media only screen and (max-width:1680px) {
 

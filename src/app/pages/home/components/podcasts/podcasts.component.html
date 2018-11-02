@@ -5,7 +5,7 @@
       <h3>DISCOVER NEW RESOURCES</h3>
       <h4>Check out what is popular in <span>DSODentist</span> today!</h4>
     </div>
-    <div class="podcasts-tabs d-flex align-items-center">
+    <div class="podcasts-tabs d-flex align-items-center" *ngIf="podcasts">
       <h3 class="podcasts-title">Podcasts</h3>
       <tabset>
         <tab heading="New" class="mt-2" (select)="onSelect($event)">
@@ -23,7 +23,7 @@
                 </div>
               </div>
               <div class="podcasts-list">
-                <dsod-podcast-items [podcasts]="podcasts$ | async"></dsod-podcast-items>
+                <dsod-podcast-items [podcasts]="podcasts"></dsod-podcast-items>
               </div>
             </div>
             <div class="col-xl-6">

@@ -7,16 +7,20 @@
   z-index: 10;
   top: 0;
   left: 0;
-  right: 0;
   margin: 0 auto;
+  width: 100%;
+
   nav.navbar {
     padding: 0.5rem 0;
+
     ul.navbar-nav {
       margin: 10px 0px;
+
       li.nav-item {
         border-right: 1px solid $color-white;
         align-items: center;
         display: flex;
+
         a.nav-link {
           color: $color-white !important;
           border-bottom: 1px solid transparent;
@@ -24,17 +28,21 @@
           margin: 0 20px;
           font-size: 22px;
           display: block;
+
           &:hover {
             border-bottom: 1px solid $color-white;
           }
+
           &.active {
             border-bottom: 1px solid $color-white;
             padding: 0;
           }
         }
+
         &:last-child {
           border-right: none;
         }
+
         &.search-area {
           #search-box {
             display: none;
@@ -45,6 +53,7 @@
             padding: 15px;
             background: $color-primary;
             border-radius: 5px;
+
             &::before {
               position: absolute;
               width: 0;
@@ -56,15 +65,18 @@
               top: -10px;
               content: "";
             }
+
             label {
               font-size: 16px;
               color: $color-white;
               text-transform: capitalize;
             }
           }
+
           .search-active {
             display: block !important;
           }
+
           .nav-link {
             background: $black;
             padding: 5px 10px;
@@ -76,6 +88,7 @@
             cursor: pointer;
           }
         }
+
         &.login-wrap {
           a.nav-link {
             background: $black;
@@ -86,17 +99,20 @@
             border-bottom: none;
             cursor: pointer;
           }
+
           .avatar-wrap {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0 0.5rem;
             cursor: pointer;
+
             .avatar {
               width: 50px;
               height: 50px;
               border-radius: 50%
             }
+
             .user-name {
               display: flex;
               flex-direction: column;
@@ -105,10 +121,13 @@
               padding: 0 10px;
             }
           }
+
           .logged-in-dropdown {
             background-color: rgba(0, 0, 0, 0.5);
+
             .dropdown-item {
               color: $color-white;
+
               &:hover {
                 background-color: #ffffff33;
               }
@@ -118,10 +137,12 @@
       }
     }
   }
+
   .brand {
     text-align: left;
     padding-right: 15px;
     padding-top: 10px;
+
     img {
       max-width: 100%;
     }
@@ -147,8 +168,10 @@
   .nav-wrapper[_ngcontent-c1] {
     padding: 8px 10px;
   }
+
   .nav-wrapper {
     padding: 18px 10px;
+
     nav.navbar {
       ul.navbar-nav {
         li.nav-item.login-wrap {

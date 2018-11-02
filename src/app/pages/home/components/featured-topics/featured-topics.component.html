@@ -1,21 +1,21 @@
-<div *ngIf="(featuredTopics$ | async)">
-  <section class="feautred-topics">
-    <div class="container">
-      <h2 class="section-title">
-        Featured Topics
-      </h2>
-      <div class="row">
-        <div class="col-lg-6" *ngFor="let topic of (featuredTopics$ | async |contentFilter | slice : 0:1) ">
-          <dsod-topic [topic]="topic" [contentLenght]=600 [showImage]="true"></dsod-topic>
-        </div>
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let topic of (featuredTopics$ | async |contentFilter)">
-              <dsod-topic [topic]="topic" [contentLenght]=200 [showImage]="true"></dsod-topic>
-            </div>
+<section class="feautred-topics">
+  <div class="container">
+    <h2 class="section-title">
+      Featured Topics
+    </h2>
+    <div class="row" *ngIf="featuredTopics; else loading">
+      <div class="col-lg-6" *ngFor="let topic of featuredTopics | contentFilter | slice : 0:1 ">
+        <dsod-topic [topic]="topic" [contentLenght]=450 [showImage]="true" [imageSmall]="false" [showHeader]="true"
+          styleFor="featured-left"></dsod-topic>
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let topic of featuredTopics |contentFilter">
+            <dsod-topic [topic]="topic" [contentLenght]=170 [showImage]="true" [imageSmall]="true" [showHeader]="true"
+              styleFor="featured-right"></dsod-topic>
           </div>
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>

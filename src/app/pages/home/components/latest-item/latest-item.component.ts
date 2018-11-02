@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
 import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
@@ -9,14 +8,9 @@ import { CMSPageContent } from 'src/app/cms/models';
 })
 export class DSODLatestItemComponent implements OnInit {
   @Input()
-  pageContent: CMSPageContent;
-  imageUrl: string;
+  latestTopic: CMSPageContent;
 
   constructor() {}
 
-  ngOnInit() {
-    this.imageUrl = `${environment.url}/file/downloadFileByObjectId?objectId=${
-      this.pageContent.featuredMediaId
-    }`;
-  }
+  ngOnInit() {}
 }
