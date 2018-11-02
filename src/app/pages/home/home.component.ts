@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   loggedIn: Observable<boolean>;
+
   constructor(private store: Store) {}
 
   ngOnInit() {

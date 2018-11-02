@@ -19,7 +19,7 @@
                   <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
                 </li>
                 <li class="nav-item search-area">
-                  <div class="btn-group" dropdown>
+                  <div class="btn-group">
                     <div id="search-box">
                       <label for="search">search</label>
                       <input type="text" class="form-control" name="search">
@@ -29,7 +29,23 @@
                     </button>
                   </div>
                 </li>
-                <li class="nav-item login-wrap">
+                <li class="nav-item login-wrap" *ngIf="(loggedIn | async)">
+                  <a class="nav-link" (click)="toggleProfilePanel()">Profile</a>
+                </li>
+                <li class="nav-item login-wrap" *ngIf="(loggedIn | async)" ngbDropdown placement="bottom-right">
+                  <div class="nav-link avatar-wrap" ngbDropdownToggle>
+                    <img class="avatar" src="./assets/images/no-avatar.png">
+                    <span class="user-name">
+                      Rebecca
+                      <small>Clarson</small>
+                    </span>
+                  </div>
+                  <div ngbDropdownMenu class="logged-in-dropdown">
+                    <button class="dropdown-item">Settings</button>
+                    <button class="dropdown-item" (click)="logout()">Log Out</button>
+                  </div>
+                </li>
+                <li class="nav-item login-wrap" *ngIf="!(loggedIn | async)">
                   <a [routerLink]="['login']" class="nav-link">Login</a>
                 </li>
               </ul>
