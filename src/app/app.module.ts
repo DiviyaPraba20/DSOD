@@ -19,6 +19,7 @@ import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { CMSModule } from './cms/cms.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,14 +32,18 @@ import { CoreModule } from './core/core.module';
       disabled: environment.production || false
     }),
     // NgxsRouterPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({}),
-    LocalStorageModule.withConfig({prefix: environment.localStorage.prefix, storageType: 'localStorage'}),
+    NgxsStoragePluginModule.forRoot({ key: 'auth' }),
+    // LocalStorageModule.withConfig({
+    //   prefix: environment.localStorage.prefix,
+    //   storageType: 'localStorage'
+    // }),
     AppRoutingModule,
     HttpClientModule,
     LayoutModule,
     AuthModule,
     SharedModule,
     CoreModule.forRoot(),
+    CMSModule.forRoot(),
     NgbModule
   ],
   bootstrap: [AppComponent]

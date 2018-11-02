@@ -1,7 +1,16 @@
 <dsod-carousel [loggedIn]="loggedIn | async"></dsod-carousel>
 <dsod-home-ad-banner></dsod-home-ad-banner>
 <dsod-featured-topics></dsod-featured-topics>
-<dsod-latest></dsod-latest>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-8">
+      <dsod-latest></dsod-latest>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+      <dsod-trending></dsod-trending>
+    </div>
+  </div>
+</div>
 <dsod-podcasts></dsod-podcasts>
 <section>
   <div class="container">

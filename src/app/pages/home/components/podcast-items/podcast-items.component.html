@@ -1,11 +1,3 @@
 <ul>
-  <li><a [routerLink]="['./podcast']">1. Treatment of Type III sockets<span>36:19</span></a></li>
-  <li><a [routerLink]="['./podcast']">2. Anatomy of the dentition<span>17:42</span></a></li>
-  <li><a [routerLink]="['./podcast']">3. Desensitizing dentifrices and fluorides<span>43:01</span></a></li>
-  <li><a [routerLink]="['./podcast']">4. Women in dentistry<span>11:59</span></a></li>
-  <li><a [routerLink]="['./podcast']">5. Prevention and treatment of biofilm<span>55:23</span></a></li>
-  <li><a [routerLink]="['./podcast']">6. The two-implant overdenture for the...<span>39:00</span></a></li>
-  <li><a [routerLink]="['./podcast']">7. Treatment options for implants<span>19:28</span></a></li>
-  <li><a [routerLink]="['./podcast']">8. Implant demographics<span>09:16</span></a></li>
-  <li><a [routerLink]="['./podcast']">9. The role of biofilm<span>40:57</span></a></li>
+  <li *ngFor="let podcast of podcasts; let i =index"><a [routerLink]="['./podcast']">{{i+1}}.&nbsp;{{podcast.title}}<span>36:19</span></a></li>
 </ul>

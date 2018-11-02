@@ -1,43 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  CMSPageContent,
+  CMSContentTypeModel,
+  CMSResponse,
+  CMSContentParams
+} from 'src/app/cms/models';
+import { Store } from '@ngxs/store';
+import { FetchFeaturedTopics } from 'src/app/cms/actions';
+import { Observable } from 'rxjs';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'dsod-featured-topics',
   templateUrl: './featured-topics.component.html',
   styleUrls: ['./featured-topics.component.scss']
 })
-export class DSODFeaturedTopicsComponent {
-  topics = [
-    {
-      title: 'Orthodontics',
-      summary: 'Role of Invisalign® Outcome Simulator in Patient Engagement',
-      by: ' DSODentist',
-      image: 'assets/images/featured-sm.png',
-      icon: 'assets/images/file-icon.png',
-      description: 'This module will present best practices that allow you to use Invisalign outcome simulator in your practice…',
-    },
-    {
-      title: 'Practice Management',
-      summary: 'Reducing Employee Turnover in the DSO',
-      by: ' DSODentist',
-      image: 'assets/images/featured-sm2.png',
-      icon: 'assets/images/file-icon.png',
-      description: 'Many practices are finding it more difficult to retail staff as the economy and dental marketplace continues to…',
-    },
-    {
-      title: 'Practice Management',
-      summary: 'Eliminating Cancellations and No-Shows in Your DSO Practice',
-      by: ' DSODentist',
-      icon: 'assets/images/file-icon.png',
-      description: 'The most vital step to keeping no-shows and cancellations to a minimum is simply by talking with patients while they are in the office and working to be complete the job… ',
-    },
-    {
-      title: 'General Dentistry',
-      summary: 'Lifelong Learning in the DSO Practice',
-      by: ' DSODentist',
-      icon: 'assets/images/youtube-icon.png',
-      description: 'The pursuit of perfessional knowledge enhances social inclusion, peer-to-peer learning, and personal connection. We provide you the best lessons to be…',
-    }
-  ];
+export class DSODFeaturedTopicsComponent implements OnInit {
+  @Input()
+  pageContents: CMSPageContent[];
+  featuredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
+  contentType: CMSContentTypeModel;
+  params: CMSContentParams;
+  constructor(private store: Store) {
+    store
+      .select(state => state.cms.contentTypes)
+      .pipe(skip(1))
+      .subscribe(item => {
+        this.contentType = item.filter(data => data.name == 'Articles');
+        this.params = {
+          skip: 0,
+          limit: 0,
+          isFeatured: true
+        };
+        this.store.dispatch(new FetchFeaturedTopics(this.params));
+      });
+  }
 
-  constructor() { }
+  ngOnInit() {
+    this.featuredTopics$ = this.store.select(state => state.cms.featuredTopics);
+  }
 }

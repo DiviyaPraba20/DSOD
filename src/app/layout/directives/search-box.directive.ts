@@ -7,7 +7,6 @@ export class SearchBoxDirective {
   @HostListener('click', ['$event'])
   onIconClick() {
     const input = document.getElementById('search-box');
-    console.log(input);
     input.classList.toggle('search-active');
   }
 }

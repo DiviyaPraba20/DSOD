@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'dsod-media-content',
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
                 <dsod-rating></dsod-rating>
             </div>
             <div class="trending-block-video">
-                <img src={{placeholderImageSrc}} alt="">
+                <img src={{imageUrl}} alt="">
             </div>
             <div *ngIf="caption" class="trending-block-caption">
                 <h4>{{caption}}</h4>
@@ -25,5 +26,10 @@ export class DSODMediaContentComponent implements OnInit {
   url: string;
   @Input()
   caption: string;
-  ngOnInit(): void {}
+  imageUrl;
+  ngOnInit(): void {
+    this.imageUrl = `${environment.url}/file/downloadFileByObjectId?objectId=${
+      this.placeholderImageSrc
+    }`;
+  }
 }
