@@ -33,10 +33,10 @@ import { CoreModule } from './core/core.module';
     // NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({}),
     LocalStorageModule.withConfig({prefix: environment.localStorage.prefix, storageType: 'localStorage'}),
+    AuthModule,
     AppRoutingModule,
     HttpClientModule,
     LayoutModule,
-    AuthModule,
     SharedModule,
     CoreModule.forRoot(),
     NgbModule
