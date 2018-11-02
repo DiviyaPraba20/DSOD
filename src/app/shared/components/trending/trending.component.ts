@@ -9,7 +9,7 @@ import { CMSPageContent } from 'src/app/cms/models';
 								<dsod-rating></dsod-rating>
 							</div>
 							<div class="trending-block-video">
-								<video  src={{videoUrl}} controls="false"></video>
+								<video  src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{trendingItem.videos[0]}}" controls="false" poster="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{trendingItem.featuredMediaId}}"></video>
 							</div>
 							<div class="trending-block-caption">
 								<h4>{{trendingItem.title}}</h4>
@@ -17,22 +17,13 @@ import { CMSPageContent } from 'src/app/cms/models';
 					</div></a>`,
   styleUrls: ['./trending.component.scss']
 })
-export class DSODTrendingItemComponent implements OnInit {
+export class DSODTrendingItemComponent {
   @Input()
   trendingItem: CMSPageContent;
   @Input()
   showCaption: boolean;
   @Input()
   showSummary: boolean;
-  videoUrl: string;
-  posterUrl: string;
 
   constructor() {}
-  ngOnInit() {
-    if (this.trendingItem.featuredMediaId && this.trendingItem.videos) {
-      this.videoUrl = `https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId=${
-        this.trendingItem.videos[0]
-      }`;
-    }
-  }
 }

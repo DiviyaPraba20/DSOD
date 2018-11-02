@@ -1,17 +1,17 @@
 <dsod-carousel [loggedIn]="loggedIn | async"></dsod-carousel>
 <dsod-home-ad-banner></dsod-home-ad-banner>
-<dsod-featured-topics></dsod-featured-topics>
+<dsod-featured-topics [featuredTopics]="featuredTopics$ | async"></dsod-featured-topics>
 <div class="container">
   <div class="row">
     <div class="col-xl-8">
-      <dsod-latest></dsod-latest>
+      <dsod-latest [latestTopics]="latestTopics$ | async"></dsod-latest>
     </div>
     <div class="col-xl-4 col-lg-4">
-      <dsod-trending></dsod-trending>
+      <dsod-trending [trendingTopics]="trendingTopics$ | async"></dsod-trending>
     </div>
   </div>
 </div>
-<dsod-podcasts></dsod-podcasts>
+<dsod-podcasts [podcasts]="podcasts$ | async"></dsod-podcasts>
 <section>
   <div class="container">
     <div class="row">
@@ -19,7 +19,7 @@
         <dsod-events></dsod-events>
       </div>
       <div class="col-xl-8 col-lg-6">
-        <dsod-our-sponsors></dsod-our-sponsors>
+        <dsod-our-sponsors [sponsoredTopics]="sponsoredTopics$ | async"></dsod-our-sponsors>
       </div>
     </div>
   </div>

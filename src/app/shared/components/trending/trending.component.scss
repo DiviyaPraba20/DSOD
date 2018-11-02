@@ -21,6 +21,10 @@
     border-top: 3px solid $mine_grey;
     position: relative;
 
+    >img {
+      width: 100%;
+    }
+
     >video {
       width: 100%;
     }
