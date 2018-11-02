@@ -1,13 +1,15 @@
-import { Action, State, StateContext, Store, Selector, Actions } from '@ngxs/store';
+import { Action, State, StateContext, Store, Selector } from '@ngxs/store';
 import { catchError, tap, map, exhaustMap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 import * as actions from '../actions';
 import { AuthService } from '../../../core/services/auth.service';
+import { UserProfileData } from '../../../layout/profile/models/userProfile';
 import {
   LoginResponse,
   SignUpResponse,
-  LoginWithLinkedInResponse
+  LoginWithLinkedInResponse,
+  UserInfoResponse
 } from '../../../core/models';
 import {
   LoginFailure,
@@ -15,7 +17,9 @@ import {
   SignUpSuccess,
   SignUpFailure,
   LoginWithLinkedInSuccess,
-  LoginWithLinkedInFailure
+  LoginWithLinkedInFailure,
+  GetUserInfoFailure,
+  GetUserInfoSuccess
 } from '../actions';
 
 export interface State {
@@ -23,6 +27,8 @@ export interface State {
   error: any;
   isLoggedIn: boolean;
   accessToken: string;
+  isOpenedProfilePanel: boolean;
+  userInfo: UserProfileData;
 }
 
 @State<State>({
@@ -31,13 +37,17 @@ export interface State {
     pending: false,
     error: null,
     isLoggedIn: false,
-    accessToken: null
+    accessToken: null,
+    isOpenedProfilePanel: false,
+    userInfo: null
   }
 })
 
 export class AuthState {
   @Selector() static isLoggedIn(state: State) { return state.isLoggedIn; }
   @Selector() static accessToken(state: State) { return state.accessToken; }
+  @Selector() static isOpenedProfilePanel(state: State) { return state.isOpenedProfilePanel; }
+  @Selector() static userInfo(state: State) { return state.userInfo; }
 
   constructor(
     private store: Store,
@@ -128,6 +138,7 @@ export class AuthState {
       pending: false,
       error: null,
       isLoggedIn: false,
+      isOpenedProfilePanel: false,
       accessToken: null
     });
     this.toastr.success('Logout Successfully!', 'Logout');
@@ -167,6 +178,50 @@ export class AuthState {
     patchState({
       pending: false,
       error: action.payload
+    });
+  }
+
+  @Action(actions.ToggleProfilePanel)
+  ToggleProfilePanel({ patchState, getState }: StateContext<State>, action: actions.ToggleProfilePanel) {
+    const currentState = getState();
+    patchState({
+      isOpenedProfilePanel: !currentState.isOpenedProfilePanel
+    });
+  }
+
+  @Action(actions.GetUserInfo)
+  getUserInfo({ patchState, dispatch }: StateContext<State>, action: actions.GetUserInfo) {
+    patchState({
+      pending: true,
+      error: null,
+      userInfo: null
+    });
+
+    return this.authService.getUserInfo(action.payload).pipe(
+      exhaustMap((response: UserInfoResponse) => {
+        if (response.code !== 0) {
+          return dispatch(new GetUserInfoFailure(response.msg));
+        }
+        return dispatch(new GetUserInfoSuccess(response));
+      })
+    );
+  }
+
+  @Action(actions.GetUserInfoSuccess)
+  getUserInfoSuccess({ patchState }: StateContext<State>, action: actions.GetUserInfoSuccess) {
+    patchState({
+      pending: false,
+      userInfo: action.payload.resultMap.data
+    });
+  }
+
+  @Action(actions.GetUserInfoFailure)
+  getUserInfoFailure({ patchState }: StateContext<State>, action: actions.GetUserInfoFailure) {
+    const error = action.payload;
+    patchState({
+      pending: false,
+      userInfo: null,
+      error
     });
   }
 }

@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class DSODPodcastTabsComponent {
   constructor() {}
+
+  onSelect(event) {}
 }

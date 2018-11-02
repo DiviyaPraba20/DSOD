@@ -1,0 +1,20 @@
+.profile-panel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .profile-container {
+    position: absolute;
+    right: -450px;
+    top: 150px;
+    width: 400px;
+    min-height: 500px;
+    z-index: 9;
+    background-color: #3d3f39cc;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: ease right 500ms;
+    &.opened {
+      right: 0;
+    }
+  }
+}

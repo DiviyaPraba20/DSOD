@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `<li>
         <a href="javascript:void(0)">
           <span>
-            <img src="assets/images/download-icon.png" alt="">
+            <img src="./assets/images/download-icon.png" alt="">
           </span>
           Download
         </a>

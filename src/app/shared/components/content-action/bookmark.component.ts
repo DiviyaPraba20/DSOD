@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `<li>
         <a href="javascript:void(0)">
           <span>
-            <img src="assets/images/bookmark-ribbon.png" alt="">
+            <img src="./assets/images/bookmark-ribbon.png" alt="">
           </span>
           Bookmark
         </a>

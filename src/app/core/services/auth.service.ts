@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from '../../../environments/environment';
 import {
@@ -16,16 +17,31 @@ import {
 } from '../models';
 import { Response } from '../models/common';
 import { Logout } from 'src/app/pages/auth/actions';
+import { UserInfoPayload } from '../models/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  jwtHelper = new JwtHelperService();
 
   constructor(
     private http: HttpClient,
     private store: Store
   ) { }
+
+  getUserInfoFromToken(accessToken) {
+    const userInfo = this.jwtHelper.decodeToken(accessToken);
+    return userInfo || {};
+  }
+
+  parseFormData(data: any) {
+    const formData: FormData = new FormData();
+    Object.keys(data).map((key: any) => {
+      formData.append(key, data[key]);
+    });
+    return formData;
+  }
 
   login(payload: LoginPayload): Observable<LoginResponse> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/login`;
@@ -63,5 +79,11 @@ export class AuthService {
   resetPassword(payload: ResetPasswordPayload): Observable<Response> {
     const url = `${environment.api}/profile/profileservice/v1/userAccount/resetPassWord`;
     return this.http.post<Response>(url, payload);
+  }
+
+  getUserInfo(payload: UserInfoPayload): Observable<Response> {
+    const url = `${environment.api}/profile/profileservice/v1/userProfile/findOneByEmail`;
+    const formData = this.parseFormData(payload);
+    return this.http.post<Response>(url, formData, {withCredentials: true});
   }
 }
