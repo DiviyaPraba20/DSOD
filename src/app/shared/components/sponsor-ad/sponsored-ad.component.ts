@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
             </div> `,
   styleUrls: ['./sponsored-ad.component.scss']
 })
-
 export class DSODSponsoredAdComponent {
   constructor() {}
 }

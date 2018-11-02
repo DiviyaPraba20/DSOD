@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 //glid js
 // Required Core Stylesheet
-@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+@import '~@glidejs/glide/src/assets/sass/glide.core.scss';
 
 // Optional Theme Stylesheet
-@import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
+@import '~@glidejs/glide/src/assets/sass/glide.theme';
 
 @import './assets/styles/index.scss';
 

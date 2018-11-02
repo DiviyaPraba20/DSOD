@@ -23,12 +23,12 @@
                 </div>
               </div>
               <div class="podcasts-list">
-                <dsod-podcast-items></dsod-podcast-items>
+                <dsod-podcast-items [podcasts]="podcasts$ | async"></dsod-podcast-items>
               </div>
             </div>
             <div class="col-xl-6">
               <div class="row">
-                <div class="col-sm-4" *ngFor="let number of [0,1,2,3,4,5,6,7,8]">
+                <div class="col-sm-4" *ngFor="let number of [1,2,3,4,5,6,7,8,9]">
                   <dsod-podcasts-by></dsod-podcasts-by>
                 </div>
               </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-latest-item',
@@ -7,9 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DSODLatestItemComponent implements OnInit {
   @Input()
-  latestItem;
+  pageContent: CMSPageContent;
+  imageUrl: string;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.imageUrl = `${environment.url}/file/downloadFileByObjectId?objectId=${
+      this.pageContent.featuredMediaId
+    }`;
+  }
 }

@@ -1,6 +1,6 @@
 import { DSODRatingComponent } from './rating/rating.component';
 import { DSODTopicComponent } from './topic/topic.component';
-import { DSODTrendingComponent } from './trending/trending.component';
+import { DSODTrendingItemComponent } from './trending/trending.component';
 import { DSODSponsoredAdComponent } from './sponsor-ad/sponsored-ad.component';
 import { DSODMediaContentComponent } from './media-placeholder/media-placeholder.component';
 import { DSODContnetComponent } from './content-placeholder/content-placeholder.component';
@@ -17,7 +17,7 @@ export * from '././reviews/add-review/add-review-modal.component';
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
   DSODTopicComponent,
-  DSODTrendingComponent,
+  DSODTrendingItemComponent,
   DSODSponsoredAdComponent,
   DSODMediaContentComponent,
   DSODContnetComponent,
