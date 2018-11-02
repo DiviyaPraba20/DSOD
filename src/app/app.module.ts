@@ -17,6 +17,7 @@ import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { CMSModule } from './cms/cms.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { CoreModule } from './core/core.module';
     LayoutModule,
     SharedModule,
     CoreModule.forRoot(),
+    CMSModule.forRoot(),
     NgbModule
   ],
   bootstrap: [AppComponent]

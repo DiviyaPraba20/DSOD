@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
                   <img class="img-fluid" src="./assets/images/home-ad-banner.png">
               </div>
               </section>`,
-  styles: [`.sensodyne-gsk {padding: 30px 0 42px;}`]
+  styles: [
+    `
+      .sensodyne-gsk {
+        padding: 30px 0 42px;
+      }
+    `
+  ]
 })
 export class DSODHomeAdComponent implements OnInit {
   constructor() {}

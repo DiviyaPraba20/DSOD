@@ -2,22 +2,17 @@
   <div class="row">
     <div class="col-md-5">
       <div class="latest-block-thumbnail">
-        <img src={{latestItem.image}} class="img-fluid" alt="Feautred Thumbnail Large">
+        <img src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{latestTopic.featuredMediaId}}"
+          class="img-fluid" alt="Feautred Thumbnail Large">
         <a href="" class="read-about">
-          <img src="{{latestItem.icon}}" alt="">
+          <img src="assets/images/article-icon.png" alt="">
         </a>
       </div>
     </div>
-    <div class="col-md-7 pr-5">
-      <div class="latest-block-header">
-        <h4>{{latestItem.title}}</h4>
-        <dsod-rating></dsod-rating>
-      </div>
-      <div class="latest-block-content">
-        <h2 class="topic-title mb-3">{{latestItem.summary}}</h2>
-        <em>by {{latestItem.by}} </em>
-        <p class="mt-4">{{latestItem.description}}<a [routerLink]="['./article']">[more]</a></p>
-      </div>
+    <div class="col-md-7">
+      <dsod-topic [topic]="latestTopic" [contentLenght]=200 [showImage]="false" [imageSmall]="true" [showHeader]="true"
+        styleFor="latest">
+      </dsod-topic>
     </div>
   </div>
 </div>

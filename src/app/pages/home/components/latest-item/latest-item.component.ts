@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-latest-item',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DSODLatestItemComponent implements OnInit {
   @Input()
-  latestItem;
+  latestTopic: CMSPageContent;
 
   constructor() {}
 

@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 //glid js
 // Required Core Stylesheet
-@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+@import '~@glidejs/glide/src/assets/sass/glide.core.scss';
 
 // Optional Theme Stylesheet
-@import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
+@import '~@glidejs/glide/src/assets/sass/glide.theme';
 
 @import './assets/styles/index.scss';
 
@@ -39,7 +39,7 @@ a {
 }
 
 .container {
-  max-width: 1710px;
+  // max-width: 1710px;
   margin: 0 auto;
   width: 100%;
   padding: 0 15px;
@@ -85,6 +85,37 @@ ul li {
     }
   }
 }
+
+.block-wrap {
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+
+@media only screen and (min-width:1366px) {
+  .container {
+    max-width: 1300px;
+  }
+}
+
+@media only screen and (min-width:1440px) {
+  .container {
+    max-width: 1380px;
+  }
+}
+
+@media only screen and (min-width:1600px) {
+  .container {
+    max-width: 1540px;
+  }
+}
+
+@media only screen and (min-width:1730px) {
+  .container {
+    max-width: 1710px;
+  }
+}
+
 
 // Generic Media Querries for
 @media only screen and (max-width:1680px) {

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-our-sponsors',
   templateUrl: './our-sponsors.component.html',
   styleUrls: ['./our-sponsors.component.scss']
 })
-export class DSODOurSponsorsComponent implements OnInit {
+export class DSODOurSponsorsComponent {
+  @Input()
+  sponsoredTopics: CMSPageContent[];
   constructor() {}
-
-  ngOnInit() {}
 }
