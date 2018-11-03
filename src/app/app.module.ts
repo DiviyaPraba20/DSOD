@@ -31,7 +31,7 @@ import { CMSModule } from './cms/cms.module';
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production || false
     }),
-    // NgxsRouterPluginModule.forRoot(),
+    NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({ key: 'auth' }),
     // LocalStorageModule.withConfig({
     //   prefix: environment.localStorage.prefix,
