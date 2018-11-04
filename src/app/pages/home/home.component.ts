@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
 import * as actions from '../../cms/actions';
 import { Observable } from 'rxjs';
@@ -15,6 +15,7 @@ import {
   FetchTrendingTopics,
   FetchSponsoredTopics
 } from '../../cms/actions';
+import { CMSService } from 'src/app/cms/services/cms.service';
 
 @Component({
   selector: 'dsod-home',
@@ -33,7 +34,10 @@ export class HomeComponent implements OnInit {
     skip: 0
   };
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private cmsService: CMSService) {
+    store.select(state => state.auth.isLoggedIn).subscribe(auth => {
+      this.cmsService.isLoggedIn = auth;
+    });
     store.dispatch(new actions.FetchContentTypes());
     store.dispatch(new actions.FetchSponsorsList());
     store

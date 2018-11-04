@@ -75,6 +75,13 @@ export class CMSState {
   //contentTypes action decoratos
   @Action(actions.FetchContentTypes)
   fetchContentTypes({ patchState, dispatch, getState }: StateContext<State>) {
+    patchState({
+      featuredTopics: [],
+      latestTopics: [],
+      trendingTopics: [],
+      sponsorsList: [],
+      sponsoredTopics: [],
+      podcasts: []})
     return this.service.findAllContentType().pipe(
       map(a => {
         const state = getState();
@@ -306,7 +313,7 @@ export class CMSState {
 
   @Action(actions.FetchPodcasts)
   fetchPodcasts(
-    { patchState, dispatch, getState }: StateContext<State>,
+    { dispatch }: StateContext<State>,
     action: actions.FetchPodcasts
   ) {
     return this.service.findAllContents(action.payload).pipe(
@@ -338,4 +345,5 @@ export class CMSState {
   ) {
     return patchState({ error: action.payload });
   }
+
 }

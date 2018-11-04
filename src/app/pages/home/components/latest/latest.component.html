@@ -1,6 +1,6 @@
 <section class="the-latest">
   <h2 class="section-title">The Latest</h2>
-  <a class="latest-block" *ngIf="latestTopics.length" [routerLink]="['./video']">
+  <a class="latest-block" *ngIf="latestTopics.length" href="javascript:void(0)" (click)="navigateTo(latestTopics[0])">
     <div class="latest-block-header">
       <h4>{{latestTopics[0].categoryName}}</h4>
       <dsod-rating></dsod-rating>

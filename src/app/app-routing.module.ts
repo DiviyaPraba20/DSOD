@@ -9,22 +9,6 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: './pages/home/home.module#HomeModule'
-      },
-      {
-        path: 'events',
-        loadChildren: './pages/events/events.module#EventsModule'
-      },
-      {
-        path: 'article',
-        loadChildren: './pages/article/article.module#ArticleModule'
-      },
-      {
-        path: 'podcast',
-        loadChildren: './pages/podcast/podcast.module#PodcastModule'
-      },
-      {
-        path: 'video',
-        loadChildren: './pages/video/video.module#VideoModule'
       }
     ]
   },

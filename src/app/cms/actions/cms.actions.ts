@@ -32,7 +32,8 @@ export enum CMSActions {
   //for the list of sponsers
   FetchSponsorsList = '[CMS] Fetch sponsers',
   FetchSponsorsListSuccess = '[CMS] Fetch sponsers Success',
-  FetchSponsorsListFailure = '[CMS] Fetch sponsers Failuure'
+  FetchSponsorsListFailure = '[CMS] Fetch sponsers Failuure',
+  ResetState = '[CMS] Reset State'
 }
 
 //actions for categories
@@ -174,6 +175,11 @@ export class FetchSponsorsListFailure {
 
   constructor(public payload: Error) {}
 }
+export class ResetState {
+  static readonly type = CMSActions.ResetState;
+
+  constructor() {}
+}
 
 export type CMSActionTypes =
   | FetchContentTypes
@@ -199,4 +205,5 @@ export type CMSActionTypes =
   | FetchPodcastsFailure
   | FetchSponsorsList
   | FetchSponsorsListSuccess
-  | FetchSponsorsListFailure;
+  | FetchSponsorsListFailure
+  | ResetState;

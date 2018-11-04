@@ -4,11 +4,12 @@
       <h4>{{topic.categoryName}}</h4>
       <dsod-rating></dsod-rating>
     </div>
-    <div class="feautred-block-thumbnail" *ngIf="topic.featuredMediaId && showImage &&!topic.videos">
+    <div class="feautred-block-thumbnail" *ngIf="topic.featuredMediaId && showImage">
       <img src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{topic.featuredMediaId}}"
         class="img-fluid" alt="Feautred Thumbnail Large">
       <a href="" class="read-about">
-        <img src="assets/images/article-icon.png" alt="">
+        <img *ngIf="topic.contentTypeName=='Articles'" src="assets/images/article-icon.png" alt="">
+        <img *ngIf="topic.contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
       </a>
     </div>
     <div class="feautred-block-content">
@@ -16,10 +17,15 @@
       <em *ngIf="topic.content">{{(topic.content | slice:1:getIndex(topic.content)-1)}} <a href="" class="read-about">
           <img *ngIf="topic.contentTypeName=='Articles'&& !topic.featuredMediaId" src="assets/images/article-icon.png"
             alt="">
-          <img *ngIf="topic.contentTypeName=='Videos'" src="assets/images/article-icon.png" alt="">
+          <img *ngIf="topic.contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
         </a> </em>
-      <p *ngIf="topic.content" class="mt-3" [ngClass]="{'p-latest':styleFor=='latest','p-featured-right':styleFor=='featured-right','p-featured-left':styleFor=='featured-left','p-sponsored':styleFor=='sponsored'}">{{(topic.content
-        | slice:getIndex(topic.content):contentLenght)+'...'}}<a [routerLink]="['/article']">[more]</a></p>
+      <p *ngIf="topic.content; else more" class="mt-3 p-large" [ngClass]="{'p-small':styleFor=='featured-right'}">{{(topic.content
+        | slice:getIndex(topic.content):contentLenght)+'...'}}<a *ngIf="topic.contentTypeName=='Articles'" [routerLink]="['/article',topic.id]">[more]</a><a
+          *ngIf="topic.contentTypeName=='Videos'" [routerLink]="['/video',topic.id]">[more]</a></p>
+      <ng-template #more>
+        <p class="mt-3">...<a *ngIf="topic.contentTypeName=='Articles'" [routerLink]="['/article',topic.id]">[more]</a><a
+            *ngIf="topic.contentTypeName=='Videos'" [routerLink]="['/video',topic.id]">[more]</a></p>
+      </ng-template>
     </div>
   </div>
 </div>

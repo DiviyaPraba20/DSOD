@@ -6,8 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article.component.scss']
 })
 export class DSODArticelComponent implements OnInit {
-  show: boolean;
-  ngOnInit() {
-    this.show = true;
-  }
+  ngOnInit() {}
 }

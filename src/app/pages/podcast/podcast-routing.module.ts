@@ -4,7 +4,7 @@ import { DSODPodcastComponent } from './containers';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '/:id',
     component: DSODPodcastComponent
   }
 ];
