@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
 export interface State {
   categories: CMSContentTypeModel[];
   contentTypes: CMSContentTypeModel[];
-  pageContent: CMSPageContent[];
+  pageContent: CMSPageContent;
   featuredTopics: CMSPageContent[];
   latestTopics: CMSPageContent[];
   trendingTopics: CMSPageContent[];
@@ -23,7 +23,7 @@ export interface State {
   defaults: {
     categories: [],
     contentTypes: [],
-    pageContent: [],
+    pageContent: null,
     featuredTopics: [],
     latestTopics: [],
     trendingTopics: [],
@@ -81,7 +81,8 @@ export class CMSState {
       trendingTopics: [],
       sponsorsList: [],
       sponsoredTopics: [],
-      podcasts: []})
+      podcasts: []
+    });
     return this.service.findAllContentType().pipe(
       map(a => {
         const state = getState();
@@ -345,5 +346,54 @@ export class CMSState {
   ) {
     return patchState({ error: action.payload });
   }
+  //page content action decorators
 
+  @Action(actions.FetchPageContent)
+  fetchPageContent(
+    { dispatch }: StateContext<State>,
+    action: actions.FetchPageContent
+  ) {
+    return this.service.findOneContents(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchPageContentSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchPageContentFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchPageContentSuccess)
+  fetchPageContentSuccess(
+    { patchState }: StateContext<State>,
+    action: actions.FetchPageContentSuccess
+  ) {
+    return patchState({ pageContent: action.payload });
+  }
+
+  @Action(actions.FetchPodcastsFailure)
+  fetchPageContentFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchPageContentFailure
+  ) {
+    return patchState({ error: action.payload });
+  }
+
+  //reset
+  @Action(actions.ResetState)
+  resetState({ patchState, getState }: StateContext<State>) {
+    return patchState({
+      featuredTopics: [],
+      latestTopics: [],
+      trendingTopics: [],
+      sponsorsList: [],
+      sponsoredTopics: [],
+      pageContent: null,
+      podcasts: []
+    });
+  }
 }

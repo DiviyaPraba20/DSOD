@@ -29,6 +29,9 @@ export enum CMSActions {
   FetchPodcasts = '[CMS] Fetch Podcasts Topics',
   FetchPodcastsSuccess = '[CMS] Fetch Podcasts Success',
   FetchPodcastsFailure = '[CMS] Fetch Podcasts Failuure',
+  FetchPageContent = '[CMS] Fetch Page Content',
+  FetchPageContentSuccess = '[CMS] Fetch Page Content Success',
+  FetchPageContentFailure = '[CMS] Fetch Page Content Failuer',
   //for the list of sponsers
   FetchSponsorsList = '[CMS] Fetch sponsers',
   FetchSponsorsListSuccess = '[CMS] Fetch sponsers Success',
@@ -175,6 +178,22 @@ export class FetchSponsorsListFailure {
 
   constructor(public payload: Error) {}
 }
+//page content
+export class FetchPageContent {
+  static readonly type = CMSActions.FetchPageContent;
+
+  constructor(public payload: string) {}
+}
+export class FetchPageContentSuccess {
+  static readonly type = CMSActions.FetchPageContentSuccess;
+
+  constructor(public payload: any) {}
+}
+export class FetchPageContentFailure {
+  static readonly type = CMSActions.FetchPageContentFailure;
+
+  constructor(public payload: Error) {}
+}
 export class ResetState {
   static readonly type = CMSActions.ResetState;
 
@@ -206,4 +225,7 @@ export type CMSActionTypes =
   | FetchSponsorsList
   | FetchSponsorsListSuccess
   | FetchSponsorsListFailure
+  | FetchPageContent
+  | FetchPageContentSuccess
+  | FetchPageContentFailure
   | ResetState;

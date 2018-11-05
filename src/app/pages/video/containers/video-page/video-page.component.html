@@ -13,70 +13,21 @@
         <div class="video-header">
           <div class="row">
             <div class="col-lg-10">
-              <h2>Impacting the Oral Health of the Sufferer</h2>
-              <span class="by">by DSODentist</span>
+              <dsod-video-title [content]="pageContent$ | async"></dsod-video-title>
             </div>
             <div class="col-lg-2">
               <dsod-content-actions></dsod-content-actions>
             </div>
           </div>
         </div>
-        <dsod-video-player></dsod-video-player>
-        <div class="video-content-inner">
-          <p class="sub-head">
-            Werostomia may increase the potential for dental caries, demineralization of teeth, and dentin
-            hypersensitivity, and it is caused by various factors, including systemic diseases and many types of
-            medications. The cause of
-            xerostomia may be temporary or chronic; some patients will live with chronic xerostomia due to
-            circumstances such as prolonged medication use or radiation for head and neck cancer.2 Dental professionals
-            play a crucial
-            role in providing patient education and increasing awareness of xerostomia and its management.
-          </p>
-
-          <h3 class="para-title">In this video: </h3>
-          <ul>
-            <li>The role of the dental healthcare professional in providing patient awareness</li>
-            <li>The risks of polypharmacy</li>
-            <li>The short- and long-term effects of xerostomia</li>
-            <li>The use of biotène® to relieve symptoms</li>
-          </ul>
-          <p>Copy to come. Copy to come. Copy to come. Copy to come. Copy to come. Copy to come. Copy to come. Copy to
-            come. Copy to come. Copy to come. Copy to come. Copy to come. Copy to come. Copy to come. </p>
-          <h4>Related Resources</h4>
-          <span><a href="">Detecting xerostomia </a></span>
-          <span><a href="">The crucial role of saliva</a></span>
-          <h5><i>References</i></h5>
-          <ul class="references">
-
-
-            <li>Plemons JM, Al-Hashimi I, Marek CL; for the American Dental Association Council on Scientific Affairs.
-              Managing xerostomia and salivary gland hypofunction: executive summary of a report from the American
-              Dental
-              Association Council on Scientific Affairs. J Am Dent Assoc. 2014;145 (8):867-873.</li>
-            <li>Cassolato SF, Turnbull RS. Xerostomia: Clinical aspects and treatment. Gerodontology. 2003;20
-              (2):64-77.</li>
-            <li>de Almeida PDV, Grégio AMT, Machado MÂN, de Lima AAS, Azevedo LR. Saliva composition and functions—a
-              comprehensive review. J Contemp Dent Pract. 2008;9(3):72-80.</li>
-            <li>Nederfors T, Isaksson R, Mörnstad H, Dahlöf C. Prevalence of perceived symptoms of dry mouth in an
-              adult Swedish population relation to age, sex and pharmacotherapy. Community Dent Oral Epidemiol.
-              1997;25(3):211-216.</li>
-            <li>Papas AS, Joshi A, MacDonald SL, et al. Caries prevalence in xerostomic individuals. J Can Dent Assoc.
-              1993; 59(2):171-179.</li>
-            <li>Jose A, Siddiqi M, Cronin M, DiLauro TS, Bosma MK. A randomized clinical trial in subjects with dry
-              mouth evaluating subjective perceptions of an experimental oral gel, an oral rinse and a mouth spray
-              compared to
-              water. Am J Dent. 2016;29(1):58-64.</li>
-
-
-          </ul>
-
-        </div>
+        <dsod-video-player [content]="pageContent$ | async"></dsod-video-player>
+        <dsod-video-content [content]="pageContent$ | async"></dsod-video-content>>
       </div>
       <div class="related-content">
         <h2 class="section-title">Related Content</h2>
         <div class="row">
-          <div class="col-lg-4" *ngFor="let number of [0,1,2]">
-            <dsod-content-placeholder [showDescription]="false" [showSummary]="true" [showBy]="false"></dsod-content-placeholder>
+          <div class="col-lg-4" *ngFor="let topic of trendingTopics$ |async">
+            <dsod-topic [topic]="topic" [contentLenght]=0 [showImage]="true" [showHeader]="true" styleFor="content-small"></dsod-topic>
           </div>
         </div>
       </div>
@@ -85,8 +36,8 @@
     <div class="col-xl-3 p-t-115">
       <section class="trending-videos">
         <h2 class="section-title">Trending Topics</h2>
-        <div *ngFor="let number of [0,1,2]">
-          <dsod-content-placeholder [showDescription]="true" [showSummary]="true"></dsod-content-placeholder>
+        <div *ngFor="let topic of trendingTopics$ |async">
+          <dsod-topic [topic]="topic" [contentLenght]=170 [showImage]="true" [showHeader]="true" styleFor="content-small"></dsod-topic>
         </div>
         <dsod-sponsored-ad></dsod-sponsored-ad>
       </section>

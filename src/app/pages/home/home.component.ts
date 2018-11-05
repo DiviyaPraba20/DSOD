@@ -22,7 +22,7 @@ import { CMSService } from 'src/app/cms/services/cms.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   loggedIn: Observable<boolean>;
   featuredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   latestTopics$: Observable<CMSResponse<CMSPageContent[]>>;
@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private store: Store, private cmsService: CMSService) {
     store.select(state => state.auth.isLoggedIn).subscribe(auth => {
+      this.store.dispatch(new actions.ResetState());
       this.cmsService.isLoggedIn = auth;
     });
     store.dispatch(new actions.FetchContentTypes());
@@ -92,5 +93,8 @@ export class HomeComponent implements OnInit {
     this.sponsoredTopics$ = this.store.select(
       state => state.cms.sponsoredTopics
     );
+  }
+  ngOnDestroy() {
+    this.store.dispatch(new actions.ResetState());
   }
 }

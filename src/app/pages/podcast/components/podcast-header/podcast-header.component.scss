@@ -1,0 +1,23 @@
+@import 'variables';
+
+:host {
+  .top-head {
+    padding-top: 77px;
+    border-bottom: 2px solid #c0cad1;
+
+    .pod-title {
+      h3 {
+        font-size: 30px;
+        color: $boulder_grey;
+        margin-left: 15px;
+        font-family: $Arial;
+      }
+    }
+
+    >span {
+      font-size: 22px;
+      color: $color-primary;
+      font-family: $Arial;
+    }
+  }
+}

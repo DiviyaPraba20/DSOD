@@ -14,8 +14,6 @@ export class DSODTopicComponent implements OnInit {
   @Input()
   showImage?: boolean;
   @Input()
-  imageSmall?: boolean;
-  @Input()
   showHeader?: boolean;
   @Input()
   styleFor: string;

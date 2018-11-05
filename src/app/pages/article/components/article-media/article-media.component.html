@@ -1,0 +1,24 @@
+<div class="top-head d-flex justify-content-between" *ngIf="content">
+  <ul>
+    <li>Education /</li>
+    <li>Practice Management</li>
+  </ul>
+  <dsod-rating></dsod-rating>
+</div>
+<div class="article-header" *ngIf="content">
+  <div class="row">
+    <div class="col-lg-10">
+      <h2>{{content.title}}:</h2>
+      <h3>The Morning Huddle</h3>
+      <span class="by">by DSODentist</span>
+    </div>
+    <div class="col-lg-2">
+      <dsod-content-actions></dsod-content-actions>
+    </div>
+  </div>
+</div>
+<div class="article-thumbnail" *ngIf="content">
+  <img src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{content.featuredMediaId}}"
+    class="img-fluid" alt="">
+  <p><b>Figure.</b>The morning huddle is an important operational 'must do' for the entire team.</p>
+</div>

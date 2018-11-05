@@ -48,11 +48,9 @@ export class CMSService {
     this.isLoggedIn
       ? (url = 'findOneContents')
       : (url = 'public/findOneContents');
-    return this.http.post<CMSResponse<T>>(
-      `${environment.url}/content/public/findOneContents`,
-      {
-        id
-      }
+    return this.http.post<CMSResponse<CMSPageContent>>(
+      `${environment.url}/content/public/findOneContents?id=${id}`,
+      {}
     );
   }
 

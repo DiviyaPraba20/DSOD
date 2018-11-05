@@ -1,18 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="podcast-content p-t-115">
-        <div class="top-head d-flex justify-content-between align-items-center">
-          <div class="pod-title d-flex align-items-center">
-            <img src="assets/images/podcast-icon.png" alt="">
-            <h3>Podcasts</h3>
-          </div>
-          <span>General Dentistry</span>
-          <span>Anatomy of Dentin</span>
-          <dsod-rating></dsod-rating>
-        </div>
+      <div class="podcast-intro p-t-115">
+        <dsod-podcast-header [content]="pageContent$ | async"></dsod-podcast-header>
         <h2 class="page-heading">Overview</h2>
-        <div class="podcast-player">
+        <div class="podcast-player" *ngIf="content">
           <div class="row">
             <div class="col-lg-2">
               <div class="speaker-thumbnail">
@@ -23,7 +15,7 @@
               </div>
             </div>
             <div class="col-lg-8">
-              <dsod-audio-player></dsod-audio-player>
+              <dsod-audio-player [content]="content"></dsod-audio-player>
             </div>
             <div class="col-lg-2">
               <dsod-content-actions></dsod-content-actions>
@@ -35,8 +27,8 @@
   </div>
   <div class="row">
     <div class="col-xl-8 col-lg-12">
-      <dsod-podcast-content></dsod-podcast-content>
-      <dsod-podcast-tabs></dsod-podcast-tabs>
+      <dsod-podcast-content [content]="pageContent$ | async"></dsod-podcast-content>
+      <dsod-podcast-tabs [content]="pageContent$ | async"></dsod-podcast-tabs>
     </div>
     <div class="col-xl-4 col-lg-12">
       <div class="row">
