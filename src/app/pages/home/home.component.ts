@@ -45,9 +45,9 @@ export class HomeComponent implements OnInit {
       .select(state => state.cms.contentTypes)
       .pipe(skip(1))
       .subscribe(item => {
-        let podcastTypeId = item.filter(o => o.name == 'Podcasts');
-        let videoTypeId = item.filter(o => o.name == 'Videos');
-        let articleTypeId = item.filter(o => o.name == 'Articles');
+        const podcastTypeId = item.filter(o => o.name === 'Podcasts');
+        const videoTypeId = item.filter(o => o.name === 'Videos');
+        const articleTypeId = item.filter(o => o.name === 'Articles');
         this.store.dispatch(
           new FetchFeaturedTopics({
             ...this.params,

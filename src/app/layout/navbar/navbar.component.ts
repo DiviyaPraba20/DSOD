@@ -6,6 +6,8 @@ import { NavbarService } from './services';
 import { Navigation } from './models';
 import * as authActions from '../../pages/auth/actions';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UserProfileData } from '../profile/models/userProfile';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'dsod-navbar',
@@ -13,9 +15,10 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  userProfile: UserProfileData = null;
   navigation: Navigation[];
   isLoggedIn$ = this.authService.isLoggedIn$;
+  avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
 
   constructor(
     private service: NavbarService,
@@ -25,6 +28,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.navigation = this.service.getNavItems();
+    this.store.select(state => state.auth.userInfo).subscribe(res => {
+      this.userProfile = res;
+    });
   }
 
   toggleProfilePanel() {

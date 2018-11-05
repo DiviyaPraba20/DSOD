@@ -35,7 +35,7 @@ export interface State {
 })
 export class CMSState {
   constructor(private store: Store, private service: CMSService) {}
-  //categories action decorators
+  // categories action decorators
   @Action(actions.FetchCategories)
   fetchCategories({ dispatch }: StateContext<State>) {
     return this.service.findAllCategory().pipe(
@@ -72,7 +72,7 @@ export class CMSState {
       error: action.payload
     });
   }
-  //contentTypes action decoratos
+  // contentTypes action decoratos
   @Action(actions.FetchContentTypes)
   fetchContentTypes({ patchState, dispatch, getState }: StateContext<State>) {
     return this.service.findAllContentType().pipe(
@@ -111,7 +111,7 @@ export class CMSState {
     });
   }
 
-  //featuredTopics action deocrators
+  // featuredTopics action deocrators
   @Action(actions.FetchFeaturedTopics)
   fetchFeaturedTopics(
     { patchState, dispatch, getState }: StateContext<State>,
@@ -151,7 +151,7 @@ export class CMSState {
     });
   }
 
-  //latestTopics action decoratores
+  // latestTopics action decoratores
   @Action(actions.FetchLatestTopics)
   fetchLatestTopics(
     { patchState, dispatch, getState }: StateContext<State>,
@@ -227,7 +227,7 @@ export class CMSState {
       error: action.payload
     });
   }
-  //sponsors list action decorators
+  // sponsors list action decorators
   @Action(actions.FetchSponsorsList)
   fetchSponsersList(
     { dispatch }: StateContext<State>,
@@ -263,7 +263,7 @@ export class CMSState {
     return patchState({ error: action.payload });
   }
 
-  //sponsoredTopics action decorators
+  // sponsoredTopics action decorators
 
   @Action(actions.FetchSponsoredTopics)
   fetchSponsoredTopics(
@@ -302,7 +302,7 @@ export class CMSState {
     });
   }
 
-  //podcasts action decorators
+  // podcasts action decorators
 
   @Action(actions.FetchPodcasts)
   fetchPodcasts(

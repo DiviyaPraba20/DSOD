@@ -3,7 +3,7 @@
     <h2 class="section-title">
       Featured Topics
     </h2>
-    <div class="row" *ngIf="featuredTopics; else loading">
+    <div class="row" *ngIf="featuredTopics">
       <div class="col-lg-6" *ngFor="let topic of featuredTopics | contentFilter | slice : 0:1 ">
         <dsod-topic [topic]="topic" [contentLenght]=450 [showImage]="true" [imageSmall]="false" [showHeader]="true"
           styleFor="featured-left"></dsod-topic>
