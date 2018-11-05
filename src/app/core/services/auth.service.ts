@@ -18,32 +18,36 @@ import {
 import { Response } from '../models/common';
 import { Logout } from 'src/app/pages/auth/actions';
 import { UserInfoPayload } from '../models/auth';
-import { LocalStorageService } from 'angular-2-local-storage';
+import { AuthState } from 'src/app/pages/auth/states/auth.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   jwtHelper = new JwtHelperService();
-  isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(this.isLoggedIn);
+  isLoggedIn$ = this.store.select(AuthState.isLoggedIn);
 
   constructor(
     private http: HttpClient,
-    private store: Store,
-    private localStorageService: LocalStorageService
-  ) { }
-
-  get accessToken() {
-    return this.localStorageService.get(environment.localStorage.accessToken) as string;
+    private store: Store
+  ) {
   }
 
+  get accessToken() {
+    const token = this.store.selectSnapshot<string>(AuthState.accessToken);
+    return token;
+  }
   get isLoggedIn() {
-    return !!this.localStorageService.get(environment.localStorage.accessToken);
+    const loggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
+
+    return loggedIn;
   }
 
   getUserInfoFromToken() {
-    const userInfo = this.jwtHelper.decodeToken(this.accessToken);
-    return userInfo || {};
+    if (this.accessToken) {
+        const userInfo = this.jwtHelper.decodeToken(this.accessToken);
+        return userInfo || {};
+      }
   }
 
   parseFormData(data: any) {
