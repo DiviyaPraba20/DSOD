@@ -4,7 +4,7 @@ export const environment = {
   LinkedIn: {
     authUrl: 'https://www.linkedin.com/oauth/v2/authorization',
     response_type: 'code',
-    client_id: '81nb85ffrekjgr',
+    client_id: '77xn8gu9wv8bfj',
     redirect_uri: 'https://devangular1.dsodentist.com/dsodt/auth/linkedin',
     state: '987654321'
   },

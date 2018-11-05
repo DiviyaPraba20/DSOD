@@ -6,7 +6,7 @@
       <h3 class="title-comment">the DSODentist community today!</h3>
     </div>
     <div class="form-container">
-      <form [formGroup]="signUpForm">
+      <form [formGroup]="signUpForm" (submit)="signUp()">
         <button class="btn btn-default btn-linkedin" type="button" (click)="loginWithLinkedIn()">
           <img class="social-image" src="./assets/images/icons/icon-linkedin.png">
           <span class="title">Join using LinkedIn</span>
@@ -56,10 +56,10 @@
           <p>By creating an account, you agree to our</p>
           <p><a (click)="showTerms()">Terms of Use</a> and <a (click)="showPolicy()">Privacy Policy</a></p>
         </div>
-        <button class="btn btn-default btn-join" [disabled]="signUpForm.invalid" (click)="signUp()">Join</button>
+        <button class="btn btn-default btn-join" [disabled]="signUpForm.invalid" type="submit">Join</button>
         <div class="login-form-container">
           <span>Already a member?</span>
-          <button class="btn btn-default btn-login" routerLink="/login">Login</button>
+          <button type="button" class="btn btn-default btn-login" (click)="onLogin()">Login</button>
         </div>
       </form>
     </div>

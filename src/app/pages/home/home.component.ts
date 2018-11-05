@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
 import { Store } from '@ngxs/store';
 import * as actions from '../../cms/actions';
 import { Observable } from 'rxjs';
@@ -22,7 +23,8 @@ import {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  loggedIn: Observable<boolean>;
+  isLoggedIn$ = this.authService.isLoggedIn$;
+
   featuredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   latestTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   trendingTopics$: Observable<CMSResponse<CMSPageContent[]>>;
@@ -33,7 +35,10 @@ export class HomeComponent implements OnInit {
     skip: 0
   };
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private authService: AuthService
+  ) {
     store.dispatch(new actions.FetchContentTypes());
     store.dispatch(new actions.FetchSponsorsList());
     store
@@ -80,7 +85,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loggedIn = this.store.select(state => state.auth.isLoggedIn);
     this.featuredTopics$ = this.store.select(state => state.cms.featuredTopics);
     this.latestTopics$ = this.store.select(state => state.cms.latestTopics);
     this.trendingTopics$ = this.store.select(state => state.cms.trendingTopics);

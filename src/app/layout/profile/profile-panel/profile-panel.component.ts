@@ -14,9 +14,9 @@ import { AuthState } from '../../../pages/auth/states/auth.state';
 })
 export class ProfilePanelComponent implements OnInit {
   isEditMode = false;
-  isLoggedIn = false;
   profilePanel: Observable<boolean>;
   jwtHelper = new JwtHelperService();
+  isLoggedIn$ = this.authService.isLoggedIn$;
 
   constructor(
     private store: Store,
@@ -25,13 +25,9 @@ export class ProfilePanelComponent implements OnInit {
 
   ngOnInit() {
     this.profilePanel = this.store.select(state => state.auth.isOpenedProfilePanel);
-
-    this.store.select(state => state.auth.isLoggedIn).subscribe(res => {
-      this.isLoggedIn = res;
-
-      if (this.isLoggedIn) {
-        const accessToken: string = this.store.selectSnapshot<string>(AuthState.accessToken);
-        const userInfo = this.authService.getUserInfoFromToken(accessToken);
+    this.isLoggedIn$.subscribe(res => {
+      if (res) {
+        const userInfo = this.authService.getUserInfoFromToken();
         this.store.dispatch(new GetUserInfo({
           email: userInfo.user_name
         }));
