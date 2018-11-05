@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://devupapi1.dsodentist.com',
+  api: 'https://devupapi1.dsodentist.com',
   LinkedIn: {
     authUrl: 'https://www.linkedin.com/oauth/v2/authorization',
     response_type: 'code',
@@ -12,7 +12,7 @@ export const environment = {
     redirect_uri: 'http://localhost:4200/auth/linkedin',
     state: '987654321'
   },
-  url: 'http://devcmsapi1.dsodentist.com/content/contentservice/v1'
+  url: 'https://devcmsapi1.dsodentist.com/content/contentservice/v1'
 };
 
 /*
