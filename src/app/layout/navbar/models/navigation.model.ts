@@ -1,4 +1,4 @@
-export interface Navigation{
-    title:string;
-    link:string;
+export interface Navigation {
+    title: string;
+    link: string;
 }
