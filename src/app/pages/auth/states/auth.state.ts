@@ -21,12 +21,14 @@ import {
   GetUserInfoFailure,
   GetUserInfoSuccess
 } from '../actions';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { environment } from '../../../../environments/environment';
 
 export interface State {
   pending: boolean;
   error: any;
   isLoggedIn: boolean;
-  accessToken: string;
   isOpenedProfilePanel: boolean;
   userInfo: UserProfileData;
 }
@@ -37,7 +39,6 @@ export interface State {
     pending: false,
     error: null,
     isLoggedIn: false,
-    accessToken: null,
     isOpenedProfilePanel: false,
     userInfo: null
   }
@@ -45,14 +46,15 @@ export interface State {
 
 export class AuthState {
   @Selector() static isLoggedIn(state: State) { return state.isLoggedIn; }
-  @Selector() static accessToken(state: State) { return state.accessToken; }
   @Selector() static isOpenedProfilePanel(state: State) { return state.isOpenedProfilePanel; }
   @Selector() static userInfo(state: State) { return state.userInfo; }
 
   constructor(
     private store: Store,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) { }
 
   @Action(actions.Login)
@@ -60,8 +62,7 @@ export class AuthState {
     patchState({
       pending: true,
       error: null,
-      isLoggedIn: false,
-      accessToken: null
+      isLoggedIn: false
     });
 
     return this.authService.login(action.payload).pipe(
@@ -77,17 +78,20 @@ export class AuthState {
   @Action(actions.LoginSuccess)
   LoginSuccess({ patchState }: StateContext<State>, action: actions.LoginSuccess) {
     this.toastr.success('Login Success!', 'Login');
+    this.localStorageService.set(environment.localStorage.accessToken, action.payload.resultMap.accesstoken);
+    this.authService.isLoggedIn$.next(true);
     patchState({
       pending: false,
-      isLoggedIn: true,
-      accessToken: action.payload.resultMap.accesstoken
+      isLoggedIn: true
     });
+    this.router.navigate(['']);
   }
 
   @Action(actions.LoginFailure)
   LoginFailure({ patchState }: StateContext<State>, action: actions.LoginFailure) {
     const error = action.payload;
     this.toastr.error(error, 'Login');
+    this.authService.isLoggedIn$.next(false);
     patchState({
       pending: false,
       error
@@ -115,11 +119,13 @@ export class AuthState {
   @Action(actions.SignUpSuccess)
   SignUpSuccess({ patchState }: StateContext<State>, action: actions.SignUpSuccess) {
     this.toastr.success('SignUp Success!', 'SignUp');
+    this.localStorageService.set(environment.localStorage.accessToken, action.payload.resultMap.accesstoken);
+    this.authService.isLoggedIn$.next(true);
     patchState({
       pending: false,
-      isLoggedIn: true,
-      accessToken: action.payload.resultMap.accesstoken
+      isLoggedIn: true
     });
+    this.router.navigate(['']);
   }
 
   @Action(actions.SignUpFailure)
@@ -134,14 +140,16 @@ export class AuthState {
 
   @Action(actions.Logout)
   Logout({ patchState }: StateContext<State>, action: actions.Logout) {
+    this.localStorageService.remove(environment.localStorage.accessToken);
+    this.authService.isLoggedIn$.next(false);
     patchState({
       pending: false,
       error: null,
       isLoggedIn: false,
-      isOpenedProfilePanel: false,
-      accessToken: null
+      isOpenedProfilePanel: false
     });
     this.toastr.success('Logout Successfully!', 'Logout');
+    this.router.navigate(['login']);
   }
 
   @Action(actions.LoginWithLinkedIn)
@@ -164,17 +172,20 @@ export class AuthState {
 
   @Action(actions.LoginWithLinkedInSuccess)
   LoginWithLinkedInSuccess({ patchState }: StateContext<State>, action: actions.LoginWithLinkedInSuccess) {
-    this.toastr.success('Login with LinkedIn Success!', 'SignUp');
+    this.toastr.success('Login with LinkedIn Success!', 'Login');
+    this.localStorageService.set(environment.localStorage.accessToken, action.payload.resultMap.tokenValue);
+    this.authService.isLoggedIn$.next(true);
     patchState({
       pending: false,
-      isLoggedIn: true,
-      accessToken: action.payload.resultMap.tokenValue
+      isLoggedIn: true
     });
+    this.router.navigate(['']);
   }
 
   @Action(actions.LoginWithLinkedInFailure)
   LoginWithLinkedInFailure({ patchState }: StateContext<State>, action: actions.LoginWithLinkedInFailure) {
     this.toastr.error(action.payload, 'SignUp');
+    this.authService.isLoggedIn$.next(false);
     patchState({
       pending: false,
       error: action.payload

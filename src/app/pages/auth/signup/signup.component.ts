@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,7 @@ import { SignUp } from '../actions';
 import { environment } from 'src/environments/environment';
 import { TermsModalComponent } from '../terms-modal/terms-modal.component';
 import { PolicyModalComponent } from '../policy-modal/policy-modal.component';
+import { Router } from '@angular/router';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -42,7 +43,9 @@ export class SignupComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store,
     private spinner: NgxSpinnerService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private zone: NgZone,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -93,5 +96,9 @@ export class SignupComponent implements OnInit, OnDestroy {
       centered: true,
       backdrop: 'static'
     });
+  }
+
+  onLogin() {
+    this.zone.run(() => { this.router.navigate(['/login']); });
   }
 }
