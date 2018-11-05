@@ -14,6 +14,7 @@ import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { TermsModalComponent } from './terms-modal/terms-modal.component';
 import { PolicyModalComponent } from './policy-modal/policy-modal.component';
+import { HttpErrorInterceptor } from 'src/app/core/interceptors/errors.interceptor.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,12 @@ import { PolicyModalComponent } from './policy-modal/policy-modal.component';
     PolicyModalComponent
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
     AuthService,
     AuthGuard
   ],
