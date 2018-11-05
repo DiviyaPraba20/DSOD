@@ -34,10 +34,9 @@
                 </li>
                 <li class="nav-item login-wrap" *ngIf="(isLoggedIn$ | async)" ngbDropdown placement="bottom-right">
                   <div class="nav-link avatar-wrap" ngbDropdownToggle>
-                    <img class="avatar" src="./assets/images/no-avatar.png">
+                    <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">
                     <span class="user-name">
-                      Rebecca
-                      <small>Clarson</small>
+                      {{userProfile?.full_name}}
                     </span>
                   </div>
                   <div ngbDropdownMenu class="logged-in-dropdown">
