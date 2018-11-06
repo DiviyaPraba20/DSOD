@@ -1,0 +1,50 @@
+@import "variables";
+
+.no-padding {
+  padding: 0 !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+
+.edit-profile-container {
+  .section-container {
+    .info-container {
+      .title {
+        margin-bottom: 10px;
+      }
+      .body-wrapper {
+        .body-item-wrapper {
+          margin-bottom: 15px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .item-content {
+            border-bottom: none;
+            .title {
+              margin-bottom: 5px;
+              font-size: 16px;
+            }
+            .input-group {
+              border-bottom: 1px solid $gray;
+              align-items: center;
+              input {
+                position: relative;
+                flex: 1 1 auto;
+                border: none;
+                background-color: transparent;
+                color: $alto;
+                padding: 0;
+                outline: none;
+                min-height: 25px;
+              }
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { LayoutComponent } from './layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,7 +17,8 @@ import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-ed
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    NgSelectModule
   ],
   declarations: [
     LayoutComponent,

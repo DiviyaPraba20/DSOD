@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
 
 import { NavbarService } from './services';
 import { Navigation } from './models';
 import * as authActions from '../../pages/auth/actions';
+import * as layoutActions from '../../layout/actions';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserProfileData } from '../profile/models/userProfile';
 import { environment } from 'src/environments/environment';
@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleProfilePanel() {
-    this.store.dispatch(new authActions.ToggleProfilePanel());
+    this.store.dispatch(new layoutActions.ChangeProfilePanelStatus());
   }
 
   logout() {

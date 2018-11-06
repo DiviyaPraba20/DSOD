@@ -3,6 +3,10 @@
     <span>Profile</span>
   </div>
   <div class="profile-body">
+    <div class="action-container" (click)="editProfile()">
+      <span class="action-name">Edit</span>
+      <i class="fa fa-pencil"></i>
+    </div>
     <div class="section-container">
       <div class="userInfo-container">
         <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">

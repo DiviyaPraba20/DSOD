@@ -27,7 +27,6 @@ export interface State {
   error: any;
   isLoggedIn: boolean;
   accessToken: string;
-  isOpenedProfilePanel: boolean;
   userInfo: UserProfileData;
 }
 
@@ -38,7 +37,6 @@ export interface State {
     error: null,
     isLoggedIn: false,
     accessToken: null,
-    isOpenedProfilePanel: false,
     userInfo: null
   }
 })
@@ -46,7 +44,6 @@ export interface State {
 export class AuthState {
   @Selector() static isLoggedIn(state: State) { return state.isLoggedIn; }
   @Selector() static accessToken(state: State) { return state.accessToken; }
-  @Selector() static isOpenedProfilePanel(state: State) { return state.isOpenedProfilePanel; }
   @Selector() static userInfo(state: State) { return state.userInfo; }
 
   constructor(
@@ -138,7 +135,6 @@ export class AuthState {
       pending: false,
       error: null,
       isLoggedIn: false,
-      isOpenedProfilePanel: false,
       accessToken: null
     });
     this.toastr.success('Logout Successfully!', 'Logout');
@@ -178,14 +174,6 @@ export class AuthState {
     patchState({
       pending: false,
       error: action.payload
-    });
-  }
-
-  @Action(actions.ToggleProfilePanel)
-  ToggleProfilePanel({ patchState, getState }: StateContext<State>, action: actions.ToggleProfilePanel) {
-    const currentState = getState();
-    patchState({
-      isOpenedProfilePanel: !currentState.isOpenedProfilePanel
     });
   }
 

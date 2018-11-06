@@ -302,6 +302,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@ng-select/ng-select@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-2.11.2.tgz#73f87b4a223ed33e8580cbe7b054f1f3b4d56ca8"
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngrx/effects@^6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.1.0.tgz#3c1e1ab1e5a86c6d9c29d4f3771e42cc9bd8576c"
@@ -356,12 +362,6 @@
 "@ngxs/devtools-plugin@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@ngxs/devtools-plugin/-/devtools-plugin-3.2.0.tgz#4cca564022b91e7f84c86671f078092441bcd0f5"
-  dependencies:
-    tslib "^1.9.0"
-
-"@ngxs/logger-plugin@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@ngxs/logger-plugin/-/logger-plugin-3.2.0.tgz#c2b40b79c7b41ca0ef930b25bd19e07043cf7774"
   dependencies:
     tslib "^1.9.0"
 
