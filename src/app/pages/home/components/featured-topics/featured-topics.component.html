@@ -4,15 +4,13 @@
       Featured Topics
     </h2>
     <div class="row" *ngIf="featuredTopics">
-      <div class="col-lg-6" *ngFor="let topic of featuredTopics | contentFilter | slice : 0:1 ">
-        <dsod-topic [topic]="topic" [contentLenght]=450 [showImage]="true" [imageSmall]="false" [showHeader]="true"
-          styleFor="featured-left"></dsod-topic>
+      <div class="col-lg-6" *ngFor="let topic of featuredTopics | slice : 0:1">
+        <dsod-topic [topic]="topic" [contentLenght]=450 [showImage]="true" [showHeader]="true" styleFor="content-large"></dsod-topic>
       </div>
       <div class="col-lg-6">
         <div class="row">
-          <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let topic of featuredTopics |contentFilter">
-            <dsod-topic [topic]="topic" [contentLenght]=170 [showImage]="true" [imageSmall]="true" [showHeader]="true"
-              styleFor="featured-right"></dsod-topic>
+          <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let topic of featuredTopics | slice:1:5">
+            <dsod-topic [topic]="topic" [contentLenght]=170 [showImage]="true" [showHeader]="true" styleFor="content-small"></dsod-topic>
           </div>
         </div>
       </div>

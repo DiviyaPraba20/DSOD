@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
 export interface State {
   categories: CMSContentTypeModel[];
   contentTypes: CMSContentTypeModel[];
-  pageContent: CMSPageContent[];
+  pageContent: CMSPageContent;
   featuredTopics: CMSPageContent[];
   latestTopics: CMSPageContent[];
   trendingTopics: CMSPageContent[];
@@ -23,7 +23,7 @@ export interface State {
   defaults: {
     categories: [],
     contentTypes: [],
-    pageContent: [],
+    pageContent: null,
     featuredTopics: [],
     latestTopics: [],
     trendingTopics: [],
@@ -75,6 +75,14 @@ export class CMSState {
   // contentTypes action decoratos
   @Action(actions.FetchContentTypes)
   fetchContentTypes({ patchState, dispatch, getState }: StateContext<State>) {
+    patchState({
+      featuredTopics: [],
+      latestTopics: [],
+      trendingTopics: [],
+      sponsorsList: [],
+      sponsoredTopics: [],
+      podcasts: []
+    });
     return this.service.findAllContentType().pipe(
       map(a => {
         const state = getState();
@@ -306,7 +314,7 @@ export class CMSState {
 
   @Action(actions.FetchPodcasts)
   fetchPodcasts(
-    { patchState, dispatch, getState }: StateContext<State>,
+    { dispatch }: StateContext<State>,
     action: actions.FetchPodcasts
   ) {
     return this.service.findAllContents(action.payload).pipe(
@@ -337,5 +345,55 @@ export class CMSState {
     action: actions.FetchPodcastsFailure
   ) {
     return patchState({ error: action.payload });
+  }
+  //page content action decorators
+
+  @Action(actions.FetchPageContent)
+  fetchPageContent(
+    { dispatch }: StateContext<State>,
+    action: actions.FetchPageContent
+  ) {
+    return this.service.findOneContents(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchPageContentSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchPageContentFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchPageContentSuccess)
+  fetchPageContentSuccess(
+    { patchState }: StateContext<State>,
+    action: actions.FetchPageContentSuccess
+  ) {
+    return patchState({ pageContent: action.payload });
+  }
+
+  @Action(actions.FetchPodcastsFailure)
+  fetchPageContentFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchPageContentFailure
+  ) {
+    return patchState({ error: action.payload });
+  }
+
+  //reset
+  @Action(actions.ResetState)
+  resetState({ patchState, getState }: StateContext<State>) {
+    return patchState({
+      featuredTopics: [],
+      latestTopics: [],
+      trendingTopics: [],
+      sponsorsList: [],
+      sponsoredTopics: [],
+      pageContent: null,
+      podcasts: []
+    });
   }
 }

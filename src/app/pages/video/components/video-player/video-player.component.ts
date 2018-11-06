@@ -1,4 +1,11 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  Input,
+  OnChanges
+} from '@angular/core';
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-video-player',
@@ -6,6 +13,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./video-player.component.scss']
 })
 export class DSODVideoplayerComponent {
+  @Input()
+  content: CMSPageContent;
   @ViewChild('video')
   video: ElementRef;
   constructor() {}

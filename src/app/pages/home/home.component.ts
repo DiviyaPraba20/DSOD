@@ -35,10 +35,7 @@ export class HomeComponent implements OnInit {
     skip: 0
   };
 
-  constructor(
-    private store: Store,
-    private authService: AuthService
-  ) {
+  constructor(private store: Store, private authService: AuthService) {
     store.dispatch(new actions.FetchContentTypes());
     store.dispatch(new actions.FetchSponsorsList());
     store
@@ -92,5 +89,8 @@ export class HomeComponent implements OnInit {
     this.sponsoredTopics$ = this.store.select(
       state => state.cms.sponsoredTopics
     );
+  }
+  ngOnDestroy() {
+    this.store.dispatch(new actions.ResetState());
   }
 }

@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
-  selector: 'dsod-podcast-playlist',
-  templateUrl: './play-list.component.html',
-  styleUrls: ['./play-list.component.scss']
+  selector: 'dsod-video-content',
+  templateUrl: './video-content.component.html',
+  styleUrls: ['./video-content.component.scss']
 })
-export class DSODPodcastPlayListComponent {
+export class DSODVideoContentComponent {
   @Input()
   content: CMSPageContent;
   constructor() {}

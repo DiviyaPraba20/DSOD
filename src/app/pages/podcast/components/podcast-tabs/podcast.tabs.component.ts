@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-podcast-tabs',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./podcast.tabs.component.scss']
 })
 export class DSODPodcastTabsComponent {
+  @Input()
+  content: CMSPageContent;
   constructor() {}
 
   onSelect(event) {}

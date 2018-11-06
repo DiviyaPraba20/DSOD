@@ -3,7 +3,7 @@
   <tabset>
     <tab heading="New" class="mt-2" (select)="onSelect($event)">
       <div class="podcasts-list">
-        <dsod-podcast-playlist></dsod-podcast-playlist>
+        <dsod-podcast-playlist [content]="content"></dsod-podcast-playlist>
       </div>
     </tab>
     <tab heading="Category" class="mt-2" disabled="true" (select)="onSelect($event)">

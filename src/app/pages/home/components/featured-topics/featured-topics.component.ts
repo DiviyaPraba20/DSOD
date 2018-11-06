@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
@@ -6,8 +6,12 @@ import { CMSPageContent } from 'src/app/cms/models';
   templateUrl: './featured-topics.component.html',
   styleUrls: ['./featured-topics.component.scss']
 })
-export class DSODFeaturedTopicsComponent {
+export class DSODFeaturedTopicsComponent implements OnChanges {
   @Input()
   featuredTopics: CMSPageContent[];
   constructor() {}
+
+  ngOnChanges() {
+    console.log(this.featuredTopics);
+  }
 }

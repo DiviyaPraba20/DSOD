@@ -19,7 +19,7 @@ export class NavbarService {
         link: 'practice'
       },
       {
-        title: 'Form Our Sponsers',
+        title: 'From Our Sponsers',
         link: 'sponsers'
       },
       {

@@ -7,6 +7,10 @@ import { HOME_COMPONENTS, HOME_CONTAINERS } from './index';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CMSModule } from 'src/app/cms/cms.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ArticleModule } from '../article/article.module';
+import { VideoModule } from '../video/video.module';
+import { PodcastModule } from '../podcast/podcast.module';
+import { EventsModule } from '../events/events.module';
 
 @NgModule({
   imports: [
@@ -14,6 +18,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HomeRoutingModule,
     SharedModule,
     TabsModule.forRoot(),
+    ArticleModule,
+    VideoModule,
+    PodcastModule,
+    EventsModule,
     CMSModule,
     NgxSpinnerModule
   ],

@@ -17,7 +17,7 @@
 
       button {
         position: absolute;
-        bottom: 40%;
+        bottom: 51%;
         border-radius: 50%;
         height: 40px;
         width: 40px;
@@ -36,16 +36,19 @@
         cursor: pointer;
 
         &.forward {
-          right: 40%;
+          right: 36%;
           transform: translateX(50%);
 
         }
 
         &.rewind {
-          left: 40%;
+          left: 36%;
           transform: translateX(-50%);
 
+        }
 
+        img {
+          min-width: 60px;
         }
       }
     }

@@ -8,11 +8,15 @@ import {
   CMSPageContent,
   sponsors
 } from '../models';
+import { Store } from '@ngxs/store';
+import { skip, debounce } from 'rxjs/operators';
+import { timer } from 'rxjs';
+import { authState } from 'src/app/pages/auth/states';
 
 @Injectable()
 export class CMSService {
+  isLoggedIn: Boolean;
   constructor(private http: HttpClient) {}
-  endpoint: string;
 
   findAllCategory() {
     return this.http.post<CMSResponse<CMSContentTypeModel>>(
@@ -29,6 +33,10 @@ export class CMSService {
   }
 
   findAllContents<T>(params: CMSContentParams) {
+    let url = '';
+    this.isLoggedIn
+      ? (url = 'findAllContents')
+      : (url = 'public/findAllContents');
     return this.http.post<CMSResponse<CMSPageContent>>(
       `${environment.url}/content/public/findAllContents`,
       params
@@ -36,13 +44,19 @@ export class CMSService {
   }
 
   findOneContents<T>(id: string) {
-    return this.http.post<CMSResponse<T>>(
-      `${environment.url}/content/findOneContents`,
-      { id }
+    let url = '';
+    this.isLoggedIn
+      ? (url = 'findOneContents')
+      : (url = 'public/findOneContents');
+    return this.http.post<CMSResponse<CMSPageContent>>(
+      `${environment.url}/content/public/findOneContents?id=${id}`,
+      {}
     );
   }
 
   trending<T>(params: CMSContentParams) {
+    let url = '';
+    this.isLoggedIn ? (url = 'trending') : (url = 'public/trending');
     return this.http.post<CMSResponse<CMSPageContent>>(
       `${environment.url}/content/public/trending`,
       params
