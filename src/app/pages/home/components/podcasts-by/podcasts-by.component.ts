@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'dsod-podcasts-by',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./podcasts-by.component.scss']
 })
 export class DSODPodcastsByComponent {
+  @Input()
+  author;
   constructor() {}
 }
