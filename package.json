@@ -28,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.4.2",
     "@glidejs/glide": "^3.2.3",
     "@ng-bootstrap/ng-bootstrap": "^3.3.1",
+    "@ng-select/ng-select": "^2.11.2",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/entity": "^6.1.0",
     "@ngrx/router-store": "^6.1.0",

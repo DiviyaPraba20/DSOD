@@ -1,0 +1,26 @@
+@import "variables";
+
+.ng-select.select-item {
+  width: 100%;
+  .ng-select-container {
+    height: 40px;
+    border-radius: 3px;
+    border: solid 1px $gray !important;
+    box-shadow: none !important;
+    background-color: transparent;
+    color: $color-white;
+    .ng-value-container .ng-input>input {
+      height: 30px;
+      padding: 0;
+      color: $color-white;
+      font-size: 15px;
+    }
+    .ng-value-container .ng-value .ng-value-label {
+    }
+  }
+}
+.ng-dropdown-panel.select-item {
+  .ng-dropdown-panel-items .ng-option {
+  }
+}
+

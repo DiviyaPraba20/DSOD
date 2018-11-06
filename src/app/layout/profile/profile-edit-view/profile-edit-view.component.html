@@ -33,11 +33,12 @@
         <p class="title">Personal Info</p>
         <div class="body-wrapper">
           <div class="body-item-wrapper">
-            <div class="item-content">
+            <div class="item-content no-padding no-margin">
               <span class="title">Full Name</span>
-              <span class="content">
-                {{userProfile?.full_name}}
-              </span>
+              <div class="input-group">
+                <input type="text">
+                <span class="fa fa-pencil"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -45,46 +46,59 @@
     </div>
     <div class="section-container">
       <div class="info-container">
-        <p class="title">Contact</p>
+        <p class="title">Speciality</p>
+        <div class="body-wrapper">
+          <div class="body-item-wrapper">
+            <ng-select
+              class="custom-select"
+              [items]="specialities"
+              bindLabel="name"
+              bindValue="id"
+              class="select-item"
+              placeholder="Select Speciality">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-container">
+      <div class="info-container">
+        <p class="title">Contact Info</p>
         <div class="body-wrapper">
           <div class="body-item-wrapper">
             <div class="icon-body-item">
               <img src="./assets/images/icons/icon_location.png">
             </div>
-            <div class="item-content" *ngIf="userProfile?.practiceAddress; else noPracticeAddress">
+            <div class="item-content no-padding">
               <span class="title">Practice Address</span>
-              <span class="content">{{userProfile?.practiceAddress.address1}} {{userProfile?.practiceAddress.address2}}</span>
-              <span class="content">{{userProfile?.practiceAddress.city}} {{userProfile?.practiceAddress.states}} {{userProfile?.practiceAddress.zipCode}}</span>
-            </div>
-            <ng-template #noPracticeAddress>
-              <div class="item-content">
-                <span class="title">Practice Address</span>
-                <span class="content">No Address added yet.</span>
+              <div class="input-group">
+                <input type="text">
+                <span class="fa fa-pencil"></span>
               </div>
-            </ng-template>
+            </div>
           </div>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
               <img src="./assets/images/icons/icon_mobile.png">
             </div>
-            <div class="item-content">
+            <div class="item-content no-padding">
               <span class="title">Mobile Number</span>
-              <span class="content" *ngIf="userProfile?.phone; else noPhoneNumber">{{userProfile?.phone}}</span>
-              <ng-template #noPhoneNumber>
-                <span class="content">No PhoneNumber added yet.</span>
-              </ng-template>
+              <div class="input-group">
+                <input type="text">
+                <span class="fa fa-pencil"></span>
+              </div>
             </div>
           </div>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
               <img src="./assets/images/icons/icon_email.png">
             </div>
-            <div class="item-content">
-              <span class="title">Preferred Email Address</span>
-              <span class="content" *ngIf="userProfile?.email; else noEmail">{{userProfile?.email}}</span>
-              <ng-template #noEmail>
-                <span class="content">No Preferred Email Address added yet.</span>
-              </ng-template>
+            <div class="item-content no-padding">
+              <span class="title">Primary Email Address</span>
+              <div class="input-group">
+                <input type="text">
+                <span class="fa fa-pencil"></span>
+              </div>
             </div>
           </div>
         </div>

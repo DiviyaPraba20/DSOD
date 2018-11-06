@@ -13,6 +13,19 @@ export class ProfileEditViewComponent implements OnInit {
   userProfile: UserProfileData = null;
   avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
   croppedImage: any;
+  specialities = [{
+    id: 0,
+    name: 'Dental Public Health'
+  }, {
+    id: 1,
+    name: 'Endodonitics'
+  }, {
+    id: 2,
+    name: 'Orthodonitics'
+  }, {
+    id: 3,
+    name: 'Periodonitics'
+  }];
 
   constructor(
     private store: Store

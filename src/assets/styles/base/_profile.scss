@@ -70,7 +70,7 @@
             width: 115px;
             height: 115px;
             border-radius: 50%;
-            background-color: #646464;
+            background-color: $dove-gray;
           }
           .edit-icon {
             position: absolute;
@@ -78,9 +78,9 @@
             right: -10px;
             width: 40px;
             height: 40px;
-            background-color: #fff;
+            background-color: $color-white;
             border-radius: 50%;
-            color: #8999a9;
+            color: $bali-hai;
             display: flex;
             align-items: center;
             justify-content: center;
