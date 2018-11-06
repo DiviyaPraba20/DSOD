@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Store } from '@ngxs/store';
 import * as actions from '../../cms/actions';
 import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
+import { GetUserInfo } from '../auth/actions/auth.actions';
 import {
   CMSResponse,
   CMSPageContent,
@@ -22,7 +23,7 @@ import {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   isLoggedIn$ = this.authService.isLoggedIn$;
 
   featuredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
@@ -89,7 +90,19 @@ export class HomeComponent implements OnInit {
     this.sponsoredTopics$ = this.store.select(
       state => state.cms.sponsoredTopics
     );
+
+    this.isLoggedIn$.subscribe(res => {
+      if (res) {
+        const userInfo = this.authService.getUserInfoFromToken();
+        if (userInfo && userInfo.user_name) {
+          this.store.dispatch(new GetUserInfo({
+            email: userInfo.user_name
+          }));
+        }
+      }
+    });
   }
+
   ngOnDestroy() {
     this.store.dispatch(new actions.ResetState());
   }
