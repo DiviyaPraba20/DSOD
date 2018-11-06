@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsod-topic',
@@ -18,10 +19,17 @@ export class DSODTopicComponent implements OnInit {
   @Input()
   styleFor: string;
 
-  constructor() {}
+  constructor(private router: Router) {}
   ngOnInit() {}
 
   getIndex(content: string) {
     return content.indexOf('\n');
+  }
+  navigateTo(topic) {
+    if (topic.contentTypeName == 'Videos')
+      this.router.navigate(['./video', topic.id]);
+    else if (topic.contentTypeName == 'Podcasts')
+      this.router.navigate(['./podcast', topic.id]);
+    else this.router.navigate(['./article', topic.id]);
   }
 }

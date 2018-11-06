@@ -3,8 +3,8 @@
     <div class="col-md-5">
       <div class="latest-block-thumbnail">
         <img src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{latestTopic.featuredMediaId}}"
-          class="img-fluid" alt="Feautred Thumbnail Large">
-        <a href="" class="read-about">
+          class="img-fluid" alt="Feautred Thumbnail Large" (click)="navigateTo(latestTopic)">
+        <a href="javascript:void(0)" (click)="navigateTo(latestTopic)" class="read-about">
           <img src="assets/images/article-icon.png" alt="">
         </a>
       </div>
