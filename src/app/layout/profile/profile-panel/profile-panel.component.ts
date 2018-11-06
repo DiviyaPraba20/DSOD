@@ -25,13 +25,13 @@ export class ProfilePanelComponent implements OnInit {
   ngOnInit() {
     this.profilePanel$ = this.store.select(state => state.layout.isOpenedProfilePanel);
     this.isEditMode$ = this.store.select(state => state.layout.isEditProfile);
-    this.isLoggedIn$.subscribe(res => {
-      if (res) {
-        const userInfo = this.authService.getUserInfoFromToken();
-        this.store.dispatch(new GetUserInfo({
-          email: userInfo.user_name
-        }));
-      }
-    });
+    // this.isLoggedIn$.subscribe(res => {
+    //   if (res) {
+    //     const userInfo = this.authService.getUserInfoFromToken();
+    //     this.store.dispatch(new GetUserInfo({
+    //       email: userInfo.user_name
+    //     }));
+    //   }
+    // });
   }
 }
