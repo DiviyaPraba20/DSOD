@@ -12,6 +12,7 @@ import { ChangeProfileEditMode } from '../../actions/layout.actions';
 export class ProfileEditViewComponent implements OnInit {
   userProfile: UserProfileData = null;
   avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
+  croppedImage: any;
 
   constructor(
     private store: Store
@@ -25,5 +26,9 @@ export class ProfileEditViewComponent implements OnInit {
 
   saveProfile() {
     this.store.dispatch(new ChangeProfileEditMode(false));
+  }
+
+  selectFile(file) {
+
   }
 }

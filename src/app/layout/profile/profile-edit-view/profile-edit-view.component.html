@@ -8,12 +8,38 @@
       <i class="fa fa-save"></i>
     </div>
     <div class="section-container">
-      <div class="userInfo-container">
-        <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">
-        <div class="userInfo-wrapper">
-          <span class="userName">{{userProfile?.full_name}}</span>
-          <span class="role">Speciality</span>
-          <span class="job">{{userProfile?.specialty?.name}}</span>
+      <div class="profile-image-container">
+        <span class="profile-title">Profile Photo</span>
+        <div *ngIf="croppedImage; else elseBlock" class="avatar-container">
+          <img [src]="croppedImage">
+          <span class="edit-icon">
+            <i class="fa fa-pencil"></i>
+          </span>
+          <input type="file" (change)="selectFile($event)" accept="image/*"
+              class="upload-hidden">
+        </div>
+        <ng-template #elseBlock>
+          <div class="avatar-container">
+            <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">
+            <span class="edit-icon">
+              <i class="fa fa-pencil"></i>
+            </span>
+            <input type="file" (change)="selectFile($event)" accept="image/*"
+              class="upload-hidden">
+          </div>
+        </ng-template>
+      </div>
+      <div class="info-container">
+        <p class="title">Personal Info</p>
+        <div class="body-wrapper">
+          <div class="body-item-wrapper">
+            <div class="item-content">
+              <span class="title">Full Name</span>
+              <span class="content">
+                {{userProfile?.full_name}}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
