@@ -39,7 +39,7 @@ export enum CMSActions {
   ResetState = '[CMS] Reset State'
 }
 
-//actions for categories
+// actions for categories
 export class FetchCategories {
   static readonly type = CMSActions.FetchCategories;
   constructor() {}
@@ -57,7 +57,7 @@ export class FetchCategoriesFailure {
   constructor(public payload: Error) {}
 }
 
-//actions for content types
+// actions for content types
 export class FetchContentTypes {
   static readonly type = CMSActions.FetchContentTypes;
 
@@ -76,7 +76,7 @@ export class FetchContentTypesFailure {
   constructor(public payload: Error) {}
 }
 
-//actions for featured topics
+// actions for featured topics
 export class FetchFeaturedTopics {
   static readonly type = CMSActions.FetchFeaturedTopics;
 
@@ -93,7 +93,7 @@ export class FetchFeaturedTopicsFailure {
   constructor(public payload: Error) {}
 }
 
-//actions for latest topics
+// actions for latest topics
 export class FetchLatestTopics {
   static readonly type = CMSActions.FetchLatestTopics;
 
@@ -110,7 +110,7 @@ export class FetchLatestTopicsFailure {
   constructor(public payload: Error) {}
 }
 
-//actions for trendiing topics
+// actions for trendiing topics
 export class FetchTrendingTopics {
   static readonly type = CMSActions.FetchTrendingTopics;
 
@@ -127,7 +127,7 @@ export class FetchTrendingTopicsFailure {
   constructor(public payload: Error) {}
 }
 
-//actions for sponsored topics
+// actions for sponsored topics
 export class FetchSponsoredTopics {
   static readonly type = CMSActions.FetchSponsoredTopics;
 
@@ -144,7 +144,7 @@ export class FetchSponsoredTopicsFailure {
   constructor(public payload: Error) {}
 }
 
-//actions for podcasts
+// actions for podcasts
 export class FetchPodcasts {
   static readonly type = CMSActions.FetchPodcasts;
 
@@ -161,7 +161,7 @@ export class FetchPodcastsFailure {
   constructor(public payload: Error) {}
 }
 
-//actions for dsodentist sponsers
+// actions for dsodentist sponsers
 
 export class FetchSponsorsList {
   static readonly type = CMSActions.FetchSponsorsList;

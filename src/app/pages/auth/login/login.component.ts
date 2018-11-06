@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
 import { Store } from '@ngxs/store';
@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Login } from '../actions';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -33,6 +34,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store,
     private spinner: NgxSpinnerService,
+    private router: Router,
+    public zone: NgZone
   ) { }
 
   ngOnInit() {
@@ -61,5 +64,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       + `&client_id=${environment.LinkedIn.client_id}&redirect_uri=${environment.LinkedIn.redirect_uri}`
       + `&state=${environment.LinkedIn.state}`;
     window.open(link, '_self');
+  }
+
+  onSignup() {
+    this.zone.run(() => { this.router.navigate(['/signup']); });
   }
 }

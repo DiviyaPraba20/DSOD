@@ -13,23 +13,7 @@ import { Component, OnInit } from '@angular/core';
           <li>
             <share-button
               [theme]="'circles-dark'"
-              [button]="'email'"
-              [size]="-7"
-              [url]="currentUrl"
-            ></share-button>
-          </li>
-          <li>
-            <share-button
-              [theme]="'circles-dark'"
               [button]="'facebook'"
-              [size]="-7"
-              [url]="currentUrl"
-            ></share-button>
-          </li>
-          <li>
-            <share-button
-              [theme]="'circles-dark'"
-              [button]="'pinterest'"
               [size]="-7"
               [url]="currentUrl"
             ></share-button>

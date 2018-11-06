@@ -2,13 +2,13 @@ import { Action, State, StateContext, Store } from '@ngxs/store';
 import * as actions from '../actions';
 
 export interface State {
-    init: boolean;
+  init: boolean;
 }
 
 @State<State>({
     name: 'app',
     defaults: {
-        init: false,
+      init: false
     }
 })
 export class AppState {

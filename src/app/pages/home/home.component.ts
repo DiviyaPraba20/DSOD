@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
 import { Store } from '@ngxs/store';
 import * as actions from '../../cms/actions';
 import { Observable } from 'rxjs';
@@ -15,15 +16,15 @@ import {
   FetchTrendingTopics,
   FetchSponsoredTopics
 } from '../../cms/actions';
-import { CMSService } from 'src/app/cms/services/cms.service';
 
 @Component({
   selector: 'dsod-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  loggedIn: Observable<boolean>;
+export class HomeComponent implements OnInit {
+  isLoggedIn$ = this.authService.isLoggedIn$;
+
   featuredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   latestTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   trendingTopics$: Observable<CMSResponse<CMSPageContent[]>>;
@@ -34,20 +35,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     skip: 0
   };
 
-  constructor(private store: Store, private cmsService: CMSService) {
-    store.select(state => state.auth.isLoggedIn).subscribe(auth => {
-      this.store.dispatch(new actions.ResetState());
-      this.cmsService.isLoggedIn = auth;
-    });
+  constructor(private store: Store, private authService: AuthService) {
     store.dispatch(new actions.FetchContentTypes());
     store.dispatch(new actions.FetchSponsorsList());
     store
       .select(state => state.cms.contentTypes)
       .pipe(skip(1))
       .subscribe(item => {
-        let podcastTypeId = item.filter(o => o.name == 'Podcasts');
-        let videoTypeId = item.filter(o => o.name == 'Videos');
-        let articleTypeId = item.filter(o => o.name == 'Articles');
+        const podcastTypeId = item.filter(o => o.name === 'Podcasts');
+        const videoTypeId = item.filter(o => o.name === 'Videos');
+        const articleTypeId = item.filter(o => o.name === 'Articles');
         this.store.dispatch(
           new FetchFeaturedTopics({
             ...this.params,
@@ -85,7 +82,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loggedIn = this.store.select(state => state.auth.isLoggedIn);
     this.featuredTopics$ = this.store.select(state => state.cms.featuredTopics);
     this.latestTopics$ = this.store.select(state => state.cms.latestTopics);
     this.trendingTopics$ = this.store.select(state => state.cms.trendingTopics);

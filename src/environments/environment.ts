@@ -12,11 +12,7 @@ export const environment = {
     redirect_uri: 'http://localhost:4200/auth/linkedin',
     state: '987654321'
   },
-  url: 'https://devcmsapi1.dsodentist.com/content/contentservice/v1',
-  localStorage: {
-    prefix: 'dsod-app',
-    accessToken: 'access-token'
-  }
+  url: 'https://devcmsapi1.dsodentist.com/content/contentservice/v1'
 };
 
 /*

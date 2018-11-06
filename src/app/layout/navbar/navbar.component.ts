@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { NavbarService } from './services';
 import { Navigation } from './models';
 import * as authActions from '../../pages/auth/actions';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { UserProfileData } from '../profile/models/userProfile';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'dsod-navbar',
@@ -12,18 +15,22 @@ import * as authActions from '../../pages/auth/actions';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  userProfile: UserProfileData = null;
   navigation: Navigation[];
-  loggedIn: Observable<boolean>;
+  isLoggedIn$ = this.authService.isLoggedIn$;
+  avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
 
   constructor(
     private service: NavbarService,
-    private store: Store
+    private store: Store,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.navigation = this.service.getNavItems();
-    this.loggedIn = this.store.select(state => state.auth.isLoggedIn);
+    this.store.select(state => state.auth.userInfo).subscribe(res => {
+      this.userProfile = res;
+    });
   }
 
   toggleProfilePanel() {
