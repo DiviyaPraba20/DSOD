@@ -9,6 +9,12 @@
       <h3 class="podcasts-title">Podcasts</h3>
       <tabset>
         <tab heading="New" class="mt-2" (select)="onSelect($event)">
+          <a href="javascript:void(0)" class="pod-left-control" (click)="updateAuthors()">
+            <img src="assets/images/arrow-left.png" alt="">
+          </a>
+          <a href="javascript:void(0)" class="pod-right-control" (click)="updateAuthors()">
+            <img src="assets/images/arrow-right.png" alt="">
+          </a>
           <div class="row">
             <div class="col-xl-6">
               <div class="featured-podcasts-block">
@@ -28,9 +34,19 @@
             </div>
             <div class="col-xl-6">
               <div class="row">
-                <div class="col-sm-4" *ngFor="let number of [1,2,3,4,5,6,7,8,9]">
-                  <dsod-podcasts-by></dsod-podcasts-by>
+                <div class="col-sm-4" *ngFor="let author of authors | slice:indexStart:indexEnd">
+                  <dsod-podcasts-by [author]="author"></dsod-podcasts-by>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="podcasts-pagination">
+                <ul>
+                  <li *ngFor="let number of [1, 2]; let i=index" [ngClass]="{'active':number==activePage}"><button
+                      class="btn btn-default" (click)="podcastPagination($event, number)">{{number}}</button></li>
+                </ul>
               </div>
             </div>
           </div>

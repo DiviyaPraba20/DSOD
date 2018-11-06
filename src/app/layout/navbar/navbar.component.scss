@@ -9,6 +9,7 @@
   left: 0;
   margin: 0 auto;
   width: 100%;
+  transition: 0.3s ease all;
 
   nav.navbar {
     padding: 0.5rem 0;
@@ -183,4 +184,9 @@
       }
     }
   }
+}
+
+
+.bg-dark-scroll {
+  background: rgba(0, 0, 0, 0.95);
 }

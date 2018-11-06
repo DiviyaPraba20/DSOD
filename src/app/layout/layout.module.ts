@@ -12,14 +12,10 @@ import { SearchBoxDirective } from './directives/search-box.directive';
 import { ProfilePanelComponent } from './profile/profile-panel/profile-panel.component';
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-edit-view.component';
+import { OnScrollUpdateBgDirective } from './directives/update-nav-bg.directive';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    NgbModule,
-    NgSelectModule
-  ],
+  imports: [CommonModule, RouterModule, NgbModule, NgSelectModule],
   declarations: [
     LayoutComponent,
     NavbarComponent,
@@ -27,7 +23,8 @@ import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-ed
     SearchBoxDirective,
     ProfilePanelComponent,
     ProfileViewComponent,
-    ProfileEditViewComponent
+    ProfileEditViewComponent,
+    OnScrollUpdateBgDirective
   ],
   exports: [
     NavbarComponent,

@@ -32,17 +32,6 @@ export class DSODPodcastComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.pageContent$ = this.store.select(state => state.cms.pageContent);
-    this.pageContent$.pipe(skip(1)).subscribe(item => {
-      this.content = item;
-      this.store.dispatch(
-        new actions.FetchPodcasts({
-          ...this.params,
-          contentTypeId: '30',
-          authorId: this.content.authorId
-        })
-      );
-    });
-
     this.podCasts$ = this.store.select(state => state.cms.podcasts);
   }
 
