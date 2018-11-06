@@ -3,7 +3,7 @@
   <a class="latest-block" *ngIf="latestTopics.length" href="javascript:void(0)" (click)="navigateTo(latestTopics[0])">
     <div class="latest-block-header">
       <h4>{{latestTopics[0].categoryName}}</h4>
-      <dsod-rating></dsod-rating>
+      <dsod-rating [rating]="latestTopics[0].avgCommentRating"></dsod-rating>
     </div>
     <div class="latest-block-thumbnail">
       <img src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{latestTopics[0].featuredMediaId}}"

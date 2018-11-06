@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'dsod-add-review',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-review-modal.component.scss']
 })
 export class DSODAddReviewComponent {
-  constructor() {}
-  submitReview() {}
+  constructor(public activeModal: NgbActiveModal) {}
+  submitReview() {
+    this.activeModal.close();
+  }
+  closeModal() {
+    this.activeModal.close();
+  }
 }

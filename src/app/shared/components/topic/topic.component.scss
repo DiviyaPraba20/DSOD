@@ -59,7 +59,12 @@
         display: inline-block;
         left: 25px;
         bottom: 25px;
+
+        >img {
+          max-width: 42px;
+        }
       }
+
     }
 
     .feautred-block-content {
@@ -140,7 +145,7 @@
 
   .feautred-block-lg {
     .feautred-block-thumbnail {
-      >img {
+      img {
         object-fit: unset;
         height: 100%;
         width: 100%;
