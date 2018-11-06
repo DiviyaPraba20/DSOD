@@ -6,12 +6,8 @@ import { CMSPageContent } from 'src/app/cms/models';
   templateUrl: './featured-topics.component.html',
   styleUrls: ['./featured-topics.component.scss']
 })
-export class DSODFeaturedTopicsComponent implements OnChanges {
+export class DSODFeaturedTopicsComponent {
   @Input()
   featuredTopics: CMSPageContent[];
   constructor() {}
-
-  ngOnChanges() {
-    console.log(this.featuredTopics);
-  }
 }
