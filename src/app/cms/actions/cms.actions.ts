@@ -32,7 +32,7 @@ export enum CMSActions {
   FetchPageContent = '[CMS] Fetch Page Content',
   FetchPageContentSuccess = '[CMS] Fetch Page Content Success',
   FetchPageContentFailure = '[CMS] Fetch Page Content Failuer',
-  //for the list of sponsers
+  // for the list of sponsers
   FetchSponsorsList = '[CMS] Fetch sponsers',
   FetchSponsorsListSuccess = '[CMS] Fetch sponsers Success',
   FetchSponsorsListFailure = '[CMS] Fetch sponsers Failuure',
@@ -178,7 +178,7 @@ export class FetchSponsorsListFailure {
 
   constructor(public payload: Error) {}
 }
-//page content
+// page content
 export class FetchPageContent {
   static readonly type = CMSActions.FetchPageContent;
 

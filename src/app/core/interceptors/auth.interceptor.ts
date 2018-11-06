@@ -13,9 +13,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthInterceptor implements HttpInterceptor {
-
-  private accessToken: string = this.store.selectSnapshot<string>(AuthState.accessToken);
-
   constructor(
     private router: Router,
     private store: Store,
@@ -25,7 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
   exclude = ['login', 'register'];
 
   applyAccessToken(request) {
-    return request.clone({ headers: request.headers.set('Authorization', `Bearer ${this.accessToken}`), withCredentials: null});
+    return request.clone({ headers: request.headers.set('Authorization', `Bearer ${this.authService.accessToken}`), withCredentials: null});
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -41,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
     if (req.withCredentials) {
-      if (!this.accessToken) {
+      if (!this.authService.accessToken) {
         this.store.dispatch(new Unauthorized());
         return throwError({message: 'Current Session has been expired. Please login again.'});
       }
