@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
 import { UserProfileData } from '../models/userProfile';
 import { environment } from 'src/environments/environment';
+import { ChangeProfileEditMode } from '../../actions/layout.actions';
 
 @Component({
   selector: 'dsod-profile-view',
@@ -23,4 +23,7 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  editProfile() {
+    this.store.dispatch(new ChangeProfileEditMode(true));
+  }
 }

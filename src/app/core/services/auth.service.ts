@@ -37,17 +37,17 @@ export class AuthService {
     const token = this.store.selectSnapshot<string>(AuthState.accessToken);
     return token;
   }
+
   get isLoggedIn() {
     const loggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
-
     return loggedIn;
   }
 
   getUserInfoFromToken() {
     if (this.accessToken) {
-        const userInfo = this.jwtHelper.decodeToken(this.accessToken);
-        return userInfo || {};
-      }
+      const userInfo = this.jwtHelper.decodeToken(this.accessToken);
+      return userInfo || {};
+    }
   }
 
   parseFormData(data: any) {

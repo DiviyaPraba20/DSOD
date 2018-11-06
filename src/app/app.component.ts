@@ -12,7 +12,6 @@ import * as actions from './actions';
 })
 export class AppComponent implements OnInit {
   title = 'DSODDesktop';
-  isOpenedProfilePanel: Observable<boolean>;
 
   constructor(
     private store: Store

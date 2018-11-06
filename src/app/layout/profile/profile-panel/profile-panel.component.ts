@@ -5,7 +5,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { GetUserInfo } from '../../../pages/auth/actions/auth.actions';
 import { AuthService } from '../../../core/services/auth.service';
-import { AuthState } from '../../../pages/auth/states/auth.state';
 
 @Component({
   selector: 'dsod-profile-panel',
@@ -13,8 +12,8 @@ import { AuthState } from '../../../pages/auth/states/auth.state';
   styleUrls: ['./profile-panel.component.scss']
 })
 export class ProfilePanelComponent implements OnInit {
-  isEditMode = false;
-  profilePanel: Observable<boolean>;
+  isEditMode$: Observable<boolean>;
+  profilePanel$: Observable<boolean>;
   jwtHelper = new JwtHelperService();
   isLoggedIn$ = this.authService.isLoggedIn$;
 
@@ -24,7 +23,8 @@ export class ProfilePanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.profilePanel = this.store.select(state => state.auth.isOpenedProfilePanel);
+    this.profilePanel$ = this.store.select(state => state.layout.isOpenedProfilePanel);
+    this.isEditMode$ = this.store.select(state => state.layout.isEditProfile);
     this.isLoggedIn$.subscribe(res => {
       if (res) {
         const userInfo = this.authService.getUserInfoFromToken();
