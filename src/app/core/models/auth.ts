@@ -51,3 +51,7 @@ export interface UserInfoPayload {
 export interface UserInfoResponse extends Response {
   resultMap: any;
 }
+
+export interface ProfileTypesResponse extends Response {
+  resultMap: any;
+}

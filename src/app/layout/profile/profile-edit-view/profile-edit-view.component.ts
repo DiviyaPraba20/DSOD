@@ -3,6 +3,7 @@ import { Store } from '@ngxs/store';
 import { UserProfileData } from '../models/userProfile';
 import { environment } from 'src/environments/environment';
 import { ChangeProfileEditMode } from '../../actions/layout.actions';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'dsod-profile-edit-view',
@@ -16,27 +17,20 @@ export class ProfileEditViewComponent implements OnInit {
   isAddNewExperience = false;
   isAddNewResidency = false;
   isAddNewEducation = false;
-  specialities = [{
-    id: 0,
-    name: 'Dental Public Health'
-  }, {
-    id: 1,
-    name: 'Endodonitics'
-  }, {
-    id: 2,
-    name: 'Orthodonitics'
-  }, {
-    id: 3,
-    name: 'Periodonitics'
-  }];
+  specialities: any[] = [];
 
   constructor(
-    private store: Store
+    private store: Store,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.store.select(state => state.auth.userInfo).subscribe(res => {
       this.userProfile = res;
+    });
+
+    this.authService.getAllSpeciality().pipe().subscribe(res => {
+      this.specialities = res.resultMap.data;
     });
   }
 
