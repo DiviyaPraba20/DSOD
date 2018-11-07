@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'dsod-rating',
@@ -14,14 +14,24 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./rating.component.scss']
 })
 export class DSODRatingComponent {
+  regex = /[+-]?\d+(\.\d+)?/g;
   _rating: any;
   @Input()
   clickAble: boolean;
+  @Output()
+  updateRating = new EventEmitter();
 
   @Input('rating')
   set rating(value: any) {
-    if (parseInt(value)) this._rating = value;
-    else this._rating = null;
+    let rating;
+    if (typeof value == 'string') {
+      rating = value.match(this.regex).map(v => {
+        return parseFloat(v);
+      });
+      this._rating = rating[0];
+    } else {
+      this._rating = value;
+    }
   }
 
   get rating() {
@@ -32,7 +42,11 @@ export class DSODRatingComponent {
 
   onClick(e, value) {
     if (this.clickAble) {
+      if (value == this.rating) {
+        value -= 1;
+      }
       this.rating = value;
+      this.updateRating.emit(this.rating);
     }
   }
 }

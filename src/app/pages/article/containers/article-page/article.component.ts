@@ -8,6 +8,7 @@ import {
   CMSPageContent
 } from 'src/app/cms/models';
 import { Observable } from 'rxjs';
+import { AuthState } from 'src/app/pages/auth/states/auth.state';
 @Component({
   selector: 'dsod-article',
   templateUrl: './article.component.html',
@@ -20,7 +21,9 @@ export class DSODArticelComponent implements OnInit, OnDestroy {
   };
   contentId: string;
   pageContent$: Observable<CMSResponse<any>>;
+  isLoggedIn: boolean;
   constructor(private _route: ActivatedRoute, private store: Store) {
+    this.isLoggedIn = store.selectSnapshot(AuthState.isLoggedIn);
     _route.params.subscribe(r => {
       this.contentId = r.id;
     });

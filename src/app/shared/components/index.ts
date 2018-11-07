@@ -12,6 +12,8 @@ import { DSODDownloadComponent } from './content-action/download.component';
 import { DSODShareComponent } from './content-action/share.component';
 import { DSODRatingReviewComponent } from './reviews/reviews.component';
 import { DSODAddReviewComponent } from './reviews/add-review/add-review-modal.component';
+import { DSODContentAuthorComponent } from './author/author.component';
+import { DSODComingSoonComponent } from './coming soon/coming-soon.component';
 export * from '././reviews/add-review/add-review-modal.component';
 
 export const SHARED_COMPONENTS = [
@@ -28,5 +30,7 @@ export const SHARED_COMPONENTS = [
   DSODDownloadComponent,
   DSODShareComponent,
   DSODRatingReviewComponent,
-  DSODAddReviewComponent
+  DSODAddReviewComponent,
+  DSODContentAuthorComponent,
+  DSODComingSoonComponent
 ];

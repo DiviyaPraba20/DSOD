@@ -26,7 +26,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-9">
-    <dsod-article-reviews></dsod-article-reviews>
+  <div class="col-lg-9" *ngIf="isLoggedIn">
+    <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
   </div>
 </div>

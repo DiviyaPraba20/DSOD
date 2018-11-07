@@ -1,21 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12" *ngIf="content">
       <div class="podcast-intro p-t-115">
         <dsod-podcast-header [content]="pageContent$ | async"></dsod-podcast-header>
         <h2 class="page-heading">Overview</h2>
         <div class="podcast-player" *ngIf="content">
           <div class="row">
             <div class="col-lg-2">
-              <div class="speaker-thumbnail">
-                <img src="assets/images/speaker-avi.png" class="img-fluid" alt="">
-              </div>
-              <div class="speaker-name">
-                <span>Christina Calleros, RDH, MS</span>
-              </div>
+              <dsod-content-author [authorId]="content.authorId"></dsod-content-author>
             </div>
             <div class="col-lg-8">
-              <dsod-audio-player [content]="content"></dsod-audio-player>
+              <dsod-audio-player [content]="pageContent$ | async"></dsod-audio-player>
             </div>
             <div class="col-lg-2">
               <dsod-content-actions></dsod-content-actions>
@@ -27,7 +22,7 @@
   </div>
   <div class="row">
     <div class="col-xl-8 col-lg-12">
-      <dsod-podcast-content [content]="pageContent$ | async"></dsod-podcast-content>
+      <dsod-podcast-content [content]="content"></dsod-podcast-content>
       <dsod-podcast-tabs [content]="pageContent$ | async"></dsod-podcast-tabs>
     </div>
     <div class="col-xl-4 col-lg-12">

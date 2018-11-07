@@ -6,3 +6,14 @@ export interface DSODSliderContent extends DSODContent {
   src: string;
   url: string;
 }
+export interface DSODContentAuthor {
+  _id: string;
+  sort: number;
+  firstName: string;
+  lastName: string;
+  authorDetails: String;
+  email: string;
+  cellPhone: number;
+  role: string;
+  objectId: any;
+}
