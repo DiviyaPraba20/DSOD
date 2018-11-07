@@ -20,6 +20,7 @@ import { AuthModule } from './pages/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { CMSModule } from './cms/cms.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,12 +32,12 @@ import { CMSModule } from './cms/cms.module';
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production || false
     }),
-
     NgxsStoragePluginModule.forRoot({ key: ['auth'] }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     LayoutModule,
     SharedModule,
     CoreModule.forRoot(),
