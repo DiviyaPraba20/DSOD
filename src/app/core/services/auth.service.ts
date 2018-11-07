@@ -126,4 +126,16 @@ export class AuthService {
     const formData = this.parseFormData({ name: '' });
     return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
   }
+
+  getAllResidencies(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/residencySpecialty/findAllResidency`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
+
+  getAllDentalSchools(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/dentalSchool/getAll`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
 }

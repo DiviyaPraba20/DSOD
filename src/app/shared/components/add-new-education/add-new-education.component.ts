@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'dsod-add-new-education',
@@ -8,9 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DSODAddNewEducationComponent implements OnInit {
   @Input() show = false;
 
-  constructor() { }
+  detenSchoolList: any[] = [];
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.authService.getAllDentalSchools().pipe().subscribe(res => {
+      this.detenSchoolList = res.resultMap.data;
+    });
   }
 
 }

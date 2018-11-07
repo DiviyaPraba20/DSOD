@@ -1,3 +1,5 @@
+@import "variables";
+
 .add-new-ex-container {
   overflow: hidden;
   max-height: 0;
@@ -23,13 +25,13 @@
         flex: 1 1 auto;
         border: none;
         background-color: transparent;
-        color: #ffffff;
+        color: $color-white;
         padding: 0;
         outline: none;
         min-height: 25px;
-        border-bottom: 1px solid #929090;
+        border-bottom: 1px solid $gray;
         &::placeholder {
-          color: #929090;
+          color: $gray;
         }
       }
       .icon-calendar-wrap {

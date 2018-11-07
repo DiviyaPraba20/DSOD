@@ -1,5 +1,23 @@
 <div class="add-new-education-container" [ngClass]="{'show': show}">
-  <p>
-    add-new-education works!
-  </p>
+  <div class="new-item-container">
+    <p class="title">Dental School</p>
+    <div class="item-body">
+      <ng-select
+        class="custom-select"
+        [items]="detenSchoolList"
+        appendTo="body"
+        bindLabel="name"
+        bindValue="id"
+        class="select-item"
+        placeholder="Select Dental school">
+      </ng-select>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <span class="title">Year of Graduation</span>
+    <div class="input-group">
+      <input type="text">
+      <span class="fa fa-pencil"></span>
+    </div>
+  </div>
 </div>

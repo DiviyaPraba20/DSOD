@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'dsod-add-new-residency',
@@ -8,9 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DSODAddNewResidencyComponent implements OnInit {
   @Input() show = false;
 
-  constructor() { }
+  residencyList: any[] = [];
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.authService.getAllResidencies().pipe().subscribe(res => {
+      this.residencyList = res.resultMap.data;
+    });
   }
 
 }

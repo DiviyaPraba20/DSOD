@@ -1,8 +1,31 @@
+@import "variables";
+
 .add-new-education-container {
   overflow: hidden;
   max-height: 0;
   transition: ease max-height 500ms;
   &.show {
-    max-height: 100px;
+    max-height: 500px;
+  }
+  .title {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  .input-group {
+    border-bottom: 1px solid $gray;
+    align-items: center;
+    input {
+      position: relative;
+      flex: 1 1 auto;
+      border: none;
+      background-color: transparent;
+      color: $alto;
+      padding: 0;
+      outline: none;
+      min-height: 25px;
+    }
+    span {
+      font-size: 18px;
+    }
   }
 }
