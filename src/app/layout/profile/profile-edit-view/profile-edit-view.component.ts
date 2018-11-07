@@ -13,6 +13,9 @@ export class ProfileEditViewComponent implements OnInit {
   userProfile: UserProfileData = null;
   avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
   croppedImage: any;
+  isAddNewExperience = false;
+  isAddNewResidency = false;
+  isAddNewEducation = false;
   specialities = [{
     id: 0,
     name: 'Dental Public Health'

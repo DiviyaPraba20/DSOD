@@ -63,6 +63,176 @@
     </div>
     <div class="section-container">
       <div class="info-container">
+        <p class="title">Upload resume or import Data</p>
+        <div class="body-wrapper">
+          <div class="body-item-wrapper">
+            <div class="icon-body-item upload-resume-background">
+              <img src="./assets/images/icons/icon_upload.png">
+            </div>
+            <div class="item-content">
+              <span class="title">Upload resume</span>
+              <span class="content">Your professional information will be imported automatically</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-container">
+      <div class="info-container">
+        <p class="title">Experience</p>
+        <div class="body-wrapper" *ngIf="userProfile?.experiences.length; else noExperience">
+          <div class="body-item-wrapper" *ngFor="let experience of userProfile?.experiences">
+            <div class="icon-body-item gray-background">
+              <img src="./assets/images/icons/icon_experience_active.png">
+            </div>
+            <div class="item-content">
+              <span class="title">{{experience.practice_Role?.name}}</span>
+              <span class="content">{{experience.practice_DSO?.name}}</span>
+              <span class="content" *ngIf="experience?.end_time">
+                {{experience?.start_time | date:"MMM yyyy":'+0000'}} - {{experience?.end_time | date:"MMM yyyy":'+0000'}}
+              </span>
+              <span class="content" *ngIf="!experience?.end_time">
+                {{experience?.start_time | date:"MMM yyyy":'+0000'}} - Present
+              </span>
+            </div>
+            <div class="icon-add-new" *ngIf="!isAddNewExperience" (click)="isAddNewExperience = true">
+              <img src="./assets/images/icons/icon_add_new.png">
+            </div>
+            <div class="icon-add-new" *ngIf="isAddNewExperience" (click)="isAddNewExperience = false">
+              <img src="./assets/images/icons/icon_close_new.png">
+            </div>
+          </div>
+          <div class="add-new-item-container">
+            <dsod-add-new-experience [show]="isAddNewExperience"></dsod-add-new-experience>
+          </div>
+        </div>
+        <ng-template #noExperience>
+          <div class="body-wrapper">
+            <div class="body-item-wrapper">
+              <div class="icon-body-item gray-background">
+                <img src="./assets/images/icons/icon_experience_active.png">
+              </div>
+              <div class="item-content">
+                <span class="content">No experience added yet.</span>
+              </div>
+              <div class="icon-add-new" *ngIf="!isAddNewExperience" (click)="isAddNewExperience = true">
+                <img src="./assets/images/icons/icon_add_new.png">
+              </div>
+              <div class="icon-add-new" *ngIf="isAddNewExperience" (click)="isAddNewExperience = false">
+                <img src="./assets/images/icons/icon_close_new.png">
+              </div>
+            </div>
+            <div class="add-new-item-container">
+              <dsod-add-new-experience [show]="isAddNewExperience"></dsod-add-new-experience>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="section-container">
+      <div class="info-container">
+        <p class="title">Residency</p>
+        <div class="body-wrapper" *ngIf="userProfile?.profileResidency.length; else noResidency">
+          <div class="body-item-wrapper" *ngFor="let residency of userProfile?.profileResidency">
+            <div class="icon-body-item gray-background">
+              <img src="./assets/images/icons/icon_location_active.png">
+            </div>
+            <div class="item-content">
+              <span class="title">{{residency.dental_School?.name}}</span>
+              <span class="content" *ngIf="residency?.end_time">
+                {{residency?.start_time | date:"MMM yyyy":'+0000'}} - {{residency?.end_time | date:"MMM yyyy":'+0000'}}
+              </span>
+              <span class="content" *ngIf="!residency?.end_time">
+                {{residency?.start_time | date:"MMM yyyy":'+0000'}} - Present
+              </span>
+            </div>
+            <div class="icon-add-new" *ngIf="!isAddNewResidency" (click)="isAddNewResidency = true">
+              <img src="./assets/images/icons/icon_add_new.png">
+            </div>
+            <div class="icon-add-new" *ngIf="isAddNewResidency" (click)="isAddNewResidency = false">
+              <img src="./assets/images/icons/icon_close_new.png">
+            </div>
+          </div>
+          <div class="add-new-item-container">
+            <dsod-add-new-residency [show]="isAddNewResidency"></dsod-add-new-residency>
+          </div>
+        </div>
+        <ng-template #noResidency>
+          <div class="body-wrapper">
+            <div class="body-item-wrapper">
+              <div class="icon-body-item gray-background">
+                <img src="./assets/images/icons/icon_location_active.png">
+              </div>
+              <div class="item-content">
+                <span class="content">No residency added yet.</span>
+              </div>
+              <div class="icon-add-new" *ngIf="!isAddNewResidency" (click)="isAddNewResidency = true">
+                <img src="./assets/images/icons/icon_add_new.png">
+              </div>
+              <div class="icon-add-new" *ngIf="isAddNewResidency" (click)="isAddNewResidency = false">
+                <img src="./assets/images/icons/icon_close_new.png">
+              </div>
+            </div>
+            <div class="add-new-item-container">
+              <dsod-add-new-residency [show]="isAddNewResidency"></dsod-add-new-residency>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="section-container">
+      <div class="info-container">
+        <p class="title">Education</p>
+        <div class="body-wrapper" *ngIf="userProfile?.educations.length; else noEducation">
+          <div class="body-item-wrapper" *ngFor="let education of userProfile?.educations">
+            <div class="icon-body-item gray-background">
+              <img src="./assets/images/icons/icon_education_active.png">
+            </div>
+            <div class="item-content">
+              <span class="title">{{education.school_name}}</span>
+              <span class="content" *ngIf="education?.end_time">
+                {{education?.start_time | date:"MMM yyyy":'+0000'}} - {{education?.end_time | date:"MMM yyyy":'+0000'}}
+              </span>
+              <span class="content" *ngIf="!education?.end_time">
+                {{education?.start_time | date:"MMM yyyy":'+0000'}} - Present
+              </span>
+            </div>
+            <div class="icon-add-new" *ngIf="!isAddNewEducation" (click)="isAddNewEducation = true">
+              <img src="./assets/images/icons/icon_add_new.png">
+            </div>
+            <div class="icon-add-new" *ngIf="isAddNewEducation" (click)="isAddNewEducation = false">
+              <img src="./assets/images/icons/icon_close_new.png">
+            </div>
+          </div>
+          <div class="add-new-item-container">
+            <dsod-add-new-education [show]="isAddNewEducation"></dsod-add-new-education>
+          </div>
+        </div>
+        <ng-template #noEducation>
+          <div class="body-wrapper">
+            <div class="body-item-wrapper">
+              <div class="icon-body-item gray-background">
+                <img src="./assets/images/icons/icon_education_active.png">
+              </div>
+              <div class="item-content">
+                <span class="content">No education added yet.</span>
+              </div>
+              <div class="icon-add-new" *ngIf="!isAddNewEducation" (click)="isAddNewEducation = true">
+                <img src="./assets/images/icons/icon_add_new.png">
+              </div>
+              <div class="icon-add-new" *ngIf="isAddNewEducation" (click)="isAddNewEducation = false">
+                <img src="./assets/images/icons/icon_close_new.png">
+              </div>
+            </div>
+            <div class="add-new-item-container">
+              <dsod-add-new-education [show]="isAddNewEducation"></dsod-add-new-education>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="section-container">
+      <div class="info-container">
         <p class="title">Contact Info</p>
         <div class="body-wrapper">
           <div class="body-item-wrapper">
@@ -102,106 +272,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="section-container">
-      <div class="info-container">
-        <p class="title">Experience</p>
-        <div class="body-wrapper" *ngIf="userProfile?.experiences.length; else noExperience">
-          <div class="body-item-wrapper" *ngFor="let experience of userProfile?.experiences">
-            <div class="icon-body-item gray-background">
-              <img src="./assets/images/icons/icon_experience_active.png">
-            </div>
-            <div class="item-content">
-              <span class="title">{{experience.practice_Role?.name}}</span>
-              <span class="content">{{experience.practice_DSO?.name}}</span>
-              <span class="content" *ngIf="experience?.end_time">
-                {{experience?.start_time | date:"MMM yyyy":'+0000'}} - {{experience?.end_time | date:"MMM yyyy":'+0000'}}
-              </span>
-              <span class="content" *ngIf="!experience?.end_time">
-                {{experience?.start_time | date:"MMM yyyy":'+0000'}} - Present
-              </span>
-            </div>
-          </div>
-        </div>
-        <ng-template #noExperience>
-          <div class="body-wrapper">
-            <div class="body-item-wrapper">
-              <div class="icon-body-item gray-background">
-                <img src="./assets/images/icons/icon_experience_active.png">
-              </div>
-              <div class="item-content">
-                <span class="content">No experience added yet.</span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </div>
-    </div>
-    <div class="section-container">
-      <div class="info-container">
-        <p class="title">Residency</p>
-        <div class="body-wrapper" *ngIf="userProfile?.profileResidency.length; else noResidency">
-          <div class="body-item-wrapper" *ngFor="let residency of userProfile?.profileResidency">
-            <div class="icon-body-item gray-background">
-              <img src="./assets/images/icons/icon_location_active.png">
-            </div>
-            <div class="item-content">
-              <span class="title">{{residency.dental_School?.name}}</span>
-              <span class="content" *ngIf="residency?.end_time">
-                {{residency?.start_time | date:"MMM yyyy":'+0000'}} - {{residency?.end_time | date:"MMM yyyy":'+0000'}}
-              </span>
-              <span class="content" *ngIf="!residency?.end_time">
-                {{residency?.start_time | date:"MMM yyyy":'+0000'}} - Present
-              </span>
-            </div>
-          </div>
-        </div>
-        <ng-template #noResidency>
-          <div class="body-wrapper">
-            <div class="body-item-wrapper">
-              <div class="icon-body-item gray-background">
-                <img src="./assets/images/icons/icon_location_active.png">
-              </div>
-              <div class="item-content">
-                <span class="content">No residency added yet.</span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </div>
-    </div>
-    <div class="section-container">
-      <div class="info-container">
-        <p class="title">Education</p>
-        <div class="body-wrapper" *ngIf="userProfile?.educations.length; else noEducation">
-          <div class="body-item-wrapper" *ngFor="let education of userProfile?.educations">
-            <div class="icon-body-item gray-background">
-              <img src="./assets/images/icons/icon_education_active.png">
-            </div>
-            <div class="item-content">
-              <span class="title">{{education.school_name}}</span>
-              <span class="content" *ngIf="education?.end_time">
-                {{education?.start_time | date:"MMM yyyy":'+0000'}} - {{education?.end_time | date:"MMM yyyy":'+0000'}}
-              </span>
-              <span class="content" *ngIf="!education?.end_time">
-                {{education?.start_time | date:"MMM yyyy":'+0000'}} - Present
-              </span>
-            </div>
-          </div>
-        </div>
-        <ng-template #noEducation>
-          <div class="body-wrapper">
-            <div class="body-item-wrapper">
-              <div class="icon-body-item gray-background">
-                <img src="./assets/images/icons/icon_education_active.png">
-              </div>
-              <div class="item-content">
-                <span class="content">No education added yet.</span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
       </div>
     </div>
   </div>

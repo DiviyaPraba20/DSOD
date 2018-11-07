@@ -1,0 +1,8 @@
+.add-new-residency-container {
+  overflow: hidden;
+  max-height: 0;
+  transition: ease max-height 500ms;
+  &.show {
+    max-height: 100px;
+  }
+}

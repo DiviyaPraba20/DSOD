@@ -13,9 +13,10 @@ import { ProfilePanelComponent } from './profile/profile-panel/profile-panel.com
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-edit-view.component';
 import { OnScrollUpdateBgDirective } from './directives/update-nav-bg.directive';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule, NgSelectModule],
+  imports: [CommonModule, RouterModule, NgbModule, NgSelectModule, SharedModule],
   declarations: [
     LayoutComponent,
     NavbarComponent,
