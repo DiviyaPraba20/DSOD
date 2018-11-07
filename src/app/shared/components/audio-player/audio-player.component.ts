@@ -85,6 +85,7 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if(this.player)
     this.player.destroy();
   }
 }
