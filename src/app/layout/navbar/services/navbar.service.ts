@@ -12,10 +12,10 @@ export class NavbarService {
       },
       {
         title: 'Education',
-        link: 'events'
+        link: 'education'
       },
       {
-        title: 'DDO Practice',
+        title: 'DSO Practice',
         link: 'practice'
       },
       {

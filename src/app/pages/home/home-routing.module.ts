@@ -5,6 +5,7 @@ import { DSODArticelComponent } from '../article/containers';
 import { DSODPodcastComponent } from '../podcast/containers';
 import { DSODVideoPageComponent } from '../video/containers/video-page/video-page.component';
 import { DSODEventsPageComponent } from '../events/containers';
+import { DSODComingSoonComponent } from 'src/app/shared/components/coming soon/coming-soon.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,26 @@ const routes: Routes = [
   {
     path: 'video/:id',
     component: DSODVideoPageComponent
+  },
+  {
+    path: 'education',
+    component: DSODComingSoonComponent
+  },
+  {
+    path: 'practice',
+    component: DSODComingSoonComponent
+  },
+  {
+    path: 'sponsers',
+    component: DSODComingSoonComponent
+  },
+  {
+    path: 'development',
+    component: DSODComingSoonComponent
+  },
+  {
+    path: 'community',
+    component: DSODComingSoonComponent
   }
 ];
 

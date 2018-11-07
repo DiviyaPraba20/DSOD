@@ -5,6 +5,13 @@ export interface CMSContentTypeModel {
   name: string;
   sort: number;
 }
+export interface DSODComment {
+  email: string;
+  comment_rating: number;
+  comment_text: string;
+  content_id: string;
+  create_time: Date;
+}
 
 export interface CMSPageContent {
   id: string;
@@ -30,8 +37,8 @@ export interface CMSPageContent {
   nextContentId: string;
   previousContentId: string;
   countOfComment: number;
-  avgCommentRating: number;
-  comment: string;
+  avgCommentRating: string;
+  comment: DSODComment[];
   publishDate: Date;
   isFeatured: boolean;
   readNumber: number;

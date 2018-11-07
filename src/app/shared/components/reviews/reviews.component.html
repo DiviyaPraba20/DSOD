@@ -6,67 +6,28 @@
   </div>
   <div class="reviews-avg">
     <div class="">
-      <h4>6 reviews</h4>
+      <h4>{{reviewsCount}} reviews</h4>
       <div class="rating-points d-flex align-items-center">
-        <dsod-rating></dsod-rating> <span class="points ml-2">4.7</span>
+        <dsod-rating [rating]="avgRating"></dsod-rating> <span *ngIf="avgRating" class="points ml-2">{{avgRating[0]}}</span>
       </div>
     </div>
-    <div class="">
-      <a href="#">View all</a>
+    <div *ngIf="commentsLength > 4">
+      <a href="javascript:void(0)" (click)="showAllComments()">{{(toIndex==4?'View all':'View less')}}</a>
     </div>
   </div>
   <div class="all-reviews">
     <ul>
-      <li>
+      <li *ngFor="let comment of comments$ | async |slice :0:toIndex">
         <div class="reviewer-avi">
           <img src="assets/images/reviewer.png" alt="">
         </div>
         <div class="review-content">
           <h4>
-            Slobdan rated it
-            <dsod-rating></dsod-rating>
+            {{comment.email}}
+            <dsod-rating [rating]="comment.comment_rating"></dsod-rating>
           </h4>
-          <span>12 oct, 2018</span>
-          <p>Wonderful</p>
-        </div>
-      </li>
-      <li>
-        <div class="reviewer-avi">
-          <img src="assets/images/reviewer.png" alt="">
-        </div>
-        <div class="review-content">
-          <h4>
-            Slobdan rated it
-            <dsod-rating></dsod-rating>
-          </h4>
-          <span>12 oct, 2018</span>
-          <p>Wonderful</p>
-        </div>
-      </li>
-      <li>
-        <div class="reviewer-avi">
-          <img src="assets/images/reviewer.png" alt="">
-        </div>
-        <div class="review-content">
-          <h4>
-            Slobdan rated it
-            <dsod-rating></dsod-rating>
-          </h4>
-          <span>12 oct, 2018</span>
-          <p>Wonderful</p>
-        </div>
-      </li>
-      <li>
-        <div class="reviewer-avi">
-          <img src="assets/images/reviewer.png" alt="">
-        </div>
-        <div class="review-content">
-          <h4>
-            Slobdan rated it
-            <dsod-rating></dsod-rating>
-          </h4>
-          <span>12 oct, 2018</span>
-          <p>Wonderful</p>
+          <span>{{comment.create_time | date:'mediumDate'}}</span>
+          <p>{{comment.comment_text}}</p>
         </div>
       </li>
     </ul>
