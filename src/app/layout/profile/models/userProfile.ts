@@ -20,16 +20,7 @@ export interface UserProfileData {
   educations: Education[];
   experiences: Experience[];
   profileResidency: ProfileResidency[];
-  practiceAddress: {
-    id: string;
-    address1: string;
-    address2: string;
-    zipCode: string;
-    city: string;
-    states: string;
-    email: string;
-    user_id: string;
-  };
+  practiceAddress: Address;
   photo_album: {
     id: string;
     photo: string;
@@ -98,6 +89,17 @@ export interface ProfileResidency {
   create_time: number;
   start_time: number;
   end_time: number;
+  email: string;
+  user_id: string;
+}
+
+export interface Address {
+  id: string;
+  address1: string;
+  address2: string;
+  zipCode: string;
+  city: string;
+  states: string;
   email: string;
   user_id: string;
 }

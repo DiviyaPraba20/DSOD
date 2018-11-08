@@ -1,0 +1,45 @@
+<div class="add-new-address-container" [ngClass]="{'show': show}">
+  <div class="new-item-container">
+    <span class="title">Address 1</span>
+    <div class="input-group">
+      <input type="text" [(ngModel)]="address.address1">
+      <span class="fa fa-pencil"></span>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <span class="title">Addrss 2</span>
+    <div class="input-group">
+      <input type="text" [(ngModel)]="address.address1">
+      <span class="fa fa-pencil"></span>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <span class="title">Zip Code</span>
+    <div class="input-group">
+      <input type="text" [(ngModel)]="address.zipCode">
+      <span class="fa fa-pencil"></span>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <span class="title">City</span>
+    <div class="input-group">
+      <input type="text" [(ngModel)]="address.city">
+      <span class="fa fa-pencil"></span>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <p class="title">State</p>
+    <div class="item-body">
+      <ng-select
+        class="custom-select"
+        [items]="states"
+        [(ngModel)]="address.states"
+        appendTo="body"
+        bindLabel="state"
+        bindValue="state"
+        class="select-item"
+        placeholder="Select State">
+      </ng-select>
+    </div>
+  </div>
+</div>

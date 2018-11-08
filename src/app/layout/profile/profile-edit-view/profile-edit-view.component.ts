@@ -19,6 +19,7 @@ export class ProfileEditViewComponent implements OnInit {
   isAddNewExperience = false;
   isAddNewResidency = false;
   isAddNewEducation = false;
+  isAddNewAddress = false;
   specialities: any[] = [];
 
   constructor(
@@ -151,6 +152,18 @@ export class ProfileEditViewComponent implements OnInit {
         email: '',
         types: ''
       });
+    }
+    if (!this.userProfile.practiceAddress) {
+      this.userProfile.practiceAddress = {
+        id: null,
+        address1: '',
+        address2: '',
+        city: '',
+        zipCode: '',
+        states: '',
+        email: '',
+        user_id: ''
+      };
     }
   }
 

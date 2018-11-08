@@ -138,4 +138,10 @@ export class AuthService {
     const formData = this.parseFormData({ name: '' });
     return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
   }
+
+  getAllUSStates(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/usZipSv/findAllStateByState`;
+    const formData = this.parseFormData({ state: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
 }

@@ -17,6 +17,7 @@ import { DSODComingSoonComponent } from './coming soon/coming-soon.component';
 import { DSODAddNewExperienceComponent } from './add-new-experience/add-new-experience.component';
 import { DSODAddNewEducationComponent } from './add-new-education/add-new-education.component';
 import { DSODAddNewResidencyComponent } from './add-new-residency/add-new-residency.component';
+import { DSODAddNewAddressComponent } from './add-new-address/add-new-address.component';
 export * from '././reviews/add-review/add-review-modal.component';
 
 export const SHARED_COMPONENTS = [
@@ -39,5 +40,6 @@ export const SHARED_COMPONENTS = [
   DSODAddReviewComponent,
   DSODAddNewExperienceComponent,
   DSODAddNewEducationComponent,
-  DSODAddNewResidencyComponent
+  DSODAddNewResidencyComponent,
+  DSODAddNewAddressComponent
 ];
