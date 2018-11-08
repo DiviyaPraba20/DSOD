@@ -7,19 +7,19 @@
   </div>
   <div class="add-header">
     <h3>Rate the article</h3>
-    <h4>Planet-Rich Fibrin: the 411</h4>
+    <h4>{{title}}</h4>
     <h5>October 2018</h5>
-    <dsod-rating [clickAble]="true"></dsod-rating>
+    <dsod-rating [clickAble]="true" (updateRating)="articleRating($event)"></dsod-rating>
   </div>
   <div class="review-as">
     <span class="user-ico">
       <i class="fa fa-user" aria-hidden="true"></i>
     </span>
-    <h4>Writing review as <b>Curtis.Porter III</b></h4>
+    <h4>Writing review as <b>{{loggedInUser.contact_email}}</b></h4>
   </div>
   <div class="review-form">
     <form #f="ngForm" (ngSubmit)="submitReview()">
-      <textarea name="name" class="form-control" rows="8" placeholder="Write a brief review"></textarea>
+      <textarea name="comment" [(ngModel)]="commentText" class="form-control" rows="8" placeholder="Write a brief review"></textarea>
       <button type="submit" name="button">Submit Review</button>
     </form>
   </div>

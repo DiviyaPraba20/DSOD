@@ -12,6 +12,8 @@ import { DSODDownloadComponent } from './content-action/download.component';
 import { DSODShareComponent } from './content-action/share.component';
 import { DSODRatingReviewComponent } from './reviews/reviews.component';
 import { DSODAddReviewComponent } from './reviews/add-review/add-review-modal.component';
+import { DSODContentAuthorComponent } from './author/author.component';
+import { DSODComingSoonComponent } from './coming soon/coming-soon.component';
 import { DSODAddNewExperienceComponent } from './add-new-experience/add-new-experience.component';
 import { DSODAddNewEducationComponent } from './add-new-education/add-new-education.component';
 import { DSODAddNewResidencyComponent } from './add-new-residency/add-new-residency.component';
@@ -31,6 +33,9 @@ export const SHARED_COMPONENTS = [
   DSODDownloadComponent,
   DSODShareComponent,
   DSODRatingReviewComponent,
+  DSODAddReviewComponent,
+  DSODContentAuthorComponent,
+  DSODComingSoonComponent,
   DSODAddReviewComponent,
   DSODAddNewExperienceComponent,
   DSODAddNewEducationComponent,

@@ -20,6 +20,7 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
   content: CMSPageContent;
   player: any;
   duration: any;
+  isLoading: boolean = true;
   volume = 100;
   isPlaying: boolean;
   @ViewChild('curretTime')
@@ -59,6 +60,9 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
           );
           wavesurfer.setVolume(this.volume / 100);
         });
+        wavesurfer.on('waveform-ready', () => {
+          this.isLoading = false;
+        });
         this.player = wavesurfer;
       }
     });
@@ -81,6 +85,7 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if(this.player)
     this.player.destroy();
   }
 }
