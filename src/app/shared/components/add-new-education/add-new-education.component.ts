@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Education } from 'src/app/layout/profile/models/userProfile';
 
 @Component({
   selector: 'dsod-add-new-education',
@@ -8,6 +9,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class DSODAddNewEducationComponent implements OnInit {
   @Input() show = false;
+  @Input() education: Education;
 
   detenSchoolList: any[] = [];
 

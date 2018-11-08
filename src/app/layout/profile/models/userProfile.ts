@@ -91,7 +91,7 @@ export interface Experience {
 
 export interface ProfileResidency {
   id: string;
-  dental_School: {
+  residency_School: {
     id: string;
     name: string;
   };

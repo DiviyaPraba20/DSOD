@@ -5,6 +5,7 @@
       <ng-select
         class="custom-select"
         [items]="residencyList"
+        [(ngModel)]="residency.residency_School.id"
         appendTo="body"
         bindLabel="name"
         bindValue="id"
@@ -16,7 +17,7 @@
   <div class="new-item-container">
     <span class="title">Year of Completion</span>
     <div class="input-group">
-      <input type="text">
+      <input type="text" [(ngModel)]="residency.end_time">
       <span class="fa fa-pencil"></span>
     </div>
   </div>

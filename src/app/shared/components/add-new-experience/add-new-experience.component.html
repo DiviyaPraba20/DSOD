@@ -8,6 +8,7 @@
         appendTo="body"
         bindLabel="name"
         bindValue="id"
+        [(ngModel)]="experience.practice_Type.id"
         class="select-item"
         placeholder="Select Practice type">
       </ng-select>
@@ -22,6 +23,7 @@
         appendTo="body"
         bindLabel="name"
         bindValue="id"
+        [(ngModel)]="experience.practice_Role.id"
         class="select-item"
         placeholder="Select Speciality">
       </ng-select>
@@ -36,6 +38,7 @@
         appendTo="body"
         bindLabel="name"
         bindValue="id"
+        [(ngModel)]="experience.practice_DSO.id"
         class="select-item"
         placeholder="Select Speciality">
       </ng-select>
@@ -44,7 +47,7 @@
   <div class="new-item-container flex-container">
     <p class="title">I currently work in this role</p>
     <div class="item-body">
-      <ui-switch size="small"></ui-switch>
+      <ui-switch size="small" [(ngModel)]="isCurrenWorking"></ui-switch>
     </div>
   </div>
   <div class="new-item-container flex-container">
@@ -55,6 +58,7 @@
           class="input-date-time"
           [container]="'body'"
           placeholder="yyyy-mm-dd"
+          [(ngModel)]="experience.start_time"
           name="dp"
           ngbDatepicker
           #from="ngbDatepicker">
@@ -65,17 +69,21 @@
     </div>
     <div class="date-picker-container">
       <span class="title">To</span>
-      <div class="input-group date-control">
+      <div class="input-group date-control" *ngIf="!isCurrenWorking">
         <input
           class="input-date-time"
           [container]="'body'"
           placeholder="yyyy-mm-dd"
+          [(ngModel)]="experience.end_time"
           name="dp"
           ngbDatepicker
           #to="ngbDatepicker">
         <div class="icon-calendar-wrap">
           <img class="icon-calendar" src="./assets/images/icons/icon-calendar.png" (click)="to.toggle()">
         </div>
+      </div>
+      <div class="input-group date-control" *ngIf="isCurrenWorking">
+        <span>Present</span>
       </div>
     </div>
   </div>
