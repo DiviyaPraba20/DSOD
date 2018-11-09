@@ -81,20 +81,20 @@
     <div class="section-container">
       <div class="info-container">
         <p class="title">Experience</p>
-        <div class="body-wrapper" *ngIf="userProfile?.experiences.length && userProfile?.experiences[0].id; else noExperience">
+        <div class="body-wrapper" *ngIf="userProfile?.experiences.length; else noExperience">
           <div *ngFor="let experience of userProfile?.experiences">
             <div class="body-item-wrapper">
-              <div class="icon-body-item gray-background">
+              <div class="icon-body-item gray-background" (click)="onCheck()">
                 <img src="./assets/images/icons/icon_experience_active.png">
               </div>
               <div class="item-content">
                 <span class="title">{{experience.practice_Role?.name}}</span>
                 <span class="content">{{experience.practice_DSO?.name}}</span>
-                <span class="content" *ngIf="experience?.end_time">
-                  {{experience?.start_time | date:"MMM yyyy":'+0000'}} - {{experience?.end_time | date:"MMM yyyy":'+0000'}}
+                <span class="content" *ngIf="experience.end_time">
+                  {{experience?.start_time | date:"MMM yyyy"}} - {{experience?.end_time | date:"MMM yyyy"}}
                 </span>
-                <span class="content" *ngIf="!experience?.end_time">
-                  {{experience?.start_time | date:"MMM yyyy":'+0000'}} - Present
+                <span class="content" *ngIf="!experience.end_time">
+                  {{experience?.start_time | date:"MMM yyyy"}} - Present
                 </span>
               </div>
               <div class="icon-add-new" *ngIf="!isAddNewExperience" (click)="isAddNewExperience = true">
@@ -107,7 +107,8 @@
             <div class="add-new-item-container">
               <dsod-add-new-experience
                 [show]="isAddNewExperience"
-                [experience]="experience">
+                [experience]="experience"
+                (updateExperience)="updateExperience($event)">
               </dsod-add-new-experience>
             </div>
           </div>
@@ -131,7 +132,7 @@
             <div class="add-new-item-container">
               <dsod-add-new-experience
                 [show]="isAddNewExperience"
-                [experience]="userProfile.experiences[0]">
+                (updateExperience)="addNewExperience($event)">
               </dsod-add-new-experience>
             </div>
           </div>
@@ -141,7 +142,7 @@
     <div class="section-container">
       <div class="info-container">
         <p class="title">Residency</p>
-        <div class="body-wrapper" *ngIf="userProfile?.profileResidency.length && userProfile?.profileResidency[0].id; else noResidency">
+        <div class="body-wrapper" *ngIf="userProfile?.profileResidency.length; else noResidency">
           <div *ngFor="let residency of userProfile?.profileResidency">
             <div class="body-item-wrapper">
               <div class="icon-body-item gray-background">
@@ -150,10 +151,7 @@
               <div class="item-content">
                 <span class="title">{{residency.residency_School?.name}}</span>
                 <span class="content" *ngIf="residency?.end_time">
-                  {{residency?.start_time | date:"MMM yyyy":'+0000'}} - {{residency?.end_time | date:"MMM yyyy":'+0000'}}
-                </span>
-                <span class="content" *ngIf="!residency?.end_time">
-                  {{residency?.start_time | date:"MMM yyyy":'+0000'}} - Present
+                  {{residency?.end_time | date:"yyyy"}}
                 </span>
               </div>
               <div class="icon-add-new" *ngIf="!isAddNewResidency" (click)="isAddNewResidency = true">
@@ -166,7 +164,8 @@
             <div class="add-new-item-container">
               <dsod-add-new-residency
                 [show]="isAddNewResidency"
-                [residency]="residency">
+                [residency]="residency"
+                (updateResidency)="updateResidency($event)">
               </dsod-add-new-residency>
             </div>
           </div>
@@ -190,7 +189,7 @@
             <div class="add-new-item-container">
               <dsod-add-new-residency
                 [show]="isAddNewResidency"
-                [residency]="userProfile.profileResidency[0]">
+                (updateResidency)="addNewResidency($event)">
               </dsod-add-new-residency>
             </div>
           </div>
@@ -200,19 +199,16 @@
     <div class="section-container">
       <div class="info-container">
         <p class="title">Education</p>
-        <div class="body-wrapper" *ngIf="userProfile?.educations.length && userProfile?.educations[0].id; else noEducation">
+        <div class="body-wrapper" *ngIf="userProfile?.educations.length; else noEducation">
           <div *ngFor="let education of userProfile?.educations">
             <div class="body-item-wrapper">
               <div class="icon-body-item gray-background">
                 <img src="./assets/images/icons/icon_education_active.png">
               </div>
               <div class="item-content">
-                <span class="title">{{education.school_name}}</span>
+                <span class="title">{{education.dental_school.name}}</span>
                 <span class="content" *ngIf="education?.end_time">
-                  {{education?.start_time | date:"MMM yyyy":'+0000'}} - {{education?.end_time | date:"MMM yyyy":'+0000'}}
-                </span>
-                <span class="content" *ngIf="!education?.end_time">
-                  {{education?.start_time | date:"MMM yyyy":'+0000'}} - Present
+                  {{education?.end_time | date:"yyyy"}}
                 </span>
               </div>
               <div class="icon-add-new" *ngIf="!isAddNewEducation" (click)="isAddNewEducation = true">
@@ -225,7 +221,8 @@
             <div class="add-new-item-container">
               <dsod-add-new-education
                 [show]="isAddNewEducation"
-                [education]="education">
+                [education]="education"
+                (updateEducation)="updateEducation($event)">
               </dsod-add-new-education>
             </div>
           </div>
@@ -249,7 +246,7 @@
             <div class="add-new-item-container">
               <dsod-add-new-education
                 [show]="isAddNewEducation"
-                [education]="userProfile.educations[0]">
+                (updateEducation)="addNewEducation($event)">
               </dsod-add-new-education>
             </div>
           </div>

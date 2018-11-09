@@ -15,10 +15,21 @@
     </div>
   </div>
   <div class="new-item-container">
-    <span class="title">Year of Completion</span>
-    <div class="input-group">
-      <input type="text" [(ngModel)]="residency.end_time">
-      <span class="fa fa-pencil"></span>
+    <div class="date-picker-container">
+      <span class="title">Year of Graduation</span>
+      <div class="input-group date-control">
+        <input
+          class="input-date-time"
+          [container]="'body'"
+          placeholder="yyyy-mm-dd"
+          [(ngModel)]="endTime"
+          name="dp"
+          ngbDatepicker
+          #from="ngbDatepicker">
+        <div class="icon-calendar-wrap">
+          <img class="icon-calendar" src="./assets/images/icons/icon-calendar.png" (click)="from.toggle()">
+        </div>
+      </div>
     </div>
   </div>
 </div>

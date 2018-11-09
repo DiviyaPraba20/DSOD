@@ -20,7 +20,6 @@ export class DSODAddNewAddressComponent implements OnInit {
   ngOnInit() {
     this.authService.getAllUSStates().pipe().subscribe(res => {
       this.states = res.resultMap.data;
-      console.log(this.states);
     });
   }
 

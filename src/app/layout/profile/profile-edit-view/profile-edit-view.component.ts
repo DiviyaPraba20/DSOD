@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 
-import { UserProfileData } from '../models/userProfile';
+import { UserProfileData, Experience, ProfileResidency, Education } from '../models/userProfile';
 import { environment } from 'src/environments/environment';
 import { ChangeProfileEditMode } from '../../actions/layout.actions';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './profile-edit-view.component.html',
   styleUrls: ['./profile-edit-view.component.scss']
 })
-export class ProfileEditViewComponent implements OnInit {
+export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   userProfile: UserProfileData = null;
   avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
   croppedImage: any;
@@ -24,7 +24,8 @@ export class ProfileEditViewComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private authService: AuthService
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef
   ) {
     // this.userProfileForm = this.fb.group({
     //   full_name: ['', Validators.required],
@@ -93,6 +94,10 @@ export class ProfileEditViewComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
+
   initUserProfileData() {
     if (!this.userProfile.specialty) {
       this.userProfile.specialty = {
@@ -100,58 +105,6 @@ export class ProfileEditViewComponent implements OnInit {
         name: '',
         description: ''
       };
-    }
-    if (!this.userProfile.experiences.length) {
-      this.userProfile.experiences.push({
-        id: null,
-        practice_Type: {
-          id: null,
-          name: ''
-        },
-        practice_name: '',
-        practice_Role: {
-          id: null,
-          name: ''
-        },
-        practice_DSO: {
-          id: null,
-          name: ''
-        },
-        create_time: null,
-        start_time: null,
-        end_time: null,
-        email: ''
-      });
-    }
-    if (!this.userProfile.profileResidency.length) {
-      this.userProfile.profileResidency.push({
-        id: null,
-        residency_School: {
-          id: null,
-          name: ''
-        },
-        create_time: null,
-        start_time: null,
-        end_time: null,
-        email: '',
-        user_id: ''
-      });
-    }
-    if (!this.userProfile.educations.length) {
-      this.userProfile.educations.push({
-        id: null,
-        dental_school: {
-          id: null,
-          name: ''
-        },
-        school_name: '',
-        major: '',
-        create_time: null,
-        start_time: null,
-        end_time: null,
-        email: '',
-        types: ''
-      });
     }
     if (!this.userProfile.practiceAddress) {
       this.userProfile.practiceAddress = {
@@ -175,7 +128,44 @@ export class ProfileEditViewComponent implements OnInit {
     this.store.dispatch(new ChangeProfileEditMode(false));
   }
 
-  selectFile(file) {
+  selectFile(file) { }
 
+  updateExperience(exp: Experience) {
+    const index = this.userProfile.experiences.findIndex(x => x.id === exp.id);
+    this.userProfile.experiences[index] = exp;
+    this.cdr.detectChanges();
+  }
+
+  addNewExperience(exp: Experience) {
+    setTimeout(() => {
+      this.userProfile.experiences.push(exp);
+      this.cdr.detectChanges();
+    }, 100);
+  }
+
+  updateResidency(res: ProfileResidency) {
+    const index = this.userProfile.profileResidency.findIndex(x => x.id === res.id);
+    this.userProfile.profileResidency[index] = res;
+    this.cdr.detectChanges();
+  }
+
+  addNewResidency(res: ProfileResidency) {
+    setTimeout(() => {
+      this.userProfile.profileResidency.push(res);
+      this.cdr.detectChanges();
+    }, 100);
+  }
+
+  updateEducation(edu: Education) {
+    const index = this.userProfile.educations.findIndex(x => x.id === edu.id);
+    this.userProfile.educations[index] = edu;
+    this.cdr.detectChanges();
+  }
+
+  addNewEducation(edu: Education) {
+    setTimeout(() => {
+      this.userProfile.educations.push(edu);
+      this.cdr.detectChanges();
+    }, 100);
   }
 }

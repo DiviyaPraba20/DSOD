@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 import { LayoutComponent } from './layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,7 +18,15 @@ import { OnScrollUpdateBgDirective } from './directives/update-nav-bg.directive'
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FormsModule, NgbModule, NgSelectModule, SharedModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    NgbModule,
+    NgSelectModule,
+    ClickOutsideModule,
+    SharedModule
+  ],
   declarations: [
     LayoutComponent,
     NavbarComponent,

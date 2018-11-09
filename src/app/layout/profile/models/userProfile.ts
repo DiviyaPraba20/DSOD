@@ -52,9 +52,9 @@ export interface Education {
   };
   school_name: string;
   major: string;
-  create_time: number;
-  start_time: number;
-  end_time: number;
+  create_time: string;
+  start_time: string;
+  end_time: string;
   email: string;
   types: string;
 }
@@ -74,9 +74,9 @@ export interface Experience {
     id: string;
     name: string;
   };
-  create_time: number;
-  start_time: number;
-  end_time: number;
+  create_time: string;
+  start_time: string;
+  end_time: string;
   email: string;
 }
 
@@ -86,9 +86,9 @@ export interface ProfileResidency {
     id: string;
     name: string;
   };
-  create_time: number;
-  start_time: number;
-  end_time: number;
+  create_time: string;
+  start_time: string;
+  end_time: string;
   email: string;
   user_id: string;
 }
