@@ -13,35 +13,74 @@ export interface DSODComment {
   create_time: Date;
 }
 
+export interface DSODAuhtor {
+  _id: string;
+  sort: number;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  authorDetails: any;
+  email: string;
+  cellPhone: string;
+  role: string;
+  objectId: string;
+}
+
+export interface DSODFeaturedMedia {
+  type: string;
+  code: {
+    thumbnail: string;
+    original: string;
+    thumbnailUrl: string;
+    originalUrl: string;
+  };
+}
+
 export interface CMSPageContent {
   id: string;
   email: string;
-  title: string;
-  content: string;
   authorId: string;
+  title: string;
+  content: any;
   contentTypeId: string;
   categoryId: string;
   sponsorId: string;
-  authorName: string;
+  author: DSODAuhtor;
+  authorPhotoUrl: null;
   contentTypeName: string;
   categoryName: string;
   sponsorName: string;
-  featuredMediaId: string;
+  featuredMedia: DSODFeaturedMedia;
+  photoUrls: any[];
   photos: any[];
   videos: any[];
+  videoUrls: any[];
   podcasts: any[];
+  podcastUrls: any[];
   isPrivate: boolean;
   isComplete: boolean;
   isPublishNow: boolean;
   isBookmark: boolean;
   nextContentId: string;
   previousContentId: string;
-  countOfComment: number;
-  avgCommentRating: string;
+  countOfComment: any;
+  avgCommentRating: any;
   comment: DSODComment[];
-  publishDate: Date;
+  publishDate: any;
   isFeatured: boolean;
   readNumber: number;
+  publishOn: Date;
+  publishEnd: Date;
+  reviewOn: any;
+  subTitle: string;
+  status: number;
+  unite: boolean;
+  expedite: boolean;
+  excerpt: any;
+  countOfEssay: number;
+  visualEssays: any;
+  relativeTopics: any;
+  relativeTopicList: any;
 }
 
 export interface CMSContentParams {
@@ -53,8 +92,9 @@ export interface CMSContentParams {
   serial?: string;
   skip?: number;
   isFeatured?: boolean;
-  sponserId?: string;
+  sponsorId?: string;
   vol?: string;
+  searchValue?: string;
 }
 
 export interface CMSResponse<T> extends Response {
