@@ -13,9 +13,30 @@ import { ProfilePanelComponent } from './profile/profile-panel/profile-panel.com
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-edit-view.component';
 import { OnScrollUpdateBgDirective } from './directives/update-nav-bg.directive';
+import { DSODSearchComponent } from './search/search-input/search-input.component';
+import { DSODSearchResults } from './search/search-results/search-results.component';
+import { DSODSearchItemComponent } from './search/search-item/search-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule
+} from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule, NgSelectModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule,
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    PaginationModule.forRoot(),
+    NgxSpinnerModule
+  ],
   declarations: [
     LayoutComponent,
     NavbarComponent,
@@ -24,7 +45,10 @@ import { OnScrollUpdateBgDirective } from './directives/update-nav-bg.directive'
     ProfilePanelComponent,
     ProfileViewComponent,
     ProfileEditViewComponent,
-    OnScrollUpdateBgDirective
+    OnScrollUpdateBgDirective,
+    DSODSearchResults,
+    DSODSearchComponent,
+    DSODSearchItemComponent
   ],
   exports: [
     NavbarComponent,

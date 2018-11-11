@@ -8,10 +8,6 @@ import {
   CMSPageContent,
   sponsors
 } from '../models';
-import { Store } from '@ngxs/store';
-import { skip, debounce } from 'rxjs/operators';
-import { timer } from 'rxjs';
-import { authState } from 'src/app/pages/auth/states';
 
 @Injectable()
 export class CMSService {
@@ -67,6 +63,14 @@ export class CMSService {
     return this.http.post<CMSResponse<sponsors>>(
       `${environment.url}/sponsor/getAll`,
       {}
+    );
+  }
+
+  findAllBySearch<T>(term: any) {
+    return this.http.post<CMSResponse<CMSPageContent>>(
+      'https://democmsapi1.dsodentist.com/content/contentservice/v1/content/public/findAllBySearch',
+      term,
+      { withCredentials: true }
     );
   }
 }

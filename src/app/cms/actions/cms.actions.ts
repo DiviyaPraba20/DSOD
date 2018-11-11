@@ -32,10 +32,12 @@ export enum CMSActions {
   FetchPageContent = '[CMS] Fetch Page Content',
   FetchPageContentSuccess = '[CMS] Fetch Page Content Success',
   FetchPageContentFailure = '[CMS] Fetch Page Content Failuer',
-  // for the list of sponsers
   FetchSponsorsList = '[CMS] Fetch sponsers',
   FetchSponsorsListSuccess = '[CMS] Fetch sponsers Success',
   FetchSponsorsListFailure = '[CMS] Fetch sponsers Failuure',
+  FetchSearchResults = '[CMS] Fetch Search Results',
+  FetchSearchResultsSuccess = '[CMS] Fetch Search Results Success',
+  FetchSearchResultsFailure = '[CMS] Fetch Search Results Failure',
   ResetState = '[CMS] Reset State'
 }
 
@@ -194,6 +196,22 @@ export class FetchPageContentFailure {
 
   constructor(public payload: Error) {}
 }
+//actions for search results
+
+export class FetchSearchResults {
+  static readonly type = CMSActions.FetchSearchResults;
+  constructor(public payload: any) {}
+}
+export class FetchSearchResultsSuccess {
+  static readonly type = CMSActions.FetchSearchResultsSuccess;
+  constructor(public payload: CMSPageContent[]) {}
+}
+export class FetchSearchResultsFailure {
+  static readonly type = CMSActions.FetchSearchResultsFailure;
+  constructor(public payload: Error) {}
+}
+
+//reset State
 export class ResetState {
   static readonly type = CMSActions.ResetState;
 
@@ -228,4 +246,7 @@ export type CMSActionTypes =
   | FetchPageContent
   | FetchPageContentSuccess
   | FetchPageContentFailure
+  | FetchSearchResults
+  | FetchSearchResultsSuccess
+  | FetchSearchResultsFailure
   | ResetState;

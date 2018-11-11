@@ -15,6 +15,8 @@ export interface State {
   sponsorsList: sponsors[];
   sponsoredTopics: CMSPageContent[];
   podcasts: CMSPageContent[];
+  searchResults: CMSPageContent[];
+  isLoading: boolean;
   error: Error;
 }
 
@@ -30,11 +32,18 @@ export interface State {
     sponsorsList: [],
     sponsoredTopics: [],
     podcasts: [],
+    searchResults: [],
+    isLoading: false,
     error: null
   }
 })
 export class CMSState {
   constructor(private store: Store, private service: CMSService) {}
+  @Selector()
+  static searchedResults(state: State) {
+    return state.searchResults;
+  }
+
   // categories action decorators
   @Action(actions.FetchCategories)
   fetchCategories({ dispatch }: StateContext<State>) {
@@ -297,7 +306,9 @@ export class CMSState {
     { patchState, getState }: StateContext<State>,
     action: actions.FetchSponsoredTopicsSuccess
   ) {
-    return patchState({ sponsoredTopics: action.payload });
+    let sponsored = getState().sponsoredTopics;
+    sponsored = [...sponsored, ...action.payload];
+    return patchState({ sponsoredTopics: sponsored });
   }
 
   @Action(actions.FetchSponsoredTopicsFailure)
@@ -395,5 +406,43 @@ export class CMSState {
       pageContent: null,
       podcasts: []
     });
+  }
+
+  //search results  action decorators
+
+  @Action(actions.FetchSearchResults)
+  fetchSearchResults(
+    { dispatch, patchState }: StateContext<State>,
+    action: actions.FetchSearchResults
+  ) {
+    patchState({ searchResults: [] });
+    return this.service.findAllBySearch(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchSearchResultsSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchSearchResultsFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchSearchResultsSuccess)
+  fetchSearchResultsSuccess(
+    { patchState }: StateContext<State>,
+    action: actions.FetchSearchResultsSuccess
+  ) {
+    return patchState({ searchResults: action.payload });
+  }
+
+  @Action(actions.FetchSearchResultsSuccess)
+  featureSearchResultsFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchSearchResultsFailure
+  ) {
+    return patchState({ error: action.payload });
   }
 }
