@@ -1,12 +1,16 @@
 <div class="edit-profile-container">
   <div class="profile-header">
+    <div class="action-container back" (click)="viewProfile()">
+      <i class="fa fa-arrow-left"></i>
+      <span class="action-name">Back</span>
+    </div>
     <span>Edit Profile</span>
-  </div>
-  <div class="profile-body">
     <div class="action-container" (click)="saveProfile()">
       <span class="action-name">Save</span>
       <i class="fa fa-save"></i>
     </div>
+  </div>
+  <div class="profile-body">
     <div class="section-container">
       <div class="profile-image-container">
         <span class="profile-title">Profile Photo</span>
@@ -84,6 +88,7 @@
         <div class="body-wrapper">
           <dsod-profile-experience
             [experiences]="userProfile.experiences"
+            [editable]="true"
             (updateExperience)="updateExperience($event)">
           </dsod-profile-experience>
         </div>
@@ -106,6 +111,7 @@
         <div class="body-wrapper">
           <dsod-profile-education
             [educations]="userProfile.educations"
+            [editable]="true"
             (updateEducation)="updateEducation($event)">
           </dsod-profile-education>
         </div>
@@ -117,6 +123,7 @@
         <div class="body-wrapper">
           <dsod-profile-address
             [address]="userProfile.practiceAddress"
+            [editable]="true"
             (updateAddress)="updateAddress($event)">
           </dsod-profile-address>
           <div class="body-item-wrapper">

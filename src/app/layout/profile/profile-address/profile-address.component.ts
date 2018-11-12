@@ -11,6 +11,7 @@ import { Address } from '../models/userProfile';
 })
 export class ProfileAddressComponent implements OnInit {
   @Input() address: Address;
+  @Input() editable = false;
   @Output() updateAddress: EventEmitter<Address> = new EventEmitter();
 
   expandedAddSection = false;

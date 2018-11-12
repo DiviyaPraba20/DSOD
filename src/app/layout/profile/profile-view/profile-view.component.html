@@ -1,12 +1,12 @@
 <div class="profile-view-container">
   <div class="profile-header">
     <span>Profile</span>
-  </div>
-  <div class="profile-body">
     <div class="action-container" (click)="editProfile()">
       <span class="action-name">Edit</span>
       <i class="fa fa-pencil"></i>
     </div>
+  </div>
+  <div class="profile-body">
     <div class="section-container">
       <div class="userInfo-container">
         <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">
@@ -20,123 +20,38 @@
     <div class="section-container">
       <div class="info-container">
         <p class="title">Experience</p>
-        <div class="body-wrapper" *ngIf="userProfile?.experiences.length; else noExperience">
-          <div class="body-item-wrapper" *ngFor="let experience of userProfile?.experiences">
-            <div class="icon-body-item gray-background">
-              <img src="./assets/images/icons/icon_experience_active.png">
-            </div>
-            <div class="item-content">
-              <span class="title">{{experience.practice_Role?.name}}</span>
-              <span class="content">{{experience.practice_DSO?.name}}</span>
-              <span class="content" *ngIf="experience?.end_time">
-                {{experience?.start_time | date:"MMM yyyy":'+0000'}} - {{experience?.end_time | date:"MMM yyyy":'+0000'}}
-              </span>
-              <span class="content" *ngIf="!experience?.end_time">
-                {{experience?.start_time | date:"MMM yyyy":'+0000'}} - Present
-              </span>
-            </div>
-          </div>
+        <div class="body-wrapper">
+          <dsod-profile-experience
+            [experiences]="userProfile?.experiences">
+          </dsod-profile-experience>
         </div>
-        <ng-template #noExperience>
-          <div class="body-wrapper">
-            <div class="body-item-wrapper">
-              <div class="icon-body-item gray-background">
-                <img src="./assets/images/icons/icon_experience_active.png">
-              </div>
-              <div class="item-content">
-                <span class="content">No experience added yet.</span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
       </div>
     </div>
     <div class="section-container">
       <div class="info-container">
         <p class="title">Residency</p>
-        <div class="body-wrapper" *ngIf="userProfile?.profileResidency.length; else noResidency">
-          <div class="body-item-wrapper" *ngFor="let residency of userProfile?.profileResidency">
-            <div class="icon-body-item gray-background">
-              <img src="./assets/images/icons/icon_location_active.png">
-            </div>
-            <div class="item-content">
-              <span class="title">{{residency.residency_School?.name}}</span>
-              <span class="content" *ngIf="residency?.end_time">
-                {{residency?.start_time | date:"MMM yyyy":'+0000'}} - {{residency?.end_time | date:"MMM yyyy":'+0000'}}
-              </span>
-              <span class="content" *ngIf="!residency?.end_time">
-                {{residency?.start_time | date:"MMM yyyy":'+0000'}} - Present
-              </span>
-            </div>
-          </div>
+        <div class="body-wrapper">
+          <dsod-profile-residency
+            [residencies]="userProfile?.profileResidency">
+          </dsod-profile-residency>
         </div>
-        <ng-template #noResidency>
-          <div class="body-wrapper">
-            <div class="body-item-wrapper">
-              <div class="icon-body-item gray-background">
-                <img src="./assets/images/icons/icon_location_active.png">
-              </div>
-              <div class="item-content">
-                <span class="content">No residency added yet.</span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
       </div>
     </div>
     <div class="section-container">
       <div class="info-container">
         <p class="title">Education</p>
-        <div class="body-wrapper" *ngIf="userProfile?.educations.length; else noEducation">
-          <div class="body-item-wrapper" *ngFor="let education of userProfile?.educations">
-            <div class="icon-body-item gray-background">
-              <img src="./assets/images/icons/icon_education_active.png">
-            </div>
-            <div class="item-content">
-              <span class="title">{{education.school_name}}</span>
-              <span class="content" *ngIf="education?.end_time">
-                {{education?.start_time | date:"MMM yyyy":'+0000'}} - {{education?.end_time | date:"MMM yyyy":'+0000'}}
-              </span>
-              <span class="content" *ngIf="!education?.end_time">
-                {{education?.start_time | date:"MMM yyyy":'+0000'}} - Present
-              </span>
-            </div>
-          </div>
+        <div class="body-wrapper">
+          <dsod-profile-education [educations]="userProfile?.educations"></dsod-profile-education>
         </div>
-        <ng-template #noEducation>
-          <div class="body-wrapper">
-            <div class="body-item-wrapper">
-              <div class="icon-body-item gray-background">
-                <img src="./assets/images/icons/icon_education_active.png">
-              </div>
-              <div class="item-content">
-                <span class="content">No education added yet.</span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
       </div>
     </div>
     <div class="section-container">
       <div class="info-container">
         <p class="title">Contact</p>
         <div class="body-wrapper">
-          <div class="body-item-wrapper">
-            <div class="icon-body-item">
-              <img src="./assets/images/icons/icon_location.png">
-            </div>
-            <div class="item-content" *ngIf="userProfile?.practiceAddress; else noPracticeAddress">
-              <span class="title">Practice Address</span>
-              <span class="content">{{userProfile?.practiceAddress.address1}} {{userProfile?.practiceAddress.address2}}</span>
-              <span class="content">{{userProfile?.practiceAddress.city}} {{userProfile?.practiceAddress.states}} {{userProfile?.practiceAddress.zipCode}}</span>
-            </div>
-            <ng-template #noPracticeAddress>
-              <div class="item-content">
-                <span class="title">Practice Address</span>
-                <span class="content">No Address added yet.</span>
-              </div>
-            </ng-template>
-          </div>
+          <dsod-profile-address
+            [address]="address">
+          </dsod-profile-address>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
               <img src="./assets/images/icons/icon_mobile.png">

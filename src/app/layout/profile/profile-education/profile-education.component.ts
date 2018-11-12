@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProfileEducationComponent implements OnInit {
   @Input() educations: Education[] = [];
+  @Input() editable = false;
   @Output() updateEducation: EventEmitter<Education> = new EventEmitter();
 
   selectedEducation: Education;

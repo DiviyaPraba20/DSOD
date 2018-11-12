@@ -8,6 +8,13 @@
 }
 
 .edit-profile-container {
+  .profile-header {
+    .action-container {
+      &.back {
+        left: 0;
+      }
+    }
+  }
   .section-container {
     .info-container {
       .title {

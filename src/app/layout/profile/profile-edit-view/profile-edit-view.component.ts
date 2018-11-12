@@ -7,6 +7,7 @@ import { UserProfileData, Experience, ProfileResidency, Education, Address } fro
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UpdateUserInfo } from '../../../pages/auth/actions/auth.actions';
+import { ChangeProfileEditMode } from '../../actions/layout.actions';
 
 @Component({
   selector: 'dsod-profile-edit-view',
@@ -68,17 +69,18 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onCheck() {
-    console.log(this.userProfile);
-  }
-
   saveProfile() {
     if (this.validateUserProfileInfo()) {
       this.spinner.show();
       this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
         this.spinner.hide();
+        this.store.dispatch(new ChangeProfileEditMode(false));
       });
     }
+  }
+
+  viewProfile() {
+    this.store.dispatch(new ChangeProfileEditMode(false));
   }
 
   selectFile(file) { }

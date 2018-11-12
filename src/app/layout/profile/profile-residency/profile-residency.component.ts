@@ -13,6 +13,7 @@ import { ProfileResidency } from '../models/userProfile';
 })
 export class ProfileResidencyComponent implements OnInit {
   @Input() residencies: ProfileResidency[] = [];
+  @Input() editable = false;
   @Output() updateResidency: EventEmitter<ProfileResidency> = new EventEmitter();
 
   selectedResidency: ProfileResidency;

@@ -16,11 +16,13 @@
         <span class="content">{{address.city}} {{address.states}} {{address.zipCode}}</span>
       </div>
     </div>
-    <div class="icon-add-new" *ngIf="!expandedAddSection" (click)="expandAddressSection(true)">
-      <img src="./assets/images/icons/icon_add_new.png">
-    </div>
-    <div class="icon-add-new" *ngIf="expandedAddSection" (click)="expandAddressSection(false)">
-      <img src="./assets/images/icons/icon_close_new.png">
+    <div *ngIf="editable">
+      <div class="icon-add-new" *ngIf="!expandedAddSection" (click)="expandAddressSection(true)">
+        <img src="./assets/images/icons/icon_add_new.png">
+      </div>
+      <div class="icon-add-new" *ngIf="expandedAddSection" (click)="expandAddressSection(false)">
+        <img src="./assets/images/icons/icon_close_new.png">
+      </div>
     </div>
   </div>
   <div class="add-new-item-container">

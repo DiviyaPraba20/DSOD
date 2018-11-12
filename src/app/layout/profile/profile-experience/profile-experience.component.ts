@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProfileExperienceComponent implements OnInit {
   @Input() experiences: Experience[] = [];
+  @Input() editable = false;
   @Output() updateExperience: EventEmitter<Experience> = new EventEmitter();
 
   selectedExperience: Experience;

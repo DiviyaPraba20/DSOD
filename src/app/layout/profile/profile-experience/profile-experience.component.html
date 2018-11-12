@@ -20,11 +20,13 @@
         </span>
       </div>
     </div>
-    <div class="icon-add-new" *ngIf="!expandedExpSection" (click)="expandExperienceSection(true)">
-      <img src="./assets/images/icons/icon_add_new.png">
-    </div>
-    <div class="icon-add-new" *ngIf="expandedExpSection" (click)="expandExperienceSection(false)">
-      <img src="./assets/images/icons/icon_close_new.png">
+    <div *ngIf="editable">
+      <div class="icon-add-new" *ngIf="!expandedExpSection" (click)="expandExperienceSection(true)">
+        <img src="./assets/images/icons/icon_add_new.png">
+      </div>
+      <div class="icon-add-new" *ngIf="expandedExpSection" (click)="expandExperienceSection(false)">
+        <img src="./assets/images/icons/icon_close_new.png">
+      </div>
     </div>
   </div>
   <div class="add-new-item-container">

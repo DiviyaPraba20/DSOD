@@ -16,11 +16,13 @@
         </span>
       </div>
     </div>
-    <div class="icon-add-new" *ngIf="!expandedResSection" (click)="expandResidencySection(true)">
-      <img src="./assets/images/icons/icon_add_new.png">
-    </div>
-    <div class="icon-add-new" *ngIf="expandedResSection" (click)="expandResidencySection(false)">
-      <img src="./assets/images/icons/icon_close_new.png">
+    <div *ngIf="editable">
+      <div class="icon-add-new" *ngIf="!expandedResSection" (click)="expandResidencySection(true)">
+        <img src="./assets/images/icons/icon_add_new.png">
+      </div>
+      <div class="icon-add-new" *ngIf="expandedResSection" (click)="expandResidencySection(false)">
+        <img src="./assets/images/icons/icon_close_new.png">
+      </div>
     </div>
   </div>
   <div class="add-new-item-container">

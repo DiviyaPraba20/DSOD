@@ -5,15 +5,15 @@
   .profile-header {
     background-color: $cod_gray;
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 0;
     border-top-left-radius: 10px;
-    font-size: 18px;
-  }
-  .profile-body {
+    font-size: 25px;
+    position: relative;
     .action-container {
       display: flex;
       align-items: flex-start;
       position: absolute;
+      top: 30px;
       right: 0;
       padding: 10px;
       font-size: 16px;
@@ -26,6 +26,10 @@
         }
       }
     }
+  }
+  .profile-body {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
     .section-container {
       padding: 15px 30px;
       border-bottom: 1px solid $gray;
