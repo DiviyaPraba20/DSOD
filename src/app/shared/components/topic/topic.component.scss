@@ -1,12 +1,12 @@
 @import 'variables.scss';
 
 :host {
-  .feautred-block {
+  .topic-block {
     font-family: $Arial;
     // margin: 15px 0;
     background: #f8f8f8;
 
-    .feautred-block-header {
+    .topic-block-header {
       display: flex;
       justify-content: space-between;
       padding: 21px 15px 9px;
@@ -17,32 +17,9 @@
         font-size: 22px;
       }
 
-      .topic-rating {
-        margin-left: 10px;
-        min-width: 117px;
-
-        span {
-          display: inline-block;
-          height: 20px;
-          width: 20px;
-          line-height: 20px;
-          text-align: center;
-          border-radius: 3px;
-
-          &.filled {
-            color: #fff;
-            background: $color-primary;
-          }
-
-          &.un-filled {
-            color: #fff;
-            background: #d1d1d1;
-          }
-        }
-      }
     }
 
-    .feautred-block-thumbnail {
+    .topic-block-thumbnail {
       position: relative;
       border-top: 3px solid $mine_grey;
 
@@ -67,13 +44,14 @@
 
     }
 
-    .feautred-block-content {
+    .topic-block-content {
       padding: 15px 30px;
 
       .topic-title-large {
         font-weight: 500;
         font-size: 35px;
         color: #000000;
+        padding-bottom: 10px;
       }
 
       .topic-title-small {
@@ -81,6 +59,7 @@
         border-top: 1px solid #c0cad1;
         padding-top: 15px;
         line-height: 30px;
+        padding-bottom: 10px;
       }
 
       em {
@@ -94,10 +73,16 @@
 
       p {
         font-size: 22px;
-        line-height: 36px;
+        line-height: 0px;
 
         a {
           color: $deep-cerulean;
+        }
+      }
+
+      .read-more-sm {
+        p {
+          font-size: 17px;
         }
       }
     }
@@ -107,10 +92,10 @@
     background: transparent;
   }
 
-  .feautred-block-sm {
+  .topic-block-sm {
     height: 100%;
 
-    .feautred-block-thumbnail {
+    .topic-block-thumbnail {
       >img {
         height: 260px;
         object-fit: cover;
@@ -121,7 +106,7 @@
       }
     }
 
-    .feautred-block-content {
+    .topic-block-content {
       padding: 15px;
 
       h2.topic-title {
@@ -131,20 +116,62 @@
         line-height: 30px;
       }
 
-      .p-large {
-        font-size: 22px;
-        line-height: 36px;
+      .excrept-content-lg {
+        padding-top: 5px;
+
+        /deep/ p:first-child {
+          display: none
+        }
+
+        /deep/ p:last-child {
+          font-size: 22px;
+          line-height: 36px;
+          overflow: hidden;
+          max-height: 151px;
+        }
       }
 
-      .p-small {
+      .excrept-content-sm {
+        padding-top: 5px;
+
+        /deep/ p:first-child {
+          display: none
+        }
+
+        /deep/ p:last-child {
+          font-size: 17px;
+          line-height: 25px;
+          max-height: 97px;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .read-more-lg {
+      p {
+        font-size: 22px;
+        line-height: 3px;
+
+        a {
+          color: $deep-cerulean;
+        }
+      }
+    }
+
+    .read-more-sm {
+      p {
         font-size: 17px;
-        line-height: 25px;
+        line-height: 3px;
+
+        a {
+          color: $deep-cerulean;
+        }
       }
     }
   }
 
-  .feautred-block-lg {
-    .feautred-block-thumbnail {
+  .topic-block-lg {
+    .topic-block-thumbnail {
       img {
         object-fit: unset;
         height: 100%;
@@ -156,14 +183,14 @@
 
   @media only screen and (max-width:1680px) {
 
-    .feautred-block {
-      .feautred-block-header {
+    .topic-block {
+      .topic-block-header {
         h4 {
           font-size: 20px;
         }
       }
 
-      .feautred-block-content {
+      .topic-block-content {
         h2.topic-title {
           font-size: 20px;
         }
