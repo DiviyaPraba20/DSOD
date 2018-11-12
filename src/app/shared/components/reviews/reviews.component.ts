@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DSODAddReviewComponent } from './add-review/add-review-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CMSPageContent, DSODComment, CMSResponse } from 'src/app/cms/models';
+import {
+  CMSPageContent,
+  DSODComment,
+  CMSResponse,
+  CMSContentParams
+} from 'src/app/cms/models';
 import { Store } from '@ngxs/store';
 import { AuthState } from 'src/app/pages/auth/states/auth.state';
 import { UserInfoPayload } from 'src/app/core/models';
@@ -11,6 +16,7 @@ import { AddReviewSuccess } from '../../actions';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedState } from '../../state';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'dsod-article-reviews',
@@ -28,13 +34,15 @@ export class DSODRatingReviewComponent implements OnInit {
   modalRef: any;
   commentsLength: number;
   toIndex = 4;
+  params: CMSContentParams = {
+    skip: 0,
+    limit: 0
+  };
 
   @Input('content')
   set content(value: CMSPageContent) {
     if (value && value.comment.length) {
-      this.avgRating = value.avgCommentRating.match(this.regex).map(v => {
-        return parseFloat(v);
-      });
+      this.avgRating = parseFloat(value.avgCommentRating);
       this.reviewsCount = value.countOfComment;
       this.contentId = value.id;
       this.title = value.title;
@@ -52,19 +60,23 @@ export class DSODRatingReviewComponent implements OnInit {
     this.user = store.selectSnapshot(AuthState.userInfo);
     //fetch comments on content load
     route.params.subscribe(r => {
-      this.store.dispatch(new actions.FetchComments(r.id));
+      this.store.dispatch(
+        new actions.FetchComments({ ...this.params, contentId: r.id })
+      );
     });
 
     //close modal and fetch comments again
     this.actions$.pipe(ofActionDispatched(AddReviewSuccess)).subscribe(data => {
       this.modalRef.close();
-      this.store.dispatch(new actions.FetchComments(this.contentId));
+      this.store.dispatch(
+        new actions.FetchComments({ ...this.params, contentId: this.contentId })
+      );
     });
   }
 
   ngOnInit() {
-    this.comments$ = this.store.select(state => state.reviews.comments);
-    this.comments$.subscribe(data => {
+    this.comments$ = this.store.select(state => state.shared.comments);
+    this.comments$.pipe(skip(1)).subscribe(data => {
       this.commentsLength = data.length;
     });
   }

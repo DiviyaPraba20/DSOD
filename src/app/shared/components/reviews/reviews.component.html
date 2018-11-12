@@ -8,7 +8,7 @@
     <div class="">
       <h4>{{reviewsCount}} reviews</h4>
       <div class="rating-points d-flex align-items-center">
-        <dsod-rating [rating]="avgRating"></dsod-rating> <span *ngIf="avgRating" class="points ml-2">{{avgRating[0]}}</span>
+        <dsod-rating [rating]="avgRating"></dsod-rating> <span *ngIf="avgRating" class="points ml-2">{{avgRating}}</span>
       </div>
     </div>
     <div *ngIf="commentsLength > 4">

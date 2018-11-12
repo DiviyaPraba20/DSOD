@@ -17,10 +17,10 @@ export class SharedService {
     );
   }
 
-  findAllReview(contentId: string) {
+  findAllReview(body: any) {
     return this.http.post<CMSResponse<DSODComment>>(
-      `${environment.url}/comment/findAllByContent?contentId=${contentId}`,
-      {},
+      `${environment.url}/comment/findAllByContent`,
+      body,
       { withCredentials: true }
     );
   }
