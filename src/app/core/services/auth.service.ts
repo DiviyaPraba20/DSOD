@@ -20,6 +20,7 @@ import { Response } from '../models/common';
 import { Logout } from 'src/app/pages/auth/actions';
 import { UserInfoPayload } from '../models/auth';
 import { AuthState } from 'src/app/pages/auth/states/auth.state';
+import { UserProfileData } from '../../layout/profile/models/userProfile';
 
 @Injectable({
   providedIn: 'root'
@@ -101,6 +102,11 @@ export class AuthService {
     const url = `${environment.api}/profile/profileservice/v1/userProfile/findOneByEmail`;
     const formData = this.parseFormData(payload);
     return this.http.post<Response>(url, formData, {withCredentials: true});
+  }
+
+  updateUserInfo(payload: UserProfileData): Observable<Response> {
+    const url = `${environment.api}/profile/profileservice/v1/userProfile/save`;
+    return this.http.post<Response>(url, payload, {withCredentials: true});
   }
 
   getAllSpeciality(): Observable<ProfileTypesResponse> {

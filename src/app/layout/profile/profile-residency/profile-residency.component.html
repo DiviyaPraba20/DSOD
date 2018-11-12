@@ -1,0 +1,66 @@
+<div class="residency-container">
+  <div class="body-item-wrapper">
+    <div class="icon-body-item gray-background">
+      <img src="./assets/images/icons/icon_location_active.png">
+    </div>
+    <div class="item-content-wrapper">
+      <div class="item-content" *ngIf="!selectedResidency.residency_School.name">
+        <span class="title no-content">
+          No residency added yet.
+        </span>
+      </div>
+      <div class="item-content" *ngIf="selectedResidency.residency_School.name">
+        <span class="title">{{selectedResidency.residency_School?.name}}</span>
+        <span class="content" *ngIf="selectedResidency?.end_time">
+          {{selectedResidency?.end_time | date:"yyyy"}}
+        </span>
+      </div>
+    </div>
+    <div class="icon-add-new" *ngIf="!expandedResSection" (click)="expandResidencySection(true)">
+      <img src="./assets/images/icons/icon_add_new.png">
+    </div>
+    <div class="icon-add-new" *ngIf="expandedResSection" (click)="expandResidencySection(false)">
+      <img src="./assets/images/icons/icon_close_new.png">
+    </div>
+  </div>
+  <div class="add-new-item-container">
+    <div class="add-new-residency-container" [ngClass]="{'show': expandedResSection}">
+      <div class="new-item-container">
+        <p class="title">Residency at</p>
+        <div class="item-body">
+          <ng-select
+            class="custom-select"
+            [items]="residencyList"
+            [(ngModel)]="selectedResidency.residency_School.id"
+            appendTo="body"
+            bindLabel="name"
+            bindValue="id"
+            class="select-item"
+            placeholder="Select Residency">
+          </ng-select>
+        </div>
+      </div>
+      <div class="new-item-container">
+        <div class="date-picker-container">
+          <span class="title">Year of Graduation</span>
+          <div class="input-group date-control">
+            <input
+              class="input-date-time"
+              [container]="'body'"
+              placeholder="yyyy-mm-dd"
+              [(ngModel)]="residencyEndTime"
+              name="dp"
+              ngbDatepicker
+              #from="ngbDatepicker">
+            <div class="icon-calendar-wrap">
+              <img class="icon-calendar" src="./assets/images/icons/icon-calendar.png" (click)="from.toggle()">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="new-item-container">
+        <button class="btn btn-primary btn-delete" (click)="deleteResidency()">Delete Residency</button>
+      </div>
+    </div>
+  </div>
+</div>

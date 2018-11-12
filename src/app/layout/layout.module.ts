@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { LayoutComponent } from './layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,6 +18,11 @@ import { ProfileViewComponent } from './profile/profile-view/profile-view.compon
 import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-edit-view.component';
 import { OnScrollUpdateBgDirective } from './directives/update-nav-bg.directive';
 import { SharedModule } from '../shared/shared.module';
+import { ProfileEducationComponent } from './profile/profile-education/profile-education.component';
+import { AuthService } from '../core/services/auth.service';
+import { ProfileExperienceComponent } from './profile/profile-experience/profile-experience.component';
+import { ProfileResidencyComponent } from './profile/profile-residency/profile-residency.component';
+import { ProfileAddressComponent } from './profile/profile-address/profile-address.component';
 
 @NgModule({
   imports: [
@@ -25,7 +32,9 @@ import { SharedModule } from '../shared/shared.module';
     NgbModule,
     NgSelectModule,
     ClickOutsideModule,
-    SharedModule
+    SharedModule,
+    UiSwitchModule,
+    NgxSpinnerModule
   ],
   declarations: [
     LayoutComponent,
@@ -35,7 +44,11 @@ import { SharedModule } from '../shared/shared.module';
     ProfilePanelComponent,
     ProfileViewComponent,
     ProfileEditViewComponent,
-    OnScrollUpdateBgDirective
+    OnScrollUpdateBgDirective,
+    ProfileEducationComponent,
+    ProfileExperienceComponent,
+    ProfileResidencyComponent,
+    ProfileAddressComponent
   ],
   exports: [
     NavbarComponent,
@@ -43,6 +56,6 @@ import { SharedModule } from '../shared/shared.module';
     SearchBoxDirective,
     ProfilePanelComponent
   ],
-  providers: [NavbarService]
+  providers: [NavbarService, AuthService]
 })
 export class LayoutModule {}

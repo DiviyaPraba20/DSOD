@@ -1,19 +1,35 @@
 @import "variables";
 
-.add-new-ex-container {
-  overflow: hidden;
-  max-height: 0;
-  transition: ease max-height 500ms;
-  &.show {
-    max-height: 500px;
+.residency-container {
+  .body-item-wrapper {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .item-content-wrapper {
+      flex: 1 1 auto;
+      .item-content {
+        border-bottom: none !important;
+        .title {
+          margin-bottom: 5px;
+          font-size: 16px;
+          &.no-content {
+            margin-bottom: 0;
+            font-size: 15px;
+            color: $gray;
+          }
+        }
+      }
+    }
   }
-
-  .flex-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .add-new-residency-container {
+    overflow: hidden;
+    max-height: 0;
+    transition: ease 500ms;
+    &.show {
+      max-height: 500px;
+      margin-top: 15px;
+    }
     .date-picker-container {
-      flex: 1 1 50%;
       .title {
         margin: 0;
       }
@@ -49,6 +65,9 @@
         }
       }
     }
+    .btn-delete {
+      font-size: 18px;
+      height: 100%;
+    }
   }
 }
-

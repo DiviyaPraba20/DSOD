@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddNewAddressComponent } from './add-new-address.component';
+import { ProfileResidencyComponent } from './profile-residency.component';
 
-describe('AddNewAddressComponent', () => {
-  let component: AddNewAddressComponent;
-  let fixture: ComponentFixture<AddNewAddressComponent>;
+describe('ProfileResidencyComponent', () => {
+  let component: ProfileResidencyComponent;
+  let fixture: ComponentFixture<ProfileResidencyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddNewAddressComponent ]
+      declarations: [ ProfileResidencyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddNewAddressComponent);
+    fixture = TestBed.createComponent(ProfileResidencyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

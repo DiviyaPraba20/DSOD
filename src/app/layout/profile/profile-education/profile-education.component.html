@@ -1,0 +1,82 @@
+<div class="education-container">
+  <div class="body-item-wrapper">
+    <div class="icon-body-item gray-background">
+      <img src="./assets/images/icons/icon_education_active.png">
+    </div>
+    <div class="item-content-wrapper">
+      <div class="item-content" *ngIf="!selectedEducation.school_name && !selectedEducation.dental_school?.name">
+        <span class="title no-content">
+          No education added yet.
+        </span>
+      </div>
+      <div class="item-content" *ngIf="selectedEducation.school_name || selectedEducation.dental_school?.name">
+        <span class="title" *ngIf="selectedEducation.types === '1'">{{selectedEducation.dental_school.name}}</span>
+        <span class="title" *ngIf="selectedEducation.types === '0'">{{selectedEducation.school_name}}</span>
+        <span class="content" *ngIf="selectedEducation?.end_time">
+          {{selectedEducation?.end_time | date:"yyyy"}}
+        </span>
+      </div>
+    </div>
+    <div class="icon-add-new" *ngIf="!expandedEduSection" (click)="expandEducationSection(true)">
+      <img src="./assets/images/icons/icon_add_new.png">
+    </div>
+    <div class="icon-add-new" *ngIf="expandedEduSection" (click)="expandEducationSection(false)">
+      <img src="./assets/images/icons/icon_close_new.png">
+    </div>
+  </div>
+  <div class="add-new-item-container">
+    <div class="add-new-education-container" [ngClass]="{'show': expandedEduSection}">
+      <div class="new-item-container flex-container">
+        <p class="title">Attended Dental School in th US</p>
+        <div class="item-body">
+          <ui-switch
+            size="small"
+            [(ngModel)]="isUSSchool"
+            (change)="onChangeSchoolType($event)">
+          </ui-switch>
+        </div>
+      </div>
+      <div class="new-item-container">
+        <p class="title">Dental School</p>
+        <div class="item-body">
+          <ng-select
+            *ngIf="isUSSchool"
+            class="custom-select"
+            [items]="detenSchoolList"
+            [(ngModel)]="selectedEducation.dental_school.id"
+            appendTo="body"
+            bindLabel="name"
+            bindValue="id"
+            class="select-item"
+            placeholder="Select Dental school">
+          </ng-select>
+          <div class="input-group" *ngIf="!isUSSchool">
+            <input type="text" [(ngModel)]="selectedEducation.school_name">
+            <span class="fa fa-pencil"></span>
+          </div>
+        </div>
+      </div>
+      <div class="new-item-container">
+        <div class="date-picker-container">
+          <span class="title">Year of Graduation</span>
+          <div class="input-group date-control">
+            <input
+              class="input-date-time"
+              [container]="'body'"
+              placeholder="yyyy-mm-dd"
+              [(ngModel)]="educationEndTime"
+              name="dp"
+              ngbDatepicker
+              #from="ngbDatepicker">
+            <div class="icon-calendar-wrap">
+              <img class="icon-calendar" src="./assets/images/icons/icon-calendar.png" (click)="from.toggle()">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="new-item-container">
+        <button class="btn btn-primary btn-delete" (click)="deleteEducation()">Delete Education</button>
+      </div>
+    </div>
+  </div>
+</div>

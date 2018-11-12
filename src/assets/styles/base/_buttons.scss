@@ -6,4 +6,9 @@
   color: $color_white;
   border-radius: 0;
   font-size: 20px;
+  outline: none;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
