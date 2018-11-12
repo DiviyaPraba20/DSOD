@@ -68,6 +68,7 @@ export interface CMSPageContent {
   comment: DSODComment[];
   publishDate: any;
   isFeatured: boolean;
+  featuredMediaId?: string;
   readNumber: number;
   publishOn: Date;
   publishEnd: Date;

@@ -31,13 +31,6 @@ export class DSODSearchComponent implements OnInit, OnChanges {
       .pipe(debounceTime(300))
       .subscribe(value => {
         this.searchValue = value;
-        this.store.dispatch(
-          new actions.FetchSearchResults({
-            skip: 0,
-            limit: 6,
-            searchValue: value
-          })
-        );
       });
   }
 
