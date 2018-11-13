@@ -5,15 +5,15 @@
   .profile-header {
     background-color: $cod_gray;
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 0;
     border-top-left-radius: 10px;
-    font-size: 18px;
-  }
-  .profile-body {
+    font-size: 25px;
+    position: relative;
     .action-container {
       display: flex;
       align-items: flex-start;
       position: absolute;
+      top: 30px;
       right: 0;
       padding: 10px;
       font-size: 16px;
@@ -26,12 +26,17 @@
         }
       }
     }
+  }
+  .profile-body {
+    height: calc(100% - 67px);
+    overflow-y: auto;
     .section-container {
       padding: 15px 30px;
       border-bottom: 1px solid $gray;
       line-height: 1.2;
       &:last-child {
         border-bottom: none;
+        padding-bottom: 30px;
       }
       .userInfo-container {
         display: flex;
@@ -119,6 +124,7 @@
               justify-content: center;
               width: 40px;
               height: 40px;
+              flex: 0 0 40px;
               &.gray-background {
                 background-color: $bali-hai;
               }
@@ -130,13 +136,21 @@
               margin-left: 20px;
               font-size: 15px;
               padding: 10px 0 15px;
-              border-bottom: 1px solid $gray;
+              // border-bottom: 1px solid $gray;
               .title {
                 margin-bottom: 0;
                 font-size: 15px;
               }
               .content {
                 color: $gray;
+              }
+            }
+          }
+          .add-new-item-container {
+            .new-item-container {
+              padding-bottom: 10px;
+              .title {
+                font-size: 16px;
               }
             }
           }

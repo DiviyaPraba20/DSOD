@@ -8,6 +8,14 @@
 }
 
 .edit-profile-container {
+  height: 700px;
+  .profile-header {
+    .action-container {
+      &.back {
+        left: 0;
+      }
+    }
+  }
   .section-container {
     .info-container {
       .title {
@@ -18,6 +26,14 @@
           margin-bottom: 15px;
           &:last-child {
             margin-bottom: 0;
+          }
+          .icon-body-item {
+            &.upload-resume-background {
+              background-color: $color-alert;
+            }
+            .icon-admin-console {
+              font-size: 20px;
+            }
           }
           .item-content {
             border-bottom: none;

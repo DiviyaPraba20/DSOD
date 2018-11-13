@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 import { ShareButtonModule } from '@ngx-share/button';
 import { SHARED_COMPONENTS, DSODAddReviewComponent } from './components';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -12,7 +15,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FormsModule,
     RouterModule,
     ShareButtonModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgSelectModule,
+    UiSwitchModule,
+    NgbModule.forRoot()
   ],
   declarations: [...SHARED_COMPONENTS],
   exports: [...SHARED_COMPONENTS],

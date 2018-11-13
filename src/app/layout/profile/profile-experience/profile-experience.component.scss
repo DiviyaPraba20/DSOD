@@ -1,0 +1,101 @@
+@import "variables";
+
+.experience-container {
+  .body-item-wrapper {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .icon-body-item {
+      &.upload-resume-background {
+        background-color: $color-alert;
+      }
+    }
+    .item-content-wrapper {
+      flex: 1 1 auto;
+      .item-content {
+        border-bottom: none !important;
+        .title {
+          margin-bottom: 5px;
+          font-size: 16px;
+          &.no-content {
+            margin-bottom: 0;
+            font-size: 15px;
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+  .add-new-education-container {
+    overflow: hidden;
+    max-height: 0;
+    transition: ease 500ms;
+    &.show {
+      max-height: 500px;
+      margin-top: 15px;
+    }
+    .flex-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .input-group {
+      border-bottom: 1px solid $gray;
+      align-items: center;
+      input {
+        position: relative;
+        flex: 1 1 auto;
+        border: none;
+        background-color: transparent;
+        color: $alto;
+        padding: 0;
+        outline: none;
+        min-height: 25px;
+      }
+      span {
+        font-size: 18px;
+      }
+    }
+    .date-picker-container {
+      .title {
+        margin: 0;
+      }
+      .date-control {
+        padding: 0 10px;
+        border-bottom: none;
+        .input-date-time {
+          width: 1%;
+          padding: 5px 10px;
+          background-color: transparent;
+          border: none;
+          flex: 1 1 auto;
+          border: none;
+          background-color: transparent;
+          color: $color-white;
+          padding: 0;
+          outline: none;
+          min-height: 25px;
+          border-bottom: 1px solid $gray;
+          &::placeholder {
+            color: $gray;
+          }
+        }
+        .icon-calendar-wrap {
+          display: flex;
+          align-items: center;
+          padding: 5px;
+          cursor: pointer;
+        }
+        span {
+          height: 30px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+    .btn-delete {
+      font-size: 18px;
+      height: 100%;
+    }
+  }
+}
