@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, ReactiveFormsModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   BrowserAnimationsModule,
   NoopAnimationsModule
@@ -32,9 +32,10 @@ import { ProfileExperienceComponent } from './profile/profile-experience/profile
 import { ProfileResidencyComponent } from './profile/profile-residency/profile-residency.component';
 import { ProfileAddressComponent } from './profile/profile-address/profile-address.component';
 
-
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     CommonModule,
     RouterModule,
     NgbModule,
