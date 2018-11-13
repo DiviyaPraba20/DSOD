@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ReactiveFormsModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule
+} from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ClickOutsideModule } from 'ng-click-outside';
@@ -17,24 +21,31 @@ import { ProfilePanelComponent } from './profile/profile-panel/profile-panel.com
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { ProfileEditViewComponent } from './profile/profile-edit-view/profile-edit-view.component';
 import { OnScrollUpdateBgDirective } from './directives/update-nav-bg.directive';
+import { DSODSearchComponent } from './search/search-input/search-input.component';
+import { DSODSearchResults } from './search/search-results/search-results.component';
+import { DSODSearchItemComponent } from './search/search-item/search-item.component';
 import { SharedModule } from '../shared/shared.module';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProfileEducationComponent } from './profile/profile-education/profile-education.component';
 import { AuthService } from '../core/services/auth.service';
 import { ProfileExperienceComponent } from './profile/profile-experience/profile-experience.component';
 import { ProfileResidencyComponent } from './profile/profile-residency/profile-residency.component';
 import { ProfileAddressComponent } from './profile/profile-address/profile-address.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule,
     NgbModule,
     NgSelectModule,
-    ClickOutsideModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
-    UiSwitchModule,
-    NgxSpinnerModule
+    PaginationModule.forRoot(),
+    NgxSpinnerModule,
+    ClickOutsideModule,
+    UiSwitchModule
   ],
   declarations: [
     LayoutComponent,
@@ -45,6 +56,9 @@ import { ProfileAddressComponent } from './profile/profile-address/profile-addre
     ProfileViewComponent,
     ProfileEditViewComponent,
     OnScrollUpdateBgDirective,
+    DSODSearchResults,
+    DSODSearchComponent,
+    DSODSearchItemComponent,
     ProfileEducationComponent,
     ProfileExperienceComponent,
     ProfileResidencyComponent,

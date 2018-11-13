@@ -1,0 +1,4 @@
+<form [formGroup]="searchForm">
+  <input type="text" class="form-control" name="search" [(ngModel)]="searchValue" formControlName="searchTerm">
+</form>
+<dsod-search-results [searchTerm]="searchValue" *ngIf="searchValue && isOpen"></dsod-search-results>

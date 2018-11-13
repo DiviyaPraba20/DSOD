@@ -18,15 +18,12 @@
                 <li class="nav-item" *ngFor="let nav of navigation">
                   <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
                 </li>
-                <li class="nav-item search-area">
-                  <div class="btn-group">
-                    <div id="search-box">
-                      <label for="search">search</label>
-                      <input type="text" class="form-control" name="search">
-                    </div>
-                    <button type="button" class="nav-link" enable-search>
+                <li class="nav-item">
+                  <div class="search-area" [ngClass]="{'li-hidden':!isOpen, 'li-open':isOpen}">
+                    <button #searchButton type="button" class="nav-link" (click)="toggle()">
                       <img src="assets/images/search-icon.png">
                     </button>
+                    <dsod-search [isOpen]=isOpen></dsod-search>
                   </div>
                 </li>
                 <li class="nav-item login-wrap" *ngIf="(isLoggedIn$ | async)" ngbDropdown placement="bottom-right">

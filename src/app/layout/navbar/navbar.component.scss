@@ -21,6 +21,7 @@
         border-right: 1px solid $color-white;
         align-items: center;
         display: flex;
+        position: relative;
 
         a.nav-link {
           color: $color-white !important;
@@ -42,52 +43,6 @@
 
         &:last-child {
           border-right: none;
-        }
-
-        &.search-area {
-          #search-box {
-            display: none;
-            position: absolute;
-            top: 50px;
-            right: 0;
-            width: 200px;
-            padding: 15px;
-            background: $color-primary;
-            border-radius: 5px;
-
-            &::before {
-              position: absolute;
-              width: 0;
-              height: 0;
-              border-left: 10px solid transparent;
-              border-right: 10px solid transparent;
-              border-bottom: 10px solid $color-primary;
-              right: 22px;
-              top: -10px;
-              content: "";
-            }
-
-            label {
-              font-size: 16px;
-              color: $color-white;
-              text-transform: capitalize;
-            }
-          }
-
-          .search-active {
-            display: block !important;
-          }
-
-          .nav-link {
-            background: $black;
-            padding: 5px 10px;
-            line-height: 24px;
-            border: none;
-            outline: none;
-            text-align: center;
-            margin: 0 20px;
-            cursor: pointer;
-          }
         }
 
         &.login-wrap {
@@ -135,6 +90,40 @@
             }
           }
         }
+
+        .search-area {
+          margin: 0 20px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: row-reverse;
+
+          .nav-link {
+            background: $black;
+            padding: 5px 10px;
+            line-height: 24px;
+            border: none;
+            outline: none;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .li-hidden {
+        width: 44px;
+        overflow: hidden;
+        transition: width 0.5s;
+        -webkit-transition: width 0.5s;
+        -moz-transition: width 0.5s;
+      }
+
+      .li-open {
+        overflow: visible;
+        width: 250px;
+        transition: width 0.5s;
+        -webkit-transition: width 0.5s;
+        -moz-transition: width 0.5s;
       }
     }
   }
