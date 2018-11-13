@@ -32,5 +32,6 @@ export const SHARED_COMPONENTS = [
   DSODRatingReviewComponent,
   DSODAddReviewComponent,
   DSODContentAuthorComponent,
-  DSODComingSoonComponent
+  DSODComingSoonComponent,
+  DSODAddReviewComponent
 ];

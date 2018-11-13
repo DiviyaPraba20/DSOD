@@ -19,7 +19,9 @@ import {
   LoginWithLinkedInSuccess,
   LoginWithLinkedInFailure,
   GetUserInfoFailure,
-  GetUserInfoSuccess
+  GetUserInfoSuccess,
+  UpdateUserInfoSuccess,
+  UpdateUserInfoFailure
 } from '../actions';
 
 export interface State {
@@ -209,6 +211,41 @@ export class AuthState {
     patchState({
       pending: false,
       userInfo: null,
+      error
+    });
+  }
+
+  @Action(actions.UpdateUserInfo)
+  updateUserInfo({ patchState, dispatch }: StateContext<State>, action: actions.UpdateUserInfo) {
+    patchState({
+      pending: true,
+      error: null
+    });
+
+    return this.authService.updateUserInfo(action.payload).pipe(
+      exhaustMap((response: UserInfoResponse) => {
+        if (response.code !== 0) {
+          return dispatch(new UpdateUserInfoFailure(response.msg));
+        }
+        return dispatch(new UpdateUserInfoSuccess(response));
+      })
+    );
+  }
+
+  @Action(actions.UpdateUserInfoSuccess)
+  updateUserInfoSuccess({ patchState }: StateContext<State>, action: actions.UpdateUserInfoSuccess) {
+    this.toastr.success('User Info updated successfully!', 'UserInfo');
+    patchState({
+      pending: false
+    });
+  }
+
+  @Action(actions.UpdateUserInfoFailure)
+  updateUserInfoFailure({ patchState }: StateContext<State>, action: actions.UpdateUserInfoFailure) {
+    const error = action.payload;
+    this.toastr.error(action.payload, 'UserInfo');
+    patchState({
+      pending: false,
       error
     });
   }

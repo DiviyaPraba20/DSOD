@@ -4103,6 +4103,10 @@ ngx-toastr@^9.1.0:
   dependencies:
     tslib "^1.9.0"
 
+ngx-ui-switch@^1.6.0:
+  version "1.6.1"
+  resolved "http://registry.npmjs.org/ngx-ui-switch/-/ngx-ui-switch-1.6.1.tgz#2c3e7f3d372d4b081d42600a93a62d3022f63cb9"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

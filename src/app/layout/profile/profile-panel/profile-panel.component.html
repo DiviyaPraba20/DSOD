@@ -1,5 +1,8 @@
 <div class="profile-panel-container" *ngIf="isLoggedIn$ | async">
-  <div class="profile-container" [ngClass]="{'opened': profilePanel$ | async}">
+  <div class="profile-container" [ngClass]="{'opened': profilePanel$ | async}"
+    (clickOutside)="onClickedOutsideProfile($event)"
+    [clickOutsideEnabled]="true"
+    [delayClickOutsideInit]="true">
     <dsod-profile-view *ngIf="!(isEditMode$ | async)"></dsod-profile-view>
     <dsod-profile-edit-view *ngIf="isEditMode$ | async"></dsod-profile-edit-view>
   </div>

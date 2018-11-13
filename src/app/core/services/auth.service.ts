@@ -13,12 +13,14 @@ import {
   LoginWithLinkedInPayload,
   LoginWithLinkedInResponse,
   ForgotPasswordPayload,
-  ResetPasswordPayload
+  ResetPasswordPayload,
+  ProfileTypesResponse
 } from '../models';
 import { Response } from '../models/common';
 import { Logout } from 'src/app/pages/auth/actions';
 import { UserInfoPayload } from '../models/auth';
 import { AuthState } from 'src/app/pages/auth/states/auth.state';
+import { UserProfileData } from '../../layout/profile/models/userProfile';
 
 @Injectable({
   providedIn: 'root'
@@ -100,5 +102,52 @@ export class AuthService {
     const url = `${environment.api}/profile/profileservice/v1/userProfile/findOneByEmail`;
     const formData = this.parseFormData(payload);
     return this.http.post<Response>(url, formData, {withCredentials: true});
+  }
+
+  updateUserInfo(payload: UserProfileData): Observable<Response> {
+    const url = `${environment.api}/profile/profileservice/v1/userProfile/save`;
+    return this.http.post<Response>(url, payload, {withCredentials: true});
+  }
+
+  getAllSpeciality(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/residencySpecialty/findAllSpecialty`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
+
+  getAllPracticeTypes(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/experience/findAllPracticeType`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
+
+  getAllPracticeRoles(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/experience/findAllPracticeRole`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
+
+  getAllPracticeDSO(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/experience/findAllPracticeDSO`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
+
+  getAllResidencies(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/residencySpecialty/findAllResidency`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
+
+  getAllDentalSchools(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/dentalSchool/getAll`;
+    const formData = this.parseFormData({ name: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
+  }
+
+  getAllUSStates(): Observable<ProfileTypesResponse> {
+    const url = `${environment.api}/profile/profileservice/v1/usZipSv/findAllStateByState`;
+    const formData = this.parseFormData({ state: '' });
+    return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
   }
 }

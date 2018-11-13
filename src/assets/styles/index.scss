@@ -3,3 +3,27 @@
 @import "../styles/base/buttons";
 @import "../styles/base/profile";
 @import "../styles/base/select";
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: $black-8;
+  border-radius: 16px;
+  margin: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  width: 16px;
+  border-radius: 8px;
+  background-color: rgba(110, 110, 110, 0.5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(110, 110, 110, 0.8);
+}

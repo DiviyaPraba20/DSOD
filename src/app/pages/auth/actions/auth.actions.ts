@@ -1,3 +1,4 @@
+import { UserProfileData } from '../../../layout/profile/models/userProfile';
 import {
   LoginPayload,
   SignUpPayload,
@@ -23,7 +24,10 @@ export enum AuthActionTypes {
   LoginWithLinkedinFailure = '[Auth] Login with LinkedIn Failure',
   GetUserInfo = '[Auth] Get UserInfo',
   GetUserInfoSuccess = '[Auth] Get UserInfo Success',
-  GetUserInfoFailure = '[Auth] Get UserInfo Failure'
+  GetUserInfoFailure = '[Auth] Get UserInfo Failure',
+  UpdateUserInfo = '[Auth] Update UserInfo',
+  UpdateUserInfoSuccess = '[Auth] Update UserInfo Success',
+  UpdateUserInfoFailure = '[Auth] Update UserInfo Failure'
 }
 
 export class Login {
@@ -106,6 +110,24 @@ export class GetUserInfoFailure {
   constructor(public payload?: any) {}
 }
 
+export class UpdateUserInfo {
+  static readonly type = AuthActionTypes.UpdateUserInfo;
+
+  constructor(public payload: UserProfileData) {}
+}
+
+export class UpdateUserInfoSuccess {
+  static readonly type = AuthActionTypes.UpdateUserInfoSuccess;
+
+  constructor(public payload: UserInfoResponse) {}
+}
+
+export class UpdateUserInfoFailure {
+  static readonly type = AuthActionTypes.UpdateUserInfoFailure;
+
+  constructor(public payload?: any) {}
+}
+
 export type AuthActions = Login
   | LoginSuccess
   | LoginFailure
@@ -119,4 +141,7 @@ export type AuthActions = Login
   | LoginWithLinkedInFailure
   | GetUserInfo
   | GetUserInfoSuccess
-  | GetUserInfoFailure;
+  | GetUserInfoFailure
+  | UpdateUserInfo
+  | UpdateUserInfoSuccess
+  | UpdateUserInfoFailure;

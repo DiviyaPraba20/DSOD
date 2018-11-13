@@ -20,16 +20,7 @@ export interface UserProfileData {
   educations: Education[];
   experiences: Experience[];
   profileResidency: ProfileResidency[];
-  practiceAddress: {
-    id: string;
-    address1: string;
-    address2: string;
-    zipCode: string;
-    city: string;
-    states: string;
-    email: string;
-    user_id: string;
-  };
+  practiceAddress: Address;
   photo_album: {
     id: string;
     photo: string;
@@ -61,9 +52,9 @@ export interface Education {
   };
   school_name: string;
   major: string;
-  create_time: number;
-  start_time: number;
-  end_time: number;
+  create_time: string;
+  start_time: string;
+  end_time: string;
   email: string;
   types: string;
 }
@@ -83,21 +74,32 @@ export interface Experience {
     id: string;
     name: string;
   };
-  create_time: number;
-  start_time: number;
-  end_time: number;
+  create_time: string;
+  start_time: string;
+  end_time: string;
   email: string;
 }
 
 export interface ProfileResidency {
   id: string;
-  dental_School: {
+  residency_School: {
     id: string;
     name: string;
   };
-  create_time: number;
-  start_time: number;
-  end_time: number;
+  create_time: string;
+  start_time: string;
+  end_time: string;
+  email: string;
+  user_id: string;
+}
+
+export interface Address {
+  id: string;
+  address1: string;
+  address2: string;
+  zipCode: string;
+  city: string;
+  states: string;
   email: string;
   user_id: string;
 }
