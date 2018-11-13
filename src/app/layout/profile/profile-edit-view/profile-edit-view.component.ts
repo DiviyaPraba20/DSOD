@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ViewChild } from '
 import { Store } from '@ngxs/store';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserProfileData, Experience, ProfileResidency, Education, Address } from '../models/userProfile';
 import { environment } from 'src/environments/environment';
@@ -12,6 +13,7 @@ import { ProfileExperienceComponent } from '../profile-experience/profile-experi
 import { ProfileEducationComponent } from '../profile-education/profile-education.component';
 import { ProfileResidencyComponent } from '../profile-residency/profile-residency.component';
 import { ProfileAddressComponent } from '../profile-address/profile-address.component';
+import { AvatarCropperComponent } from 'src/app/shared/components/avatar-cropper/avatar-cropper.component';
 
 @Component({
   selector: 'dsod-profile-edit-view',
@@ -20,13 +22,17 @@ import { ProfileAddressComponent } from '../profile-address/profile-address.comp
 })
 export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   userProfile: UserProfileData = null;
-  avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
-  croppedImage: any;
   isAddNewExperience = false;
   isAddNewResidency = false;
   isAddNewEducation = false;
   isAddNewAddress = false;
   specialities: any[] = [];
+
+  avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
+  croppedImage: any;
+  croppedImageFile: any;
+  fileName: string;
+  imageChangedEvent: any;
 
   @ViewChild(ProfileExperienceComponent) expComponentRef: ProfileExperienceComponent;
   @ViewChild(ProfileEducationComponent) eduComponentRef: ProfileEducationComponent;
@@ -38,7 +44,8 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private avatarCropModalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -85,7 +92,6 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
       && this.addComponentRef.expandAddressSection(false)) {
       if (this.validateUserProfileInfo()) {
         this.spinner.show();
-        console.log(this.userProfile);
         this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
           this.spinner.hide();
         });
@@ -97,7 +103,26 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     this.store.dispatch(new ChangeProfileEditMode(false));
   }
 
-  selectFile(file) { }
+  selectFile(file) {
+    this.imageChangedEvent = file;
+    if (file.srcElement && file.srcElement.files[0]) {
+      this.fileName = file.srcElement.files[0].name;
+    }
+    const modalRef = this.avatarCropModalService.open(
+      AvatarCropperComponent,
+      {
+        centered: true,
+        backdrop: 'static'
+      }
+    );
+
+    modalRef.componentInstance.imageChangedEvent = this.imageChangedEvent;
+    modalRef.result
+    .then(result => {
+    })
+    .catch(reason => {
+    });
+  }
 
   updateExperience(exp: Experience) {
     const index = this.userProfile.experiences.findIndex(x => x.id === exp.id);

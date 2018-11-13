@@ -1,0 +1,25 @@
+<div class="avatar-cropper-container">
+  <div class="orgin-container">
+    <p class="title">Orgin Image</p>
+    <div class="image-container">
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1"
+        [resizeToWidth]="200"
+        (imageCroppedBase64)="imageCropped($event)"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="loadImageFailed()">
+      </image-cropper>
+    </div>
+  </div>
+  <div class="preview-container">
+    <p class="title">Preview</p>
+    <img [src]="croppedImage" />
+  </div>
+  <div class="action-container">
+    <button class="btn btn-primary" (click)="done()">Ok</button>
+    <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+  </div>
+</div>
