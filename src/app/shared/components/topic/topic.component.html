@@ -1,36 +1,30 @@
 <div class="block-wrap">
-  <div class="topic-block topic-block-sm" [ngClass]="{'bg-none':styleFor=='sponsored','topic-block-lg':styleFor=='content-large'}">
+  <div class="topic-block" [ngClass]="{'topic-block-sm':styleFor==='content-sm','topic-block-lg':styleFor=='content-lg'}">
     <div class="topic-block-header" *ngIf="showHeader">
       <h4>{{topic.categoryName}}</h4>
       <dsod-rating [rating]="topic.avgCommentRating"></dsod-rating>
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && showImage">
-      <a href="javascript:void(0)" (click)="navigateTo(topic)"><img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid"
+      <a role="button" (click)="navigateTo($event)"><img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid"
           alt="Feautred Thumbnail Large"></a>
-      <a href="javascript:void(0)" class="read-about" (click)="navigateTo(topic)">
-        <img *ngIf="topic.contentTypeName=='Articles'" src="assets/images/article-icon.png" alt="">
-        <img *ngIf="topic.contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
-        <img *ngIf="topic.contentTypeName=='Podcasts'" src="assets/images/podcast-icon.png" alt="">
+      <a role="button" class="read-about" (click)="navigateTo($event)">
+        <img *ngIf="topic.contentTypeName==='Articles'" src="assets/images/article-icon.png" alt="">
+        <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="">
+        <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="">
       </a>
     </div>
     <div class="topic-block-content">
-      <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-small'}">{{topic.title}}</h2>
+      <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-sm'}">{{topic.title}}</h2>
       <em *ngIf="topic.content">By&nbsp;{{topic.author.fullName}}
-        <a href="javascrpipt:void(0)" class="read-about" *ngIf="!topic.featuredMedia" (click)="navigateTo(topic)">
-          <img *ngIf="topic.contentTypeName=='Articles'&& !topic.featuredMediaId" src="assets/images/article-icon.png"
+        <a role="button" class="read-about" *ngIf="!topic.featuredMedia" (click)="navigateTo(topic)">
+          <img *ngIf="topic.contentTypeName==='Articles'&& !topic.featuredMediaId" src="assets/images/article-icon.png"
             alt="">
-          <img *ngIf="topic.contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
-          <img *ngIf="topic.contentTypeName=='Podcasts'" src="assets/images/podcast-icon.png" alt="">
+          <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="">
+          <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="">
         </a> </em>
-      <div #contentDiv class="excrept-content-lg" [ngClass]="{'excrept-content-sm':styleFor=='content-small'}"
-        [innerHTML]="topic.excerpt">
+      <div #contentDiv class="excrept-content-lg" [ngClass]="{'excrept-content-sm':styleFor=='content-sm'}" [innerHTML]="topic.excerpt">
       </div>
-      <p [ngClass]="{'read-more-sm':styleFor==content-small}">...<a href="javascrpipt:void(0)" (click)="navigateTo(topic)">more</a></p>
-      <a href="javascrpipt:void(0)" class="read-about" *ngIf="!topic.featuredMedia" (click)="navigateTo(topic)">
-        <img *ngIf="topic.contentTypeName=='Articles'" src="assets/images/article-icon.png" alt="">
-        <img *ngIf="topic.contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
-        <img *ngIf="topic.contentTypeName=='Podcasts'" src="assets/images/podcast-icon.png" alt="">
-      </a>
+      <p [ngClass]="{'read-more-sm':styleFor==='content-sm'}">...<a role="button" (click)="navigateTo($event)">more</a></p>
     </div>
   </div>
 </div>

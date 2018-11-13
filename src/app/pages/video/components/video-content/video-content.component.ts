@@ -8,6 +8,6 @@ import { CMSPageContent } from 'src/app/cms/models';
 })
 export class DSODVideoContentComponent {
   @Input()
-  content: CMSPageContent;
+  content: string;
   constructor() {}
 }

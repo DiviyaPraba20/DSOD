@@ -37,50 +37,50 @@ export interface DSODFeaturedMedia {
 }
 
 export interface CMSPageContent {
-  id: string;
-  email: string;
-  authorId: string;
-  title: string;
-  content: any;
-  contentTypeId: string;
-  categoryId: string;
-  sponsorId: string;
-  author: DSODAuhtor;
-  authorPhotoUrl: null;
-  contentTypeName: string;
-  categoryName: string;
-  sponsorName: string;
-  featuredMedia: DSODFeaturedMedia;
-  photoUrls: any[];
-  photos: any[];
-  videos: any[];
-  videoUrls: any[];
-  podcasts: any[];
-  podcastUrls: any[];
-  isPrivate: boolean;
-  isComplete: boolean;
-  isPublishNow: boolean;
-  isBookmark: boolean;
-  nextContentId: string;
-  previousContentId: string;
-  countOfComment: any;
-  avgCommentRating: any;
-  comment: DSODComment[];
-  publishDate: any;
-  isFeatured: boolean;
-  readNumber: number;
-  publishOn: Date;
-  publishEnd: Date;
-  reviewOn: any;
-  subTitle: string;
-  status: number;
-  unite: boolean;
-  expedite: boolean;
-  excerpt: any;
-  countOfEssay: number;
-  visualEssays: any;
-  relativeTopics: any;
-  relativeTopicList: any;
+  id?: string;
+  email?: string;
+  authorId?: string;
+  title?: string;
+  content?: string;
+  contentTypeId?: string;
+  categoryId?: string;
+  sponsorId?: string;
+  author?: DSODAuhtor;
+  authorPhotoUrl?: null;
+  contentTypeName?: string;
+  categoryName?: string;
+  sponsorName?: string;
+  featuredMedia?: DSODFeaturedMedia;
+  photoUrls?: any[];
+  photos?: any[];
+  videos?: any[];
+  videoUrls?: any[];
+  podcasts?: any[];
+  podcastUrls?: any[];
+  isPrivate?: boolean;
+  isComplete?: boolean;
+  isPublishNow?: boolean;
+  isBookmark?: boolean;
+  nextContentId?: string;
+  previousContentId?: string;
+  countOfComment?: any;
+  avgCommentRating?: any;
+  comment?: DSODComment[];
+  publishDate?: any;
+  isFeatured?: boolean;
+  readNumber?: number;
+  publishOn?: Date;
+  publishEnd?: Date;
+  reviewOn?: any;
+  subTitle?: string;
+  status?: number;
+  unite?: boolean;
+  expedite?: boolean;
+  excerpt?: any;
+  countOfEssay?: number;
+  visualEssays?: any;
+  relativeTopics?: any;
+  relativeTopicList?: any;
 }
 
 export interface CMSContentParams {
@@ -95,6 +95,7 @@ export interface CMSContentParams {
   sponsorId?: string;
   vol?: string;
   searchValue?: string;
+  contentId?: string;
 }
 
 export interface CMSResponse<T> extends Response {
@@ -104,4 +105,9 @@ export interface CMSResponse<T> extends Response {
 export interface sponsors {
   id: string;
   name: string;
+}
+
+export interface RelatedContent {
+  id: string;
+  title: string;
 }

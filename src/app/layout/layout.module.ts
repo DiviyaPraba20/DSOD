@@ -24,6 +24,7 @@ import {
   NoopAnimationsModule
 } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GoTopButtonModule } from 'ng2-go-top-button';
 
 @NgModule({
   imports: [
@@ -35,7 +36,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     SharedModule,
     PaginationModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    GoTopButtonModule
   ],
   declarations: [
     LayoutComponent,

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as actions from '../../../cms/actions';
 import { Store } from '@ngxs/store';
@@ -15,7 +15,7 @@ import { skip } from 'rxjs/operators';
   templateUrl: './podcast-page.component.html',
   styleUrls: ['./podcast-page.component.scss']
 })
-export class DSODPodcastComponent implements OnInit, OnDestroy {
+export class DSODPodcastComponent implements OnInit {
   contentId: string;
   content: any;
   params: CMSContentParams = {
@@ -37,9 +37,5 @@ export class DSODPodcastComponent implements OnInit, OnDestroy {
     this.pageContent$.pipe(skip(1)).subscribe(c => {
       this.content = c;
     });
-  }
-
-  ngOnDestroy() {
-    this.store.dispatch(new actions.ResetState());
   }
 }

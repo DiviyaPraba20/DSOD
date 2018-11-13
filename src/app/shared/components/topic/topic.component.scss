@@ -9,12 +9,14 @@
     .topic-block-header {
       display: flex;
       justify-content: space-between;
-      padding: 21px 15px 9px;
+      padding: 16px 15px 14px;
       border-bottom: 1px solid #8799A7;
 
       h4 {
         color: $color-primary;
         font-size: 22px;
+        margin: 0;
+        line-height: 20px;
       }
 
     }
@@ -23,8 +25,10 @@
       position: relative;
       border-top: 3px solid $mine_grey;
 
-      >img {
-        width: 100%;
+      a {
+        >img {
+          width: 100%;
+        }
       }
 
       >video {
@@ -73,16 +77,10 @@
 
       p {
         font-size: 22px;
-        line-height: 0px;
+        // line-height: 0px;
 
         a {
           color: $deep-cerulean;
-        }
-      }
-
-      .read-more-sm {
-        p {
-          font-size: 17px;
         }
       }
     }
@@ -103,6 +101,7 @@
 
       a.read-about {
         bottom: 40px;
+        cursor: pointer;
       }
     }
 
@@ -122,30 +121,25 @@
         /deep/ p:first-child {
           display: none
         }
-
-        /deep/ p:last-child {
-          font-size: 22px;
-          line-height: 36px;
-          overflow: hidden;
-          max-height: 151px;
-        }
       }
 
       .excrept-content-sm {
         padding-top: 5px;
 
         /deep/ p:first-child {
-          display: none
+          display: none;
         }
 
-        /deep/ p:last-child {
+        /deep/p {
           font-size: 17px;
           line-height: 25px;
           max-height: 97px;
           overflow: hidden;
+          margin-bottom: 0;
         }
       }
     }
+
 
     .read-more-lg {
       p {
@@ -154,6 +148,7 @@
 
         a {
           color: $deep-cerulean;
+          cursor: pointer;
         }
       }
     }
@@ -165,7 +160,15 @@
 
         a {
           color: $deep-cerulean;
+          cursor: pointer;
         }
+      }
+    }
+
+    /deep/ p {
+      a {
+        font-size: 17px;
+        cursor: pointer;
       }
     }
   }
@@ -176,6 +179,22 @@
         object-fit: unset;
         height: 100%;
         width: 100%;
+      }
+    }
+
+    /deep/ p:first-child {
+      display: none;
+    }
+
+    /deep/ p {
+      font-size: 22px;
+      max-height: 100px;
+      overflow: hidden;
+      margin-bottom: 0;
+
+      a {
+        font-size: 22px;
+        cursor: pointer;
       }
     }
   }

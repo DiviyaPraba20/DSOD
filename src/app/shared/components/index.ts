@@ -14,6 +14,8 @@ import { DSODRatingReviewComponent } from './reviews/reviews.component';
 import { DSODAddReviewComponent } from './reviews/add-review/add-review-modal.component';
 import { DSODContentAuthorComponent } from './author/author.component';
 import { DSODComingSoonComponent } from './coming soon/coming-soon.component';
+import { DSODRelatedContent } from './related-content/related-content.component';
+import { from } from 'rxjs';
 export * from '././reviews/add-review/add-review-modal.component';
 
 export const SHARED_COMPONENTS = [
@@ -32,5 +34,6 @@ export const SHARED_COMPONENTS = [
   DSODRatingReviewComponent,
   DSODAddReviewComponent,
   DSODContentAuthorComponent,
-  DSODComingSoonComponent
+  DSODComingSoonComponent,
+  DSODRelatedContent
 ];

@@ -1,10 +1,3 @@
 <div class="video-thumbnail" *ngIf="content">
-  <video #video src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{content.videos[0]}}"
-    controls="false" poster="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{content.featureMediaId}}">
-
-  </video>
-  <div class="video-controls">
-    <button class="forward" (click)="forward()"><img src="assets/images/media-next.png" alt=""></button>
-    <button class="rewind" (click)="rewind()"><img src="assets/images/media-prev.png" alt=""></button>
-  </div>
+  <div [innerHTML]="iframe"></div>
 </div>
