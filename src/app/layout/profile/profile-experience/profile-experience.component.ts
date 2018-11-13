@@ -74,16 +74,18 @@ export class ProfileExperienceComponent implements OnInit {
     });
   }
 
-  expandExperienceSection(flag) {
+  public expandExperienceSection(flag) {
     if (flag) {
       if (this.experiences.length) {
         this.selectedExperience = this.experiences[0];
       }
       this.initSelectedExperience();
       this.expandedExpSection = flag;
+      return true;
     } else {
       if (this.practiceTypes.filter(type => type.id === this.selectedExperience.practice_Type.id).length) {
         this.selectedExperience.practice_Type = this.practiceTypes.filter(type => type.id === this.selectedExperience.practice_Type.id)[0];
+        this.selectedExperience.practice_name = this.selectedExperience.practice_Type.name;
       }
       if (this.practiceRoles.filter(type => type.id === this.selectedExperience.practice_Role.id).length) {
         this.selectedExperience.practice_Role = this.practiceRoles.filter(type => type.id === this.selectedExperience.practice_Role.id)[0];
@@ -107,12 +109,16 @@ export class ProfileExperienceComponent implements OnInit {
           'date': this.expEndTime.day
         }).format();
       } else {
-        this.selectedExperience.end_time = null;
+        this.selectedExperience.end_time = moment().format();
+        // this.selectedExperience.end_time = null;
       }
 
       if (this.validateSelExperience(this.selectedExperience)) {
         this.expandedExpSection = flag;
         this.updateExperience.emit(this.selectedExperience);
+        return true;
+      } else {
+        return false;
       }
     }
   }
@@ -172,15 +178,15 @@ export class ProfileExperienceComponent implements OnInit {
       return true;
     }
     if (!exp.practice_Type.id) {
-      this.toastr.error('Please select practice type', 'Error');
+      this.toastr.warning('Please select practice type', 'Error');
       return false;
     }
     if (!exp.practice_Role.id) {
-      this.toastr.error('Please select role at practice', 'Error');
+      this.toastr.warning('Please select role at practice', 'Error');
       return false;
     }
     if (!exp.start_time) {
-      this.toastr.error('Please enter working time', 'Error');
+      this.toastr.warning('Please enter working time', 'Error');
       return false;
     }
     return true;

@@ -56,13 +56,14 @@ export class ProfileEducationComponent implements OnInit {
     });
   }
 
-  expandEducationSection(flag) {
+  public expandEducationSection(flag) {
     if (flag) {
       if (this.educations.length) {
         this.selectedEducation = this.educations[0];
       }
       this.initSelectedEducation();
       this.expandedEduSection = flag;
+      return true;
     } else {
       const dentalSchool = this.detenSchoolList.filter(type => type.id === this.selectedEducation.dental_school.id);
       if (dentalSchool.length) {
@@ -87,6 +88,9 @@ export class ProfileEducationComponent implements OnInit {
       if (this.validateSelEducation(this.selectedEducation)) {
         this.expandedEduSection = flag;
         this.updateEducation.emit(this.selectedEducation);
+        return true;
+      } else {
+        return false;
       }
     }
   }
@@ -146,15 +150,15 @@ export class ProfileEducationComponent implements OnInit {
       return true;
     }
     if (!edu.end_time) {
-      this.toastr.error('Please Enter Year of Guraduation', 'Error');
+      this.toastr.warning('Please Enter Year of Guraduation', 'Error');
       return false;
     }
     if (edu.types === '1' && !edu.dental_school.name) {
-      this.toastr.error('Please fill out Dental School Field', 'Error');
+      this.toastr.warning('Please fill out Dental School Field', 'Error');
       return false;
     }
     if (edu.types === '0' && !edu.school_name) {
-      this.toastr.error('Please fill out Dental School Field', 'Error');
+      this.toastr.warning('Please fill out Dental School Field', 'Error');
       return false;
     }
     return true;

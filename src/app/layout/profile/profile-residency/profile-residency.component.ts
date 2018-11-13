@@ -53,13 +53,14 @@ export class ProfileResidencyComponent implements OnInit {
     });
   }
 
-  expandResidencySection(flag) {
+  public expandResidencySection(flag) {
     if (flag) {
       if (this.residencies.length) {
         this.selectedResidency = this.residencies[0];
       }
       this.initSelectedResidency();
       this.expandedResSection = flag;
+      return true;
     } else {
       if (this.residencyList.filter(type => type.id === this.selectedResidency.residency_School.id).length) {
         this.selectedResidency.residency_School = this.residencyList.filter(type => type.id === this.selectedResidency.residency_School.id)[0];
@@ -83,6 +84,9 @@ export class ProfileResidencyComponent implements OnInit {
       if (this.validateSelResidency(this.selectedResidency)) {
         this.expandedResSection = flag;
         this.updateResidency.emit(this.selectedResidency);
+        return true;
+      } else {
+        return false;
       }
     }
   }
@@ -118,15 +122,16 @@ export class ProfileResidencyComponent implements OnInit {
   }
 
   validateSelResidency(res: ProfileResidency) {
+    console.log(res);
     if (!res.residency_School.id && !res.end_time) {
       return true;
     }
     if (!res.residency_School.id) {
-      this.toastr.error('Please select residency school', 'Error');
+      this.toastr.warning('Please select residency school', 'Error');
       return false;
     }
     if (!res.end_time) {
-      this.toastr.error('Please select year of completion', 'Error');
+      this.toastr.warning('Please select year of completion', 'Error');
       return false;
     }
     return true;

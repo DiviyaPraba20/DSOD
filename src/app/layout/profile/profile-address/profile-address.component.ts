@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -9,7 +9,7 @@ import { Address } from '../models/userProfile';
   templateUrl: './profile-address.component.html',
   styleUrls: ['./profile-address.component.scss']
 })
-export class ProfileAddressComponent implements OnInit {
+export class ProfileAddressComponent implements OnInit, OnChanges {
   @Input() address: Address;
   @Input() editable = false;
   @Output() updateAddress: EventEmitter<Address> = new EventEmitter();
@@ -29,13 +29,23 @@ export class ProfileAddressComponent implements OnInit {
     this.initSelectedAddress();
   }
 
-  expandAddressSection(flag) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.address.currentValue) {
+      this.initSelectedAddress();
+    }
+  }
+
+  public expandAddressSection(flag) {
     if (flag) {
       this.expandedAddSection = flag;
+      return true;
     } else {
       if (this.validateAddressFields(this.address)) {
         this.expandedAddSection = flag;
         this.updateAddress.emit(this.address);
+        return true;
+      } else {
+        return false;
       }
     }
   }
@@ -69,24 +79,27 @@ export class ProfileAddressComponent implements OnInit {
   }
 
   validateAddressFields(add: Address) {
+    if (!add.address1 && !add.address2 && !add.city && !add.zipCode && !add.states) {
+      return true;
+    }
     if (!add.address1) {
-      this.toastr.error('Please enter address1', 'Error');
+      this.toastr.warning('Please enter address1', 'Error');
       return false;
     }
     if (!add.address2) {
-      this.toastr.error('Please enter address2', 'Error');
+      this.toastr.warning('Please enter address2', 'Error');
       return false;
     }
     if (!add.city) {
-      this.toastr.error('Please enter city', 'Error');
+      this.toastr.warning('Please enter city', 'Error');
       return false;
     }
     if (!add.zipCode) {
-      this.toastr.error('Please enter zipcode', 'Error');
+      this.toastr.warning('Please enter zipcode', 'Error');
       return false;
     }
     if (!add.states) {
-      this.toastr.error('Please select state', 'Error');
+      this.toastr.warning('Please select state', 'Error');
       return false;
     }
     return true;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ViewChild } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -8,6 +8,10 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UpdateUserInfo } from '../../../pages/auth/actions/auth.actions';
 import { ChangeProfileEditMode } from '../../actions/layout.actions';
+import { ProfileExperienceComponent } from '../profile-experience/profile-experience.component';
+import { ProfileEducationComponent } from '../profile-education/profile-education.component';
+import { ProfileResidencyComponent } from '../profile-residency/profile-residency.component';
+import { ProfileAddressComponent } from '../profile-address/profile-address.component';
 
 @Component({
   selector: 'dsod-profile-edit-view',
@@ -23,6 +27,11 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   isAddNewEducation = false;
   isAddNewAddress = false;
   specialities: any[] = [];
+
+  @ViewChild(ProfileExperienceComponent) expComponentRef: ProfileExperienceComponent;
+  @ViewChild(ProfileEducationComponent) eduComponentRef: ProfileEducationComponent;
+  @ViewChild(ProfileResidencyComponent) resComponentRef: ProfileResidencyComponent;
+  @ViewChild(ProfileAddressComponent) addComponentRef: ProfileAddressComponent;
 
   constructor(
     private store: Store,
@@ -70,12 +79,17 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   }
 
   saveProfile() {
-    if (this.validateUserProfileInfo()) {
-      this.spinner.show();
-      this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
-        this.spinner.hide();
-        this.store.dispatch(new ChangeProfileEditMode(false));
-      });
+    if (this.expComponentRef.expandExperienceSection(false)
+      && this.eduComponentRef.expandEducationSection(false)
+      && this.resComponentRef.expandResidencySection(false)
+      && this.addComponentRef.expandAddressSection(false)) {
+      if (this.validateUserProfileInfo()) {
+        this.spinner.show();
+        console.log(this.userProfile);
+        this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
+          this.spinner.hide();
+        });
+      }
     }
   }
 
@@ -118,90 +132,39 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
 
   validateUserProfileInfo() {
     if (!this.userProfile.full_name) {
-      this.toastr.error(`User name can't be blank`, 'Error');
+      this.toastr.warning(`User name can't be blank`, 'Error');
       return false;
     }
     if (!this.userProfile.email) {
-      this.toastr.error(`User email can't be blank`, 'Error');
+      this.toastr.warning(`User email can't be blank`, 'Error');
       return false;
     }
     if (!this.userProfile.specialty.id) {
-      this.toastr.error(`Specialty can't be blank`, 'Error');
+      this.toastr.warning(`Specialty can't be blank`, 'Error');
       return false;
     }
-    if (!this.userProfile.practiceAddress) {
-      if (!this.userProfile.practiceAddress.address1) {
-        this.toastr.error(`User Address1 can't be blank`, 'Error');
-        return false;
-      }
-      if (!this.userProfile.practiceAddress.address2) {
-        this.toastr.error(`User Address2 can't be blank`, 'Error');
-        return false;
-      }
-      if (!this.userProfile.practiceAddress.city) {
-        this.toastr.error(`City can't be blank`, 'Error');
-        return false;
-      }
-      if (!this.userProfile.practiceAddress.zipCode) {
-        this.toastr.error(`Zipcode can't be blank`, 'Error');
-        return false;
-      }
-      if (!this.userProfile.practiceAddress.states) {
-        this.toastr.error(`States can't be blank`, 'Error');
-        return false;
+    if (this.userProfile.practiceAddress) {
+      const add = this.userProfile.practiceAddress;
+      if (!add.address1 && !add.address2 && !add.city && !add.zipCode && !add.states) {
+        this.userProfile.practiceAddress = null;
       }
     }
     if (this.userProfile.experiences.length) {
       const experience = this.userProfile.experiences[0];
       if (!experience.practice_Type.id && !experience.practice_Role.id && !experience.start_time) {
         this.userProfile.experiences = [];
-      } else {
-        if (!experience.practice_Type.id) {
-          this.toastr.error(`Practice Type can't be blank`, 'Error');
-          return false;
-        }
-        if (!experience.practice_Role.id) {
-          this.toastr.error(`Practice Role can't be blank`, 'Error');
-          return false;
-        }
-        if (!experience.start_time) {
-          this.toastr.error(`Working time can't be blank`, 'Error');
-          return false;
-        }
       }
     }
     if (this.userProfile.educations.length) {
       const education = this.userProfile.educations[0];
-      if (!education.dental_school && !education.school_name && !education.end_time) {
+      if (!education.dental_school.id && !education.school_name && !education.end_time) {
         this.userProfile.educations = [];
-      } else {
-        if (education.types === '1' && !education.dental_school.id) {
-          this.toastr.error(`Dental School field can't be blank`, 'Error');
-          return false;
-        }
-        if (education.types === '0' && !education.school_name) {
-          this.toastr.error(`School Name field can't be blank`, 'Error');
-          return false;
-        }
-        if (!education.end_time) {
-          this.toastr.error(`Year of Guraduation field can't be blank`, 'Error');
-          return false;
-        }
       }
     }
     if (this.userProfile.profileResidency.length) {
       const residency = this.userProfile.profileResidency[0];
       if (!residency.residency_School.id && !residency.end_time) {
         this.userProfile.profileResidency = [];
-      } else {
-        if (!residency.residency_School.id) {
-          this.toastr.error(`Residency school field can't be blank`, 'Error');
-          return false;
-        }
-        if (!residency.end_time) {
-          this.toastr.error(`Year of Residency Completion field can't be blank`, 'Error');
-          return false;
-        }
       }
     }
     return true;
