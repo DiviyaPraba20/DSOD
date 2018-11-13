@@ -18,7 +18,7 @@ export class DSODSearchResults implements OnInit {
   currentPage = 1;
   params: CMSContentParams;
   noRecord = false;
-  isLoading : boolean;
+  isLoading: boolean;
   constructor(
     private store: Store,
     private router: Router,
@@ -27,7 +27,7 @@ export class DSODSearchResults implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoading=true;
+    this.isLoading = true;
     this.store.dispatch(
       new actions.FetchSearchResults({
         skip: 0,
@@ -48,7 +48,7 @@ export class DSODSearchResults implements OnInit {
       .subscribe(data => {
         this.spinnerService.hide();
         this.isLoading = false;
-        if (data.payload.length == 0) {
+        if (data.payload.length === 0) {
           this.noRecord = true;
         }
       });
