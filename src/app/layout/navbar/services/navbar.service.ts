@@ -11,20 +11,20 @@ export class NavbarService {
         title: 'Education',
         link: 'education',
         children: [
-          { title: 'Latest', link: 'eductaion' },
-          { title: 'Articles', link: 'eductaion' },
-          { title: 'Videos', link: 'eductaion' },
-          { title: 'Podcasts', link: 'eductaion' },
-          { title: 'Visual Essay', link: 'eductaion' },
-          { title: 'Events', link: 'eductaion' }
+          { title: 'Latest', link: 'latest' },
+          { title: 'Articles', link: 'articles' },
+          { title: 'Videos', link: 'videos' },
+          { title: 'Podcasts', link: 'pdcasts' },
+          { title: 'Visual Essay', link: 'vEssay' },
+          { title: 'Events', link: 'events' }
         ]
       },
       {
         title: 'DSO Practice',
         link: 'practice',
         children: [
-          { title: 'Resources', link: 'practice' },
-          { title: 'Legislation', link: 'practice' }
+          { title: 'Resources', link: 'recorcers' },
+          { title: 'Legislation', link: 'legislation' }
         ]
       },
       {
@@ -35,28 +35,28 @@ export class NavbarService {
             title: 'Align Technology, Inc',
             link: 'sponsers',
             children: [
-              { title: 'iTero Protocols', link: 'sponsers' },
-              { title: 'Invisalign Processes', link: 'sponsers' },
-              { title: 'Practice Building', link: 'sponsers' }
+              { title: 'iTero Protocols', link: 'protocols' },
+              { title: 'Invisalign Processes', link: 'processes' },
+              { title: 'Practice Building', link: 'practiceBuilding' }
             ]
           },
           {
             title: 'GlaxoSmithKline',
             link: 'sponsers',
             children: [
-              { title: 'Oral Health', link: 'sponsers' },
-              { title: 'Denture Care', link: 'sponsers' },
-              { title: 'Gingival Care', link: 'sponsers' }
+              { title: 'Oral Health', link: 'oralHealth' },
+              { title: 'Denture Care', link: 'dentureCare' },
+              { title: 'Gingival Care', link: 'givingValcare' }
             ]
           },
           {
             title: 'Nobel Biocare, N.A',
             link: 'sponsers',
             children: [
-              { title: 'Implant Therapy', link: 'sponsers' },
-              { title: 'Diagnosis & Treatment', link: 'sponsers' },
-              { title: 'Site Development', link: 'sponsers' },
-              { title: 'Implant Practice', link: 'sponsers' }
+              { title: 'Implant Therapy', link: 'implantTherapy' },
+              { title: 'Diagnosis & Treatment', link: 'diagnosisTreament' },
+              { title: 'Site Development', link: 'siteDevelopment' },
+              { title: 'Implant Practice', link: 'implantPractice' }
             ]
           }
         ]
@@ -65,8 +65,8 @@ export class NavbarService {
         title: 'Development',
         link: 'development',
         children: [
-          { title: 'My CE', link: 'development' },
-          { title: 'Learning Tracks', link: 'development' }
+          { title: 'My CE', link: 'myCE' },
+          { title: 'Learning Tracks', link: 'learningTracks' }
         ]
       },
       {

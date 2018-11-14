@@ -22,10 +22,10 @@
                   <!-- Sub Menu -->
                   <ul class="sub-menu" *ngIf="nav.children">
                     <li *ngFor="let child of nav.children" [ngClass]="{'sub-menu-child': child.children}">
-                      <a href="">{{child.title}}</a>
+                      <a routerLink={{child.link}}>{{child.title}}</a>
                       <ul *ngIf="child.children" class="sub-menu-nested">
                         <li *ngFor="let child of child.children">
-                          <a href="">{{child.title}}</a>
+                          <a routerLink={{child.link}}>{{child.title}}</a>
                         </li>
                       </ul>
                     </li>

@@ -9,6 +9,8 @@ import {
 } from 'src/app/cms/models';
 import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthState } from '../../auth/states/auth.state';
 
 @Component({
   selector: 'dsod-podcast-page',
@@ -24,6 +26,7 @@ export class DSODPodcastComponent implements OnInit {
   };
   pageContent$: Observable<CMSResponse<CMSPageContent>>;
   podCasts$: Observable<CMSResponse<CMSPageContent>>;
+  isLoggedIn: boolean;
   constructor(private _route: ActivatedRoute, private store: Store) {
     _route.params.subscribe(r => {
       this.contentId = r.id;
@@ -31,6 +34,7 @@ export class DSODPodcastComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.isLoggedIn = this.store.selectSnapshot(AuthState.isLoggedIn);
     this.pageContent$ = this.store.select(state => state.cms.pageContent);
 
     this.podCasts$ = this.store.select(state => state.cms.podcasts);

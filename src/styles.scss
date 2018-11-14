@@ -96,6 +96,10 @@ ul li {
   padding-top: 160px;
 }
 
+.hide-loader {
+  display: none;
+}
+
 @media only screen and (min-width:1366px) {
   .container {
     max-width: 1300px;

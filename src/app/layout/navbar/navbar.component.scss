@@ -198,10 +198,6 @@
   background: rgba(0, 0, 0, 0.95);
 }
 
-// .dropdown:hover>.dropdown-menu {
-//   display: block;
-// }
-
 
 li.sub-menu-child>a::after {
   content: "\f0da";
@@ -225,7 +221,6 @@ li.sub-menu-child>a:hover::after {
 .sub-menu,
 .sub-menu-nested {
   visibility: hidden;
-  /* hides sub-menu */
   opacity: 0;
   position: absolute;
   top: 100%;
@@ -243,19 +238,13 @@ li.sub-menu-child>a:hover::after {
   position: relative;
 }
 
-.sub-menu-parent:focus .sub-menu,
-.sub-menu-parent:focus-within .sub-menu,
 .sub-menu-parent:hover .sub-menu,
-.sub-menu-child:focus .sub-menu-nested,
-.sub-menu-child:focus-within .sub-menu-nested,
 .sub-menu-child:hover .sub-menu-nested {
   visibility: visible;
-  /* shows sub-menu */
   opacity: 1;
   z-index: 1;
   transform: translateY(0%);
   transition-delay: 0s, 0s, 0.3s;
-  /* this removes the transition delay so the menu will be visible while the other styles transition */
 }
 
 .sub-menu-nested {
