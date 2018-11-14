@@ -10,7 +10,7 @@
         </span>
       </div>
       <div *ngIf="residency">
-        <div class="item-content" *ngIf="residency.residency_School.name; else noResidency">
+        <div class="item-content" *ngIf="residency.residency_School?.name; else noResidency">
           <span class="title">{{residency.residency_School?.name}}</span>
           <span class="content" *ngIf="residency?.end_time">
             {{residency?.end_time | date:"yyyy"}}
