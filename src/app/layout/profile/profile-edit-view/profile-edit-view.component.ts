@@ -7,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileData, Experience, ProfileResidency, Education, Address } from '../models/userProfile';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UpdateUserInfo } from '../../../pages/auth/actions/auth.actions';
+import { UpdateUserInfo, UpdateUserAvatar } from '../../../pages/auth/actions/auth.actions';
 import { ChangeProfileEditMode } from '../../actions/layout.actions';
 import { AvatarCropperComponent } from 'src/app/shared/components/avatar-cropper/avatar-cropper.component';
 
@@ -104,22 +104,26 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
       this.croppedImage = result.croppedImage;
       this.croppedImageFile = result.croppedFile;
       this.spinner.show();
-      this.authService.uploadUserAvatar(this.croppedImageFile).pipe().subscribe(res => {
+      this.store.dispatch(new UpdateUserAvatar(this.croppedImageFile)).subscribe(res => {
         this.spinner.hide();
-        if (res['code'] === 0) {
-          this.toastr.success('Photo has been uploaded successfully.', 'UserInfo');
-          this.userProfile.photo_album = {
-            id: null,
-            photo: '',
-            photo_name: res['resultMap']['photoName'],
-            create_time: null,
-            email: null,
-            user_id: null
-          };
-        } else {
-          this.toastr.error('Photo uploading has been failed.', 'UserInfo');
-        }
       });
+      // this.authService.uploadUserAvatar(this.croppedImageFile).pipe().subscribe(res => {
+      //   this.spinner.hide();
+      //   if (res['code'] === 0) {
+      //     this.toastr.success('Photo has been uploaded successfully.', 'UserInfo');
+      //     this.userProfile.photo_album = {
+      //       id: null,
+      //       photo: '',
+      //       photo_name: res['resultMap']['photoName'],
+      //       create_time: null,
+      //       email: null,
+      //       user_id: null
+      //     };
+      //     this.saveProfile();
+      //   } else {
+      //     this.toastr.error('Photo uploading has been failed.', 'UserInfo');
+      //   }
+      // });
     });
   }
 

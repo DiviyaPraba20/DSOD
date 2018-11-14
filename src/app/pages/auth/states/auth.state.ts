@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import * as actions from '../actions';
 import { AuthService } from '../../../core/services/auth.service';
 import { UserProfileData } from '../../../layout/profile/models/userProfile';
+import { UpdateUserAvatar, UpdateUserAvatarSuccess, UpdateUserAvatarFailure, UpdateUserInfo } from '../actions/auth.actions';
 import {
   LoginResponse,
   SignUpResponse,
@@ -242,6 +243,53 @@ export class AuthState {
 
   @Action(actions.UpdateUserInfoFailure)
   updateUserInfoFailure({ patchState }: StateContext<State>, action: actions.UpdateUserInfoFailure) {
+    const error = action.payload;
+    this.toastr.error(action.payload, 'UserInfo');
+    patchState({
+      pending: false,
+      error
+    });
+  }
+
+  @Action(actions.UpdateUserAvatar)
+  updateUserAvatar({ patchState, dispatch }: StateContext<State>, action: actions.UpdateUserAvatar) {
+    patchState({
+      pending: true,
+      error: null
+    });
+
+    return this.authService.uploadUserAvatar(action.payload).pipe(
+      exhaustMap((response: UserInfoResponse) => {
+        if (response.code !== 0) {
+          return dispatch(new UpdateUserAvatarFailure(response.msg));
+        }
+        return dispatch(new UpdateUserAvatarSuccess(response));
+      })
+    );
+  }
+
+  @Action(actions.UpdateUserAvatarSuccess)
+  updateUserAvatarSuccess({ patchState, dispatch, getState }: StateContext<State>, action: actions.UpdateUserAvatarSuccess) {
+    this.toastr.success('User photo has been uploaded successfully!', 'UserInfo');
+    let currentState = getState();
+    if (action.payload['code'] === 0) {
+      currentState.userInfo.photo_album = {
+        id: null,
+        photo: '',
+        photo_name: action.payload['resultMap']['photoName'],
+        create_time: null,
+        email: null,
+        user_id: null
+      };
+    }
+    patchState({
+      pending: false
+    });
+    return dispatch(new UpdateUserInfo(currentState.userInfo));
+  }
+
+  @Action(actions.UpdateUserAvatarFailure)
+  updateUserAvatarFailure({ patchState }: StateContext<State>, action: actions.UpdateUserAvatarFailure) {
     const error = action.payload;
     this.toastr.error(action.payload, 'UserInfo');
     patchState({
