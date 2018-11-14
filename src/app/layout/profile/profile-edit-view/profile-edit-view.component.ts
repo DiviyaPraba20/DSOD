@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ViewChild } from '
 import { Store } from '@ngxs/store';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserProfileData, Experience, ProfileResidency, Education, Address } from '../models/userProfile';
 import { environment } from 'src/environments/environment';
@@ -100,8 +101,25 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     modalRef.componentInstance.imageChangedEvent = this.imageChangedEvent;
     modalRef.result
     .then(result => {
-    })
-    .catch(reason => {
+      this.croppedImage = result.croppedImage;
+      this.croppedImageFile = result.croppedFile;
+      this.spinner.show();
+      this.authService.uploadUserAvatar(this.croppedImageFile).pipe().subscribe(res => {
+        this.spinner.hide();
+        if (res['code'] === 0) {
+          this.toastr.success('Photo has been uploaded successfully.', 'UserInfo');
+          this.userProfile.photo_album = {
+            id: null,
+            photo: '',
+            photo_name: res['resultMap']['photoName'],
+            create_time: null,
+            email: null,
+            user_id: null
+          };
+        } else {
+          this.toastr.error('Photo uploading has been failed.', 'UserInfo');
+        }
+      });
     });
   }
 

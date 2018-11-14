@@ -150,4 +150,16 @@ export class AuthService {
     const formData = this.parseFormData({ state: '' });
     return this.http.post<ProfileTypesResponse>(url, formData, {withCredentials: true});
   }
+
+  uploadUserAvatar(f: any): Observable<ProfileTypesResponse> {
+    const form = new FormData();
+    form.append('file', f);
+
+    // const headers = this.customHeader();
+    // return this.http.post(url, form, { headers: headers });
+    const url = `${environment.api}/profile/profileservice/v1/photoUpload`;
+    const formData = this.parseFormData({ state: '' });
+    return this.http.post<ProfileTypesResponse>(url, form, {withCredentials: true});
+  }
+
 }

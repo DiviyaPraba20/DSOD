@@ -9,6 +9,7 @@
         [resizeToWidth]="200"
         (imageCroppedBase64)="imageCropped($event)"
         (imageCropped)="imageCropped($event)"
+        (imageCroppedFile)="imageCroppedFile($event)"
         (imageLoaded)="imageLoaded()"
         (loadImageFailed)="loadImageFailed()">
       </image-cropper>

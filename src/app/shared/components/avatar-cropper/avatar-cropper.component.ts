@@ -11,13 +11,17 @@ export class AvatarCropperComponent implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: any = '';
   cropperReady = false;
+  croppedFile: any;
+  fileName = '';
 
   constructor(
     public activeModal: NgbActiveModal
   ) { }
 
   ngOnInit() {
-    console.log(this.imageChangedEvent);
+    if (this.imageChangedEvent.srcElement && this.imageChangedEvent.srcElement.files[0]) {
+      this.fileName = this.imageChangedEvent.srcElement.files[0].name;
+    }
   }
 
   fileChangeEvent(event: any): void {
@@ -26,6 +30,9 @@ export class AvatarCropperComponent implements OnInit {
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
   }
+  imageCroppedFile(file: any) {
+    this.croppedFile = new File([file], this.fileName);
+  }
   imageLoaded() {
     this.cropperReady = true;
   }
@@ -33,7 +40,10 @@ export class AvatarCropperComponent implements OnInit {
     console.log('Load failed');
   }
   done() {
-    this.activeModal.close(this.croppedImage);
+    this.activeModal.close({
+      croppedImage: this.croppedImage,
+      croppedFile: this.croppedFile
+    });
   }
   cancel() {
     this.activeModal.dismiss('cancel');

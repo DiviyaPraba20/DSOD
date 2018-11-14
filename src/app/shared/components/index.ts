@@ -48,7 +48,7 @@ export const SHARED_COMPONENTS = [
   ProfileResidencyComponent,
   EditExperienceComponent,
   EditEducationComponent,
-  EditResidencyComponent
+  EditResidencyComponent,
   DSODAddReviewComponent,
   AvatarCropperComponent
 ];
