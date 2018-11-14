@@ -14,6 +14,7 @@ import { DSODRatingReviewComponent } from './reviews/reviews.component';
 import { DSODAddReviewComponent } from './reviews/add-review/add-review-modal.component';
 import { DSODContentAuthorComponent } from './author/author.component';
 import { DSODComingSoonComponent } from './coming soon/coming-soon.component';
+import { DSODRelatedContent } from './related-content/related-content.component';
 import { ProfileExperienceComponent } from './profile-experience/profile-experience.component';
 import { ProfileEducationComponent } from './profile-education/profile-education.component';
 import { ProfileAddressComponent } from './profile-address/profile-address.component';
@@ -40,6 +41,7 @@ export const SHARED_COMPONENTS = [
   DSODAddReviewComponent,
   DSODContentAuthorComponent,
   DSODComingSoonComponent,
+  DSODRelatedContent,
   DSODAddReviewComponent,
   ProfileExperienceComponent,
   ProfileEducationComponent,

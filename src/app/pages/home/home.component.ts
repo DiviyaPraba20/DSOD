@@ -8,7 +8,8 @@ import { GetUserInfo } from '../auth/actions/auth.actions';
 import {
   CMSResponse,
   CMSPageContent,
-  CMSContentParams
+  CMSContentParams,
+  CMSContentTypeModel
 } from 'src/app/cms/models';
 import {
   FetchLatestTopics,
@@ -35,6 +36,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   params: CMSContentParams = {
     skip: 0
   };
+  podcastType: CMSContentTypeModel;
+  videoType: CMSContentTypeModel;
 
   constructor(private store: Store, private authService: AuthService) {
     store.dispatch(new actions.FetchContentTypes());
@@ -43,9 +46,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       .select(state => state.cms.contentTypes)
       .pipe(skip(1))
       .subscribe(item => {
-        const podcastTypeId = item.filter(o => o.name === 'Podcasts');
-        const videoTypeId = item.filter(o => o.name === 'Videos');
-        const articleTypeId = item.filter(o => o.name === 'Articles');
+        this.podcastType = item.filter(o => o.name === 'Podcasts');
+        this.videoType = item.filter(o => o.name === 'Videos');
         this.store.dispatch(
           new FetchFeaturedTopics({
             ...this.params,
@@ -60,23 +62,31 @@ export class HomeComponent implements OnInit, OnDestroy {
           })
         );
         this.store.dispatch(
-          new FetchPodcasts({
-            ...this.params,
-            limit: 9,
-            contentTypeId: podcastTypeId[0].id
-          })
-        );
-        this.store.dispatch(
           new FetchTrendingTopics({
             ...this.params,
             limit: 0,
-            contentTypeId: videoTypeId[0].id
+            contentTypeId: this.videoType[0].id
           })
         );
         this.store.dispatch(
           new FetchSponsoredTopics({
             ...this.params,
-            limit: 4
+            limit: 1,
+            sponsorId: '502'
+          })
+        );
+        this.store.dispatch(
+          new FetchSponsoredTopics({
+            ...this.params,
+            limit: 1,
+            sponsorId: '197'
+          })
+        );
+        this.store.dispatch(
+          new FetchSponsoredTopics({
+            ...this.params,
+            limit: 1,
+            sponsorId: '260'
           })
         );
       });
@@ -95,9 +105,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (res) {
         const userInfo = this.authService.getUserInfoFromToken();
         if (userInfo && userInfo.user_name) {
-          this.store.dispatch(new GetUserInfo({
-            email: userInfo.user_name
-          }));
+          this.store.dispatch(
+            new GetUserInfo({
+              email: userInfo.user_name
+            })
+          );
         }
       }
     });

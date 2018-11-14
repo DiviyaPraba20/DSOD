@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as actions from '../../../cms/actions';
 import { Store } from '@ngxs/store';
@@ -9,13 +9,15 @@ import {
 } from 'src/app/cms/models';
 import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthState } from '../../auth/states/auth.state';
 
 @Component({
   selector: 'dsod-podcast-page',
   templateUrl: './podcast-page.component.html',
   styleUrls: ['./podcast-page.component.scss']
 })
-export class DSODPodcastComponent implements OnInit, OnDestroy {
+export class DSODPodcastComponent implements OnInit {
   contentId: string;
   content: any;
   params: CMSContentParams = {
@@ -24,6 +26,7 @@ export class DSODPodcastComponent implements OnInit, OnDestroy {
   };
   pageContent$: Observable<CMSResponse<CMSPageContent>>;
   podCasts$: Observable<CMSResponse<CMSPageContent>>;
+  isLoggedIn: boolean;
   constructor(private _route: ActivatedRoute, private store: Store) {
     _route.params.subscribe(r => {
       this.contentId = r.id;
@@ -31,15 +34,12 @@ export class DSODPodcastComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit() {
+    this.isLoggedIn = this.store.selectSnapshot(AuthState.isLoggedIn);
     this.pageContent$ = this.store.select(state => state.cms.pageContent);
 
     this.podCasts$ = this.store.select(state => state.cms.podcasts);
     this.pageContent$.pipe(skip(1)).subscribe(c => {
       this.content = c;
     });
-  }
-
-  ngOnDestroy() {
-    this.store.dispatch(new actions.ResetState());
   }
 }

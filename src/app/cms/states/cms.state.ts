@@ -210,9 +210,10 @@ export class CMSState {
 
   @Action(actions.FetchTrendingTopics)
   fetchTrendingTopics(
-    { patchState, dispatch, getState }: StateContext<State>,
+    { patchState, dispatch }: StateContext<State>,
     action: actions.FetchTrendingTopics
   ) {
+    patchState({ trendingTopics: [] });
     return this.service.trending(action.payload).pipe(
       map(a => {
         if (a.code === 0) {
@@ -325,9 +326,10 @@ export class CMSState {
 
   @Action(actions.FetchPodcasts)
   fetchPodcasts(
-    { dispatch }: StateContext<State>,
+    { dispatch, patchState }: StateContext<State>,
     action: actions.FetchPodcasts
   ) {
+    patchState({ podcasts: [] });
     return this.service.findAllContents(action.payload).pipe(
       map(a => {
         if (a.code === 0) {
@@ -361,9 +363,10 @@ export class CMSState {
 
   @Action(actions.FetchPageContent)
   fetchPageContent(
-    { dispatch }: StateContext<State>,
+    { dispatch, patchState }: StateContext<State>,
     action: actions.FetchPageContent
   ) {
+    patchState({ pageContent: null });
     return this.service.findOneContents(action.payload).pipe(
       map(a => {
         if (a.code === 0) {

@@ -10,6 +10,13 @@ import { UserProfileData } from '../profile/models/userProfile';
 import { environment } from 'src/environments/environment';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  state
+} from '@angular/animations';
 
 @Component({
   selector: 'dsod-navbar',

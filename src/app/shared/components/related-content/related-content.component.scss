@@ -1,0 +1,25 @@
+@import 'variables';
+
+:host {
+  .block-content {
+    background: #f8f8f8;
+    padding: 15px;
+    height: 100%;
+
+
+    h2.topic-title {
+      font-size: 22px;
+      padding-top: 15px;
+      line-height: 30px;
+    }
+
+    p {
+      font-size: 22px;
+
+      a {
+        color: $deep-cerulean;
+        cursor: pointer;
+      }
+    }
+  }
+}

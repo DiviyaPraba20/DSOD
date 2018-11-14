@@ -41,13 +41,7 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
           barWidth: 2,
           barGap: 3
         });
-        wavesurfer.load(
-          `https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId=${
-            this.content.podcasts[0]
-          }`,
-          null,
-          'auto'
-        );
+        wavesurfer.load(this.content.podcastUrls, null, 'auto');
 
         wavesurfer.on('audioprocess', () => {
           this.curretTime.nativeElement.innerHTML = this.formatTime(
@@ -85,7 +79,6 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.player)
-    this.player.destroy();
+    if (this.player) this.player.destroy();
   }
 }

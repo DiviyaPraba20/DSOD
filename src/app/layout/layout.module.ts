@@ -26,6 +26,7 @@ import { DSODSearchResults } from './search/search-results/search-results.compon
 import { DSODSearchItemComponent } from './search/search-item/search-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { GoTopButtonModule } from 'ng2-go-top-button';
 import { AuthService } from '../core/services/auth.service';
 
 @NgModule({
@@ -41,6 +42,8 @@ import { AuthService } from '../core/services/auth.service';
     SharedModule,
     PaginationModule.forRoot(),
     NgxSpinnerModule,
+    BrowserAnimationsModule,
+    GoTopButtonModule,
     ClickOutsideModule,
     UiSwitchModule
   ],

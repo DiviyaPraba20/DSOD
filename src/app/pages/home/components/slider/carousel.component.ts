@@ -37,14 +37,43 @@ export class DSODCarouselComponent implements AfterViewInit {
       url: ''
     },
     {
-      title: 'Do what you do',
-      subtitle: '...with the best support possible',
-      description:
-        'Get real-time access to clinical experts and a nationwide community of like-minded professionals — join the DSODentist community TODAY!',
-      actionName: 'Join',
-      actionLink: '/signup',
-      contentType: DSODContentType.Video,
-      src: 'assets/images/home-slide.png',
+      title: null,
+      subtitle: null,
+      description: null,
+      actionName: null,
+      actionLink: null,
+      contentType: DSODContentType.Image,
+      src: 'assets/images/home-slide-2.jpg',
+      url: ''
+    },
+    {
+      title: null,
+      subtitle: null,
+      description: null,
+      actionName: null,
+      actionLink: null,
+      contentType: DSODContentType.Image,
+      src: 'assets/images/home-slide-3.jpg',
+      url: ''
+    },
+    {
+      title: null,
+      subtitle: null,
+      description: null,
+      actionName: null,
+      actionLink: null,
+      contentType: DSODContentType.Image,
+      src: 'assets/images/home-slide-4.jpg',
+      url: ''
+    },
+    {
+      title: null,
+      subtitle: null,
+      description: null,
+      actionName: null,
+      actionLink: null,
+      contentType: DSODContentType.Image,
+      src: 'assets/images/home-slide-5.jpg',
       url: ''
     }
   ];

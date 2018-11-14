@@ -29,23 +29,7 @@ const routes: Routes = [
     component: DSODVideoPageComponent
   },
   {
-    path: 'education',
-    component: DSODComingSoonComponent
-  },
-  {
-    path: 'practice',
-    component: DSODComingSoonComponent
-  },
-  {
-    path: 'sponsers',
-    component: DSODComingSoonComponent
-  },
-  {
-    path: 'development',
-    component: DSODComingSoonComponent
-  },
-  {
-    path: 'community',
+    path: '**',
     component: DSODComingSoonComponent
   }
 ];

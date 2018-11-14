@@ -75,9 +75,9 @@ export class SharedState {
         }
         throwError(a.msg);
       }),
-      exhaustMap(result =>
-        dispatch(new actions.FetchCommentsSuccess(result.data))
-      ),
+      exhaustMap(result => {
+        return dispatch(new actions.FetchCommentsSuccess(result.data));
+      }),
       catchError(err => dispatch(new actions.FetchCommentsFailure(err)))
     );
   }

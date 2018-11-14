@@ -11,7 +11,7 @@
     </div>
   </div>
 </div>
-<dsod-podcasts [podcasts]="podcasts$ | async"></dsod-podcasts>
+<dsod-podcasts *ngIf="podcastType" [contentType]="podcastType[0]"></dsod-podcasts>
 <section>
   <div class="container">
     <div class="row">

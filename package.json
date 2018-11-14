@@ -45,6 +45,7 @@
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
+    "ng2-go-top-button": "^6.0.0",
     "moment": "^2.22.2",
     "ng-click-outside": "^4.0.0",
     "ngx-bootstrap": "^3.0.1",

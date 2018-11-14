@@ -24,6 +24,9 @@
     <div class="col-xl-8 col-lg-12">
       <dsod-podcast-content [content]="content"></dsod-podcast-content>
       <dsod-podcast-tabs [content]="pageContent$ | async"></dsod-podcast-tabs>
+      <div *ngIf="isLoggedIn">
+        <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
+      </div>
     </div>
     <div class="col-xl-4 col-lg-12">
       <div class="row">
