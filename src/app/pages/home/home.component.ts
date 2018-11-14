@@ -72,6 +72,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           new FetchSponsoredTopics({
             ...this.params,
             limit: 1,
+            sponsorId: '260'
+          })
+        );
+        this.store.dispatch(
+          new FetchSponsoredTopics({
+            ...this.params,
+            limit: 1,
             sponsorId: '502'
           })
         );
@@ -80,13 +87,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             ...this.params,
             limit: 1,
             sponsorId: '197'
-          })
-        );
-        this.store.dispatch(
-          new FetchSponsoredTopics({
-            ...this.params,
-            limit: 1,
-            sponsorId: '260'
           })
         );
       });

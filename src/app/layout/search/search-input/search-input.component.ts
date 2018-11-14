@@ -18,6 +18,7 @@ export class DSODSearchComponent implements OnChanges {
   searchForm: FormGroup = new FormGroup({
     searchTerm: new FormControl()
   });
+  searchValue: string;
   constructor() {}
 
   ngOnChanges() {
