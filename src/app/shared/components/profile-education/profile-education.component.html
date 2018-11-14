@@ -1,0 +1,46 @@
+<div class="education-container">
+  <div class="body-item-wrapper">
+    <div class="icon-body-item gray-background">
+      <img src="./assets/images/icons/icon_education_active.png">
+    </div>
+    <div class="item-content-wrapper">
+      <div class="item-content" *ngIf="!education">
+        <span class="title no-content">
+          No education added yet.
+        </span>
+      </div>
+      <div *ngIf="education">
+        <div class="item-content" *ngIf="education.school_name || education.dental_school?.name; else noEdu">
+          <span class="title" *ngIf="education.types === '1'">{{education.dental_school.name}}</span>
+          <span class="title" *ngIf="education.types === '0'">{{education.school_name}}</span>
+          <span class="content" *ngIf="education?.end_time">
+            {{education?.end_time | date:"yyyy"}}
+          </span>
+        </div>
+        <ng-template #noEdu>
+          <div class="item-content">
+            <span class="title no-content">
+              No education added yet.
+            </span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div *ngIf="editable">
+      <div class="icon-add-new" *ngIf="!expandedEduSection" (click)="expandEducationSection(true)">
+        <img src="./assets/images/icons/icon_add_new.png">
+      </div>
+      <div class="icon-add-new" *ngIf="expandedEduSection" (click)="expandEducationSection(false)">
+        <img src="./assets/images/icons/icon_close_new.png">
+      </div>
+    </div>
+  </div>
+  <div class="add-new-item-container">
+    <dsod-edit-education
+      [education]="education"
+      [expanded]="expandedEduSection"
+      (updateEducation)="onChangeEdu($event)"
+      (deleteEducation)="onDelEdu($event)">
+    </dsod-edit-education>
+  </div>
+</div>
