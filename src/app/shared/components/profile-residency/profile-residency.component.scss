@@ -1,0 +1,24 @@
+@import "variables";
+
+.residency-container {
+  .body-item-wrapper {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .item-content-wrapper {
+      flex: 1 1 auto;
+      .item-content {
+        border-bottom: none !important;
+        .title {
+          margin-bottom: 5px;
+          font-size: 16px;
+          &.no-content {
+            margin-bottom: 0;
+            font-size: 15px;
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+}

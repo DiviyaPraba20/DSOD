@@ -21,9 +21,16 @@
       <div class="info-container">
         <p class="title">Experience</p>
         <div class="body-wrapper">
-          <dsod-profile-experience
-            [experiences]="userProfile?.experiences">
-          </dsod-profile-experience>
+          <div *ngIf="userProfile?.experiences.length; else noExperience">
+            <div *ngFor="let experience of userProfile.experiences">
+              <dsod-profile-experience
+                [experience]="experience">
+              </dsod-profile-experience>
+            </div>
+          </div>
+          <ng-template #noExperience>
+            <dsod-profile-experience></dsod-profile-experience>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -31,9 +38,16 @@
       <div class="info-container">
         <p class="title">Residency</p>
         <div class="body-wrapper">
-          <dsod-profile-residency
-            [residencies]="userProfile?.profileResidency">
-          </dsod-profile-residency>
+          <div *ngIf="userProfile?.profileResidency.length; else noResidency">
+            <div *ngFor="let residency of userProfile.profileResidency">
+              <dsod-profile-residency
+                [residency]="residency">
+              </dsod-profile-residency>
+            </div>
+          </div>
+          <ng-template #noResidency>
+            <dsod-profile-residency></dsod-profile-residency>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -41,7 +55,16 @@
       <div class="info-container">
         <p class="title">Education</p>
         <div class="body-wrapper">
-          <dsod-profile-education [educations]="userProfile?.educations"></dsod-profile-education>
+          <div *ngIf="userProfile?.educations.length; else noEducation">
+            <div *ngFor="let education of userProfile.educations">
+              <dsod-profile-education
+                [education]="education">
+              </dsod-profile-education>
+            </div>
+          </div>
+          <ng-template #noEducation>
+            <dsod-profile-education></dsod-profile-education>
+          </ng-template>
         </div>
       </div>
     </div>

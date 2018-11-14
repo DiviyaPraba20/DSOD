@@ -8,10 +8,6 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UpdateUserInfo } from '../../../pages/auth/actions/auth.actions';
 import { ChangeProfileEditMode } from '../../actions/layout.actions';
-import { ProfileExperienceComponent } from '../profile-experience/profile-experience.component';
-import { ProfileEducationComponent } from '../profile-education/profile-education.component';
-import { ProfileResidencyComponent } from '../profile-residency/profile-residency.component';
-import { ProfileAddressComponent } from '../profile-address/profile-address.component';
 
 @Component({
   selector: 'dsod-profile-edit-view',
@@ -22,16 +18,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   userProfile: UserProfileData = null;
   avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
   croppedImage: any;
-  isAddNewExperience = false;
-  isAddNewResidency = false;
-  isAddNewEducation = false;
-  isAddNewAddress = false;
   specialities: any[] = [];
-
-  @ViewChild(ProfileExperienceComponent) expComponentRef: ProfileExperienceComponent;
-  @ViewChild(ProfileEducationComponent) eduComponentRef: ProfileEducationComponent;
-  @ViewChild(ProfileResidencyComponent) resComponentRef: ProfileResidencyComponent;
-  @ViewChild(ProfileAddressComponent) addComponentRef: ProfileAddressComponent;
 
   constructor(
     private store: Store,
@@ -79,18 +66,13 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   }
 
   saveProfile() {
-    if (this.expComponentRef.expandExperienceSection(false)
-      && this.eduComponentRef.expandEducationSection(false)
-      && this.resComponentRef.expandResidencySection(false)
-      && this.addComponentRef.expandAddressSection(false)) {
-      if (this.validateUserProfileInfo()) {
-        this.spinner.show();
-        console.log(this.userProfile);
-        this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
-          this.spinner.hide();
-        });
-      }
-    }
+    this.validateUserExp();
+    this.validateEducation();
+    this.validateResidency();
+    this.spinner.show();
+    this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
+      this.spinner.hide();
+    });
   }
 
   viewProfile() {
@@ -99,74 +81,122 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
 
   selectFile(file) { }
 
-  updateExperience(exp: Experience) {
-    const index = this.userProfile.experiences.findIndex(x => x.id === exp.id);
-    if (index !== -1) {
-      this.userProfile.experiences[index] = exp;
-    } else {
+  updateExperience(exp: Experience, expIndex) {
+    this.userProfile.experiences[expIndex] = exp;
+  }
+
+  deleteExperience(exp: Experience, expIndex) {
+    this.userProfile.experiences.splice(expIndex, 1);
+  }
+
+  addExperience(exp: Experience) {
+    if (exp) {
       this.userProfile.experiences.push(exp);
-    }
+    } else {
+      const lastExp = this.userProfile.experiences[this.userProfile.experiences.length - 1];
+      if (!lastExp.practice_name) {
+        return;
+      }
+      this.userProfile.experiences.push({
+        id: null,
+        practice_Type: {
+          id: null,
+          name: ''
+        },
+        practice_name: '',
+        practice_Role: {
+          id: null,
+          name: ''
+        },
+        practice_DSO: {
+          id: null,
+          name: ''
+        },
+        create_time: null,
+        start_time: null,
+        end_time: null,
+        email: ''
+      })
+    }    
   }
 
-  updateResidency(res: ProfileResidency) {
-    const index = this.userProfile.profileResidency.findIndex(x => x.id === res.id);
-    if (index !== -1) {
-      this.userProfile.profileResidency[index] = res;
-    } else {
+  validateUserExp() {
+    this.userProfile.experiences = this.userProfile.experiences.filter(exp => exp.practice_name);
+  }
+
+  updateResidency(res: ProfileResidency, resIndex) {
+    this.userProfile.profileResidency[resIndex] = res;
+  }
+
+  deleteResidency(res: ProfileResidency, resIndex) {
+    this.userProfile.profileResidency.splice(resIndex, 1);
+  }
+
+  addResidency(res: ProfileResidency) {
+    if (res) {
       this.userProfile.profileResidency.push(res);
+    } else {
+      const lastRes = this.userProfile.profileResidency[this.userProfile.profileResidency.length - 1];
+      if (!lastRes.residency_School.id) {
+        return;
+      }
+      this.userProfile.profileResidency.push({
+        id: null,
+        residency_School: {
+          id: null,
+          name: ''
+        },
+        create_time: null,
+        start_time: null,
+        end_time: null,
+        email: '',
+        user_id: ''
+      });
     }
   }
 
-  updateEducation(edu: Education) {
-    const index = this.userProfile.educations.findIndex(x => x.id === edu.id);
-    if (index !== -1) {
-      this.userProfile.educations[index] = edu;
-    } else {
+  validateResidency() {
+    this.userProfile.profileResidency = this.userProfile.profileResidency.filter(res => res.residency_School.id);
+  }
+
+  updateEducation(edu: Education, eduIndex) {
+    this.userProfile.educations[eduIndex] = edu;
+  }
+
+  deleteEducation(edu: Education, eduIndex) {
+    this.userProfile.educations.splice(eduIndex, 1);
+  }
+
+  addEducation(edu: Education) {
+    if (edu) {
       this.userProfile.educations.push(edu);
+    } else {
+      const lastEdu = this.userProfile.educations[this.userProfile.educations.length - 1];
+      if (!lastEdu.end_time) {
+        return;
+      }
+      this.userProfile.educations.push({
+        id: null,
+        dental_school: {
+          id: null,
+          name: ''
+        },
+        school_name: '',
+        major: '',
+        create_time: null,
+        start_time: null,
+        end_time: null,
+        email: '',
+        types: '0'
+      });
     }
+  }
+
+  validateEducation() {
+    this.userProfile.educations = this.userProfile.educations.filter(edu => edu.types);
   }
 
   updateAddress(address: Address) {
     this.userProfile.practiceAddress = address;
-  }
-
-  validateUserProfileInfo() {
-    if (!this.userProfile.full_name) {
-      this.toastr.warning(`User name can't be blank`, 'Error');
-      return false;
-    }
-    if (!this.userProfile.email) {
-      this.toastr.warning(`User email can't be blank`, 'Error');
-      return false;
-    }
-    if (!this.userProfile.specialty.id) {
-      this.toastr.warning(`Specialty can't be blank`, 'Error');
-      return false;
-    }
-    if (this.userProfile.practiceAddress) {
-      const add = this.userProfile.practiceAddress;
-      if (!add.address1 && !add.address2 && !add.city && !add.zipCode && !add.states) {
-        this.userProfile.practiceAddress = null;
-      }
-    }
-    if (this.userProfile.experiences.length) {
-      const experience = this.userProfile.experiences[0];
-      if (!experience.practice_Type.id && !experience.practice_Role.id && !experience.start_time) {
-        this.userProfile.experiences = [];
-      }
-    }
-    if (this.userProfile.educations.length) {
-      const education = this.userProfile.educations[0];
-      if (!education.dental_school.id && !education.school_name && !education.end_time) {
-        this.userProfile.educations = [];
-      }
-    }
-    if (this.userProfile.profileResidency.length) {
-      const residency = this.userProfile.profileResidency[0];
-      if (!residency.residency_School.id && !residency.end_time) {
-        this.userProfile.profileResidency = [];
-      }
-    }
-    return true;
   }
 }

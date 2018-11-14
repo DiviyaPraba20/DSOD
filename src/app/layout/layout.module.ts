@@ -26,11 +26,7 @@ import { DSODSearchResults } from './search/search-results/search-results.compon
 import { DSODSearchItemComponent } from './search/search-item/search-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { ProfileEducationComponent } from './profile/profile-education/profile-education.component';
 import { AuthService } from '../core/services/auth.service';
-import { ProfileExperienceComponent } from './profile/profile-experience/profile-experience.component';
-import { ProfileResidencyComponent } from './profile/profile-residency/profile-residency.component';
-import { ProfileAddressComponent } from './profile/profile-address/profile-address.component';
 
 @NgModule({
   imports: [
@@ -59,11 +55,7 @@ import { ProfileAddressComponent } from './profile/profile-address/profile-addre
     OnScrollUpdateBgDirective,
     DSODSearchResults,
     DSODSearchComponent,
-    DSODSearchItemComponent,
-    ProfileEducationComponent,
-    ProfileExperienceComponent,
-    ProfileResidencyComponent,
-    ProfileAddressComponent
+    DSODSearchItemComponent
   ],
   exports: [
     NavbarComponent,

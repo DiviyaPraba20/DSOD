@@ -1,0 +1,54 @@
+<div class="add-new-education-container" [ngClass]="{'show': expanded}">
+  <div class="new-item-container flex-container">
+    <p class="title">Attended Dental School in th US</p>
+    <div class="item-body">
+      <ui-switch
+        size="small"
+        [(ngModel)]="isUSSchool"
+        (change)="onChangeSchoolType($event)">
+      </ui-switch>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <p class="title">Dental School</p>
+    <div class="item-body">
+      <ng-select
+        *ngIf="isUSSchool"
+        class="custom-select"
+        [items]="detenSchoolList"
+        [(ngModel)]="education.dental_school.id"
+        appendTo="body"
+        bindLabel="name"
+        bindValue="id"
+        class="select-item"
+        placeholder="Select Dental school">
+      </ng-select>
+      <div class="input-group" *ngIf="!isUSSchool">
+        <input type="text" [(ngModel)]="education.school_name">
+        <span class="fa fa-pencil"></span>
+      </div>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <div class="date-picker-container">
+      <span class="title">Year of Graduation</span>
+      <div class="input-group date-control">
+        <input
+          class="input-date-time"
+          [container]="'body'"
+          placeholder="yyyy-mm-dd"
+          [(ngModel)]="educationEndTime"
+          name="dp"
+          ngbDatepicker
+          #from="ngbDatepicker">
+        <div class="icon-calendar-wrap">
+          <img class="icon-calendar" src="./assets/images/icons/icon-calendar.png" (click)="from.toggle()">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="new-item-container flex-container">
+    <button class="btn btn-primary btn-delete" (click)="onDelete()">Delete</button>
+    <button class="btn btn-primary btn-delete" (click)="onSave()">Save</button>
+  </div>
+</div>

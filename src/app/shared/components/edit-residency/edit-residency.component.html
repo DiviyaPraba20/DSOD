@@ -1,0 +1,39 @@
+<div class="add-new-residency-container" [ngClass]="{'show': expanded}">
+  <div class="new-item-container">
+    <p class="title">Residency at</p>
+    <div class="item-body">
+      <ng-select
+        class="custom-select"
+        [items]="residencyList"
+        [(ngModel)]="residency.residency_School.id"
+        appendTo="body"
+        bindLabel="name"
+        bindValue="id"
+        class="select-item"
+        placeholder="Select Residency">
+      </ng-select>
+    </div>
+  </div>
+  <div class="new-item-container">
+    <div class="date-picker-container">
+      <span class="title">Year of Graduation</span>
+      <div class="input-group date-control">
+        <input
+          class="input-date-time"
+          [container]="'body'"
+          placeholder="yyyy-mm-dd"
+          [(ngModel)]="residencyEndTime"
+          name="dp"
+          ngbDatepicker
+          #from="ngbDatepicker">
+        <div class="icon-calendar-wrap">
+          <img class="icon-calendar" src="./assets/images/icons/icon-calendar.png" (click)="from.toggle()">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="new-item-container flex-container">
+    <button class="btn btn-primary btn-delete" (click)="onDelete()">Delete</button>
+    <button class="btn btn-primary btn-delete" (click)="onSave()">Save</button>
+  </div>
+</div>

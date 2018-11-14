@@ -18,8 +18,13 @@
   }
   .section-container {
     .info-container {
-      .title {
-        margin-bottom: 10px;
+      .title-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+          margin-bottom: 10px;
+        }
       }
       .body-wrapper {
         .body-item-wrapper {
