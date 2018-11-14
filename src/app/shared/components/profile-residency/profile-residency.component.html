@@ -1,0 +1,45 @@
+<div class="residency-container">
+  <div class="body-item-wrapper">
+    <div class="icon-body-item gray-background">
+      <img src="./assets/images/icons/icon_location_active.png">
+    </div>
+    <div class="item-content-wrapper">
+      <div class="item-content" *ngIf="!residency">
+        <span class="title no-content">
+          No residency added yet.
+        </span>
+      </div>
+      <div *ngIf="residency">
+        <div class="item-content" *ngIf="residency.residency_School.name; else noResidency">
+          <span class="title">{{residency.residency_School?.name}}</span>
+          <span class="content" *ngIf="residency?.end_time">
+            {{residency?.end_time | date:"yyyy"}}
+          </span>
+        </div>
+        <ng-template #noResidency>
+          <div class="item-content">
+            <span class="title no-content">
+              No experience added yet.
+            </span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div *ngIf="editable">
+      <div class="icon-add-new" *ngIf="!expandedResSection" (click)="expandResidencySection(true)">
+        <img src="./assets/images/icons/icon_add_new.png">
+      </div>
+      <div class="icon-add-new" *ngIf="expandedResSection" (click)="expandResidencySection(false)">
+        <img src="./assets/images/icons/icon_close_new.png">
+      </div>
+    </div>
+  </div>
+  <div class="add-new-item-container">
+    <dsod-edit-residency
+      [residency]="residency"
+      [expanded]="expandedResSection"
+      (updateResidency)="onChangeResidency($event)"
+      (deleteResidency)="onDelResidency($event)"
+    ></dsod-edit-residency>
+  </div>
+</div>

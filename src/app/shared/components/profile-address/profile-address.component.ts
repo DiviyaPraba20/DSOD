@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Address } from '../models/userProfile';
+import { Address } from '../../../layout/profile/models/userProfile';
 
 @Component({
   selector: 'dsod-profile-address',
