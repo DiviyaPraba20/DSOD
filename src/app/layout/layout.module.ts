@@ -25,7 +25,6 @@ import { DSODSearchComponent } from './search/search-input/search-input.componen
 import { DSODSearchResults } from './search/search-results/search-results.component';
 import { DSODSearchItemComponent } from './search/search-item/search-item.component';
 import { SharedModule } from '../shared/shared.module';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { GoTopButtonModule } from 'ng2-go-top-button';
 import { AuthService } from '../core/services/auth.service';
 
@@ -40,7 +39,6 @@ import { AuthService } from '../core/services/auth.service';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    PaginationModule.forRoot(),
     NgxSpinnerModule,
     BrowserAnimationsModule,
     GoTopButtonModule,

@@ -24,6 +24,14 @@
     .block-wrap {
       .topic-block {
         background: none;
+
+        .topic-block-content {
+          .excrept-content-lg {
+            /deep/ p:last-child {
+              max-height: 164px;
+            }
+          }
+        }
       }
     }
   }

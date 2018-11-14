@@ -1,5 +1,10 @@
 import { State, Store, Action, StateContext, Selector } from '@ngxs/store';
-import { CMSContentTypeModel, CMSPageContent, sponsors } from '../models';
+import {
+  CMSContentTypeModel,
+  CMSPageContent,
+  sponsors,
+  CMSResponse
+} from '../models';
 import * as actions from '../actions/cms.actions';
 import { CMSService } from '../services/cms.service';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
@@ -15,7 +20,7 @@ export interface State {
   sponsorsList: sponsors[];
   sponsoredTopics: CMSPageContent[];
   podcasts: CMSPageContent[];
-  searchResults: CMSPageContent[];
+  searchResults: CMSResponse<CMSPageContent>;
   isLoading: boolean;
   error: Error;
 }
@@ -32,7 +37,7 @@ export interface State {
     sponsorsList: [],
     sponsoredTopics: [],
     podcasts: [],
-    searchResults: [],
+    searchResults: null,
     isLoading: false,
     error: null
   }
@@ -418,16 +423,16 @@ export class CMSState {
     { dispatch, patchState }: StateContext<State>,
     action: actions.FetchSearchResults
   ) {
-    patchState({ searchResults: [] });
+    patchState({ searchResults: null });
     return this.service.findAllBySearch(action.payload).pipe(
       map(a => {
         if (a.code === 0) {
-          return a.resultMap;
+          return a;
         }
         throwError(new Error(a.msg));
       }),
       exhaustMap(result =>
-        dispatch(new actions.FetchSearchResultsSuccess(result.data))
+        dispatch(new actions.FetchSearchResultsSuccess(result))
       ),
       catchError(err => dispatch(new actions.FetchSearchResultsFailure(err)))
     );
