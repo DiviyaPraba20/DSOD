@@ -1,4 +1,4 @@
-import { DSODComment } from 'src/app/cms/models';
+import { DSODComment, CMSContentParams } from 'src/app/cms/models';
 
 export enum SharedActions {
   AddReview = '[Review] Add Review',
@@ -28,7 +28,7 @@ export class AddReviewFailure {
 
 export class FetchComments {
   static readonly type = SharedActions.FetchComments;
-  constructor(public payload: string) {}
+  constructor(public payload: CMSContentParams) {}
 }
 export class FetchCommentsSuccess {
   static readonly type = SharedActions.FetchCommentsSuccess;

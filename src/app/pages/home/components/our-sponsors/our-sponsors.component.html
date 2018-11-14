@@ -4,18 +4,31 @@
     <div class="col-lg-6">
       <div class="our-sponsors">
         <div class="our-sponsors-header">
+          <!-- <h4 *ngIf="topic.sponsorName==='ALN'">
+            <img src="assets/images/align-logo.png" alt="">
+            Sponsored content from Align Technology, Inc.
+          </h4>
+          <h4 *ngIf="topic.sponsorName==='NBL'">
+            <img src="assets/images/nb-logo.png" alt="">
+            Sponsored content from Nobel Biocare, N.A.
+          </h4>
+          <h4 *ngIf="topic.sponsorName==='GSK'">
+            <img src="assets/images/gsk-icon.png" alt="">
+            Sponsored content from GlaxoSmithKline
+          </h4> -->
           <h4>
             <img src="assets/images/align-logo.png" alt="">
             Sponsored content from Align Technology, Inc.
           </h4>
         </div>
-        <dsod-topic [topic]="topic" [contentLenght]=280 [showImage]="false" styleFor="sponsored" [showHeader]="false"></dsod-topic>
+        <dsod-topic [topic]="topic" [showImage]="false" styleFor="content-lg" [showHeader]="false"></dsod-topic>
       </div>
     </div>
     <div class="col-lg-6">
       <section class="sponsors-ortho">
         <div>
-          <dsod-media-content title="implant Dentisty" [placeholderImageSrc]="topic.featuredMediaId" [title]="topic.categoryName">
+          <dsod-media-content title="implant Dentisty" [placeholderImageSrc]="topic.featuredMedia.code.originalUrl"
+            [title]="topic.categoryName">
           </dsod-media-content>
         </div>
       </section>

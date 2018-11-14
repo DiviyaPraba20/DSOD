@@ -1,32 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xl-9">
-      <div class="article-content p-t-115">
-        <dsod-article-media [content]="pageContent$ | async"></dsod-article-media>
-        <dsod-article-content [content]="pageContent$ | async"></dsod-article-content>
-      </div>
-      <div class="related-content">
-        <h2 class="section-title">Related Content</h2>
-        <div class="row">
-          <div class="col-lg-4" *ngFor="let topic of trendingTopics$ | async">
-            <dsod-topic [topic]="topic" [contentLenght]=0 [showImage]="true" [showHeader]="true" styleFor="content-small"></dsod-topic>
+<div class="page-content">
+  <div class="container" *ngIf="(pageContent$ | async)">
+    <div class="row">
+      <div class="col-xl-9">
+        <div class="article-content">
+          <dsod-article-media [content]="pageContent$ | async"></dsod-article-media>
+          <dsod-article-content [content]="pageContent$ | async"></dsod-article-content>
+        </div>
+        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicsList">
+          <h2 class="section-title">Related Content</h2>
+          <div class="row">
+            <div class="col-lg-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicsList">
+              <dsod-related-content [content]="topic" [contentTypeName]="(pageContent$ | async)?.contentTypeName"></dsod-related-content>
+            </div>
           </div>
         </div>
+        <div *ngIf="isLoggedIn">
+          <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
+        </div>
+      </div>
+      <div class="col-xl-3">
+        <section class="trending-videos" *ngIf="(trendingTopics$ | async)?.length">
+          <h2 class="section-title">Trending Topics</h2>
+          <div *ngFor="let topic of trendingTopics$ | async">
+            <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-sm"></dsod-topic>
+          </div>
+          <dsod-sponsored-ad></dsod-sponsored-ad>
+        </section>
       </div>
     </div>
-    <div class="col-xl-3 p-t-115">
-      <section class="trending-videos">
-        <h2 class="section-title">Trending Topics</h2>
-        <div *ngFor="let topic of trendingTopics$ | async">
-          <dsod-topic [topic]="topic" [contentLenght]=170 [showImage]="true" [showHeader]="true" styleFor="content-small"></dsod-topic>
-        </div>
-        <dsod-sponsored-ad></dsod-sponsored-ad>
-      </section>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-9" *ngIf="isLoggedIn">
-    <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
   </div>
 </div>

@@ -14,10 +14,25 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <!-- Menu  -->
               <ul class="navbar-nav ml-auto">
-                <li class="nav-item" *ngFor="let nav of navigation">
+                <!-- Menu Items  -->
+                <li class="nav-item sub-menu-parent" *ngFor="let nav of navigation">
                   <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
+                  <!-- Sub Menu -->
+                  <ul class="sub-menu" *ngIf="nav.children">
+                    <li *ngFor="let child of nav.children" [ngClass]="{'sub-menu-child': child.children}">
+                      <a routerLink={{child.link}}>{{child.title}}</a>
+                      <ul *ngIf="child.children" class="sub-menu-nested">
+                        <li *ngFor="let child of child.children">
+                          <a routerLink={{child.link}}>{{child.title}}</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
                 </li>
+
+
                 <li class="nav-item">
                   <div class="search-area" [ngClass]="{'li-hidden':!isOpen, 'li-open':isOpen}">
                     <button #searchButton type="button" class="nav-link" (click)="toggle()">
@@ -43,6 +58,7 @@
                   <a [routerLink]="['login']" class="nav-link">Login</a>
                 </li>
               </ul>
+
             </div>
           </nav>
         </div>

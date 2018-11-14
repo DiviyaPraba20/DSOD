@@ -3,6 +3,7 @@
 footer {
   background: $emulsion-grey;
   padding: 64px 0 20px;
+  position: relative;
   // margin-top: 52px;
 
   .ftr-logo {
@@ -62,6 +63,28 @@ footer {
       }
     }
   }
+}
+
+.scroll-top {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #ffffff;
+  color: #191919;
+  border-radius: 50%;
+  display: block;
+  font-size: 28px;
+  transition: 0.2s all ease;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 6px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 999;
 }
 
 @media only screen and (max-width:1440px) {

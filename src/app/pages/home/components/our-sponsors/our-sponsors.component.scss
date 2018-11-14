@@ -19,6 +19,14 @@
       }
     }
   }
+
+  /deep/ dsod-topic {
+    .block-wrap {
+      .topic-block {
+        background: none;
+      }
+    }
+  }
 }
 
 .sponsors-ortho {
