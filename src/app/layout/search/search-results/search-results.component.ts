@@ -1,11 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store, Actions, ofActionDispatched } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { CMSPageContent, CMSContentParams } from 'src/app/cms/models';
-import { skip } from 'rxjs/operators';
+import {
+  CMSPageContent,
+  CMSContentParams,
+  CMSResponse
+} from 'src/app/cms/models';
+import { skip, debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import * as actions from 'src/app/cms/actions';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormControl } from '@angular/forms';
+import { debug } from 'util';
 
 @Component({
   selector: 'dsod-search-results',
@@ -13,12 +19,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./search-results.component.scss']
 })
 export class DSODSearchResults implements OnInit {
-  @Input() searchTerm: string;
-  searchResults: CMSPageContent;
+  @Input() searchTerm: Observable<any>;
+  searchResponse$: Observable<CMSResponse<CMSPageContent>>;
+  searchValue: string;
   currentPage = 1;
   params: CMSContentParams;
   noRecord = false;
   isLoading: boolean;
+  totalFound: number;
   constructor(
     private store: Store,
     private router: Router,
@@ -27,41 +35,38 @@ export class DSODSearchResults implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoading = true;
-    this.store.dispatch(
-      new actions.FetchSearchResults({
-        skip: 0,
-        limit: 6,
-        searchValue: this.searchTerm
-      })
-    );
-    this.spinnerService.show();
-    this.store
-      .select(state => state.cms.searchResults)
-      .pipe(skip(1))
-      .subscribe(data => {
-        this.noRecord = false;
-        this.searchResults = data;
-      });
+    this.searchTerm.pipe(debounceTime(400)).subscribe(val => {
+      this.isLoading = true;
+      this.spinnerService.show();
+      this.searchValue = val;
+      this.store.dispatch(
+        new actions.FetchSearchResults({
+          skip: 0,
+          limit: 6,
+          searchValue: val
+        })
+      );
+    });
+    this.searchResponse$ = this.store.select(state => state.cms.searchResults);
     this.actions$
       .pipe(ofActionDispatched(actions.FetchSearchResultsSuccess))
       .subscribe(data => {
         this.spinnerService.hide();
         this.isLoading = false;
-        if (data.payload.length === 0) {
+        if (data.payload.resultMap.totalFound == 0) {
           this.noRecord = true;
         }
       });
   }
 
-  getPage() {
+  loadPage(e) {
     this.isLoading = true;
     this.spinnerService.show();
     this.noRecord = false;
     this.params = {
       skip: (this.currentPage - 1) * 6,
       limit: 6,
-      searchValue: this.searchTerm
+      searchValue: this.searchValue
     };
     this.store.dispatch(new actions.FetchSearchResults(this.params));
   }
