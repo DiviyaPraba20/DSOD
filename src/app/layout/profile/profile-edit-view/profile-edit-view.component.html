@@ -84,37 +84,91 @@
     </div>
     <div class="section-container">
       <div class="info-container">
-        <p class="title">Experience</p>
+        <div class="title-container">
+          <p class="title">Experience</p>
+          <div *ngIf="userProfile.experiences.length">
+            <div class="icon-add-new" (click)="addExperience(null)">
+              <img src="./assets/images/icons/icon_add_new.png">
+            </div>
+          </div>
+        </div>
         <div class="body-wrapper">
-          <dsod-profile-experience
-            [experiences]="userProfile.experiences"
-            [editable]="true"
-            (updateExperience)="updateExperience($event)">
-          </dsod-profile-experience>
+          <div *ngIf="userProfile?.experiences.length; else noExperience">
+            <div *ngFor="let experience of userProfile.experiences; let i = index">
+              <dsod-profile-experience
+                [experience]="experience"
+                [editable]="true"
+                (updateExperience)="updateExperience($event, i)"
+                (deleteExperience)="deleteExperience($event, i)">
+              </dsod-profile-experience>
+            </div>
+          </div>
+          <ng-template #noExperience>
+            <dsod-profile-experience
+              [editable]="true"
+              (updateExperience)="addExperience($event)">
+            </dsod-profile-experience>
+          </ng-template>
         </div>
       </div>
     </div>
     <div class="section-container">
       <div class="info-container">
-        <p class="title">Residency</p>
+        <div class="title-container">
+          <p class="title">Residency</p>
+          <div *ngIf="userProfile.profileResidency.length">
+            <div class="icon-add-new" (click)="addResidency(null)">
+              <img src="./assets/images/icons/icon_add_new.png">
+            </div>
+          </div>
+        </div>
         <div class="body-wrapper">
-          <dsod-profile-residency
-            [residencies]="userProfile.profileResidency"
-            [editable]="true"
-            (updateResidency)="updateResidency($event)">
-          </dsod-profile-residency>
+          <div *ngIf="userProfile?.profileResidency.length; else noResidency">
+            <div *ngFor="let residency of userProfile.profileResidency; let i = index">
+              <dsod-profile-residency
+                [residency]="residency"
+                [editable]="true"
+                (updateResidency)="updateResidency($event, i)"
+                (deleteResidency)="deleteResidency($event, i)">
+              </dsod-profile-residency>
+            </div>
+          </div>
+          <ng-template #noResidency>
+            <dsod-profile-residency
+              [editable]="true"
+              (updateResidency)="addResidency($event)">
+            </dsod-profile-residency>
+          </ng-template>
         </div>
       </div>
     </div>
     <div class="section-container">
       <div class="info-container">
-        <p class="title">Education</p>
+        <div class="title-container">
+          <p class="title">Education</p>
+          <div *ngIf="userProfile.educations.length">
+            <div class="icon-add-new" (click)="addEducation(null)">
+              <img src="./assets/images/icons/icon_add_new.png">
+            </div>
+          </div>
+        </div>
         <div class="body-wrapper">
-          <dsod-profile-education
-            [educations]="userProfile.educations"
-            [editable]="true"
-            (updateEducation)="updateEducation($event)">
-          </dsod-profile-education>
+          <div *ngIf="userProfile?.educations.length; else noEducation">
+            <div *ngFor="let education of userProfile.educations; let i = index">
+              <dsod-profile-education
+                [education]="education"
+                [editable]="true"
+                (updateEducation)="updateEducation($event, i)"
+                (deleteEducation)="deleteEducation($event, i)">
+              </dsod-profile-education>
+            </div>
+          </div>
+          <ng-template #noEducation>
+            <dsod-profile-education
+              [editable]="true"
+              (updateEducation)="addEducation($event)">
+            </dsod-profile-education>
+          </ng-template>
         </div>
       </div>
     </div>

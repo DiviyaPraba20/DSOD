@@ -1,0 +1,30 @@
+@import "variables";
+
+.experience-container {
+  margin-bottom: 10px;
+  .body-item-wrapper {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .icon-body-item {
+      &.upload-resume-background {
+        background-color: $color-alert;
+      }
+    }
+    .item-content-wrapper {
+      flex: 1 1 auto;
+      .item-content {
+        border-bottom: none !important;
+        .title {
+          margin-bottom: 5px;
+          font-size: 16px;
+          &.no-content {
+            margin-bottom: 0;
+            font-size: 15px;
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+}

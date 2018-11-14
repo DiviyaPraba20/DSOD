@@ -14,6 +14,13 @@ import { DSODRatingReviewComponent } from './reviews/reviews.component';
 import { DSODAddReviewComponent } from './reviews/add-review/add-review-modal.component';
 import { DSODContentAuthorComponent } from './author/author.component';
 import { DSODComingSoonComponent } from './coming soon/coming-soon.component';
+import { ProfileExperienceComponent } from './profile-experience/profile-experience.component';
+import { ProfileEducationComponent } from './profile-education/profile-education.component';
+import { ProfileAddressComponent } from './profile-address/profile-address.component';
+import { ProfileResidencyComponent } from './profile-residency/profile-residency.component';
+import { EditExperienceComponent } from './edit-experience/edit-experience.component';
+import { EditEducationComponent } from './edit-education/edit-education.component';
+import { EditResidencyComponent } from './edit-residency/edit-residency.component';
 export * from '././reviews/add-review/add-review-modal.component';
 
 export const SHARED_COMPONENTS = [
@@ -33,5 +40,12 @@ export const SHARED_COMPONENTS = [
   DSODAddReviewComponent,
   DSODContentAuthorComponent,
   DSODComingSoonComponent,
-  DSODAddReviewComponent
+  DSODAddReviewComponent,
+  ProfileExperienceComponent,
+  ProfileEducationComponent,
+  ProfileAddressComponent,
+  ProfileResidencyComponent,
+  EditExperienceComponent,
+  EditEducationComponent,
+  EditResidencyComponent
 ];

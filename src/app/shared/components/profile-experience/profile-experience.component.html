@@ -1,0 +1,49 @@
+<div class="experience-container">
+  <div class="body-item-wrapper">
+    <div class="icon-body-item gray-background">
+      <img src="./assets/images/icons/icon_experience_active.png">
+    </div>
+    <div class="item-content-wrapper">
+      <div class="item-content" *ngIf="!experience">
+        <span class="title no-content">
+          No experience added yet.
+        </span>
+      </div>
+      <div *ngIf="experience">
+        <div class="item-content" *ngIf="experience.practice_Type.name; else noExp">
+          <span class="title">{{experience.practice_Type?.name}}</span>
+          <span class="content">{{experience.practice_Role?.name}}</span>
+          <span class="content" *ngIf="experience.end_time">
+            {{experience?.start_time | date:"MMM yyyy"}} - {{experience?.end_time | date:"MMM yyyy"}}
+          </span>
+          <span class="content" *ngIf="!experience.end_time">
+            {{experience?.start_time | date:"MMM yyyy"}} - Present
+          </span>
+        </div>
+        <ng-template #noExp>
+          <div class="item-content">
+            <span class="title no-content">
+              No experience added yet.
+            </span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div *ngIf="editable">
+      <div class="icon-add-new" *ngIf="!expandedExpSection" (click)="expandExperienceSection(true)">
+        <img src="./assets/images/icons/icon_add_new.png">
+      </div>
+      <div class="icon-add-new" *ngIf="expandedExpSection" (click)="expandExperienceSection(false)">
+        <img src="./assets/images/icons/icon_close_new.png">
+      </div>
+    </div>
+  </div>
+  <div class="add-new-item-container">
+    <dsod-edit-experience
+      [experience]="experience"
+      [expanded]="expandedExpSection"
+      (updateExperience)="onChangeExp($event)"
+      (deleteExperience)="onDelExp($event)">
+    </dsod-edit-experience>
+  </div>
+</div>
