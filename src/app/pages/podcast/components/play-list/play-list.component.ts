@@ -8,6 +8,7 @@ import { Store } from '@ngxs/store';
 import * as actions from '../../../../cms/actions';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Authors } from '../../../../shared/authors/authors';
 
 @Component({
   selector: 'dsod-podcast-playlist',
@@ -16,6 +17,8 @@ import { Router } from '@angular/router';
 })
 export class DSODPodcastPlayListComponent implements OnInit {
   @Input() contenTypeId: string;
+  @Input() authorId: number;
+  authors = Authors;
   params: CMSContentParams = {
     skip: 0,
     limit: 9
@@ -33,7 +36,7 @@ export class DSODPodcastPlayListComponent implements OnInit {
     this.podcasts$ = this.store.select(state => state.cms.podcasts);
   }
 
-  navigateTo(podcast) {
-    this.router.navigate(['./podcast', podcast.id]);
+  navigateTo(podcast, index) {
+    this.router.navigate(['./podcast', podcast.id, 'author', index]);
   }
 }

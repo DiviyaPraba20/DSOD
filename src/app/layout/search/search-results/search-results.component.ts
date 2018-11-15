@@ -10,8 +10,6 @@ import { skip, debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import * as actions from 'src/app/cms/actions';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { FormControl } from '@angular/forms';
-import { debug } from 'util';
 
 @Component({
   selector: 'dsod-search-results',
@@ -24,7 +22,6 @@ export class DSODSearchResults implements OnInit {
   searchValue: string;
   currentPage = 1;
   params: CMSContentParams;
-  noRecord = false;
   isLoading: boolean;
   totalFound: number;
   constructor(
@@ -53,16 +50,12 @@ export class DSODSearchResults implements OnInit {
       .subscribe(data => {
         this.spinnerService.hide();
         this.isLoading = false;
-        if (data.payload.resultMap.totalFound == 0) {
-          this.noRecord = true;
-        }
       });
   }
 
   loadPage(e) {
     this.isLoading = true;
     this.spinnerService.show();
-    this.noRecord = false;
     this.params = {
       skip: (this.currentPage - 1) * 6,
       limit: 6,

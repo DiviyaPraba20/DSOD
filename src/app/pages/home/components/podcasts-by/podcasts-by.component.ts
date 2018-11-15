@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { CMSPageContent } from 'src/app/cms/models';
+import { Authors } from '../../../../shared/authors/authors';
 
 @Component({
   selector: 'dsod-podcasts-by',
@@ -6,7 +8,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./podcasts-by.component.scss']
 })
 export class DSODPodcastsByComponent {
+  authors = Authors;
   @Input()
-  author;
+  podcasts: CMSPageContent[];
+  @Input() imageIndex: number;
+  @Input() indexStart: number;
+  @Input() indexEnd: number;
   constructor() {}
 }

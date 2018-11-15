@@ -16,6 +16,6 @@ export class DSODSearchItemComponent {
       this.router.navigate(['./video', result.id]);
     else if (result.contentTypeName == 'Articles')
       this.router.navigate(['./article', result.id]);
-    else this.router.navigate(['./podcast', result.id]);
+    else this.router.navigate(['./podcast', result.id, 'author', 0]);
   }
 }

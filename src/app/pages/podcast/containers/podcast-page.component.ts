@@ -9,8 +9,8 @@ import {
 } from 'src/app/cms/models';
 import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthState } from '../../auth/states/auth.state';
+import { Authors } from '../../../shared/authors/authors';
 
 @Component({
   selector: 'dsod-podcast-page',
@@ -18,18 +18,21 @@ import { AuthState } from '../../auth/states/auth.state';
   styleUrls: ['./podcast-page.component.scss']
 })
 export class DSODPodcastComponent implements OnInit {
+  authors = Authors;
   contentId: string;
   content: any;
   params: CMSContentParams = {
     skip: 0,
     limit: 0
   };
+  authorId: number;
   pageContent$: Observable<CMSResponse<CMSPageContent>>;
   podCasts$: Observable<CMSResponse<CMSPageContent>>;
   isLoggedIn: boolean;
   constructor(private _route: ActivatedRoute, private store: Store) {
     _route.params.subscribe(r => {
       this.contentId = r.id;
+      this.authorId = r.authorId;
       store.dispatch(new actions.FetchPageContent(this.contentId));
     });
   }

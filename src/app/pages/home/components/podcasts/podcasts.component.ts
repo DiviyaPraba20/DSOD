@@ -1,14 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {
   CMSPageContent,
   CMSContentParams,
   CMSContentTypeModel
 } from 'src/app/cms/models';
-import { Authors } from '../../../../shared/authors/authors';
 import { Store } from '@ngxs/store';
 import * as actions from '../../../../cms/actions';
 import { Observable } from 'rxjs';
-import { CMSContentFilter } from 'src/app/cms/pipes';
 
 @Component({
   selector: 'dsod-podcasts',
@@ -18,17 +16,18 @@ import { CMSContentFilter } from 'src/app/cms/pipes';
 export class DSODPodcastsComponent implements OnInit {
   @Input()
   contentType: CMSContentTypeModel;
+
   podcasts$: Observable<CMSPageContent[]>;
-  authors = Authors;
   indexStart = 0;
   indexEnd = 9;
   activePage = 1;
   params: CMSContentParams = {
     skip: 0,
-    limit: 9,
+    limit: 18,
     isFeatured: true
   };
-
+  podcastItem: number;
+  imageIndex = 0;
   constructor(private store: Store) {}
 
   ngOnInit() {
@@ -46,29 +45,15 @@ export class DSODPodcastsComponent implements OnInit {
     if (page == 1) {
       this.indexStart = 0;
       this.indexEnd = 9;
-      this.store.dispatch(
-        new actions.FetchPodcasts({
-          ...this.params,
-          skip: (this.activePage - 1) * 9,
-          limit: 9,
-          contentTypeId: this.contentType.id
-        })
-      );
+      this.imageIndex = 0;
     } else {
       this.indexStart = this.indexEnd;
       this.indexEnd += 9;
-      this.store.dispatch(
-        new actions.FetchPodcasts({
-          ...this.params,
-          skip: (this.activePage - 1) * 9,
-          limit: 9,
-          contentTypeId: this.contentType.id
-        })
-      );
+      this.imageIndex = 9;
     }
   }
 
-  updateAuthors() {
+  updateAuthors(e) {
     if (this.activePage == 1) this.activePage += 1;
     else {
       this.activePage -= 1;

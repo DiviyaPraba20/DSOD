@@ -26,6 +26,18 @@
       display: flex;
       justify-content: center;
     }
+
+    .no-rec {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+
+      h2 {
+        font-size: 40px;
+      }
+    }
   }
 
   @media (max-width: 1800px) {

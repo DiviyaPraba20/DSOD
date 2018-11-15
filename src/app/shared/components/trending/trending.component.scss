@@ -5,6 +5,12 @@
   background: #f8f8f8;
   cursor: pointer;
 
+  /deep/ iframe {
+    width: 100% !important;
+    position: relative !important;
+    height: 250px !important;
+  }
+
   .trending-block-header {
     display: flex;
     justify-content: space-between;
