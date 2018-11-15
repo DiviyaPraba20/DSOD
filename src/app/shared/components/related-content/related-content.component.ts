@@ -15,7 +15,7 @@ export class DSODRelatedContent {
     if (this.contentTypeName == 'Videos')
       this.router.navigate(['./video', this.content.id]);
     else if (this.contentTypeName == 'Podcasts')
-      this.router.navigate(['./podcast', this.content.id]);
+      this.router.navigate(['./podcast', this.content.id, 'author', 0]);
     else this.router.navigate(['./article', this.content.id]);
   }
 }
