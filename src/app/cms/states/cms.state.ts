@@ -334,7 +334,6 @@ export class CMSState {
     { dispatch, patchState }: StateContext<State>,
     action: actions.FetchPodcasts
   ) {
-    patchState({ podcasts: [] });
     return this.service.findAllContents(action.payload).pipe(
       map(a => {
         if (a.code === 0) {
@@ -405,7 +404,7 @@ export class CMSState {
   //reset
   @Action(actions.ResetState)
   resetState({ patchState, getState }: StateContext<State>) {
-    return patchState({
+    patchState({
       featuredTopics: [],
       latestTopics: [],
       trendingTopics: [],

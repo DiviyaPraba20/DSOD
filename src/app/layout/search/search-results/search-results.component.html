@@ -1,6 +1,8 @@
 <div class="search-results">
   <div class="search-results-content">
-    <h2 *ngIf="noRecord">No Record Found </h2>
+    <div class="no-rec" *ngIf="(searchResponse$ |async)?.resultMap.totalFound==0">
+      <h2>No Record Found </h2>
+    </div>
     <div *ngFor="let result of (searchResponse$ |async)?.resultMap.data">
       <dsod-search-result-item [topic]="result"></dsod-search-result-item>
     </div>

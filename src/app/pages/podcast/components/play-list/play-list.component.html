@@ -1,6 +1,6 @@
 <ul>
-  <li *ngFor="let podcast of (podcasts$ | async); let i= index"><a href="javascript:void(0)" (click)="navigateTo(podcast)"><span
+  <li *ngFor="let podcast of (podcasts$ | async); let i= index"><a href="javascript:void(0)" (click)="navigateTo(podcast, i)"><span
         class="item-number">{{i+1}}</span>
-      <span class="pod-avi"><img src="assets/images/speaker-avi-sm.png" alt="Speaker Thumbnail"></span>
+      <span class="pod-avi"><img src="{{authors[i].imageUrl}}" alt="Speaker Thumbnail"></span>
       {{podcast.title}}<span class="pod-time">36:19<img src="assets/images/play-icon-sm.png" alt=""></span></a></li>
 </ul>
