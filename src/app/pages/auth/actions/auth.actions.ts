@@ -30,7 +30,10 @@ export enum AuthActionTypes {
   UpdateUserInfoFailure = '[Auth] Update UserInfo Failure',
   UpdateUserAvatar = '[Auth] Update User Avatar',
   UpdateUserAvatarSuccess = '[Auth] Update Avatar Success',
-  UpdateUserAvatarFailure = '[Auth] Update Avatar Failure'
+  UpdateUserAvatarFailure = '[Auth] Update Avatar Failure',
+  RemoveResume = '[Auth] Remove Resume',
+  RemoveResumeSuccess = '[Auth] Remove Resume Success',
+  RemoveResumeFailure = '[Auth] Remove Resume Failure'
 }
 
 export class Login {
@@ -149,6 +152,22 @@ export class UpdateUserAvatarFailure {
   constructor(public payload?: any) {}
 }
 
+export class RemoveResume {
+  static readonly type = AuthActionTypes.RemoveResume;
+}
+
+export class RemoveResumeSuccess {
+  static readonly type = AuthActionTypes.RemoveResumeSuccess;
+
+  constructor(public payload: UserInfoResponse) {}
+}
+
+export class RemoveResumeFailure {
+  static readonly type = AuthActionTypes.RemoveResumeFailure;
+
+  constructor(public payload?: any) {}
+}
+
 export type AuthActions = Login
   | LoginSuccess
   | LoginFailure
@@ -168,4 +187,7 @@ export type AuthActions = Login
   | UpdateUserInfoFailure
   | UpdateUserAvatar
   | UpdateUserAvatarSuccess
-  | UpdateUserAvatarFailure;
+  | UpdateUserAvatarFailure
+  | RemoveResume
+  | RemoveResumeSuccess
+  | RemoveResumeFailure;

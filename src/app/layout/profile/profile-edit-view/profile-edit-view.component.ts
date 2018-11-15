@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ViewChild } from '@angular/core';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Store } from '@ngxs/store';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -7,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileData, Experience, ProfileResidency, Education, Address } from '../models/userProfile';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UpdateUserInfo, UpdateUserAvatar } from '../../../pages/auth/actions/auth.actions';
+import { UpdateUserInfo, UpdateUserAvatar, RemoveResume } from '../../../pages/auth/actions/auth.actions';
 import { ChangeProfileEditMode } from '../../actions/layout.actions';
 import { AvatarCropperComponent } from 'src/app/shared/components/avatar-cropper/avatar-cropper.component';
 
@@ -23,6 +24,13 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   croppedImageFile: any;
   fileName: string;
   imageChangedEvent: any;
+  resumeFile: any;
+  isResumeUploading: boolean;
+  isResumePreview: boolean;
+  resumePreviewUrl: string;
+  RESUME_FILE = 1;
+  PHOTO_FILE = 2;
+  typeFile: number;
   specialities: any[] = [];
 
   constructor(
@@ -37,6 +45,10 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.store.select(state => state.auth.userInfo).subscribe(res => {
       this.userProfile = res;
+      if (this.userProfile.document_library) {
+        this.resumeFile = {};
+        this.resumeFile.name = this.userProfile.document_library.document_name || '';
+      }
       this.initUserProfileData();
     });
 
@@ -86,44 +98,70 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   }
 
   selectFile(file) {
-    this.imageChangedEvent = file;
-    if (file.srcElement && file.srcElement.files[0]) {
-      this.fileName = file.srcElement.files[0].name;
-    }
-    const modalRef = this.avatarCropModalService.open(
-      AvatarCropperComponent,
-      {
-        centered: true,
-        backdrop: 'static'
-      }
-    );
-
-    modalRef.componentInstance.imageChangedEvent = this.imageChangedEvent;
-    modalRef.result
-    .then(result => {
-      this.croppedImage = result.croppedImage;
-      this.croppedImageFile = result.croppedFile;
-      this.spinner.show();
-      this.store.dispatch(new UpdateUserAvatar(this.croppedImageFile)).subscribe(res => {
-        this.spinner.hide();
+    if (this.typeFile === this.RESUME_FILE) {
+      this.isResumeUploading = true;
+      this.resumeFile = file.target.files[0];
+      this.resumeFile.progress = 0;
+      this.authService.uploadResume(file.srcElement.files[0]).subscribe(event => {
+        if (event['type'] === HttpEventType.UploadProgress) {
+          this.resumeFile.progress = Math.round(100 * event['loaded'] / event['total']);
+        } else if (event instanceof HttpResponse) {
+          this.isResumeUploading = false;
+          const res = event.body;
+          if (res['code'] === 0) {
+            this.userProfile.document_library = {
+              id: null,
+              document: null,
+              document_name: res['resultMap']['resumeName'],
+              create_time: null,
+              email: null,
+              user_id: null
+            };
+            this.isResumeUploading = false;
+            this.toastr.success('Uploaded successfully.', 'UserInfo');
+          } else {
+            this.isResumeUploading = false;
+            this.toastr.error('Upload Failed.', 'UserInfo');
+          }
+        }
+      }, (err) => {
+        this.isResumeUploading = false;
+        this.toastr.error('Upload Failed.', 'UserInfo');
       });
-      // this.authService.uploadUserAvatar(this.croppedImageFile).pipe().subscribe(res => {
-      //   this.spinner.hide();
-      //   if (res['code'] === 0) {
-      //     this.toastr.success('Photo has been uploaded successfully.', 'UserInfo');
-      //     this.userProfile.photo_album = {
-      //       id: null,
-      //       photo: '',
-      //       photo_name: res['resultMap']['photoName'],
-      //       create_time: null,
-      //       email: null,
-      //       user_id: null
-      //     };
-      //     this.saveProfile();
-      //   } else {
-      //     this.toastr.error('Photo uploading has been failed.', 'UserInfo');
-      //   }
-      // });
+    } else {
+      this.imageChangedEvent = file;
+      if (file.srcElement && file.srcElement.files[0]) {
+        this.fileName = file.srcElement.files[0].name;
+      }
+      const modalRef = this.avatarCropModalService.open(
+        AvatarCropperComponent,
+        {
+          centered: true,
+          backdrop: 'static'
+        }
+      );
+  
+      modalRef.componentInstance.imageChangedEvent = this.imageChangedEvent;
+      modalRef.result
+      .then(result => {
+        this.croppedImage = result.croppedImage;
+        this.croppedImageFile = result.croppedFile;
+        this.spinner.show();
+        this.store.dispatch(new UpdateUserAvatar(this.croppedImageFile)).subscribe(res => {
+          this.spinner.hide();
+        });
+      })
+      .catch(reason => {});
+    }
+  }
+
+  removeResumeFile() {
+    this.spinner.show();
+    this.store.dispatch(new RemoveResume()).subscribe(res => {
+      this.spinner.hide();
+      if (!this.userProfile.document_library) {
+        this.resumeFile = null;
+      }
     });
   }
 
@@ -239,7 +277,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   }
 
   validateEducation() {
-    this.userProfile.educations = this.userProfile.educations.filter(edu => edu.types);
+    this.userProfile.educations = this.userProfile.educations.filter(edu => edu.end_time);
   }
 
   updateAddress(address: Address) {

@@ -28,8 +28,7 @@
             <span class="edit-icon">
               <i class="fa fa-pencil"></i>
             </span>
-            <input type="file" (change)="selectFile($event)" accept="image/*"
-              class="upload-hidden">
+            <input type="file" class="upload-hidden" (change)="typeFile = PHOTO_FILE; selectFile($event)" accept="image/*">
           </div>
         </ng-template>
       </div>
@@ -74,9 +73,27 @@
             <div class="icon-body-item upload-resume-background">
               <img src="./assets/images/icons/icon_upload.png">
             </div>
-            <div class="item-content">
+            <div class="item-content" *ngIf="!resumeFile">
               <span class="title">Upload resume</span>
               <span class="content">Your professional information will be imported automatically</span>
+              <input type="file" class="upload-hidden" (change)="typeFile = RESUME_FILE; selectFile($event)" accept=".xls,.xlsx,.doc,.docx,.pdf">
+            </div>
+            <div class="item-content" *ngIf="resumeFile && isResumeUploading">
+              <div class="resume-uploading-container">
+                <div class="resume-title">{{this.resumeFile?.name}}</div>
+              </div>
+              <div class="uploading-progress-container">
+                <div class="uploading-progress" [ngStyle]="{'width': this.resumeFile?.progress + '%'}"></div>
+              </div>
+            </div>
+            <div class="item-content" *ngIf="resumeFile && !isResumeUploading">
+              <div class="resume-uploaded-container">
+                <div>
+                  <p class="resume-title">{{resumeFile?.name}}</p>
+                  <p class="resume-size" *ngIf="resumeFile.size">{{resumeFile?.size / (1024*1024) | number:'.1'}} Mb</p>
+                </div>
+                <i class="fa fa-trash" (click)="removeResumeFile()"></i>
+              </div>
             </div>
           </div>
         </div>

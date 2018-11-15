@@ -92,16 +92,6 @@
             font-size: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,.1);
           }
-          .upload-hidden {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            opacity: 0;
-            cursor: pointer;
-            width: 100%;
-          }
         }
       }
       .info-container {
@@ -111,6 +101,7 @@
         }
         .body-wrapper {
           .body-item-wrapper {
+            position: relative;
             display: flex;
             align-items: center;
             min-height: 60px;
@@ -136,8 +127,6 @@
               flex: 1 1 auto;
               margin-left: 20px;
               font-size: 15px;
-              // padding: 10px 0 15px;
-              // border-bottom: 1px solid $gray;
               .title {
                 margin-bottom: 0;
                 font-size: 15px;
@@ -156,6 +145,16 @@
             }
           }
         }
+      }
+      .upload-hidden {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
       }
     }
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -155,8 +155,22 @@ export class AuthService {
     const form = new FormData();
     form.append('file', f);
     const url = `${environment.api}/profile/profileservice/v1/photoUpload`;
-    const formData = this.parseFormData({ state: '' });
     return this.http.post<ProfileTypesResponse>(url, form, {withCredentials: true});
   }
 
+  uploadResume(f) {
+    const url = `${environment.api}/profile/profileservice/v1/resumeUpload`;
+    const form = new FormData();
+    form.append('file', f);
+    return this.http.request(new HttpRequest('POST', url, form, {withCredentials: true, reportProgress: true}));
+  }
+
+  deleteDocumentByEmail(): Observable<ProfileTypesResponse> {
+    const userInfo = this.getUserInfoFromToken();
+    const url = `${environment.api}/profile/profileservice/v1/documentLibrary/deleteDocumentLibraryByEmail`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('email', userInfo.user_name);
+    return this.http.post<ProfileTypesResponse>(url, body, {headers, withCredentials: true});
+  }
 }
