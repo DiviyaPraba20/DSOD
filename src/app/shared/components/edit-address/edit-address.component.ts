@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Address } from '../../../layout/profile/models/userProfile';
 
-
 @Component({
   selector: 'dsod-edit-address',
   templateUrl: './edit-address.component.html',

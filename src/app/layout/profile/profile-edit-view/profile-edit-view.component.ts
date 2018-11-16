@@ -222,12 +222,12 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
       this.userProfile.profileResidency.push(res);
     } else {
       const lastRes = this.userProfile.profileResidency[this.userProfile.profileResidency.length - 1];
-      if (!lastRes.residency_School.id) {
+      if (!lastRes.residency_school.id) {
         return;
       }
       this.userProfile.profileResidency.push({
         id: null,
-        residency_School: {
+        residency_school: {
           id: null,
           name: ''
         },
@@ -241,7 +241,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   }
 
   validateResidency() {
-    this.userProfile.profileResidency = this.userProfile.profileResidency.filter(res => res.residency_School.id);
+    this.userProfile.profileResidency = this.userProfile.profileResidency.filter(res => res.residency_school.id);
   }
 
   updateEducation(edu: Education, eduIndex) {
