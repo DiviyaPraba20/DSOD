@@ -86,7 +86,7 @@ export class EditResidencyComponent implements OnInit {
       this.updateResidency.emit(this.residency);
     }
   }
-  
+
   validateResidency(res: ProfileResidency) {
     if (!res.residency_School.id) {
       this.toastr.warning('Please select residency school', 'Error');

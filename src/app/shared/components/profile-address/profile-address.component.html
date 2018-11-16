@@ -4,16 +4,26 @@
       <img src="./assets/images/icons/icon_location.png">
     </div>
     <div class="item-content-wrapper">
-      <div class="item-content"
-        *ngIf="!address.address1 || !address.address2 || !address.city || !address.zipCode || !address.states">
+      <div class="item-content" *ngIf="!address">
+        <span class="title">Practice Address</span>
         <span class="title no-content">
           No address added yet.
         </span>
       </div>
-      <div class="item-content" *ngIf="address.address1 && address.address1 && address.city && address.zipCode && address.states">
-        <span class="title">Practice Address</span>
-        <span class="content">{{address.address1}} {{address.address2}}</span>
-        <span class="content">{{address.city}} {{address.states}} {{address.zipCode}}</span>
+      <div *ngIf="address">
+        <div class="item-content" *ngIf="address.address1; else noAdd">
+          <span class="title">Practice Address</span>
+          <span class="content">{{address.address1}} {{address.address2}}</span>
+          <span class="content">{{address.city}} {{address.states}} {{address.zipCode}}</span>
+        </div>
+        <ng-template #noAdd>
+          <div class="item-content">
+            <span class="title">Practice Address</span>
+            <span class="title no-content">
+              No address added yet.
+            </span>
+          </div>
+        </ng-template>
       </div>
     </div>
     <div *ngIf="editable">
@@ -26,53 +36,11 @@
     </div>
   </div>
   <div class="add-new-item-container">
-    <div class="add-new-address-container" [ngClass]="{'show': expandedAddSection}">
-      <div class="new-item-container">
-        <span class="title">Address 1</span>
-        <div class="input-group">
-          <input type="text" [(ngModel)]="address.address1">
-          <span class="fa fa-pencil"></span>
-        </div>
-      </div>
-      <div class="new-item-container">
-        <span class="title">Addrss 2</span>
-        <div class="input-group">
-          <input type="text" [(ngModel)]="address.address2">
-          <span class="fa fa-pencil"></span>
-        </div>
-      </div>
-      <div class="new-item-container">
-        <span class="title">Zip Code</span>
-        <div class="input-group">
-          <input type="text" [(ngModel)]="address.zipCode">
-          <span class="fa fa-pencil"></span>
-        </div>
-      </div>
-      <div class="new-item-container">
-        <span class="title">City</span>
-        <div class="input-group">
-          <input type="text" [(ngModel)]="address.city">
-          <span class="fa fa-pencil"></span>
-        </div>
-      </div>
-      <div class="new-item-container">
-        <p class="title">State</p>
-        <div class="item-body">
-          <ng-select
-            class="custom-select"
-            [items]="states"
-            [(ngModel)]="address.states"
-            appendTo="body"
-            bindLabel="state"
-            bindValue="state"
-            class="select-item"
-            placeholder="Select State">
-          </ng-select>
-        </div>
-      </div>
-      <div class="new-item-container">
-        <button class="btn btn-primary btn-delete" (click)="deleteAddress()">Delete AddressInfo</button>
-      </div>
-    </div>
+    <dsod-edit-address
+      [address]="address"
+      [expanded]="expandedAddSection"
+      (updateAddress)="onChangeAdd($event)"
+      (deleteAddress)="onDelAdd($event)">
+    </dsod-edit-address>
   </div>
 </div>

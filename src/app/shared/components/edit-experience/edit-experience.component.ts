@@ -71,14 +71,14 @@ export class EditExperienceComponent implements OnInit {
           year: moment(this.experience.end_time).get('year'),
           month: moment(this.experience.end_time).get('month') + 1,
           day: moment(this.experience.end_time).get('date')
-        }
+        };
       }
       if (this.experience.start_time) {
         this.expStartTime = {
           year: moment(this.experience.start_time).get('year'),
           month: moment(this.experience.start_time).get('month') + 1,
           day: moment(this.experience.start_time).get('date')
-        }
+        };
       }
     }
     this.authService.getAllPracticeTypes().pipe().subscribe(res => {
