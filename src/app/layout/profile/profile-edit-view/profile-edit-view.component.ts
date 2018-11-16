@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { UpdateUserInfo, UpdateUserAvatar, RemoveResume } from '../../../pages/auth/actions/auth.actions';
 import { ChangeProfileEditMode } from '../../actions/layout.actions';
 import { AvatarCropperComponent } from 'src/app/shared/components/avatar-cropper/avatar-cropper.component';
+import { compareElements } from '../../../core/functions/common.function';
 
 @Component({
   selector: 'dsod-profile-edit-view',
@@ -54,6 +55,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
 
     this.authService.getAllSpeciality().pipe().subscribe(res => {
       this.specialities = res.resultMap.data;
+      this.specialities.sort(compareElements);
     });
   }
 
@@ -88,10 +90,14 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     this.validateEducation();
     this.validateResidency();
     this.validateAddress();
-    this.spinner.show();
-    this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
-      this.spinner.hide();
-    });
+    if (this.validateProfileDates()) {
+      this.spinner.show();
+      this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
+        this.spinner.hide();
+      });
+    } else {
+      this.toastr.error('Date of Residency must be after Date of Education', 'UserInfo');
+    }
   }
 
   viewProfile() {
@@ -299,5 +305,17 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     if (this.userProfile.practiceAddress && !this.userProfile.practiceAddress.address1) {
       this.userProfile.practiceAddress = null;
     }
+  }
+
+  validateProfileDates() {
+    let isValidDate = true;
+    this.userProfile.profileResidency.map(residency => {
+      this.userProfile.educations.map(education => {
+        if (residency.end_time < education.end_time) {
+          isValidDate = false;
+        }
+      });
+    });
+    return isValidDate;
   }
 }

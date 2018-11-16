@@ -5,6 +5,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Experience } from 'src/app/layout/profile/models/userProfile';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { compareElements } from '../../../core/functions/common.function';
 
 @Component({
   selector: 'dsod-edit-experience',
@@ -83,12 +84,15 @@ export class EditExperienceComponent implements OnInit {
     }
     this.authService.getAllPracticeTypes().pipe().subscribe(res => {
       this.practiceTypes = res.resultMap.data;
+      this.practiceTypes.sort(compareElements);
     });
     this.authService.getAllPracticeRoles().pipe().subscribe(res => {
       this.practiceRoles = res.resultMap.data;
+      this.practiceRoles.sort(compareElements);
     });
     this.authService.getAllPracticeDSO().pipe().subscribe(res => {
       this.practiceDSOs = res.resultMap.data;
+      this.practiceDSOs.sort(compareElements);
     });
   }
 

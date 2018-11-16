@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ProfileResidency } from '../../../layout/profile/models/userProfile';
+import { compareElements } from '../../../core/functions/common.function';
 
 @Component({
   selector: 'dsod-edit-residency',
@@ -54,6 +55,7 @@ export class EditResidencyComponent implements OnInit {
     }
     this.authService.getAllResidencies().pipe().subscribe(res => {
       this.residencyList = res.resultMap.data;
+      this.residencyList.sort(compareElements);
     });
   }
 

@@ -57,10 +57,10 @@ export class EditAddressComponent implements OnInit {
       this.toastr.warning('Please enter address1', 'Error');
       return false;
     }
-    if (!add.address2) {
-      this.toastr.warning('Please enter address2', 'Error');
-      return false;
-    }
+    // if (!add.address2) {
+    //   this.toastr.warning('Please enter address2', 'Error');
+    //   return false;
+    // }
     if (!add.city) {
       this.toastr.warning('Please enter city', 'Error');
       return false;
