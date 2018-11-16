@@ -10,7 +10,7 @@
         </span>
       </div>
       <div *ngIf="experience">
-        <div class="item-content" *ngIf="experience.practice_Type.name; else noExp">
+        <div class="item-content" *ngIf="experience.practice_Type?.name; else noExp">
           <span class="title">{{experience.practice_Type?.name}}</span>
           <span class="content">{{experience.practice_Role?.name}}</span>
           <span class="content" *ngIf="experience.end_time">

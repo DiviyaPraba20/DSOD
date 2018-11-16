@@ -6,6 +6,7 @@ export enum LayoutActionTypes {
 
 export class ChangeProfilePanelStatus {
   static readonly type = LayoutActionTypes.ChangeProfilePanelStatus;
+  constructor(public payload: boolean) {}
 }
 
 export class ChangeProfileEditMode {

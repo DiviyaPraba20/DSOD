@@ -49,6 +49,7 @@
     "moment": "^2.22.2",
     "ng-click-outside": "^4.0.0",
     "ngx-bootstrap": "^3.0.1",
+    "ngx-image-cropper": "^1.2.2",
     "ngx-spinner": "^6.1.2",
     "ngx-toastr": "^9.1.0",
     "ngx-ui-switch": "^1.6.0",

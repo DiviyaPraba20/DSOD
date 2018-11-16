@@ -1,5 +1,15 @@
 @import 'variables';
 
+.profile-out-click-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 9;
+  &.hide {
+    visibility: hidden;
+  }
+}
 .nav-wrapper {
   background: rgba(0, 0, 0, 0.5);
   padding: 18px 47px;
@@ -54,6 +64,10 @@
             padding: 6px 20px;
             border-bottom: none;
             cursor: pointer;
+            &.profile-name {
+              background: transparent;
+              padding: 0;
+            }
           }
 
           .avatar-wrap {

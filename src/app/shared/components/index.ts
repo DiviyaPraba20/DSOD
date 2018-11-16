@@ -22,6 +22,7 @@ import { ProfileResidencyComponent } from './profile-residency/profile-residency
 import { EditExperienceComponent } from './edit-experience/edit-experience.component';
 import { EditEducationComponent } from './edit-education/edit-education.component';
 import { EditResidencyComponent } from './edit-residency/edit-residency.component';
+import { AvatarCropperComponent } from './avatar-cropper/avatar-cropper.component';
 export * from '././reviews/add-review/add-review-modal.component';
 
 export const SHARED_COMPONENTS = [
@@ -49,5 +50,7 @@ export const SHARED_COMPONENTS = [
   ProfileResidencyComponent,
   EditExperienceComponent,
   EditEducationComponent,
-  EditResidencyComponent
+  EditResidencyComponent,
+  DSODAddReviewComponent,
+  AvatarCropperComponent
 ];

@@ -1,3 +1,7 @@
+<div class="profile-out-click-container" 
+  [ngClass]="{'hide': !(isOpenedProfilePanel$ | async)}"
+  (click)="onClickedOutProfilePanel()"
+></div>
 <div class="nav-wrapper" onScroll-update>
   <div class="container-fluid">
     <div class="d-flex justify-content-between">
@@ -42,16 +46,18 @@
                   </div>
                 </li>
                 <li class="nav-item login-wrap" *ngIf="(isLoggedIn$ | async)" ngbDropdown placement="bottom-right">
-                  <div class="nav-link avatar-wrap" ngbDropdownToggle>
+                  <div class="nav-link avatar-wrap">
                     <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">
-                    <span class="user-name">
-                      {{userProfile?.full_name}}
-                    </span>
-                  </div>
-                  <div ngbDropdownMenu class="logged-in-dropdown">
-                    <button class="dropdown-item" (click)="toggleProfilePanel()">Profile</button>
-                    <button class="dropdown-item">Settings</button>
-                    <button class="dropdown-item" (click)="logout()">Log Out</button>
+                    <li class="nav-item sub-menu-parent" ngbDropdownToggle>
+                      <a class="nav-link profile-name">{{userProfile?.full_name}}</a>
+                      <ul class="sub-menu">
+                        <li>
+                          <a (click)="toggleProfilePanel()">Profile</a>
+                          <a (click)="toggleProfilePanel()">Settings</a>
+                          <a (click)="logout()">Log Out</a>
+                        </li>
+                      </ul>
+                    </li>
                   </div>
                 </li>
                 <li class="nav-item login-wrap" *ngIf="!(isLoggedIn$ | async)">

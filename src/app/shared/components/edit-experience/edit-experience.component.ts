@@ -60,6 +60,12 @@ export class EditExperienceComponent implements OnInit {
         email: ''
       };
     } else {
+      if (!this.experience.practice_DSO) {
+        this.experience.practice_DSO = {
+          id: null,
+          name: ''
+        };
+      }
       if (this.experience.end_time) {
         this.expEndTime = {
           year: moment(this.experience.end_time).get('year'),

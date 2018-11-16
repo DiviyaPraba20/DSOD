@@ -21,7 +21,15 @@ import {
   GetUserInfoFailure,
   GetUserInfoSuccess,
   UpdateUserInfoSuccess,
-  UpdateUserInfoFailure
+  UpdateUserInfoFailure,
+  UpdateUserAvatar, 
+  UpdateUserAvatarSuccess, 
+  UpdateUserAvatarFailure, 
+  UpdateUserInfo, 
+  RemoveResume, 
+  RemoveResumeFailure, 
+  RemoveResumeSuccess,
+  GetUserInfo
 } from '../actions';
 
 export interface State {
@@ -184,7 +192,7 @@ export class AuthState {
     patchState({
       pending: true,
       error: null,
-      userInfo: null
+      // userInfo: null
     });
 
     return this.authService.getUserInfo(action.payload).pipe(
@@ -233,15 +241,103 @@ export class AuthState {
   }
 
   @Action(actions.UpdateUserInfoSuccess)
-  updateUserInfoSuccess({ patchState }: StateContext<State>, action: actions.UpdateUserInfoSuccess) {
+  updateUserInfoSuccess({ patchState, getState }: StateContext<State>, action: actions.UpdateUserInfoSuccess) {
     this.toastr.success('User Info updated successfully!', 'UserInfo');
+    patchState({
+      pending: false
+    });
+    const currentState = getState();
+    this.store.dispatch(new GetUserInfo({email: currentState.userInfo.email}));
+  }
+
+  @Action(actions.UpdateUserInfoFailure)
+  updateUserInfoFailure({ patchState }: StateContext<State>, action: actions.UpdateUserInfoFailure) {
+    const error = action.payload;
+    this.toastr.error(action.payload, 'UserInfo');
+    patchState({
+      pending: false,
+      error
+    });
+  }
+
+  @Action(actions.UpdateUserAvatar)
+  updateUserAvatar({ patchState, dispatch }: StateContext<State>, action: actions.UpdateUserAvatar) {
+    patchState({
+      pending: true,
+      error: null
+    });
+
+    return this.authService.uploadUserAvatar(action.payload).pipe(
+      exhaustMap((response: UserInfoResponse) => {
+        if (response.code !== 0) {
+          return dispatch(new UpdateUserAvatarFailure(response.msg));
+        }
+        return dispatch(new UpdateUserAvatarSuccess(response));
+      })
+    );
+  }
+
+  @Action(actions.UpdateUserAvatarSuccess)
+  updateUserAvatarSuccess({ patchState, dispatch, getState }: StateContext<State>, action: actions.UpdateUserAvatarSuccess) {
+    this.toastr.success('User photo has been uploaded successfully!', 'UserInfo');
+    let currentState = getState();
+    if (action.payload['code'] === 0) {
+      currentState.userInfo.photo_album = {
+        id: null,
+        photo: '',
+        photo_name: action.payload['resultMap']['photoName'],
+        create_time: null,
+        email: null,
+        user_id: null
+      };
+    }
+    patchState({
+      pending: false
+    });
+    // return dispatch(new UpdateUserInfo(currentState.userInfo));
+  }
+
+  @Action(actions.UpdateUserAvatarFailure)
+  updateUserAvatarFailure({ patchState }: StateContext<State>, action: actions.UpdateUserAvatarFailure) {
+    const error = action.payload;
+    this.toastr.error(action.payload, 'UserInfo');
+    patchState({
+      pending: false,
+      error
+    });
+  }
+
+  @Action(actions.RemoveResume)
+  removeResume({ patchState, dispatch }: StateContext<State>, action: actions.RemoveResume) {
+    patchState({
+      pending: true,
+      error: null
+    });
+
+    return this.authService.deleteDocumentByEmail().pipe(
+      exhaustMap((response: UserInfoResponse) => {
+        if (response.code !== 0) {
+          return dispatch(new RemoveResumeFailure(response.msg));
+        }
+        return dispatch(new RemoveResumeSuccess(response));
+      })
+    );
+  }
+
+  @Action(actions.RemoveResumeSuccess)
+  removeResumeSuccess({ patchState, dispatch, getState }: StateContext<State>, action: actions.RemoveResumeSuccess) {
+    this.toastr.success('Resume has been deleted successfully!', 'UserInfo');
+    let currentState = getState();
+    if (action.payload['code'] === 0) {
+      currentState.userInfo.document_library = null;
+    }
     patchState({
       pending: false
     });
   }
 
-  @Action(actions.UpdateUserInfoFailure)
-  updateUserInfoFailure({ patchState }: StateContext<State>, action: actions.UpdateUserInfoFailure) {
+  @Action(actions.RemoveResumeFailure)
+  removeResumeFailure({ patchState }: StateContext<State>, action: actions.RemoveResumeFailure) {
     const error = action.payload;
     this.toastr.error(action.payload, 'UserInfo');
     patchState({
