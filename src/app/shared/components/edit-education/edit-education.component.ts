@@ -45,7 +45,7 @@ export class EditEducationComponent implements OnInit {
         end_time: null,
         email: '',
         types: '0'
-      }
+      };
     } else {
       if (this.education.types === '1') {
         this.isUSSchool = true;

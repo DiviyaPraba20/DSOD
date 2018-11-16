@@ -87,6 +87,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     this.validateUserExp();
     this.validateEducation();
     this.validateResidency();
+    this.validateAddress();
     this.spinner.show();
     this.store.dispatch(new UpdateUserInfo(this.userProfile)).subscribe(res => {
       this.spinner.hide();
@@ -140,7 +141,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
           backdrop: 'static'
         }
       );
-  
+
       modalRef.componentInstance.imageChangedEvent = this.imageChangedEvent;
       modalRef.result
       .then(result => {
@@ -200,7 +201,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
         start_time: null,
         end_time: null,
         email: ''
-      })
+      });
     }
   }
 
@@ -221,12 +222,12 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
       this.userProfile.profileResidency.push(res);
     } else {
       const lastRes = this.userProfile.profileResidency[this.userProfile.profileResidency.length - 1];
-      if (!lastRes.residency_School.id) {
+      if (!lastRes.residency_school.id) {
         return;
       }
       this.userProfile.profileResidency.push({
         id: null,
-        residency_School: {
+        residency_school: {
           id: null,
           name: ''
         },
@@ -240,7 +241,7 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
   }
 
   validateResidency() {
-    this.userProfile.profileResidency = this.userProfile.profileResidency.filter(res => res.residency_School.id);
+    this.userProfile.profileResidency = this.userProfile.profileResidency.filter(res => res.residency_school.id);
   }
 
   updateEducation(edu: Education, eduIndex) {
@@ -280,7 +281,23 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     this.userProfile.educations = this.userProfile.educations.filter(edu => edu.end_time);
   }
 
+  addAddress(add: Address) {
+    if (add) {
+      this.userProfile.practiceAddress = add;
+    }
+  }
+
   updateAddress(address: Address) {
     this.userProfile.practiceAddress = address;
+  }
+
+  deleteAddress(add: Address) {
+    this.userProfile.practiceAddress = null;
+  }
+
+  validateAddress() {
+    if (this.userProfile.practiceAddress && !this.userProfile.practiceAddress.address1) {
+      this.userProfile.practiceAddress = null;
+    }
   }
 }

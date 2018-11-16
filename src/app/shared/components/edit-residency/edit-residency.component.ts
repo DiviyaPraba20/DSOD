@@ -33,7 +33,7 @@ export class EditResidencyComponent implements OnInit {
     if (!this.residency) {
       this.residency = {
         id: null,
-        residency_School: {
+        residency_school: {
           id: null,
           name: ''
         },
@@ -62,8 +62,8 @@ export class EditResidencyComponent implements OnInit {
   }
 
   onSave() {
-    if (this.residencyList.filter(type => type.id === this.residency.residency_School.id).length) {
-      this.residency.residency_School = this.residencyList.filter(type => type.id === this.residency.residency_School.id)[0];
+    if (this.residencyList.filter(type => type.id === this.residency.residency_school.id).length) {
+      this.residency.residency_school = this.residencyList.filter(type => type.id === this.residency.residency_school.id)[0];
     }
     if (this.residencyEndTime && this.residencyEndTime.year) {
       this.residency.end_time = moment().set({
@@ -86,9 +86,9 @@ export class EditResidencyComponent implements OnInit {
       this.updateResidency.emit(this.residency);
     }
   }
-  
+
   validateResidency(res: ProfileResidency) {
-    if (!res.residency_School.id) {
+    if (!res.residency_school.id) {
       this.toastr.warning('Please select residency school', 'Error');
       return false;
     }

@@ -191,13 +191,24 @@
     </div>
     <div class="section-container">
       <div class="info-container">
-        <p class="title">Contact Info</p>
+        <div class="title-container">
+          <p class="title">Contact Info</p>
+        </div>
         <div class="body-wrapper">
-          <dsod-profile-address
-            [address]="userProfile.practiceAddress"
-            [editable]="true"
-            (updateAddress)="updateAddress($event)">
-          </dsod-profile-address>
+          <div *ngIf="userProfile?.practiceAddress; else noAddress">
+            <dsod-profile-address
+              [address]="userProfile?.practiceAddress"
+              [editable]="true"
+              (updateAddress)="updateAddress($event)"
+              (deleteAddress)="deleteAddress($event)">
+            </dsod-profile-address>
+          </div>
+          <ng-template #noAddress>
+            <dsod-profile-address
+              [editable]="true"
+              (updateAddress)="updateAddress($event)">
+            </dsod-profile-address>
+          </ng-template>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
               <img src="./assets/images/icons/icon_mobile.png">

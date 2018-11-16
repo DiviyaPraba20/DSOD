@@ -12,14 +12,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { UserProfileData } from '../profile/models/userProfile';
 import { environment } from 'src/environments/environment';
 
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  state
-} from '@angular/animations';
-
 @Component({
   selector: 'dsod-navbar',
   templateUrl: './navbar.component.html',
