@@ -23,9 +23,8 @@ export class LayoutState {
 
   @Action(actions.ChangeProfilePanelStatus)
   changeProfilePanelStatus({ patchState, getState }: StateContext<State>, action: actions.ChangeProfilePanelStatus) {
-    const currentState = getState();
     patchState({
-      isOpenedProfilePanel: !currentState.isOpenedProfilePanel
+      isOpenedProfilePanel: action.payload
     });
   }
 
