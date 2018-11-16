@@ -43,37 +43,7 @@ export class DSODCarouselComponent implements AfterViewInit {
       actionName: null,
       actionLink: null,
       contentType: DSODContentType.Image,
-      src: 'assets/images/home-slide-2.jpg',
-      url: ''
-    },
-    {
-      title: null,
-      subtitle: null,
-      description: null,
-      actionName: null,
-      actionLink: null,
-      contentType: DSODContentType.Image,
-      src: 'assets/images/home-slide-3.jpg',
-      url: ''
-    },
-    {
-      title: null,
-      subtitle: null,
-      description: null,
-      actionName: null,
-      actionLink: null,
-      contentType: DSODContentType.Image,
       src: 'assets/images/home-slide-4.jpg',
-      url: ''
-    },
-    {
-      title: null,
-      subtitle: null,
-      description: null,
-      actionName: null,
-      actionLink: null,
-      contentType: DSODContentType.Image,
-      src: 'assets/images/home-slide-5.jpg',
       url: ''
     }
   ];

@@ -204,7 +204,7 @@ export class FetchSearchResults {
 }
 export class FetchSearchResultsSuccess {
   static readonly type = CMSActions.FetchSearchResultsSuccess;
-  constructor(public payload: CMSPageContent[]) {}
+  constructor(public payload: CMSResponse<CMSPageContent>) {}
 }
 export class FetchSearchResultsFailure {
   static readonly type = CMSActions.FetchSearchResultsFailure;

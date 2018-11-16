@@ -21,7 +21,7 @@ const routes: Routes = [
     component: DSODArticelComponent
   },
   {
-    path: 'podcast/:id',
+    path: 'podcast/:id/author/:authorId',
     component: DSODPodcastComponent
   },
   {

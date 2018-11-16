@@ -10,6 +10,4 @@ export class DSODPodcastTabsComponent {
   @Input()
   content: CMSPageContent;
   constructor() {}
-
-  onSelect(event) {}
 }

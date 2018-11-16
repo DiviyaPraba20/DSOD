@@ -1,10 +1,10 @@
 <h2 class="section-title">From Our Sponsors </h2>
 <div class="row">
-  <div class="row" *ngFor="let topic of sponsoredTopics | contentFilter">
+  <div class="row" *ngFor="let topic of sponsoredTopics | slice:0:3">
     <div class="col-lg-6">
       <div class="our-sponsors">
         <div class="our-sponsors-header">
-          <!-- <h4 *ngIf="topic.sponsorName==='ALN'">
+          <h4 *ngIf="topic.sponsorName==='ALN'">
             <img src="assets/images/align-logo.png" alt="">
             Sponsored content from Align Technology, Inc.
           </h4>
@@ -13,12 +13,8 @@
             Sponsored content from Nobel Biocare, N.A.
           </h4>
           <h4 *ngIf="topic.sponsorName==='GSK'">
-            <img src="assets/images/gsk-icon.png" alt="">
+            <img src="assets/images/gsk-icon-sm.png" alt="">
             Sponsored content from GlaxoSmithKline
-          </h4> -->
-          <h4>
-            <img src="assets/images/align-logo.png" alt="">
-            Sponsored content from Align Technology, Inc.
           </h4>
         </div>
         <dsod-topic [topic]="topic" [showImage]="false" styleFor="content-lg" [showHeader]="false"></dsod-topic>

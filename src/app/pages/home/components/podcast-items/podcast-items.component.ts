@@ -9,5 +9,8 @@ import { CMSPageContent } from 'src/app/cms/models';
 export class DSODPodcastItemsComponent {
   @Input()
   podcasts: CMSPageContent[];
+  @Input() imageIndex;
+  @Input() indexEnd;
+  @Input() indexStart;
   constructor() {}
 }

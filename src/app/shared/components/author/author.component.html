@@ -1,8 +1,8 @@
 <div *ngIf="author">
   <div class="speaker-thumbnail">
-    <img src="assets/images/speaker-avi.png" class="img-fluid" alt="">
+    <img src={{authors[authorId].imageUrl}} class="img-fluid" alt="assets/images/speaker-avi.png">
   </div>
   <div class="speaker-name">
-    <span>{{author.firstName}} {{author.lastName}}, {{author.role}}</span>
+    <span>{{author.firstName}} {{author.lastName}}</span>
   </div>
 </div>

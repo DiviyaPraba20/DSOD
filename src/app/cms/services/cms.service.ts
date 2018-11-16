@@ -68,9 +68,8 @@ export class CMSService {
 
   findAllBySearch<T>(term: any) {
     return this.http.post<CMSResponse<CMSPageContent>>(
-      'https://democmsapi1.dsodentist.com/content/contentservice/v1/content/public/findAllBySearch',
-      term,
-      { withCredentials: true }
+      `${environment.url}/content/public/findAllByValue`,
+      term
     );
   }
 }

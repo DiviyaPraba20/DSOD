@@ -99,7 +99,7 @@ export interface CMSContentParams {
 }
 
 export interface CMSResponse<T> extends Response {
-  resultMap: { data?: T[]; sponsors?: T[] };
+  resultMap: { data: T[]; totalCount: number; sponsors: any[] };
 }
 
 export interface sponsors {
