@@ -5,6 +5,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Experience } from 'src/app/layout/profile/models/userProfile';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { compareElements } from '../../../core/functions/common.function';
 
 @Component({
   selector: 'dsod-edit-experience',
@@ -60,29 +61,38 @@ export class EditExperienceComponent implements OnInit {
         email: ''
       };
     } else {
+      if (!this.experience.practice_DSO) {
+        this.experience.practice_DSO = {
+          id: null,
+          name: ''
+        };
+      }
       if (this.experience.end_time) {
         this.expEndTime = {
           year: moment(this.experience.end_time).get('year'),
           month: moment(this.experience.end_time).get('month') + 1,
           day: moment(this.experience.end_time).get('date')
-        }
+        };
       }
       if (this.experience.start_time) {
         this.expStartTime = {
           year: moment(this.experience.start_time).get('year'),
           month: moment(this.experience.start_time).get('month') + 1,
           day: moment(this.experience.start_time).get('date')
-        }
+        };
       }
     }
     this.authService.getAllPracticeTypes().pipe().subscribe(res => {
       this.practiceTypes = res.resultMap.data;
+      this.practiceTypes.sort(compareElements);
     });
     this.authService.getAllPracticeRoles().pipe().subscribe(res => {
       this.practiceRoles = res.resultMap.data;
+      this.practiceRoles.sort(compareElements);
     });
     this.authService.getAllPracticeDSO().pipe().subscribe(res => {
       this.practiceDSOs = res.resultMap.data;
+      this.practiceDSOs.sort(compareElements);
     });
   }
 

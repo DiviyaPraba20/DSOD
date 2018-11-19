@@ -5,6 +5,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Education } from 'src/app/layout/profile/models/userProfile';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { compareElements } from '../../../core/functions/common.function';
 
 @Component({
   selector: 'dsod-edit-education',
@@ -45,7 +46,7 @@ export class EditEducationComponent implements OnInit {
         end_time: null,
         email: '',
         types: '0'
-      }
+      };
     } else {
       if (this.education.types === '1') {
         this.isUSSchool = true;
@@ -67,6 +68,7 @@ export class EditEducationComponent implements OnInit {
 
     this.authService.getAllDentalSchools().pipe().subscribe(res => {
       this.detenSchoolList = res.resultMap.data;
+      this.detenSchoolList.sort(compareElements);
     });
   }
 

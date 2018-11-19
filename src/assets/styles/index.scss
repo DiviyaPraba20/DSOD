@@ -6,24 +6,23 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background-color: $black-8;
   border-radius: 16px;
-  margin: 15px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  width: 16px;
+  width: 10px;
   border-radius: 8px;
-  background-color: rgba(110, 110, 110, 0.5);
+  background-color: rgba(110, 110, 110, 1);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(110, 110, 110, 0.8);
+  background-color: rgba(110, 110, 110, 1);
 }

@@ -27,7 +27,13 @@ export enum AuthActionTypes {
   GetUserInfoFailure = '[Auth] Get UserInfo Failure',
   UpdateUserInfo = '[Auth] Update UserInfo',
   UpdateUserInfoSuccess = '[Auth] Update UserInfo Success',
-  UpdateUserInfoFailure = '[Auth] Update UserInfo Failure'
+  UpdateUserInfoFailure = '[Auth] Update UserInfo Failure',
+  UpdateUserAvatar = '[Auth] Update User Avatar',
+  UpdateUserAvatarSuccess = '[Auth] Update Avatar Success',
+  UpdateUserAvatarFailure = '[Auth] Update Avatar Failure',
+  RemoveResume = '[Auth] Remove Resume',
+  RemoveResumeSuccess = '[Auth] Remove Resume Success',
+  RemoveResumeFailure = '[Auth] Remove Resume Failure'
 }
 
 export class Login {
@@ -128,6 +134,40 @@ export class UpdateUserInfoFailure {
   constructor(public payload?: any) {}
 }
 
+export class UpdateUserAvatar {
+  static readonly type = AuthActionTypes.UpdateUserAvatar;
+
+  constructor(public payload: File) {}
+}
+
+export class UpdateUserAvatarSuccess {
+  static readonly type = AuthActionTypes.UpdateUserAvatarSuccess;
+
+  constructor(public payload: UserInfoResponse) {}
+}
+
+export class UpdateUserAvatarFailure {
+  static readonly type = AuthActionTypes.UpdateUserAvatarFailure;
+
+  constructor(public payload?: any) {}
+}
+
+export class RemoveResume {
+  static readonly type = AuthActionTypes.RemoveResume;
+}
+
+export class RemoveResumeSuccess {
+  static readonly type = AuthActionTypes.RemoveResumeSuccess;
+
+  constructor(public payload: UserInfoResponse) {}
+}
+
+export class RemoveResumeFailure {
+  static readonly type = AuthActionTypes.RemoveResumeFailure;
+
+  constructor(public payload?: any) {}
+}
+
 export type AuthActions = Login
   | LoginSuccess
   | LoginFailure
@@ -144,4 +184,10 @@ export type AuthActions = Login
   | GetUserInfoFailure
   | UpdateUserInfo
   | UpdateUserInfoSuccess
-  | UpdateUserInfoFailure;
+  | UpdateUserInfoFailure
+  | UpdateUserAvatar
+  | UpdateUserAvatarSuccess
+  | UpdateUserAvatarFailure
+  | RemoveResume
+  | RemoveResumeSuccess
+  | RemoveResumeFailure;

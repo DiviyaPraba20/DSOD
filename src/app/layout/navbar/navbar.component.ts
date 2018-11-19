@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { Store } from '@ngxs/store';
+import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { NavbarService } from './services';
 import { Navigation } from './models';
@@ -8,15 +11,6 @@ import * as layoutActions from '../../layout/actions';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserProfileData } from '../profile/models/userProfile';
 import { environment } from 'src/environments/environment';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  state
-} from '@angular/animations';
 
 @Component({
   selector: 'dsod-navbar',
@@ -29,6 +23,7 @@ export class NavbarComponent implements OnInit {
   isLoggedIn$ = this.authService.isLoggedIn$;
   avatarBaseUrl = `${environment.api}/profile/profileservice/v1/photoDownload?`;
   isOpen = false;
+  isOpenedProfilePanel$: Observable<boolean>;
 
   constructor(
     private service: NavbarService,
@@ -47,10 +42,11 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe(() => {
       this.isOpen = false;
     });
+    this.isOpenedProfilePanel$ = this.store.select(state => state.layout.isOpenedProfilePanel);
   }
 
   toggleProfilePanel() {
-    this.store.dispatch(new layoutActions.ChangeProfilePanelStatus());
+    this.store.dispatch(new layoutActions.ChangeProfilePanelStatus(true));
   }
 
   toggle() {
@@ -59,5 +55,9 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.store.dispatch(new authActions.Logout());
+  }
+
+  onClickedOutProfilePanel() {
+    this.store.dispatch(new layoutActions.ChangeProfilePanelStatus(false));
   }
 }

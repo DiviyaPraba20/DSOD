@@ -22,38 +22,4 @@
       }
     }
   }
-  .add-new-address-container {
-    overflow: hidden;
-    max-height: 0;
-    margin-left: 60px;
-    transition: ease 500ms;
-    &.show {
-      max-height: 500px;
-    }
-    .title {
-      margin-bottom: 5px;
-      font-size: 16px;
-    }
-    .input-group {
-      border-bottom: 1px solid $gray;
-      align-items: center;
-      input {
-        position: relative;
-        flex: 1 1 auto;
-        border: none;
-        background-color: transparent;
-        color: $alto;
-        padding: 0;
-        outline: none;
-        min-height: 25px;
-      }
-      span {
-        font-size: 18px;
-      }
-    }
-    .btn-delete {
-      font-size: 18px;
-      height: 100%;
-    }
-  }
 }

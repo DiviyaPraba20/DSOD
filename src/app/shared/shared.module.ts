@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ShareButtonModule } from '@ngx-share/button';
-import { SHARED_COMPONENTS, DSODAddReviewComponent } from './components';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { SHARED_COMPONENTS, DSODAddReviewComponent } from './components';
+import { AvatarCropperComponent } from './components/avatar-cropper/avatar-cropper.component';
 
 @NgModule({
   imports: [
@@ -18,10 +20,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxSpinnerModule,
     NgSelectModule,
     UiSwitchModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ImageCropperModule
   ],
   declarations: [...SHARED_COMPONENTS],
   exports: [...SHARED_COMPONENTS],
-  entryComponents: [DSODAddReviewComponent]
+  entryComponents: [DSODAddReviewComponent, AvatarCropperComponent]
 })
 export class SharedModule {}

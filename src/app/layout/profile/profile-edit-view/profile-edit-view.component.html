@@ -15,7 +15,7 @@
       <div class="profile-image-container">
         <span class="profile-title">Profile Photo</span>
         <div *ngIf="croppedImage; else elseBlock" class="avatar-container">
-          <img [src]="croppedImage">
+          <img class="avatar" [src]="croppedImage">
           <span class="edit-icon">
             <i class="fa fa-pencil"></i>
           </span>
@@ -28,8 +28,7 @@
             <span class="edit-icon">
               <i class="fa fa-pencil"></i>
             </span>
-            <input type="file" (change)="selectFile($event)" accept="image/*"
-              class="upload-hidden">
+            <input type="file" class="upload-hidden" (change)="typeFile = PHOTO_FILE; selectFile($event)" accept="image/*">
           </div>
         </ng-template>
       </div>
@@ -74,9 +73,27 @@
             <div class="icon-body-item upload-resume-background">
               <img src="./assets/images/icons/icon_upload.png">
             </div>
-            <div class="item-content">
+            <div class="item-content" *ngIf="!resumeFile">
               <span class="title">Upload resume</span>
               <span class="content">Your professional information will be imported automatically</span>
+              <input type="file" class="upload-hidden" (change)="typeFile = RESUME_FILE; selectFile($event)" accept=".xls,.xlsx,.doc,.docx,.pdf">
+            </div>
+            <div class="item-content" *ngIf="resumeFile && isResumeUploading">
+              <div class="resume-uploading-container">
+                <div class="resume-title">{{this.resumeFile?.name}}</div>
+              </div>
+              <div class="uploading-progress-container">
+                <div class="uploading-progress" [ngStyle]="{'width': this.resumeFile?.progress + '%'}"></div>
+              </div>
+            </div>
+            <div class="item-content" *ngIf="resumeFile && !isResumeUploading">
+              <div class="resume-uploaded-container">
+                <div>
+                  <p class="resume-title">{{resumeFile?.name}}</p>
+                  <p class="resume-size" *ngIf="resumeFile.size">{{resumeFile?.size / (1024*1024) | number:'.1'}} Mb</p>
+                </div>
+                <i class="fa fa-trash" (click)="removeResumeFile()"></i>
+              </div>
             </div>
           </div>
         </div>
@@ -174,13 +191,24 @@
     </div>
     <div class="section-container">
       <div class="info-container">
-        <p class="title">Contact Info</p>
+        <div class="title-container">
+          <p class="title">Contact Info</p>
+        </div>
         <div class="body-wrapper">
-          <dsod-profile-address
-            [address]="userProfile.practiceAddress"
-            [editable]="true"
-            (updateAddress)="updateAddress($event)">
-          </dsod-profile-address>
+          <div *ngIf="userProfile?.practiceAddress; else noAddress">
+            <dsod-profile-address
+              [address]="userProfile?.practiceAddress"
+              [editable]="true"
+              (updateAddress)="updateAddress($event)"
+              (deleteAddress)="deleteAddress($event)">
+            </dsod-profile-address>
+          </div>
+          <ng-template #noAddress>
+            <dsod-profile-address
+              [editable]="true"
+              (updateAddress)="updateAddress($event)">
+            </dsod-profile-address>
+          </ng-template>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
               <img src="./assets/images/icons/icon_mobile.png">

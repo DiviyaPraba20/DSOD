@@ -63,6 +63,27 @@
                 font-size: 18px;
               }
             }
+            .uploading-progress-container {
+              margin-top: 5px;
+              .uploading-progress {
+                background-color: $layout-blue;
+                height: 2px;
+              }
+            }
+            .resume-uploaded-container {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              p {
+                margin: 0;
+              }
+              .resume-title {
+                margin-bottom: 5px;
+              }
+              i {
+                font-size: 18px;
+              }
+            }
           }
         }
       }

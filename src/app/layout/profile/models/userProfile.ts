@@ -82,7 +82,7 @@ export interface Experience {
 
 export interface ProfileResidency {
   id: string;
-  residency_School: {
+  residency_school: {
     id: string;
     name: string;
   };
