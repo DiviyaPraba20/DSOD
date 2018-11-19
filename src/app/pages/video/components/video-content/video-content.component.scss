@@ -3,7 +3,7 @@
 :host {
   .video-content-inner {
     /deep/ p {
-      font-size: 26px;
+      font-size: 20px;
 
       &:nth-child(1) {
         display: none;
@@ -41,7 +41,7 @@
 
 
     /deep/ h2 {
-      font-size: 30px;
+      font-size: 24px;
       color: $color-primary;
 
       &:nth-of-type(2) {
@@ -64,7 +64,7 @@
       li {
         position: relative;
         color: $text-main;
-        font-size: 22px;
+        font-size: 20px;
         line-height: 35px;
         padding: 0 50px 0 0;
         margin-bottom: 25px;

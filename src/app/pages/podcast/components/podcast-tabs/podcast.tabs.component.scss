@@ -9,11 +9,11 @@
   position: relative;
 
   h3.podcasts-title {
-    font-size: 42px;
+    font-size: 28px;
     font-weight: 300;
     color: $color-primary;
     position: absolute;
-    top: 12px;
+    top: 25px;
   }
 
   /deep/ ul.nav.nav-tabs {
@@ -21,14 +21,14 @@
     border: none;
 
     li.nav-item {
-      font-size: 25px;
+      font-size: 20px;
       color: $mine_grey;
       padding: 10px;
       margin: 0 17px;
       border-bottom: 2px solid transparent;
 
       a.nav-link {
-        font-size: 25px;
+        font-size: 20px;
         color: $mine_grey;
         padding: 10px;
         border: none;

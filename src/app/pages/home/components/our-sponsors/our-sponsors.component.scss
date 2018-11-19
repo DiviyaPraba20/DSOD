@@ -10,7 +10,7 @@
     h4 {
       display: flex;
       color: $color-primary;
-      font-size: 22px;
+      font-size: 20px;
       padding-right: 30px;
 
       img {
@@ -26,6 +26,10 @@
         background: none;
 
         .topic-block-content {
+          /deep/ h2.topic-title-large {
+            font-size: 24px !important;
+          }
+
           .excrept-content-lg {
             /deep/ p:last-child {
               max-height: 164px;
