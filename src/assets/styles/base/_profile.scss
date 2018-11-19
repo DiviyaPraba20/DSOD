@@ -28,6 +28,9 @@
     }
   }
   .profile-body {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
     height: calc(100% - 67px);
     overflow-y: auto;
     .section-container {
