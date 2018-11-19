@@ -47,7 +47,7 @@ a {
 }
 
 h2.section-title {
-  font-size: 30px;
+  font-size: 26px;
   color: $boulder_grey;
   padding: 0 0 16px 20px;
   border-bottom: 1px solid #c0cad1;
@@ -128,6 +128,6 @@ ul li {
 // Generic Media Querries for
 @media only screen and (max-width:1680px) {
   h2.section-title {
-    font-size: 26px;
+    font-size: 22px;
   }
 }
