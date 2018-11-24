@@ -1,7 +1,7 @@
 <div>
   <section class="trending-videos">
     <h2 class="section-title">Trending Videos</h2>
-    <div *ngFor="let topic of trendingTopics | slice : 0:4">
+    <div *ngFor="let topic of trendingTopics">
       <dsod-trending-item [trendingItem]="topic"></dsod-trending-item>
     </div>
     <dsod-sponsored-ad *ngIf="trendingTopics.length"></dsod-sponsored-ad>
