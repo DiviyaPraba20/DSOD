@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
+import { DeviceDetectorModule } from 'ngx-device-detector';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
@@ -23,27 +23,28 @@ import { CMSModule } from './cms/cms.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NgxsModule.forRoot(states),
-    ToastrModule.forRoot({}),
-    NgxsReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production || false
-    }),
-    NgxsStoragePluginModule.forRoot({ key: ['auth'] }),
-    NgxsRouterPluginModule.forRoot(),
-    AuthModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    LayoutModule,
-    SharedModule,
-    CoreModule.forRoot(),
-    CMSModule.forRoot(),
-    NgbModule
-  ],
-  bootstrap: [AppComponent]
+    declarations: [ AppComponent ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        NgxsModule.forRoot(states),
+        ToastrModule.forRoot({}),
+        NgxsReduxDevtoolsPluginModule.forRoot({
+            disabled: environment.production || false
+        }),
+        NgxsStoragePluginModule.forRoot({ key: [ 'auth' ] }),
+        NgxsRouterPluginModule.forRoot(),
+        AuthModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        LayoutModule,
+        SharedModule,
+        CoreModule.forRoot(),
+        CMSModule.forRoot(),
+        DeviceDetectorModule.forRoot(),
+        NgbModule
+    ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {}
