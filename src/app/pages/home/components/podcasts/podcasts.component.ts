@@ -23,8 +23,7 @@ export class DSODPodcastsComponent implements OnInit {
   activePage = 1;
   params: CMSContentParams = {
     skip: 0,
-    limit: 18,
-    isFeatured: true
+    limit: 18
   };
   podcastItem: number;
   imageIndex = 0;
