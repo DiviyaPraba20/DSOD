@@ -15,7 +15,7 @@
     </div>
     <div class="topic-block-content">
       <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-sm'}">{{topic.title}}</h2>
-      <em *ngIf="topic.content">By&nbsp;{{topic.author.fullName}}
+      <em *ngIf="topic.content">By&nbsp;{{topic.author?.fullName}}
         <a role="button" class="read-about" *ngIf="!topic.featuredMedia" (click)="navigateTo(topic)">
           <img *ngIf="topic.contentTypeName==='Articles'&& !topic.featuredMediaId" src="assets/images/article-icon.png"
             alt="">

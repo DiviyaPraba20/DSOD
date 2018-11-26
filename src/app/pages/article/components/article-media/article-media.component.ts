@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
@@ -6,8 +6,11 @@ import { CMSPageContent } from 'src/app/cms/models';
   templateUrl: './article-media.component.html',
   styleUrls: ['./article-media.component.scss']
 })
-export class DSODArticleMediaComponent {
-  @Input()
-  content: CMSPageContent;
+export class DSODArticleMediaComponent implements OnInit {
+  @Input() content: CMSPageContent;
+
   constructor() {}
+
+  ngOnInit(): void {
+  }
 }

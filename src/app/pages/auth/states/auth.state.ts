@@ -22,12 +22,12 @@ import {
   GetUserInfoSuccess,
   UpdateUserInfoSuccess,
   UpdateUserInfoFailure,
-  UpdateUserAvatar, 
-  UpdateUserAvatarSuccess, 
-  UpdateUserAvatarFailure, 
-  UpdateUserInfo, 
-  RemoveResume, 
-  RemoveResumeFailure, 
+  UpdateUserAvatar,
+  UpdateUserAvatarSuccess,
+  UpdateUserAvatarFailure,
+  UpdateUserInfo,
+  RemoveResume,
+  RemoveResumeFailure,
   RemoveResumeSuccess,
   GetUserInfo
 } from '../actions';
@@ -191,8 +191,7 @@ export class AuthState {
   getUserInfo({ patchState, dispatch }: StateContext<State>, action: actions.GetUserInfo) {
     patchState({
       pending: true,
-      error: null,
-      // userInfo: null
+      error: null
     });
 
     return this.authService.getUserInfo(action.payload).pipe(
@@ -280,7 +279,7 @@ export class AuthState {
   @Action(actions.UpdateUserAvatarSuccess)
   updateUserAvatarSuccess({ patchState, dispatch, getState }: StateContext<State>, action: actions.UpdateUserAvatarSuccess) {
     this.toastr.success('User photo has been uploaded successfully!', 'UserInfo');
-    let currentState = getState();
+    const currentState = getState();
     if (action.payload['code'] === 0) {
       currentState.userInfo.photo_album = {
         id: null,
@@ -327,7 +326,7 @@ export class AuthState {
   @Action(actions.RemoveResumeSuccess)
   removeResumeSuccess({ patchState, dispatch, getState }: StateContext<State>, action: actions.RemoveResumeSuccess) {
     this.toastr.success('Resume has been deleted successfully!', 'UserInfo');
-    let currentState = getState();
+    const currentState = getState();
     if (action.payload['code'] === 0) {
       currentState.userInfo.document_library = null;
     }

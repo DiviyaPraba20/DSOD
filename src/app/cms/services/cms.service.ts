@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
+import { Bookmark } from '../models/cms.models';
 import {
   CMSContentTypeModel,
   CMSContentParams,
@@ -71,5 +74,15 @@ export class CMSService {
       `${environment.url}/content/public/findAllByValue`,
       term
     );
+  }
+
+  addBookmark(payload: Bookmark): Observable<Response> {
+    const url = `${environment.url}/bookmark/save`;
+    return this.http.post<Response>(url, payload, {withCredentials: true});
+  }
+
+  removeBookmark(payload: string): Observable<Response> {
+    const url = `${environment.url}/bookmark/deleteOneById?id=${payload}`;
+    return this.http.post<Response>(url, {}, {withCredentials: true});
   }
 }

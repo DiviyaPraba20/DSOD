@@ -1,4 +1,6 @@
 import { Action } from '@ngxs/store';
+import { Bookmark } from '../models/cms.models';
+import { Response } from '../../core/models/common';
 import {
   CMSContentParams,
   CMSContentTypeModel,
@@ -38,6 +40,12 @@ export enum CMSActions {
   FetchSearchResults = '[CMS] Fetch Search Results',
   FetchSearchResultsSuccess = '[CMS] Fetch Search Results Success',
   FetchSearchResultsFailure = '[CMS] Fetch Search Results Failure',
+  AddBookmark = '[CMS] Add Bookmark',
+  AddBookmarkSuccess = '[CMS] AddBookmark Success',
+  AddBookmarkFailure = '[CMS] AddBookmark Failure',
+  RemoveBookmark = '[CMS] Remove Bookmark',
+  RemoveBookmarkSuccess = '[CMS] Remove Bookmark Success',
+  RemoveBookmarkFailure = '[CMS] Remove Bookmark Failure',
   ResetState = '[CMS] Reset State'
 }
 
@@ -196,8 +204,8 @@ export class FetchPageContentFailure {
 
   constructor(public payload: Error) {}
 }
-//actions for search results
 
+// actions for search results
 export class FetchSearchResults {
   static readonly type = CMSActions.FetchSearchResults;
   constructor(public payload: any) {}
@@ -211,7 +219,34 @@ export class FetchSearchResultsFailure {
   constructor(public payload: Error) {}
 }
 
-//reset State
+// actions for bookmark feature
+export class AddBookmark {
+  static readonly type = CMSActions.AddBookmark;
+  constructor(public payload: Bookmark) {}
+}
+export class AddBookmarkSuccess {
+  static readonly type = CMSActions.AddBookmarkSuccess;
+  constructor(public payload: Response) {}
+}
+export class AddBookmarkFailure {
+  static readonly type = CMSActions.AddBookmarkFailure;
+  constructor(public payload: any) {}
+}
+
+export class RemoveBookmark {
+  static readonly type = CMSActions.RemoveBookmark;
+  constructor(public payload: string) {}
+}
+export class RemoveBookmarkSuccess {
+  static readonly type = CMSActions.RemoveBookmarkSuccess;
+  constructor(public payload: Response) {}
+}
+export class RemoveBookmarkFailure {
+  static readonly type = CMSActions.RemoveBookmarkFailure;
+  constructor(public payload: any) {}
+}
+
+// reset State
 export class ResetState {
   static readonly type = CMSActions.ResetState;
 
@@ -249,4 +284,10 @@ export type CMSActionTypes =
   | FetchSearchResults
   | FetchSearchResultsSuccess
   | FetchSearchResultsFailure
+  | AddBookmark
+  | AddBookmarkSuccess
+  | AddBookmarkFailure
+  | RemoveBookmark
+  | RemoveBookmarkSuccess
+  | RemoveBookmarkFailure
   | ResetState;

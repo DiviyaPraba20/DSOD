@@ -111,3 +111,16 @@ export interface RelatedContent {
   id: string;
   title: string;
 }
+
+export interface Bookmark {
+  id?: string;
+  url?: string;
+  title: string;
+  email: string;
+  postId: string;
+  categoryId: string;
+  contentTypeId: string;
+  user_id?: string;
+  create_time?: string;
+  status: string;
+}
