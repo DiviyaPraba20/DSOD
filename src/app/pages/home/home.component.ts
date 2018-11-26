@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   sponsoredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
 
   params: CMSContentParams = {
-    skip: 1
+    skip: 0
   };
   podcastType: CMSContentTypeModel;
   videoType: CMSContentTypeModel;
@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           new FetchFeaturedTopics({
             ...this.params,
             isFeatured: true,
-            limit: 6
+            limit: 5
           })
         );
         this.store.dispatch(
