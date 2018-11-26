@@ -6,7 +6,9 @@ import { CMSPageContent } from 'src/app/cms/models';
   template: `
     <div *ngIf="content">
       <h2>{{ content.title }}</h2>
-      <span class="by">by {{ content.author.fullName }}</span>
+      <span class="by" *ngIf="content && content.author"
+        >by {{ content.author.fullName }}</span
+      >
     </div>
   `,
   styleUrls: ['./video-title.component.scss']
