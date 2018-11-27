@@ -27,7 +27,7 @@ export class DSODContentActionComponent implements OnInit {
   }
 
   onChangeBookmark(isBookmark: boolean) {
-    if (!isBookmark) {
+    if (isBookmark) {
       this.addBookmark();
     } else {
       this.removeBookmark();
