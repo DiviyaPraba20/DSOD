@@ -11,11 +11,13 @@ import {
   CMSPageContent,
   sponsors
 } from '../models';
+import { Store } from '@ngxs/store';
+import { state } from '@angular/animations';
+import { AuthState } from 'src/app/pages/auth/states/auth.state';
 
 @Injectable()
 export class CMSService {
-  isLoggedIn: Boolean;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store) {}
 
   findAllCategory() {
     return this.http.post<CMSResponse<CMSContentTypeModel>>(
@@ -33,32 +35,34 @@ export class CMSService {
 
   findAllContents<T>(params: CMSContentParams) {
     let url = '';
-    this.isLoggedIn
-      ? (url = 'findAllContents')
-      : (url = 'public/findAllContents');
+    const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
+    isLoggedIn ? (url = 'findAllContents') : (url = 'public/findAllContents');
     return this.http.post<CMSResponse<CMSPageContent>>(
-      `${environment.url}/content/public/findAllContents`,
-      params
+      `${environment.url}/content/${url}`,
+      params,
+      isLoggedIn ? { withCredentials: true } : {}
     );
   }
 
   findOneContents<T>(id: string) {
     let url = '';
-    this.isLoggedIn
-      ? (url = 'findOneContents')
-      : (url = 'public/findOneContents');
+    const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
+    isLoggedIn ? (url = 'findOneContents') : (url = 'public/findOneContents');
     return this.http.post<CMSResponse<CMSPageContent>>(
-      `${environment.url}/content/public/findOneContents?id=${id}`,
-      {}
+      `${environment.url}/content/${url}?id=${id}`,
+      {},
+      isLoggedIn ? { withCredentials: true } : {}
     );
   }
 
   trending<T>(params: CMSContentParams) {
     let url = '';
-    this.isLoggedIn ? (url = 'trending') : (url = 'public/trending');
+    const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
+    isLoggedIn ? (url = 'trending') : (url = 'public/trending');
     return this.http.post<CMSResponse<CMSPageContent>>(
-      `${environment.url}/content/public/trending`,
-      params
+      `${environment.url}/content/${url}`,
+      params,
+      isLoggedIn ? { withCredentials: true } : {}
     );
   }
 
@@ -70,9 +74,13 @@ export class CMSService {
   }
 
   findAllBySearch<T>(term: any) {
+    let url = '';
+    const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
+    isLoggedIn ? (url = 'public/findAllByValue') : (url = 'findAllByValue');
     return this.http.post<CMSResponse<CMSPageContent>>(
-      `${environment.url}/content/public/findAllByValue`,
-      term
+      `${environment.url}/content/${url}`,
+      term,
+      isLoggedIn ? { withCredentials: true } : {}
     );
   }
 
