@@ -6,7 +6,8 @@ import {
   CMSContentTypeModel,
   CMSResponse,
   CMSPageContent,
-  sponsors
+  sponsors,
+  RemoveBookmarkPayload
 } from '../models';
 
 export enum CMSActions {
@@ -235,7 +236,7 @@ export class AddBookmarkFailure {
 
 export class RemoveBookmark {
   static readonly type = CMSActions.RemoveBookmark;
-  constructor(public payload: string) {}
+  constructor(public payload: RemoveBookmarkPayload) {}
 }
 export class RemoveBookmarkSuccess {
   static readonly type = CMSActions.RemoveBookmarkSuccess;

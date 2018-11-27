@@ -463,7 +463,7 @@ export class CMSState {
   // bookmark action decorators
   @Action(actions.AddBookmark)
   addBookmark({ dispatch, patchState }: StateContext<State>, action: actions.AddBookmark) {
-    patchState({ isLoading: true });
+    patchState({ isLoading: true, error: null });
     return this.service.addBookmark(action.payload).pipe(
       exhaustMap((response: Response) => {
         if (response.code === 0) {
@@ -476,7 +476,6 @@ export class CMSState {
 
   @Action(actions.AddBookmarkSuccess)
   addBookmarkSuccess({ patchState, getState }: StateContext<State>, action: actions.AddBookmarkSuccess) {
-    this.toastr.success('Bookmarked successfully!', 'Bookmark');
     const state = getState();
     return patchState({
       pageContent: {
@@ -488,28 +487,23 @@ export class CMSState {
 
   @Action(actions.AddBookmarkFailure)
   addBookmarkFailure({ patchState }: StateContext<State>, action: actions.AddBookmarkFailure) {
-    this.toastr.error(action.payload, 'Bookmark');
     return patchState({ error: action.payload });
   }
 
   @Action(actions.RemoveBookmark)
   removeBookmark({ dispatch, patchState }: StateContext<State>, action: actions.RemoveBookmark) {
     return this.service.removeBookmark(action.payload).pipe(
-      map((res: Response) => {
-        if (res.code === 0) {
-          return res;
+      exhaustMap((response: Response) => {
+        if (response.code === 0) {
+          return dispatch(new actions.RemoveBookmarkSuccess(response));
         }
-        throwError(new Error(res.msg));
-      }),
-      exhaustMap(result => dispatch(new actions.RemoveBookmarkSuccess(result))),
-      catchError(err => dispatch(new actions.RemoveBookmarkFailure(err)))
+        return dispatch(new actions.RemoveBookmarkFailure(response.msg));
+      })
     );
   }
 
   @Action(actions.RemoveBookmarkSuccess)
   removeBookmarkSuccess({ patchState, getState }: StateContext<State>, action: actions.RemoveBookmarkSuccess) {
-    this.toastr.success('Bookmark has been removed successfully!', 'Bookmark');
-    console.log(action.payload);
     const state = getState();
     return patchState({
       pageContent: {
@@ -521,8 +515,6 @@ export class CMSState {
 
   @Action(actions.RemoveBookmarkFailure)
   removeBookmarkFailure({ patchState }: StateContext<State>, action: actions.RemoveBookmarkFailure) {
-    this.toastr.error(action.payload, 'Bookmark');
-    console.log(action.payload);
     return patchState({ error: action.payload });
   }
 }

@@ -124,3 +124,8 @@ export interface Bookmark {
   create_time?: string;
   status: string;
 }
+
+export interface RemoveBookmarkPayload {
+  email: string;
+  contentId: string;
+}

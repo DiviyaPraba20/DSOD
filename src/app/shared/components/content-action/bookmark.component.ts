@@ -21,9 +21,7 @@ export class DSODBookmarkComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.isBookmark);
-  }
+  ngOnInit() { }
 
   toggleBookmark() {
     this.changeBookmark.emit(!this.isBookmark);

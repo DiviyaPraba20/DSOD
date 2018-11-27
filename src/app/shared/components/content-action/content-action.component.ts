@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { ToastrService } from 'ngx-toastr';
 
 import { CMSPageContent } from '../../../cms/models/cms.models';
 import { UserProfileData } from '../../../layout/profile/models/userProfile';
@@ -16,11 +17,11 @@ export class DSODContentActionComponent implements OnInit {
   userInfo: UserProfileData = null;
 
   constructor(
-    private store: Store
+    private store: Store,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
-    console.log(this.content);
     this.store.select(state => state.auth.userInfo).subscribe(res => {
       this.userInfo = res;
     });
@@ -44,11 +45,24 @@ export class DSODContentActionComponent implements OnInit {
       url: 'http://www.dsodentist.com',
       status: '1'
     })).subscribe(res => {
-      console.log(res);
+      if (this.content.isBookmark) {
+        this.toastr.success('This post has been bookmarked successfully!', 'Bookmark');
+      } else {
+        this.toastr.error('Bookmark action has been failed.', 'Bookmark');
+      }
     });
   }
 
   removeBookmark() {
-    this.store.dispatch(new RemoveBookmark(this.content.id));
+    this.store.dispatch(new RemoveBookmark({
+      email: this.userInfo.email,
+      contentId: this.content.id
+    })).subscribe(res => {
+      if (!this.content.isBookmark) {
+        this.toastr.success('The bookmark has been removed successfully!', 'Bookmark');
+      } else {
+        this.toastr.error('User action has been failed.', 'Bookmark');
+      }
+    });
   }
 }
