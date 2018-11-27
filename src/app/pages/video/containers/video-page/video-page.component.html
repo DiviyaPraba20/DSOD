@@ -17,7 +17,7 @@
                 <dsod-video-title [content]="pageContent$ | async"></dsod-video-title>
               </div>
               <div class="col-lg-2">
-                <dsod-content-actions></dsod-content-actions>
+                <dsod-content-actions [content]="pageContent$ | async"></dsod-content-actions>
               </div>
             </div>
           </div>
@@ -36,7 +36,6 @@
           <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
         </div>
       </div>
-
       <div class="col-xl-3">
         <section class="trending-videos" *ngIf="(trendingTopics$ |async)?.length">
           <h2 class="section-title">Trending Topics</h2>
@@ -47,7 +46,5 @@
         </section>
       </div>
     </div>
-
-
   </div>
 </div>

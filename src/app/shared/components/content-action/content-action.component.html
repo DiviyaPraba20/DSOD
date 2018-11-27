@@ -1,6 +1,8 @@
 <div class="content-actions">
   <ul>
-    <dsod-bookmark>
+    <dsod-bookmark
+      [isBookmark]="content.isBookmark"
+      (changeBookmark)="onChangeBookmark($event)">
     </dsod-bookmark>
     <dsod-download>
     </dsod-download>
