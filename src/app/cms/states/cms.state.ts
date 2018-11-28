@@ -1,4 +1,9 @@
 import { State, Store, Action, StateContext, Selector } from '@ngxs/store';
+import { map, exhaustMap, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
+import { Response } from '../../core/models/common';
 import {
   CMSContentTypeModel,
   CMSPageContent,
@@ -7,8 +12,6 @@ import {
 } from '../models';
 import * as actions from '../actions/cms.actions';
 import { CMSService } from '../services/cms.service';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 
 export interface State {
   categories: CMSContentTypeModel[];
@@ -43,7 +46,13 @@ export interface State {
   }
 })
 export class CMSState {
-  constructor(private store: Store, private service: CMSService) {}
+
+  constructor(
+    private store: Store,
+    private service: CMSService,
+    private toastr: ToastrService
+  ) {}
+
   @Selector()
   static searchedResults(state: State) {
     return state.searchResults;
@@ -86,6 +95,7 @@ export class CMSState {
       error: action.payload
     });
   }
+
   // contentTypes action decoratos
   @Action(actions.FetchContentTypes)
   fetchContentTypes({ patchState, dispatch, getState }: StateContext<State>) {
@@ -212,7 +222,6 @@ export class CMSState {
   }
 
   // trendingTopics action decorators
-
   @Action(actions.FetchTrendingTopics)
   fetchTrendingTopics(
     { patchState, dispatch }: StateContext<State>,
@@ -250,6 +259,7 @@ export class CMSState {
       error: action.payload
     });
   }
+
   // sponsors list action decorators
   @Action(actions.FetchSponsorsList)
   fetchSponsersList(
@@ -287,7 +297,6 @@ export class CMSState {
   }
 
   // sponsoredTopics action decorators
-
   @Action(actions.FetchSponsoredTopics)
   fetchSponsoredTopics(
     { patchState, dispatch, getState }: StateContext<State>,
@@ -328,7 +337,6 @@ export class CMSState {
   }
 
   // podcasts action decorators
-
   @Action(actions.FetchPodcasts)
   fetchPodcasts(
     { dispatch, patchState }: StateContext<State>,
@@ -363,8 +371,8 @@ export class CMSState {
   ) {
     return patchState({ error: action.payload });
   }
-  //page content action decorators
 
+  // page content action decorators
   @Action(actions.FetchPageContent)
   fetchPageContent(
     { dispatch, patchState }: StateContext<State>,
@@ -401,7 +409,7 @@ export class CMSState {
     return patchState({ error: action.payload });
   }
 
-  //reset
+  // reset
   @Action(actions.ResetState)
   resetState({ patchState, getState }: StateContext<State>) {
     patchState({
@@ -415,8 +423,7 @@ export class CMSState {
     });
   }
 
-  //search results  action decorators
-
+  // search results  action decorators
   @Action(actions.FetchSearchResults)
   fetchSearchResults(
     { dispatch, patchState }: StateContext<State>,
@@ -450,6 +457,64 @@ export class CMSState {
     { patchState }: StateContext<State>,
     action: actions.FetchSearchResultsFailure
   ) {
+    return patchState({ error: action.payload });
+  }
+
+  // bookmark action decorators
+  @Action(actions.AddBookmark)
+  addBookmark({ dispatch, patchState }: StateContext<State>, action: actions.AddBookmark) {
+    patchState({ isLoading: true, error: null });
+    return this.service.addBookmark(action.payload).pipe(
+      exhaustMap((response: Response) => {
+        if (response.code === 0) {
+          return dispatch(new actions.AddBookmarkSuccess(response));
+        }
+        return dispatch(new actions.AddBookmarkFailure(response.msg));
+      })
+    );
+  }
+
+  @Action(actions.AddBookmarkSuccess)
+  addBookmarkSuccess({ patchState, getState }: StateContext<State>, action: actions.AddBookmarkSuccess) {
+    const state = getState();
+    return patchState({
+      pageContent: {
+        ...state.pageContent,
+        isBookmark: true
+      }
+    });
+  }
+
+  @Action(actions.AddBookmarkFailure)
+  addBookmarkFailure({ patchState }: StateContext<State>, action: actions.AddBookmarkFailure) {
+    return patchState({ error: action.payload });
+  }
+
+  @Action(actions.RemoveBookmark)
+  removeBookmark({ dispatch, patchState }: StateContext<State>, action: actions.RemoveBookmark) {
+    return this.service.removeBookmark(action.payload).pipe(
+      exhaustMap((response: Response) => {
+        if (response.code === 0) {
+          return dispatch(new actions.RemoveBookmarkSuccess(response));
+        }
+        return dispatch(new actions.RemoveBookmarkFailure(response.msg));
+      })
+    );
+  }
+
+  @Action(actions.RemoveBookmarkSuccess)
+  removeBookmarkSuccess({ patchState, getState }: StateContext<State>, action: actions.RemoveBookmarkSuccess) {
+    const state = getState();
+    return patchState({
+      pageContent: {
+        ...state.pageContent,
+        isBookmark: false
+      }
+    });
+  }
+
+  @Action(actions.RemoveBookmarkFailure)
+  removeBookmarkFailure({ patchState }: StateContext<State>, action: actions.RemoveBookmarkFailure) {
     return patchState({ error: action.payload });
   }
 }

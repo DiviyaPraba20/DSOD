@@ -19,6 +19,16 @@ export interface State {
   }
 })
 export class CMSState {
+  @Selector()
+  static categories(state: State) {
+    return state.categories;
+  }
+
+  @Selector()
+  static contetTypes(state: State) {
+    return state.contentTypes;
+  }
+
   constructor(private store: Store, private service: CMSService) {}
 
   @Action(actions.FetchCategories)
@@ -91,14 +101,5 @@ export class CMSState {
     patchState({
       error: action.payload
     });
-  }
-
-  @Selector()
-  static categories(state: State) {
-    return state.categories;
-  }
-  @Selector()
-  static contetTypes(state: State) {
-    return state.contentTypes;
   }
 }

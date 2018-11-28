@@ -9,6 +9,7 @@ import {
 } from 'src/app/cms/models';
 import { Observable } from 'rxjs';
 import { AuthState } from 'src/app/pages/auth/states/auth.state';
+
 @Component({
   selector: 'dsod-article',
   templateUrl: './article.component.html',
@@ -21,6 +22,7 @@ export class DSODArticelComponent implements OnInit {
   };
   pageContent$: Observable<CMSPageContent>;
   isLoggedIn: boolean;
+
   constructor(private _route: ActivatedRoute, private store: Store) {
     this.isLoggedIn = store.selectSnapshot(AuthState.isLoggedIn);
     _route.params.subscribe(r => {
@@ -30,6 +32,7 @@ export class DSODArticelComponent implements OnInit {
       store.dispatch(new actions.FetchPageContent(r.id));
     });
   }
+
   ngOnInit() {
     this.trendingTopics$ = this.store.select(state => state.cms.trendingTopics);
     this.pageContent$ = this.store.select(state => state.cms.pageContent);

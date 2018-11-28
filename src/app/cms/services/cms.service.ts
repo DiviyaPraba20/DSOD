@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
+import { Bookmark } from '../models/cms.models';
 import {
   CMSContentTypeModel,
   CMSContentParams,
   CMSResponse,
   CMSPageContent,
-  sponsors
+  sponsors,
+  RemoveBookmarkPayload
 } from '../models';
 import { Store } from '@ngxs/store';
-import { state } from '@angular/animations';
 import { AuthState } from 'src/app/pages/auth/states/auth.state';
 
 @Injectable()
@@ -79,5 +82,18 @@ export class CMSService {
       term,
       isLoggedIn ? { withCredentials: true } : {}
     );
+  }
+
+  addBookmark(payload: Bookmark): Observable<Response> {
+    const url = `${environment.url}/bookmark/save`;
+    return this.http.post<Response>(url, payload, {withCredentials: true});
+  }
+
+  removeBookmark(payload: RemoveBookmarkPayload): Observable<Response> {
+    let params = new HttpParams();
+    params = params.set('email', payload.email);
+    params = params.set('contentId', payload.contentId);
+    const url = `${environment.url}/bookmark/deleteOneByEmailAndContentId`;
+    return this.http.post<Response>(url, null, {params, withCredentials: true});
   }
 }

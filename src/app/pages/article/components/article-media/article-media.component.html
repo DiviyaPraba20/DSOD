@@ -13,7 +13,7 @@
       <span class="by" *ngIf="content.author">by {{content.author.fullName}}</span>
     </div>
     <div class="col-lg-2">
-      <dsod-content-actions></dsod-content-actions>
+      <dsod-content-actions [content]="content"></dsod-content-actions>
     </div>
   </div>
 </div>
