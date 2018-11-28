@@ -24,6 +24,7 @@ import { EditEducationComponent } from './edit-education/edit-education.componen
 import { EditResidencyComponent } from './edit-residency/edit-residency.component';
 import { AvatarCropperComponent } from './avatar-cropper/avatar-cropper.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
+import { DSODVideoplayerComponent } from './video-player/video-player.component';
 export * from '././reviews/add-review/add-review-modal.component';
 
 export const SHARED_COMPONENTS = [
@@ -54,5 +55,6 @@ export const SHARED_COMPONENTS = [
   EditResidencyComponent,
   DSODAddReviewComponent,
   AvatarCropperComponent,
-  EditAddressComponent
+  EditAddressComponent,
+  DSODVideoplayerComponent
 ];
