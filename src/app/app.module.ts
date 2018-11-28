@@ -21,30 +21,33 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { CMSModule } from './cms/cms.module';
 import { FormsModule } from '@angular/forms';
+import { PreviewModule } from './pages/preview/preview.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
-    declarations: [ AppComponent ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        NgxsModule.forRoot(states),
-        ToastrModule.forRoot({}),
-        NgxsReduxDevtoolsPluginModule.forRoot({
-            disabled: environment.production || false
-        }),
-        NgxsStoragePluginModule.forRoot({ key: [ 'auth' ] }),
-        NgxsRouterPluginModule.forRoot(),
-        AuthModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        LayoutModule,
-        SharedModule,
-        CoreModule.forRoot(),
-        CMSModule.forRoot(),
-        DeviceDetectorModule.forRoot(),
-        NgbModule
-    ],
-    bootstrap: [ AppComponent ]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    NgxsModule.forRoot(states),
+    ToastrModule.forRoot({}),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production || false
+    }),
+    NgxsStoragePluginModule.forRoot({ key: ['auth'] }),
+    NgxsRouterPluginModule.forRoot(),
+    AuthModule,
+    PreviewModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    LayoutModule,
+    SharedModule,
+    CoreModule.forRoot(),
+    CMSModule.forRoot(),
+    DeviceDetectorModule.forRoot(),
+    NgbModule
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

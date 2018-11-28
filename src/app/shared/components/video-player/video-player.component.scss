@@ -1,0 +1,23 @@
+@import 'variables';
+
+:host {
+  .video-thumbnail {
+    margin-bottom: 55px;
+    position: relative;
+
+    div {
+      /deep/ iframe {
+        position: relative !important;
+        height: 675px !important;
+      }
+    }
+
+    video {
+      width: 100%;
+
+      &:-webkit-full-screen {
+        opacity: 0;
+      }
+    }
+  }
+}

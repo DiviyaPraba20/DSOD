@@ -1,0 +1,9 @@
+<div *ngIf="(pageContent$ | async)?.contentTypeName=='Articles'">
+  <dsod-articel-preivew [content]="pageContent$ | async"></dsod-articel-preivew>
+</div>
+<div *ngIf="(pageContent$ | async)?.contentTypeName=='Videos'">
+  <dsod-video-preview [content]="pageContent$ | async"></dsod-video-preview>
+</div>
+<div *ngIf="(pageContent$ | async)?.contentTypeName=='Podcasts'">
+  <dsod-podcast-preview [content]="pageContent$ | async"></dsod-podcast-preview>
+</div>
