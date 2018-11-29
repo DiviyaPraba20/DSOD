@@ -1,4 +1,9 @@
-<dsod-navbar></dsod-navbar>
-<dsod-profile-panel></dsod-profile-panel>
-<router-outlet></router-outlet>
-<dsod-footer></dsod-footer>
+<div *ngIf="!isPreview; else preview">
+  <dsod-navbar></dsod-navbar>
+  <dsod-profile-panel></dsod-profile-panel>
+  <router-outlet></router-outlet>
+  <dsod-footer></dsod-footer>
+</div>
+<ng-template #preview>
+  <router-outlet></router-outlet>
+</ng-template>
