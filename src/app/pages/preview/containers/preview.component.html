@@ -1,4 +1,5 @@
-<div *ngIf="(pageContent$ | async)?.contentTypeName=='Articles'">
+<div *ngIf="(pageContent$ | async)?.contentTypeName=='Articles' || (pageContent$ | async)?.contentTypeName=='Videos' || (pageContent$ | async)?.contentTypeName=='Podcasts'; else other">
+  <div *ngIf="(pageContent$ | async)?.contentTypeName=='Articles'">
   <dsod-articel-preivew [content]="pageContent$ | async"></dsod-articel-preivew>
 </div>
 <div *ngIf="(pageContent$ | async)?.contentTypeName=='Videos'">
@@ -7,3 +8,7 @@
 <div *ngIf="(pageContent$ | async)?.contentTypeName=='Podcasts'">
   <dsod-podcast-preview [content]="pageContent$ | async"></dsod-podcast-preview>
 </div>
+</div>
+<ng-template #other>
+<dsod-articel-preivew [content]="pageContent$ | async"></dsod-articel-preivew>
+</ng-template>
