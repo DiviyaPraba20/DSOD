@@ -22,7 +22,9 @@
   .podcasts-tabs {
     margin: 50px 0;
     position: relative;
-
+    /deep/.tab-container {
+      width: 100%;
+    }
     h3.podcasts-title {
       font-size: 28px;
       font-weight: 300;

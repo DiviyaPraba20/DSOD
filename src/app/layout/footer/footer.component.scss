@@ -69,7 +69,7 @@ footer {
   height: 50px;
   width: 50px;
   text-align: center;
-  line-height: 50px;
+  // line-height: 50px;
   background: #ffffff;
   color: #191919;
   border-radius: 50%;
@@ -80,11 +80,13 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 6px;
+  padding-bottom: 3px;
   position: fixed;
   bottom: 15px;
   right: 15px;
   z-index: 999;
+  cursor: pointer;
+  outline: none !important;
 }
 
 @media only screen and (max-width:1440px) {
