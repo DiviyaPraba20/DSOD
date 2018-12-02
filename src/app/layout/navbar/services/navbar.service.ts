@@ -20,11 +20,12 @@ export class NavbarService {
         ]
       },
       {
-        title: 'DSO Practice',
-        link: 'practice',
+        title: 'Careers',
+        link: 'careers',
         children: [
-          { title: 'Resources', link: 'recorcers' },
-          { title: 'Legislation', link: 'legislation' }
+          { title: 'My Jobs', link: 'my-jobs' },
+          { title: 'Job Alerts', link: 'job-alerts' },
+          { title: 'Search', link: 'search' }
         ]
       },
       {
@@ -59,6 +60,14 @@ export class NavbarService {
               { title: 'Implant Practice', link: 'implantPractice' }
             ]
           }
+        ]
+      },
+      {
+        title: 'DSO Practice',
+        link: 'practice',
+        children: [
+          { title: 'Resources', link: 'recorcers' },
+          { title: 'Legislation', link: 'legislation' }
         ]
       },
       {
