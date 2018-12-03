@@ -5,7 +5,7 @@ import {environment} from '../../../../environments/environment'
   selector: 'dsod-articel-preivew',
   templateUrl: './article-preview.component.html',
   styleUrls: [
-    '../../article/components/article-content/article-content.component.scss',
+    './content.scss',
     '../../article/components/article-media/article-media.component.scss'
   ]
 })
