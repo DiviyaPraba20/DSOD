@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container" *ngIf="content">
   <div class="article-header mt-5">
     <div class="row">
       <div class="col-lg-12">
         <h2>{{content.title}}:</h2>
-<span class="by" *ngIf="content.author">by {{content.author.fullName}}</span>
+        <span class="by" *ngIf="content.author">by {{content.author.fullName}}</span>
       </div>
     </div>
   </div>
-  <div class="article-thumbnail" style="margin-top:20px;">
-    <img src={{content.featuredMedia.code.originalUrl}} class="img-fluid" alt="">
+<div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
+<img [src]=getUrl(content.featuredMedia.code.thumbnail) class="img-fluid" alt="" >
     <p><b>Figure.</b>{{content.title}}</p>
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <div class="article-content" [innerHTML]="content.content"></div>
+    <div class="article-content" [innerHTML]="content.content"></div>
     </div>
   </div>
 </div>

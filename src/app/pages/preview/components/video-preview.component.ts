@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './video-preview.component.html',
   styleUrls: [
     '../../video/components/video-title/video-title.component.scss',
-    '../../video/components/video-content/video-content.component.scss'
+    './content.scss'
   ]
 })
 export class DSODVideoPreviewComponent {

@@ -1,0 +1,130 @@
+@import 'variables';
+
+:host {
+  .video-content-inner {
+    /deep/ p {
+      font-size: 20px;
+
+      &:nth-child(1) {
+        display: block;
+      }
+
+      &:nth-child(4) {
+
+        color: $text-main;
+        font-size: 22px;
+        line-height: 35px;
+        margin-bottom: 25px;
+
+        &:first-letter {
+          float: left;
+          font-size: 70px;
+          line-height: 60px;
+          padding-top: 4px;
+          padding-right: 8px;
+          padding-left: 3px;
+        }
+
+      }
+
+      a {
+        color: #0066cc;
+        line-height: 35px;
+        font-size: 22px;
+      }
+
+      &:last-child {
+        margin-bottom: 40px;
+      }
+
+    }
+
+
+    /deep/ h2 {
+      font-size: 24px;
+      color: $color-primary;
+
+      &:nth-of-type(2) {
+        font-weight: 700;
+        font-size: 22px;
+        color: $text-main;
+      }
+    }
+
+    >span {
+      display: block;
+
+
+    }
+
+    /deep/ ul {
+      padding: 0 0 0 60px;
+      margin-top: 30px;
+
+      li {
+        position: relative;
+        color: $text-main;
+        font-size: 20px;
+        line-height: 35px;
+        padding: 0 50px 0 0;
+        margin-bottom: 25px;
+        list-style: disc;
+
+        &::before {
+          // content: counter(li)".";
+          display: inline-block;
+          font-size: 16px;
+          left: 0;
+          line-height: 26px;
+          position: absolute;
+          top: 0;
+          color: $color-primary;
+          font-size: 22px;
+          line-height: 35px;
+          font-weight: 700;
+        }
+
+        i {
+          color: $color-primary;
+        }
+      }
+    }
+
+    h5 {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    ul.references {
+      counter-reset: li;
+      list-style: none;
+      margin-bottom: 30px;
+
+      li {
+        list-style: none;
+        counter-increment: li;
+        position: relative;
+        color: $text-main;
+        font-size: 18px;
+        line-height: 25px;
+        padding: 0 50px;
+        margin-bottom: 10px;
+
+        &::before {
+          content: counter(li)".";
+          display: inline-block;
+          font-size: 18px;
+          left: 0;
+          line-height: 25px;
+          position: absolute;
+          top: 0;
+          color: $text-main;
+        }
+
+        i {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
