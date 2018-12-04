@@ -1,0 +1,10 @@
+<div class="author-details d-flex">
+  <div class="author-avi" *ngIf="essay.authorImage">
+    <img [src]="getUrl(essay.authorImage.thumbnailID)" alt="">
+  </div>
+  <div class="author-bio">
+    <h3>Author's Bio</h3>
+    <h4>{{essay.authorName}}</h4>
+    <p>{{essay.authorDetails}}</p>
+  </div>
+</div>

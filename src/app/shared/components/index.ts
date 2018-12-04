@@ -26,6 +26,9 @@ import { AvatarCropperComponent } from './avatar-cropper/avatar-cropper.componen
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { DSODVideoplayerComponent } from './video-player/video-player.component';
 export * from '././reviews/add-review/add-review-modal.component';
+import { DSODEssayImagesComponent } from './essay-carousel/essay-carousel.component';
+import { DSODEssayAuthorComponent } from './essay-author/essay-author.component';
+import { DSODGalleryComponent } from './gallery/gallery.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -56,5 +59,8 @@ export const SHARED_COMPONENTS = [
   DSODAddReviewComponent,
   AvatarCropperComponent,
   EditAddressComponent,
-  DSODVideoplayerComponent
+  DSODVideoplayerComponent,
+  DSODEssayImagesComponent,
+  DSODEssayAuthorComponent,
+  DSODGalleryComponent
 ];
