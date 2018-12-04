@@ -10,14 +10,35 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="md-5 mt-5">
-        <video >
-        <source src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{content.featuredMedia.code.thumbnail}}"></video>
+        <video>
+          <source src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{content.featuredMedia.code.thumbnail}}"></video>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <div class="video-content-inner" [innerHTML]="content.content"></div>
+      <div class="article-content" [innerHTML]="content.content"></div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let essay of content.visualEssays">
+    <div class="col-lg-12" *ngIf="essay.visualEssayImages">
+      <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
+    </div>
+    <div class="col-lg-12">
+      <div class="article-content" [innerHTML]="content.content"></div>
+    </div>
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-md-8">
+          <dsod-essay-author [essay]="essay"></dsod-essay-author>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
     </div>
   </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="home-banner">
+  <div class="glide__track" data-glide-el="track">
+    <ul class="glide__slides" #slider>
+      <li class="glide__slide" *ngFor="let image of visualEssayImages"><img src="{{image.originalUrl}}" alt=""></li>
+    </ul>
+  </div>
+  <div class="glide__arrows" data-glide-el="controls">
+    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><img src="assets/images/arrow-left.png" alt=""></button>
+    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><img src="assets/images/arrow-right.png" alt=""></button>
+  </div>
+</div>

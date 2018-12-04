@@ -1,0 +1,19 @@
+ @import 'variables';
+
+ :host {
+   .essay-gallery {
+     margin-top: 30px;
+
+     h1 {
+       font-size: 30px;
+       font-weight: 600;
+       color: $color-primary
+     }
+
+     img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+     }
+   }
+ }

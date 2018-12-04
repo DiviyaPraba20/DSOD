@@ -10,5 +10,5 @@
 </div>
 </div>
 <ng-template #other>
-<dsod-articel-preivew [content]="pageContent$ | async"></dsod-articel-preivew>
+<dsod-articel-preivew [content]="(pageContent$ | async)?.content"></dsod-articel-preivew>
 </ng-template>

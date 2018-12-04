@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'dsod-video-preview',
@@ -10,4 +11,7 @@ import { Component, Input } from '@angular/core';
 })
 export class DSODVideoPreviewComponent {
   @Input() content;
+  getUrl(id) {
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
+  }
 }

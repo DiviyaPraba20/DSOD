@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {environment} from '../../../../environments/environment'
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'dsod-articel-preivew',
@@ -11,8 +11,8 @@ import {environment} from '../../../../environments/environment'
 })
 export class DSODArticelPreviewComponent {
   @Input() content;
-  
-  getUrl(id){
+
+  getUrl(id) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 }

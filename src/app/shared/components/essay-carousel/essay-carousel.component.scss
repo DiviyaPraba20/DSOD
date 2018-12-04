@@ -1,0 +1,11 @@
+/deep/.glide__slide {
+  opacity: 0.6;
+
+  img {
+    max-width: 100%;
+  }
+
+  &.glide__slide--active {
+    opacity: 1;
+  }
+}
