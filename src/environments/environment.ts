@@ -9,7 +9,7 @@ export const environment = {
     authUrl: 'https://www.linkedin.com/oauth/v2/authorization',
     response_type: 'code',
     client_id: '77xn8gu9wv8bfj',
-    redirect_uri: 'http://localhost:4200/auth/linkedin',
+    redirect_uri: 'https://devangular1.dsodentist.com/dsodt/auth/linkedin',
     state: '987654321'
   },
   url: 'https://devcmsapi1.dsodentist.com/content/contentservice/v1'
