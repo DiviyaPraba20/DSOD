@@ -52,9 +52,9 @@ export class NavbarService {
         title: 'Community',
         link: 'community',
         children: [
-          { title: 'Messaging / Wall', link: 'community' },
-          { title: 'eNewsletter', link: 'community' },
-          { title: 'UNITE Magazine', link: 'community' }
+          { title: 'Messaging / Wall', link: 'community/messaging' },
+          { title: 'eNewsletter', link: 'community/enewsletter' },
+          { title: 'UNITE Magazine', link: 'community/unite' }
         ]
       }
     ];

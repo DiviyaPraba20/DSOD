@@ -27,10 +27,6 @@ const routes: Routes = [
   {
     path: 'video/:id',
     component: DSODVideoPageComponent
-  },
-  {
-    path: '**',
-    component: DSODComingSoonComponent
   }
 ];
 

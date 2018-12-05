@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DSODComingSoonComponent } from './shared/components/coming soon/coming-soon.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    component: DSODComingSoonComponent
   }
 ];
 
