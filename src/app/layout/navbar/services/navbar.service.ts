@@ -30,37 +30,7 @@ export class NavbarService {
       },
       {
         title: 'From Our Sponsers',
-        link: 'sponsers',
-        children: [
-          {
-            title: 'Align Technology, Inc',
-            link: 'sponsers',
-            children: [
-              { title: 'iTero Protocols', link: 'protocols' },
-              { title: 'Invisalign Processes', link: 'processes' },
-              { title: 'Practice Building', link: 'practiceBuilding' }
-            ]
-          },
-          {
-            title: 'GlaxoSmithKline',
-            link: 'sponsers',
-            children: [
-              { title: 'Oral Health', link: 'oralHealth' },
-              { title: 'Denture Care', link: 'dentureCare' },
-              { title: 'Gingival Care', link: 'givingValcare' }
-            ]
-          },
-          {
-            title: 'Nobel Biocare, N.A',
-            link: 'sponsers',
-            children: [
-              { title: 'Implant Therapy', link: 'implantTherapy' },
-              { title: 'Diagnosis & Treatment', link: 'diagnosisTreament' },
-              { title: 'Site Development', link: 'siteDevelopment' },
-              { title: 'Implant Practice', link: 'implantPractice' }
-            ]
-          }
-        ]
+        link: 'sponsers'
       },
       {
         title: 'DSO Practice',
@@ -82,7 +52,7 @@ export class NavbarService {
         title: 'Community',
         link: 'community',
         children: [
-          { title: 'Messaging / Wall?', link: 'community' },
+          { title: 'Messaging / Wall', link: 'community' },
           { title: 'eNewsletter', link: 'community' },
           { title: 'UNITE Magazine', link: 'community' }
         ]
