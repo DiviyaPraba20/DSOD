@@ -54,7 +54,7 @@ export class NavbarService {
         children: [
           { title: 'Messaging / Wall', link: 'community' },
           { title: 'eNewsletter', link: 'community' },
-          { title: 'UNITE Magazine', link: 'community' }
+          { title: 'UNITE Magazine', link: 'community/unite' }
         ]
       }
     ];

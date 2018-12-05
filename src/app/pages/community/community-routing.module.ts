@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CommunityComponent } from './components/community/community.component';
+import { DSODCommunityComponent } from './components/community/community.component';
+import { DSODUniteMagazineComponent } from './components/unite-magazine/unite-magazine.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CommunityComponent
+    component: DSODCommunityComponent
+  },
+  {
+    path: 'unite',
+    component: DSODUniteMagazineComponent
   }
 ];
 
@@ -13,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CommunityRoutingModule { }
+export class CommunityRoutingModule {}
