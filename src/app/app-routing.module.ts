@@ -6,6 +6,22 @@ const routes: Routes = [
     path: '',
     children: [
       {
+        path: 'education',
+        loadChildren: './pages/education/education.module#EducationModule'
+      },
+      {
+        path: 'careers',
+        loadChildren: './pages/career/career.module#CareerModule'
+      },
+      {
+        path: 'development',
+        loadChildren: './pages/development/development.module#DevelopmentModule'
+      },
+      {
+        path: 'community',
+        loadChildren: './pages/community/community.module#CommunityModule'
+      },
+      {
         path: '',
         loadChildren: './pages/home/home.module#HomeModule'
       }
