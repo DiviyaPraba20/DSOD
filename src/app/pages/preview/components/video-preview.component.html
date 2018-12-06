@@ -25,7 +25,9 @@
       <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
     </div>
     <div class="col-lg-12">
-      <div class="article-content" [innerHTML]="content.content"></div>
+      <div class="article-content">
+        <p>{{essay.description}}</p>
+      </div>
     </div>
     <div class="col-lg-12">
       <div class="row">
