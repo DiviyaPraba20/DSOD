@@ -29,8 +29,8 @@ export class NavbarService {
         ]
       },
       {
-        title: 'From Our Sponsers',
-        link: 'sponsers'
+        title: 'From Our Sponsors',
+        link: 'sponsors'
       },
       {
         title: 'DSO Practice',
