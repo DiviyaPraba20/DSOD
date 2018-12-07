@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deployment": "ng build --prod --base-href=/dsodt/"
+    "production": "ng build --prod --base-href=/dsodt/",
+    "dev": "ng build --base-href=/dsodt/"
   },
   "private": true,
   "dependencies": {
