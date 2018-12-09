@@ -4,13 +4,15 @@
 
   .glide__slide {
     position: relative;
-    height: 100vh;
+    height: 50vh;
     overflow: hidden;
 
     >img {
-      width: 100%;
-      height: 100vh;
+      width: 60%;
+      height: 50vh;
       object-fit: cover;
+      display: flex;
+      margin: auto;
     }
 
     .slide-caption {

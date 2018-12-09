@@ -1,8 +1,10 @@
 .image-header-container {
   background-image: url('../../../../../assets/images/development_header.png');
-  height: 100vh;
+  height: 50vh;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
   background-size: cover;
   position: relative;
+  width: 60%;
+  margin: auto;
 }
