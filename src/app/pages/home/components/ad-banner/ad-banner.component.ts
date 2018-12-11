@@ -8,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
               </div>
               </section>`,
   styles: [
-    `
-      .sensodyne-gsk {
+    ` .sensodyne-gsk {
         padding: 30px 0 42px;
+        width: 75%;
+        margin: auto;
       }
     `
   ]
