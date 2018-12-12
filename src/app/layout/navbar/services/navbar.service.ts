@@ -30,7 +30,12 @@ export class NavbarService {
       },
       {
         title: 'From Our Sponsers',
-        link: 'sponsers'
+        link: 'sponsers',
+        children: [
+          { title: 'Align Technology, Inc', link: 'sponsers' },
+          { title: 'GlaxoSmithKline', link: 'sponsers' },
+          { title: 'Nobel Biocare, N.A', link: 'sponsers' }
+        ]
       },
       {
         title: 'DSO Practice',
