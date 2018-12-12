@@ -56,6 +56,10 @@
         font-size: 27px;
         color: #000000;
         padding-bottom: 10px;
+        cursor: pointer;
+        &:hover {
+          color: $deep-cerulean;
+        }
       }
 
       .topic-title-small {

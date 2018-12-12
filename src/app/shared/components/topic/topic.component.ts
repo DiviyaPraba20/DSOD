@@ -20,10 +20,12 @@ export class DSODTopicComponent {
   constructor(private router: Router) {}
 
   navigateTo(e) {
-    if (this.topic.contentTypeName == 'Videos')
+    if (this.topic.contentTypeName === 'Videos') {
       this.router.navigate(['./video', this.topic.id]);
-    else if (this.topic.contentTypeName == 'Podcasts')
+    } else if (this.topic.contentTypeName === 'Podcasts') {
       this.router.navigate(['./podcast', this.topic.id, 'author', 1]);
-    else this.router.navigate(['./article', this.topic.id]);
+    } else {
+      this.router.navigate(['./article', this.topic.id]);
+    }
   }
 }

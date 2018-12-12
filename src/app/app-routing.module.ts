@@ -1,10 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DSODComingSoonComponent } from './shared/components/coming soon/coming-soon.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      {
+        path: 'education',
+        loadChildren: './pages/education/education.module#EducationModule'
+      },
+      {
+        path: 'careers',
+        loadChildren: './pages/career/career.module#CareerModule'
+      },
+      {
+        path: 'development',
+        loadChildren: './pages/development/development.module#DevelopmentModule'
+      },
+      {
+        path: 'community',
+        loadChildren: './pages/community/community.module#CommunityModule'
+      },
       {
         path: '',
         loadChildren: './pages/home/home.module#HomeModule'
@@ -13,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    component: DSODComingSoonComponent
   }
 ];
 

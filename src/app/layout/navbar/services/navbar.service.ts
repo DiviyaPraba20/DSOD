@@ -29,12 +29,12 @@ export class NavbarService {
         ]
       },
       {
-        title: 'From Our Sponsers',
-        link: 'sponsers',
+        title: 'From Our Sponsors',
+        link: 'sponsors',
         children: [
-          { title: 'Align Technology, Inc', link: 'sponsers' },
-          { title: 'GlaxoSmithKline', link: 'sponsers' },
-          { title: 'Nobel Biocare, N.A', link: 'sponsers' }
+          { title: 'Align Technology, Inc', link: 'sponsors' },
+          { title: 'GlaxoSmithKline', link: 'sponsors' },
+          { title: 'Nobel Biocare, N.A', link: 'sponsors' }
         ]
       },
       {
@@ -57,9 +57,9 @@ export class NavbarService {
         title: 'Community',
         link: 'community',
         children: [
-          { title: 'Messaging / Wall', link: 'community' },
-          { title: 'eNewsletter', link: 'community' },
-          { title: 'UNITE Magazine', link: 'community' }
+          { title: 'Messaging / Wall', link: 'community/messaging' },
+          { title: 'eNewsletter', link: 'community/enewsletter' },
+          { title: 'UNITE Magazine', link: 'community/unite' }
         ]
       }
     ];
