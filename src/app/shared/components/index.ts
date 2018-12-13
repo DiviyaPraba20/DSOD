@@ -29,6 +29,7 @@ export * from '././reviews/add-review/add-review-modal.component';
 import { DSODEssayImagesComponent } from './essay-carousel/essay-carousel.component';
 import { DSODEssayAuthorComponent } from './essay-author/essay-author.component';
 import { DSODGalleryComponent } from './gallery/gallery.component';
+import { DSODReferecnceComponent } from './references/reference.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -62,5 +63,6 @@ export const SHARED_COMPONENTS = [
   DSODVideoplayerComponent,
   DSODEssayImagesComponent,
   DSODEssayAuthorComponent,
-  DSODGalleryComponent
+  DSODGalleryComponent,
+  DSODReferecnceComponent
 ];
