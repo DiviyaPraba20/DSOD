@@ -23,6 +23,7 @@
   <div class="row">
     <div class="col-xl-8 col-lg-12">
       <dsod-podcast-content [content]="content"></dsod-podcast-content>
+      <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
       <dsod-podcast-tabs [content]="pageContent$ | async"></dsod-podcast-tabs>
       <div *ngIf="isLoggedIn">
         <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
