@@ -32,11 +32,18 @@
         </div>
       </div>
     </div>
-
   </div>
   <div class="row">
     <div class="col-lg-12">
       <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
+    </div>
+  </div>
+  <div class="related-content" *ngIf="content.relativeTopicList.length">
+    <h2 class="section-title">Related Content</h2>
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let topic of content.relativeTopicList">
+        <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
+      </div>
     </div>
   </div>
 </div>
