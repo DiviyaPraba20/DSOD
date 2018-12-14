@@ -379,7 +379,7 @@ export class CMSState {
     action: actions.FetchPageContent
   ) {
     patchState({ pageContent: null });
-    return this.service.findOneContents(action.payload).pipe(
+    return this.service.findOneContents(action.payload, action.isPreview).pipe(
       map(a => {
         if (a.code === 0) {
           return a.resultMap;

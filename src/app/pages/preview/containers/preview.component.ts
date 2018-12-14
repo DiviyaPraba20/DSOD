@@ -11,18 +11,15 @@ import { CMSResponse, CMSPageContent } from 'src/app/cms/models';
   styleUrls: ['./preview.component.scss']
 })
 export class DSODPreviewComponent implements OnInit {
-  id = '5bf837b2fc30088f54b81441';
-  previewUrl: string;
   pageContent$: Observable<CMSResponse<CMSPageContent>>;
 
   constructor(private _route: ActivatedRoute, private store: Store) {
     _route.params.subscribe(r => {
-      store.dispatch(new actions.FetchPageContent(r.id));
+      store.dispatch(new actions.FetchPageContent(r.id, true));
     });
   }
 
   ngOnInit() {
     this.pageContent$ = this.store.select(state => state.cms.pageContent);
-    this.previewUrl = `http://localhost:4200/preview/${this.id}`;
   }
 }

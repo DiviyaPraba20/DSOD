@@ -44,7 +44,10 @@ export class CMSService {
     );
   }
 
-  findOneContents<T>(id: string) {
+  findOneContents<T>(id: string, isPreview?:boolean) {
+    if(isPreview){
+      return this.http.post<CMSResponse<CMSPageContent>>(`${environment.url}/content/public/findOneContents?id=${id}`, {});
+    }
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     isLoggedIn ? (url = 'findOneContents') : (url = 'public/findOneContents');

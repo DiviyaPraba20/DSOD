@@ -193,7 +193,7 @@ export class FetchSponsorsListFailure {
 export class FetchPageContent {
   static readonly type = CMSActions.FetchPageContent;
 
-  constructor(public payload: string) {}
+  constructor(public payload: string,public isPreview?:boolean) {}
 }
 export class FetchPageContentSuccess {
   static readonly type = CMSActions.FetchPageContentSuccess;

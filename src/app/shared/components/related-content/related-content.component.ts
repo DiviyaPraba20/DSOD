@@ -20,7 +20,7 @@ export class DSODRelatedContentComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.cmsService.findOneContents(this.content.id).subscribe((res: any) => {
+    this.cmsService.findOneContents(this.content.id, true).subscribe((res: any) => {
       if (res.resultMap.data.featuredMedia) {
         this.thumbnailUrl = res.resultMap.data.featuredMedia.code.thumbnailUrl;
       }

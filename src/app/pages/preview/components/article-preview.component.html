@@ -9,7 +9,6 @@
   </div>
   <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
     <img [src]=getUrl(content.featuredMedia.code.thumbnail) class="img-fluid" alt="">
-    <p><b>Figure.</b>{{content.title}}</p>
   </div>
   <div class="row">
     <div class="col-lg-12">
@@ -37,7 +36,7 @@
   <div class="row">
     <div class="col-lg-12">
       <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
-      <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
+      <h2 class="section-title" *ngIf="content.relativeTopicList.length">Related Content</h2>
       <div class="row">
         <div class="col-lg-4" *ngFor="let topic of content.relativeTopicList">
           <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
