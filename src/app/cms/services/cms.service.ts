@@ -44,7 +44,7 @@ export class CMSService {
     );
   }
 
-  findOneContents<T>(id: string, isPreview:boolean) {
+  findOneContents<T>(id: string, isPreview?:boolean) {
     if(isPreview){
       debugger;
       return this.http.post<CMSResponse<CMSPageContent>>(`${environment.url}/content/public/findOneContents?id=${id}`, {});
