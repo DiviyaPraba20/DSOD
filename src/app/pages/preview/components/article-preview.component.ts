@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -9,8 +9,10 @@ import { environment } from '../../../../environments/environment';
     '../../article/components/article-media/article-media.component.scss'
   ]
 })
-export class DSODArticelPreviewComponent {
+export class DSODArticelPreviewComponent implements OnInit {
   @Input() content;
+
+  ngOnInit() { }
 
   getUrl(id) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
