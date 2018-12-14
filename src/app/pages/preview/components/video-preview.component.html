@@ -10,8 +10,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="md-5 mt-5">
-        <video>
-          <source src="https://devcmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId={{content.featuredMedia.code.thumbnail}}"></video>
+        <dsod-video-player [content]="content.content"></dsod-video-player>
       </div>
     </div>
   </div>
@@ -42,7 +41,7 @@
   <div class="row">
     <div class="col-lg-12">
       <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
-    <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
+    <h2 class="section-title" *ngIf="content.relativeTopicList.length">Related Content</h2>
       <div class="row">
         
       <div class="col-lg-4" *ngFor="let topic of content.relativeTopicList">
