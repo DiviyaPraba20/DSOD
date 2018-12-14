@@ -18,6 +18,6 @@
   </div>
 </div>
 <div class="article-thumbnail" *ngIf="content">
-  <img src={{content.featuredMedia.code.originalUrl}} class="img-fluid" alt="">
+  <img src={{content.featuredMedia?.code?.originalUrl}} class="img-fluid" alt="">
   <p><b>Figure.</b>{{content.title}}</p>
 </div>

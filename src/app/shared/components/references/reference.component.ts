@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'dsod-references',
@@ -8,5 +8,6 @@ import { Component, OnInit, Input } from "@angular/core";
 export class DSODReferecnceComponent implements OnInit {
   @Input() references=[];
   constructor() {}
+
   ngOnInit() {}
 }

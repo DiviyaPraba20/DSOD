@@ -29,10 +29,10 @@
             </div>
           </div>
         </div>
-        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicsList">
+        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicList.length">
           <h2 class="section-title">Related Content</h2>
           <div class="row">
-            <div class="col-lg-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicsList">
+            <div class="col-lg-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicList">
               <dsod-related-content [content]="topic" [contentTypeName]="(pageContent$ | async)?.contentTypeName"></dsod-related-content>
             </div>
           </div>
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="col-xl-3">
-        <section class="trending-videos" *ngIf="(trendingTopics$ | async)?.length">
+        <section class="trending-videos" *ngIf="(trendingTopics$ | async).length">
           <h2 class="section-title">Trending Topics</h2>
           <div *ngFor="let topic of trendingTopics$ | async">
             <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-sm"></dsod-topic>
