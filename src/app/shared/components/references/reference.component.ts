@@ -6,8 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './reference.component.html'
 })
 export class DSODReferecnceComponent implements OnInit {
-  @Input() references=[];
+  @Input() references;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.references=[]
+  }
 }
