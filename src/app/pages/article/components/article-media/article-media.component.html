@@ -1,7 +1,7 @@
 <div class="top-head d-flex justify-content-between" *ngIf="content">
   <ul>
     <li>Education /</li>
-    <li>Practice Management</li>
+    <li>{{content.categoryName}}</li>
   </ul>
   <dsod-rating [rating]="content.avgCommentRating"></dsod-rating>
 </div>
@@ -19,5 +19,4 @@
 </div>
 <div class="article-thumbnail" *ngIf="content">
   <img src={{content.featuredMedia?.code?.originalUrl}} class="img-fluid" alt="">
-  <p><b>Figure.</b>{{content.title}}</p>
 </div>

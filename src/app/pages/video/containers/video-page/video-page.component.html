@@ -6,9 +6,22 @@
           <div class="top-head d-flex justify-content-between">
             <ul>
               <li>Education /</li>
-              <li>Practice Management</li>
+              <li>{{(pageContent$ | async)?.categoryName}}</li>
             </ul>
-            <div><img src="assets/images/gsk-icon-sm.png">&nbsp;Sponsored content from GlaxoSmithKline</div>
+            <div>
+              <div *ngIf="(pageContent$ | async)?.sponsorName==='ALN'">
+                <img src="assets/images/align-logo.png" alt="">
+                Sponsored content from Align Technology, Inc.
+              </div>
+              <div *ngIf="(pageContent$ | async)?.sponsorName==='NBL'">
+                <img src="assets/images/nb-logo.png" alt="">
+                Sponsored content from Nobel Biocare, N.A.
+              </div>
+              <div *ngIf="(pageContent$ | async)?.sponsorName==='GSK'">
+                <img src="assets/images/gsk-icon-sm.png" alt="">
+                Sponsored content from GlaxoSmithKline
+              </div>
+            </div>
             <dsod-rating></dsod-rating>
           </div>
           <div class="video-header">
