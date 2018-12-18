@@ -34,7 +34,7 @@
               </div>
             </div>
           </div>
-          <dsod-video-player [content]="(pageContent$ | async)?.content"></dsod-video-player>
+          <dsod-feartured-media [featuredMedia]="(pageContent$ | async).featuredMedia"></dsod-feartured-media>
           <dsod-video-content [content]="(pageContent$ | async)?.content"></dsod-video-content>
           <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
           <div class="row" *ngFor="let essay of (pageContent$ | async)?.visualEssays">

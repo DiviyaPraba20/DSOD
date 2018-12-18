@@ -2,11 +2,15 @@
 
 :host {
   .video-content-inner {
+   /deep/ iframe {
+     height: 70vh !important;
+     position: relative !important;
+   }
     /deep/ p {
       font-size: 20px;
 
       &:nth-child(1) {
-        display: none;
+        display: block;
       }
 
       &:nth-child(4) {

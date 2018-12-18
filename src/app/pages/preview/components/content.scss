@@ -1,8 +1,13 @@
  @import 'variables';
 
  .article-content {
+     /deep/ iframe {
+        height: 70vh !important;
+        position: relative !important;
+      }
    /deep/ p {
      font-size: 20px;
+  
 
      >img {
        width: 100%;
