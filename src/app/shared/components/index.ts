@@ -30,6 +30,7 @@ import { DSODEssayImagesComponent } from './essay-carousel/essay-carousel.compon
 import { DSODEssayAuthorComponent } from './essay-author/essay-author.component';
 import { DSODGalleryComponent } from './gallery/gallery.component';
 import { DSODReferecnceComponent } from './references/reference.component';
+import { DSODFeaturedMediaComponent } from './featured-media/featured-media.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -64,5 +65,6 @@ export const SHARED_COMPONENTS = [
   DSODEssayImagesComponent,
   DSODEssayAuthorComponent,
   DSODGalleryComponent,
-  DSODReferecnceComponent
+  DSODReferecnceComponent,
+  DSODFeaturedMediaComponent
 ];
