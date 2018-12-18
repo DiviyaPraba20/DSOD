@@ -6,6 +6,7 @@ import { EducationRoutingModule } from './education-routing.module';
 import { EducationContainerComponent } from './container/education-container.component';
 import { EducationCatalogueComponent } from './components/education-catalogue/education-catalogue.component';
 import { EducationSubCategoryComponent } from './components/education-sub-category/education-sub-category.component';
+import { EducationItemCardComponent } from './components/education-item-card/education-item-card.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { EducationSubCategoryComponent } from './components/education-sub-catego
   declarations: [
     EducationContainerComponent,
     EducationCatalogueComponent,
-    EducationSubCategoryComponent
+    EducationSubCategoryComponent,
+    EducationItemCardComponent
   ]
 })
 export class EducationModule { }
