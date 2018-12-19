@@ -79,10 +79,10 @@ export class CMSService {
   findAllBySearch<T>(term: any) {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
-    isLoggedIn ? (url = 'public/findAllByValue') : (url = 'findAllByValue');
+    isLoggedIn ? (url = 'findAllByValue') : (url = 'public/findAllByValue');
     return this.http.post<CMSResponse<CMSPageContent>>(
       `${environment.url}/content/${url}`,
-      term,
+      { ...term, categoryName:'Dental Public Health'},
       isLoggedIn ? { withCredentials: true } : {}
     );
   }

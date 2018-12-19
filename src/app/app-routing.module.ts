@@ -26,6 +26,11 @@ const routes: Routes = [
         path: 'community',
         loadChildren: './pages/community/community.module#CommunityModule'
       },
+
+      {
+        path: 'practice',
+        loadChildren: './pages/dso-practice/dso-practice.module#DSOPracticeModule'
+      },
       {
         path: '',
         loadChildren: './pages/home/home.module#HomeModule'
