@@ -60,7 +60,7 @@
             </div>
           </div>
         </div>
-        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicList">
+        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicList.length">
           <h2 class="section-title">Related Content</h2>
           <div class="row">
             <div class="col-lg-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicList">
