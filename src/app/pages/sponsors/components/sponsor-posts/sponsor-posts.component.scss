@@ -1,0 +1,72 @@
+@import 'variables';
+
+.our-sponsors {
+  padding: 13px 0;
+
+  .our-sponsors-header {
+    padding: 11px 0px 0px 16px;
+    border-bottom: 1px solid #8799A7;
+
+    h4 {
+      display: flex;
+      color: $color-primary;
+      font-size: 20px;
+      padding-right: 30px;
+
+      img {
+        align-self: center;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  /deep/ dsod-topic {
+    .block-wrap {
+      .topic-block {
+        background: none;
+
+        .topic-block-content {
+          /deep/ h2.topic-title-large {
+            font-size: 24px !important;
+          }
+
+          .excrept-content-lg {
+            /deep/ p:last-child {
+              max-height: 164px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sponsors-ortho {
+  font-family: $Arial;
+
+  .sponsors-ortho-block {
+    margin: 15px 0 33px;
+    background: #f8f8f8;
+
+    .sponsors-ortho-block-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 21px 15px 9px;
+
+      h4 {
+        color: $color-primary;
+        font-size: 22px;
+      }
+    }
+
+    .sponsors-ortho-block-video {
+      position: relative;
+      border-top: 3px solid $mine_grey;
+      position: relative;
+
+      >img {
+        width: 100%;
+      }
+    }
+  }
+}

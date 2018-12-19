@@ -6,7 +6,7 @@ import {
   CMSContentTypeModel,
   CMSResponse,
   CMSPageContent,
-  sponsors,
+  Sponsors,
   RemoveBookmarkPayload
 } from '../models';
 
@@ -47,6 +47,9 @@ export enum CMSActions {
   RemoveBookmark = '[CMS] Remove Bookmark',
   RemoveBookmarkSuccess = '[CMS] Remove Bookmark Success',
   RemoveBookmarkFailure = '[CMS] Remove Bookmark Failure',
+  FetchSponsorContents = '[CMS] Fetch Sponsor Contents',
+  FetchSponsorContentsSuccess = '[CMS] Fetch Sponsor Contents Success',
+  FetchSponsorContentsFailure = '[CMS] Fetch Sponsor Contents Failure',
   ResetState = '[CMS] Reset State'
 }
 
@@ -155,6 +158,23 @@ export class FetchSponsoredTopicsFailure {
   constructor(public payload: Error) {}
 }
 
+// actions for sponsor contents
+export class FetchSponsorContents {
+  static readonly type = CMSActions.FetchSponsorContents;
+
+  constructor(public payload: CMSContentParams) {}
+}
+export class FetchSponsorContentsSuccess {
+  static readonly type = CMSActions.FetchSponsorContentsSuccess;
+
+  constructor(public payload: CMSPageContent[]) {}
+}
+export class FetchSponsorContentsFailure {
+  static readonly type = CMSActions.FetchSponsorContentsFailure;
+
+  constructor(public payload: Error) {}
+}
+
 // actions for podcasts
 export class FetchPodcasts {
   static readonly type = CMSActions.FetchPodcasts;
@@ -182,7 +202,7 @@ export class FetchSponsorsList {
 export class FetchSponsorsListSuccess {
   static readonly type = CMSActions.FetchSponsorsListSuccess;
 
-  constructor(public payload: sponsors[]) {}
+  constructor(public payload: Sponsors[]) {}
 }
 export class FetchSponsorsListFailure {
   static readonly type = CMSActions.FetchSponsorsListFailure;
@@ -193,7 +213,7 @@ export class FetchSponsorsListFailure {
 export class FetchPageContent {
   static readonly type = CMSActions.FetchPageContent;
 
-  constructor(public payload: string,public isPreview?:boolean) {}
+  constructor(public payload: string, public isPreview?: boolean) {}
 }
 export class FetchPageContentSuccess {
   static readonly type = CMSActions.FetchPageContentSuccess;
@@ -247,6 +267,7 @@ export class RemoveBookmarkFailure {
   constructor(public payload: any) {}
 }
 
+
 // reset State
 export class ResetState {
   static readonly type = CMSActions.ResetState;
@@ -291,4 +312,7 @@ export type CMSActionTypes =
   | RemoveBookmark
   | RemoveBookmarkSuccess
   | RemoveBookmarkFailure
+  | FetchSponsorContents
+  | FetchSponsorContentsSuccess
+  | FetchSponsorContentsFailure
   | ResetState;
