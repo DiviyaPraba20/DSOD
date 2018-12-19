@@ -5,7 +5,16 @@ import { SponsorsContainerComponent } from './container/sponsors-container.compo
 const routes: Routes = [
   {
     path: '',
-    component: SponsorsContainerComponent
+    children: [
+      {
+        path: '',
+        component: SponsorsContainerComponent
+      },
+      {
+        path: ':name',
+        component: SponsorsContainerComponent
+      }
+    ]
   }
 ];
 

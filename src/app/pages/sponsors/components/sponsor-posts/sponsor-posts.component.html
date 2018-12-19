@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-md-12" *ngFor="let post of posts">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
           <div class="our-sponsors">
             <div class="our-sponsors-header">
               <h4 *ngIf="post.sponsorName === 'ALN'">
@@ -21,7 +22,7 @@
             <dsod-topic [topic]="post" [showImage]="false" styleFor="content-lg" [showHeader]="false"></dsod-topic>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
           <section class="sponsors-ortho">
             <div>
               <dsod-media-content title="implant Dentisty" [placeholderImageSrc]="post.featuredMedia.code.originalUrl"
@@ -30,6 +31,7 @@
             </div>
           </section>
         </div>
+        <div class="col-lg-2"></div>
       </div>
     </div>
   </div>

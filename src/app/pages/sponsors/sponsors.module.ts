@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { SponsorsRoutingModule } from './sponsors-routing.module';
 import { SponsorsContainerComponent } from './container/sponsors-container.component';
@@ -16,7 +17,8 @@ import { SponsorPostsComponent } from './components/sponsor-posts/sponsor-posts.
     TabsModule.forRoot(),
     SharedModule,
     CMSModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    InfiniteScrollModule
   ],
   declarations: [
     SponsorsContainerComponent,

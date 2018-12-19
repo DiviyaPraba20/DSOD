@@ -41,6 +41,7 @@ export class SponsorsContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      console.log(params);
       this.sponsorName = params.name;
       this.getSponsorId();
       this.getPostType();
@@ -73,23 +74,30 @@ export class SponsorsContainerComponent implements OnInit, OnDestroy {
 
   searchPostContents() {
     let contentTypeId = null;
+    let sponsorId = null;
+    console.log(this.sponsorInfo);
     if (this.sponsorInfo && this.sponsorInfo.id) {
-      if (this.postType && this.postType.id) {
-        contentTypeId = this.postType.id;
-      }
-      this.spinner.show();
-      this.store.dispatch(new FetchSponsorContents({
-        skip: 0,
-        limit: 100,
-        contentTypeId: contentTypeId,
-        sponsorId: this.sponsorInfo.id
-      })).subscribe(res => {
-        this.spinner.hide();
-      });
+      sponsorId = this.sponsorInfo.id;
     }
+    if (this.postType && this.postType.id) {
+      contentTypeId = this.postType.id;
+    }
+    this.spinner.show();
+    this.store.dispatch(new FetchSponsorContents({
+      skip: 0,
+      limit: 5,
+      contentTypeId: contentTypeId,
+      sponsorId: sponsorId
+    })).subscribe(res => {
+      this.spinner.hide();
+    });
   }
 
   getPostContents() {
     this.pageConents$ = this.store.select(state => state.cms.sponsoredTopics);
+  }
+
+  onScroll() {
+    console.log('hahahaha');
   }
 }

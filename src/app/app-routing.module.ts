@@ -15,7 +15,7 @@ const routes: Routes = [
         loadChildren: './pages/career/career.module#CareerModule'
       },
       {
-        path: 'sponsors/:name',
+        path: 'sponsors',
         loadChildren: './pages/sponsors/sponsors.module#SponsorsModule'
       },
       {

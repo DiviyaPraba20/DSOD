@@ -1,4 +1,8 @@
-<div class="sponsors-container">
+<div class="sponsors-container"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()">
   <h2 class="title">From Our Sponsors</h2>
   <tabset class="dsod-tab-set">
     <tab heading="All" customClass="dsod-tab" (select)="onChangeFilter($event)">
