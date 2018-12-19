@@ -1,0 +1,17 @@
+<tabset class="dsod-tab-set">
+  <tab heading="ALL COURSES" customClass="dsod-tab">
+    <p class="tab-title">Catalogue</p>
+    <div class="content-item-wrapper">
+      <div class="content-item" *ngFor="let category of categoryList" (click)="onClickCategory(category.name)">
+        <img class="img-category" [src]="category.image" />
+        <div class="category-content">
+          <p class="category-title">{{category.title}}</p>
+          <p class="category-count">{{category.count}} items</p>
+        </div>
+      </div>
+    </div>
+  </tab>
+  <tab heading="MY COURSES" customClass="dsod-tab">
+    <p class="tab-title">Coming Soon...</p>
+  </tab>
+</tabset>

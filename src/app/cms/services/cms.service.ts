@@ -9,7 +9,7 @@ import {
   CMSContentParams,
   CMSResponse,
   CMSPageContent,
-  sponsors,
+  Sponsors,
   RemoveBookmarkPayload
 } from '../models';
 import { Store } from '@ngxs/store';
@@ -44,8 +44,8 @@ export class CMSService {
     );
   }
 
-  findOneContents<T>(id: string, isPreview?:boolean) {
-    if(isPreview){
+  findOneContents<T>(id: string, isPreview?: boolean) {
+    if (isPreview) {
       return this.http.post<CMSResponse<CMSPageContent>>(`${environment.url}/content/public/findOneContents?id=${id}`, {});
     }
     let url = '';
@@ -70,7 +70,7 @@ export class CMSService {
   }
 
   getAllSponsors<T>() {
-    return this.http.post<CMSResponse<sponsors>>(
+    return this.http.post<CMSResponse<Sponsors>>(
       `${environment.url}/sponsor/getAll`,
       {}
     );

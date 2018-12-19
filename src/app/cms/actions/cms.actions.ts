@@ -6,7 +6,7 @@ import {
   CMSContentTypeModel,
   CMSResponse,
   CMSPageContent,
-  sponsors,
+  Sponsors,
   RemoveBookmarkPayload
 } from '../models';
 
@@ -50,7 +50,10 @@ export enum CMSActions {
   ResetState = '[CMS] Reset State',
   FetchDSOPractices = '[CMS] Fetch DSO Practices',
   FetchDSOPracticesSuccess = '[CMS] Fetch DSO Practices Success',
-  FetchDSOPracticesFailure = '[CMS] Fetch DSO Practices Failure'
+  FetchDSOPracticesFailure = '[CMS] Fetch DSO Practices Failure',
+  FetchSponsorContents = '[CMS] Fetch Sponsor Contents',
+  FetchSponsorContentsSuccess = '[CMS] Fetch Sponsor Contents Success',
+  FetchSponsorContentsFailure = '[CMS] Fetch Sponsor Contents Failure',
 }
 
 // actions for categories
@@ -158,6 +161,23 @@ export class FetchSponsoredTopicsFailure {
   constructor(public payload: Error) {}
 }
 
+// actions for sponsor contents
+export class FetchSponsorContents {
+  static readonly type = CMSActions.FetchSponsorContents;
+
+  constructor(public payload: CMSContentParams) {}
+}
+export class FetchSponsorContentsSuccess {
+  static readonly type = CMSActions.FetchSponsorContentsSuccess;
+
+  constructor(public payload: CMSPageContent[]) {}
+}
+export class FetchSponsorContentsFailure {
+  static readonly type = CMSActions.FetchSponsorContentsFailure;
+
+  constructor(public payload: Error) {}
+}
+
 // actions for podcasts
 export class FetchPodcasts {
   static readonly type = CMSActions.FetchPodcasts;
@@ -185,7 +205,7 @@ export class FetchSponsorsList {
 export class FetchSponsorsListSuccess {
   static readonly type = CMSActions.FetchSponsorsListSuccess;
 
-  constructor(public payload: sponsors[]) {}
+  constructor(public payload: Sponsors[]) {}
 }
 export class FetchSponsorsListFailure {
   static readonly type = CMSActions.FetchSponsorsListFailure;
@@ -313,3 +333,6 @@ export type CMSActionTypes =
   | FetchDSOPracticesSuccess
   | FetchDSOPracticesFailure
   | ResetState
+  | FetchSponsorContents
+  | FetchSponsorContentsSuccess
+  | FetchSponsorContentsFailure

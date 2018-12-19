@@ -2,11 +2,25 @@
 
 :host {
   .video-content-inner {
+    /deep/ div {
+      max-width: none !important;
+      width: 100% !important;
+
+      div {
+        padding-top: 0 !important;
+      }
+    }
+
+    /deep/ iframe {
+      height: 70vh !important;
+      position: relative !important;
+    }
+
     /deep/ p {
       font-size: 20px;
 
       &:nth-child(1) {
-        display: none;
+        display: block;
       }
 
       &:nth-child(4) {
@@ -15,16 +29,6 @@
         font-size: 22px;
         line-height: 35px;
         margin-bottom: 25px;
-
-        &:first-letter {
-          float: left;
-          font-size: 70px;
-          line-height: 60px;
-          padding-top: 4px;
-          padding-right: 8px;
-          padding-left: 3px;
-        }
-
       }
 
       a {

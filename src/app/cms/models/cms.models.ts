@@ -81,6 +81,7 @@ export interface CMSPageContent {
   visualEssays?: any;
   relativeTopics?: any;
   relativeTopicList?: any;
+  references?:any;
 }
 
 export interface CMSContentParams {
@@ -102,7 +103,7 @@ export interface CMSResponse<T> extends Response {
   resultMap: { data: T[]; totalCount: number; sponsors: any[] };
 }
 
-export interface sponsors {
+export interface Sponsors {
   id: string;
   name: string;
 }

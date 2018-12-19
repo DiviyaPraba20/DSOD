@@ -1,0 +1,27 @@
+.dsod-tab-set {
+  .nav-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom: 2px solid transparent;
+    .dsod-tab {
+      a.nav-link {
+        border: none;
+        color: #495057;
+        font-size: 20px;
+        margin: 0 10px;
+        border-bottom: 2px solid transparent;
+        &.active {
+          border-bottom: 2px solid #879AA8;
+        }
+      }
+    }
+  }
+  .tab-content {
+    .dsod-tab {
+      background-color: #F8F8F8;
+      padding: 50px 200px 100px;
+    }
+  }
+}
