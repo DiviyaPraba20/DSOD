@@ -7,7 +7,7 @@ import { Response } from '../../core/models/common';
 import {
   CMSContentTypeModel,
   CMSPageContent,
-  sponsors,
+  Sponsors,
   CMSResponse
 } from '../models';
 import * as actions from '../actions/cms.actions';
@@ -20,7 +20,7 @@ export interface State {
   featuredTopics: CMSPageContent[];
   latestTopics: CMSPageContent[];
   trendingTopics: CMSPageContent[];
-  sponsorsList: sponsors[];
+  sponsorsList: Sponsors[];
   sponsoredTopics: CMSPageContent[];
   podcasts: CMSPageContent[];
   searchResults: CMSResponse<CMSPageContent>;
@@ -294,6 +294,45 @@ export class CMSState {
     action: actions.FetchSponsorsListFailure
   ) {
     return patchState({ error: action.payload });
+  }
+
+  // sponsor contents action decorators
+  @Action(actions.FetchSponsorContents)
+  fetchSponsorContents(
+    { dispatch, patchState }: StateContext<State>,
+    action: actions.FetchSponsorContents
+  ) {
+    patchState({ sponsoredTopics: [] });
+    return this.service.findAllContents(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchSponsorContentsSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchSponsorContentsFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchSponsorContentsSuccess)
+  fetchSponsorContentsSuccess(
+    { patchState }: StateContext<State>,
+    action: actions.FetchSponsorContentsSuccess
+  ) {
+    return patchState({ sponsoredTopics: action.payload });
+  }
+
+  @Action(actions.FetchSponsorContentsFailure)
+  fetchSponsorContentsFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchSponsorContentsFailure
+  ) {
+    return patchState({
+      error: action.payload
+    });
   }
 
   // sponsoredTopics action decorators
