@@ -12,7 +12,7 @@
           <h2>{{topic.title}}</h2>
           <span>{{topic.author.fullName}}</span>
           <div class="d-flex justify-content-between align-items-center date-wrap">
-            <span>Sep 16,2018</span>
+            <span>{{topic.publishDate | date:'mediumDate'}}</span>
             <a href="#" class="implant-btn">{{topic.categoryName}}</a>
           </div>
           <div class="excerpt" [innerHtml]="topic.excerpt"></div>
