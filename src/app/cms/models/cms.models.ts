@@ -81,6 +81,7 @@ export interface CMSPageContent {
   visualEssays?: any;
   relativeTopics?: any;
   relativeTopicList?: any;
+  references?:any;
 }
 
 export interface CMSContentParams {
