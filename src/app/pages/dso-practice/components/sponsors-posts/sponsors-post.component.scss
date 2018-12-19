@@ -1,0 +1,91 @@
+@import 'variables';
+
+:host {
+  .practice-sponsors {
+    .sponsor-desc {
+      padding: 40px;
+
+      .sponsor-header {
+        h3 {
+          float: left;
+          font-size: 19px;
+          padding: 8px;
+          color: #fff;
+
+          img {
+            max-width: 24px;
+            margin-right: 5px;
+          }
+        }
+
+        &::after {
+          display: table;
+          content: "";
+          clear: both;
+        }
+      }
+
+      h2 {
+        font-size: 38px;
+        margin-top: 28px;
+        font-weight: bold;
+        line-height: 47px;
+      }
+
+      >span {
+        font-size: 18px;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .date-wrap {
+
+        span {
+          font-size: 18px;
+          display: block;
+          color: $text-main;
+        }
+
+        a {
+          display: inline-block;
+          padding: 4px 15px;
+          font-size: 15px;
+          background: $color-primary;
+          color: $color-white;
+          font-weight: 500;
+          border-radius: 3px;
+        }
+      }
+
+      .date-wrap {
+        margin-bottom: 28px;
+      }
+
+      .excerpt {
+        /deep/ p {
+          font-size: 16px;
+          color: $text-main;
+        }
+      }
+
+      a.read-more-btn {
+        font-size: 16px;
+        color: $text-main;
+      }
+
+      .bg-red {
+        background: $bg-red;
+      }
+
+      .bg-blue {
+        background: $bg-blue;
+      }
+    }
+
+    .thumbnail {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

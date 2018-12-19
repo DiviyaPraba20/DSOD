@@ -16,6 +16,7 @@ export class DSODTopicComponent {
   showHeader?: boolean;
   @Input()
   styleFor: string;
+  @Input() showRating:boolean
 
   constructor(private router: Router) {}
 

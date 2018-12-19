@@ -1,0 +1,29 @@
+<div class="practice-sponsors">
+  <div class="container-fluid">
+    <div class="row" *ngFor="let topic of (sponsoredTopics$ | async)">
+      <div class="col-md-6">
+        <div class="sponsor-desc">
+          <div class="sponsor-header mb-3">
+            <h3 *ngIf="topic.sponsorName==='NBL'" class=" bg-red">Sponsored events from Nobel Biocare</h3>
+            <h3 *ngIf="topic.sponsorName==='GSK'" class="bg-blue"><img src="../assets/images/gsk-icon-sm.png" alt="">
+              Sponsored events
+              from GSK</h3>
+          </div>
+          <h2>{{topic.title}}</h2>
+          <span>{{topic.author.fullName}}</span>
+          <div class="d-flex justify-content-between align-items-center date-wrap">
+            <span>Sep 16,2018</span>
+            <a href="#" class="implant-btn">{{topic.categoryName}}</a>
+          </div>
+          <div class="excerpt" [innerHtml]="topic.excerpt"></div>
+          <hr class="mt-4 mb-5">
+          <a href="javascript:void(0)" (click)="navigateTo(topic)" class="read-more-btn">Read More <span><i class="fa fa-arrow-right"
+                aria-hidden="true"></i></span></a>
+        </div>
+      </div>
+      <div class="col-md-6 thumbnail">
+        <img *ngIf="topic.featuredMedia" class="img-fluid" src="{{topic.featuredMedia.code.originalUrl}}" alt="">
+      </div>
+    </div>
+  </div>
+</div>

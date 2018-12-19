@@ -1,0 +1,40 @@
+<div class="dso-practice">
+  <div class="dso-practice-banner">
+    <img src="../assets/images/dso-practice-banner.png" alt="">
+    <div class="banner-overlay"></div>
+    <div class="banner-caption">
+      <h1 class="text-white">Slogan Here</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptate a molestias quae, et voluptatum
+        quis facilis praesentium officiis suscipit fuga eos illo unde at? Itaque ut in eius tempore!</p>
+    </div>
+  </div>
+  <div class="practice-content">
+    <div class="container">
+      <h2 class="content-title">DSO Practice</h2>
+      <div class="tabs-wrapper">
+        <tabset>
+          <tab heading="All" (select)="filterType('All')">
+            <dsod-practice-page-tab *ngIf="selectedTab=='All'" [contentType]="other"></dsod-practice-page-tab>
+            <dsod-pracrices-sposnors-post *ngIf="selectedTab=='All'" [contentType]="other"></dsod-pracrices-sposnors-post>
+          </tab>
+          <tab heading="Article" (select)="filterType('Article')">
+            <dsod-practice-page-tab *ngIf="selectedTab=='Article'" [contentType]="articleType"></dsod-practice-page-tab>
+            <dsod-pracrices-sposnors-post *ngIf="selectedTab=='Article'" [contentType]="articleType"></dsod-pracrices-sposnors-post>
+          </tab>
+          <tab heading="Video" (select)="filterType('Video')">
+            <dsod-practice-page-tab *ngIf="selectedTab=='Video'" [contentType]="videoType"></dsod-practice-page-tab>
+            <dsod-pracrices-sposnors-post *ngIf="selectedTab=='Video'" [contentType]="videoType"></dsod-pracrices-sposnors-post>
+          </tab>
+          <tab heading="Podcast" (select)="filterType('Podcast')">
+            <dsod-practice-page-tab *ngIf="selectedTab=='Podcast'" [contentType]="podcastType"></dsod-practice-page-tab>
+            <dsod-pracrices-sposnors-post *ngIf="selectedTab=='Podcast'" [contentType]="podcastType"></dsod-pracrices-sposnors-post>
+          </tab>
+          <tab heading="Visual Essays" (select)="filterType('Visual Essay')">
+            <dsod-practice-page-tab *ngIf="selectedTab=='Visual Essay'" [contentType]="visualEssay"></dsod-practice-page-tab>
+            <dsod-pracrices-sposnors-post *ngIf="selectedTab=='Visual Essay'" [contentType]="visualEssay"></dsod-pracrices-sposnors-post>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

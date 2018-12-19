@@ -5,12 +5,12 @@
     </h2>
     <div class="row" *ngIf="featuredTopics">
       <div class="col-lg-6" *ngFor="let topic of featuredTopics | slice : 0:1">
-        <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-lg"></dsod-topic>
+        <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-lg" [showRating]=true></dsod-topic>
       </div>
       <div class="col-lg-6">
         <div class="row">
           <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let topic of featuredTopics | slice:1:5">
-            <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-sm"></dsod-topic>
+            <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-sm" [showRating]=true></dsod-topic>
           </div>
         </div>
       </div>

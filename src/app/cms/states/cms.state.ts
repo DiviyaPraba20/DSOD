@@ -23,6 +23,7 @@ export interface State {
   sponsorsList: sponsors[];
   sponsoredTopics: CMSPageContent[];
   podcasts: CMSPageContent[];
+  DSOPractices: CMSPageContent[];
   searchResults: CMSResponse<CMSPageContent>;
   isLoading: boolean;
   error: Error;
@@ -40,13 +41,13 @@ export interface State {
     sponsorsList: [],
     sponsoredTopics: [],
     podcasts: [],
+    DSOPractices: [],
     searchResults: null,
     isLoading: false,
     error: null
   }
 })
 export class CMSState {
-
   constructor(
     private store: Store,
     private service: CMSService,
@@ -423,6 +424,7 @@ export class CMSState {
     });
   }
 
+
   // search results  action decorators
   @Action(actions.FetchSearchResults)
   fetchSearchResults(
@@ -462,7 +464,10 @@ export class CMSState {
 
   // bookmark action decorators
   @Action(actions.AddBookmark)
-  addBookmark({ dispatch, patchState }: StateContext<State>, action: actions.AddBookmark) {
+  addBookmark(
+    { dispatch, patchState }: StateContext<State>,
+    action: actions.AddBookmark
+  ) {
     patchState({ isLoading: true, error: null });
     return this.service.addBookmark(action.payload).pipe(
       exhaustMap((response: Response) => {
@@ -475,7 +480,10 @@ export class CMSState {
   }
 
   @Action(actions.AddBookmarkSuccess)
-  addBookmarkSuccess({ patchState, getState }: StateContext<State>, action: actions.AddBookmarkSuccess) {
+  addBookmarkSuccess(
+    { patchState, getState }: StateContext<State>,
+    action: actions.AddBookmarkSuccess
+  ) {
     const state = getState();
     return patchState({
       pageContent: {
@@ -486,12 +494,18 @@ export class CMSState {
   }
 
   @Action(actions.AddBookmarkFailure)
-  addBookmarkFailure({ patchState }: StateContext<State>, action: actions.AddBookmarkFailure) {
+  addBookmarkFailure(
+    { patchState }: StateContext<State>,
+    action: actions.AddBookmarkFailure
+  ) {
     return patchState({ error: action.payload });
   }
 
   @Action(actions.RemoveBookmark)
-  removeBookmark({ dispatch, patchState }: StateContext<State>, action: actions.RemoveBookmark) {
+  removeBookmark(
+    { dispatch, patchState }: StateContext<State>,
+    action: actions.RemoveBookmark
+  ) {
     return this.service.removeBookmark(action.payload).pipe(
       exhaustMap((response: Response) => {
         if (response.code === 0) {
@@ -503,7 +517,10 @@ export class CMSState {
   }
 
   @Action(actions.RemoveBookmarkSuccess)
-  removeBookmarkSuccess({ patchState, getState }: StateContext<State>, action: actions.RemoveBookmarkSuccess) {
+  removeBookmarkSuccess(
+    { patchState, getState }: StateContext<State>,
+    action: actions.RemoveBookmarkSuccess
+  ) {
     const state = getState();
     return patchState({
       pageContent: {
@@ -514,7 +531,48 @@ export class CMSState {
   }
 
   @Action(actions.RemoveBookmarkFailure)
-  removeBookmarkFailure({ patchState }: StateContext<State>, action: actions.RemoveBookmarkFailure) {
+  removeBookmarkFailure(
+    { patchState }: StateContext<State>,
+    action: actions.RemoveBookmarkFailure
+  ) {
     return patchState({ error: action.payload });
+  }
+
+  @Action(actions.FetchDSOPractices)
+  fetchDSOPractices(
+    { patchState, dispatch, getState }: StateContext<State>,
+    action: actions.FetchDSOPractices
+  ) {
+    patchState({ DSOPractices: [] });
+    return this.service.findAllContents(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchDSOPracticesSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchDSOPracticesFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchDSOPracticesSuccess)
+  fetchDSOPracticesSuccess(
+    { patchState, getState }: StateContext<State>,
+    action: actions.FetchDSOPracticesSuccess
+  ) {
+    return patchState({ DSOPractices: action.payload });
+  }
+
+  @Action(actions.FetchSponsoredTopicsFailure)
+  fetchDSOPracticesFailure(
+    { patchState, getState }: StateContext<State>,
+    action: actions.FetchDSOPracticesFailure
+  ) {
+    return patchState({
+      error: action.payload
+    });
   }
 }

@@ -47,7 +47,10 @@ export enum CMSActions {
   RemoveBookmark = '[CMS] Remove Bookmark',
   RemoveBookmarkSuccess = '[CMS] Remove Bookmark Success',
   RemoveBookmarkFailure = '[CMS] Remove Bookmark Failure',
-  ResetState = '[CMS] Reset State'
+  ResetState = '[CMS] Reset State',
+  FetchDSOPractices = '[CMS] Fetch DSO Practices',
+  FetchDSOPracticesSuccess = '[CMS] Fetch DSO Practices Success',
+  FetchDSOPracticesFailure = '[CMS] Fetch DSO Practices Failure'
 }
 
 // actions for categories
@@ -193,7 +196,7 @@ export class FetchSponsorsListFailure {
 export class FetchPageContent {
   static readonly type = CMSActions.FetchPageContent;
 
-  constructor(public payload: string,public isPreview?:boolean) {}
+  constructor(public payload: string, public isPreview?: boolean) {}
 }
 export class FetchPageContentSuccess {
   static readonly type = CMSActions.FetchPageContentSuccess;
@@ -247,12 +250,27 @@ export class RemoveBookmarkFailure {
   constructor(public payload: any) {}
 }
 
+//DSO Practices
+export class FetchDSOPractices {
+  static readonly type = CMSActions.FetchDSOPractices;
+  constructor(public payload: any) {}
+}
+export class FetchDSOPracticesSuccess {
+  static readonly type = CMSActions.FetchDSOPracticesSuccess;
+  constructor(public payload: CMSPageContent[]) {}
+}
+export class FetchDSOPracticesFailure {
+  static readonly type = CMSActions.FetchDSOPracticesFailure;
+  constructor(public payload: Error) {}
+}
+
 // reset State
 export class ResetState {
   static readonly type = CMSActions.ResetState;
 
   constructor() {}
 }
+
 
 export type CMSActionTypes =
   | FetchContentTypes
@@ -291,4 +309,7 @@ export type CMSActionTypes =
   | RemoveBookmark
   | RemoveBookmarkSuccess
   | RemoveBookmarkFailure
-  | ResetState;
+  | FetchDSOPractices
+  | FetchDSOPracticesSuccess
+  | FetchDSOPracticesFailure
+  | ResetState

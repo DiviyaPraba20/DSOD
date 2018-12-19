@@ -2,7 +2,8 @@
   <div class="topic-block" [ngClass]="{'topic-block-sm':styleFor==='content-sm','topic-block-lg':styleFor=='content-lg'}">
     <div class="topic-block-header" *ngIf="showHeader">
       <h4>{{topic.categoryName}}</h4>
-      <dsod-rating [rating]="topic.avgCommentRating"></dsod-rating>
+      <dsod-rating *ngIf="showRating" [rating]="topic.avgCommentRating"></dsod-rating>
+      <h4 *ngIf="!showRating">{{topic.publishDate | date:'mediumDate'}}</h4>
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && showImage">
       <a role="button" (click)="navigateTo($event)"><img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid"
@@ -14,21 +15,13 @@
       </a>
     </div>
     <div class="topic-block-content">
-      <h2 class="topic-title-large mb-1"
-        [ngClass]="{'topic-title-small':styleFor=='content-sm'}"
-        (click)="navigateTo($event)"
-      >{{topic.title}}</h2>
+      <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-sm'}" (click)="navigateTo($event)">{{topic.title}}</h2>
       <em *ngIf="topic.author">By&nbsp;{{topic.author.fullName}}
         <a role="button" class="read-about" *ngIf="!topic.featuredMedia" (click)="navigateTo(topic)">
-          <img *ngIf="topic.contentTypeName==='Articles'&& !topic.featuredMediaId"
-            src="assets/images/article-icon.png" alt=""
-            (click)="navigateTo($event)">
-          <img *ngIf="topic.contentTypeName==='Videos'"
-            src="assets/images/youtube-icon.png" alt=""
-            (click)="navigateTo($event)">
-          <img *ngIf="topic.contentTypeName==='Podcasts'"
-            src="assets/images/podcast-icon.png" alt=""
-            (click)="navigateTo($event)">
+          <img *ngIf="topic.contentTypeName==='Articles'&& !topic.featuredMediaId" src="assets/images/article-icon.png"
+            alt="" (click)="navigateTo($event)">
+          <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="" (click)="navigateTo($event)">
+          <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="" (click)="navigateTo($event)">
         </a> </em>
       <div #contentDiv class="excrept-content-lg" [ngClass]="{'excrept-content-sm':styleFor=='content-sm'}" [innerHTML]="topic.excerpt">
       </div>
