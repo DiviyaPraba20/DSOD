@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { CMSContentParams, CMSContentTypeModel } from 'src/app/cms/models';
-import { Store } from '@ngxs/store';
-import { FetchContentTypes, FetchSponsorsList, ResetState } from 'src/app/cms/actions';
+import { Store, Actions, ofActionDispatched } from '@ngxs/store';
+import { FetchContentTypes, FetchSponsorsList, ResetState, FetchSearchResultsSuccess, FetchSponsoredTopics, FetchDSOPracticesSuccess, FetchDSOPractices, FetchSponsorContentsSuccess } from 'src/app/cms/actions';
 import { skip } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'dsod-dso-practice',
@@ -19,9 +20,9 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
   };
   other = [];
   selectedTab = 'All';
-  contentTypeId:string;
+  contentTypeId: string;
   contentTypes: CMSContentTypeModel[];
-  constructor(private store: Store) {
+  constructor(private store: Store, private actions$: Actions, private spinnerService: NgxSpinnerService) {
     store.dispatch(new FetchContentTypes());
     this.contentTypes$ = this.store.select(state => state.cms.contentTypes);
     this.sponsorsList$ = this.store.select(state => state.cms.sponsorsList);
@@ -34,13 +35,25 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
       .subscribe(item => {
         this.contentTypes = item;
       });
+
+    this.actions$
+      .pipe(
+        ofActionDispatched(FetchSponsoredTopics, FetchDSOPractices)
+      )
+      .subscribe(data => {
+        this.spinnerService.show();
+      });  
+    this.actions$
+      .pipe(ofActionDispatched(FetchSponsorContentsSuccess, FetchDSOPracticesSuccess))
+      .subscribe(data => {
+        this.spinnerService.hide();
+      });
   }
 
   filterType(tabName: string) {
-    if(tabName=='All'){
-      this.contentTypeId=null;
-    }
-    else{
+    if (tabName == 'All') {
+      this.contentTypeId = null;
+    } else {
       const type = this.contentTypes.filter(item => item.name == tabName);
       this.contentTypeId = type[0].id;
     }

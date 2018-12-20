@@ -6,9 +6,10 @@ import { DSOPracticeRoutingModule } from './dso-practice-routing.module';
 import { DSO_PRACTICES_COMPONENTS } from './components';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DSO_PRACTICE_CONTAINERS } from './containers';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-  imports: [CommonModule, DSOPracticeRoutingModule, SharedModule, TabsModule.forRoot()],
+  imports: [CommonModule, DSOPracticeRoutingModule, SharedModule, TabsModule.forRoot(), NgxSpinnerModule],
   declarations: [DSO_PRACTICES_COMPONENTS, DSO_PRACTICE_CONTAINERS]
 })
 export class DSOPracticeModule {}
