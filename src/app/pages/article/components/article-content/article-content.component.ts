@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'dsod-article-content',
@@ -8,5 +9,10 @@ import { CMSPageContent } from 'src/app/cms/models';
 })
 export class DSODArticleContentComponent {
   @Input()
-  content: CMSPageContent;
+  content: string;
+  contentString: any;
+  constructor(private sanitizer: DomSanitizer) {}
+  ngOnInit() {
+    this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content);
+  }
 }

@@ -40,7 +40,6 @@ export class DSODSearchResults implements OnInit {
         new actions.FetchSearchResults({
           skip: 0,
           limit: 6,
-          searchValue: val
         })
       );
     });

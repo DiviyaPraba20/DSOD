@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Store } from '@ngxs/store';
 import * as actions from '../../cms/actions';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { GetUserInfo } from '../auth/actions/auth.actions';
 import {
@@ -38,11 +38,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   };
   podcastType: CMSContentTypeModel;
   videoType: CMSContentTypeModel;
+  storeSub: Subscription;
 
   constructor(private store: Store, private authService: AuthService) {
     store.dispatch(new actions.FetchContentTypes());
     store.dispatch(new actions.FetchSponsorsList());
-    store
+    this.storeSub = store
       .select(state => state.cms.contentTypes)
       .pipe(skip(1))
       .subscribe(item => {
@@ -117,5 +118,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(new actions.ResetState());
+    this.storeSub.unsubscribe();
   }
 }
