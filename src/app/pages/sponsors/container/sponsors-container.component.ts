@@ -22,8 +22,9 @@ import { FetchSponsorContents } from '../../../cms/actions';
 export class SponsorsContainerComponent implements OnInit, OnDestroy {
   filterBy = 'All';
   sponsorName = '';
+  skip = 0;
   sponsorsList = [];
-  pageConents$: Observable<CMSResponse<CMSPageContent[]>>;
+  pageConents: CMSPageContent[] = [];
   postType: CMSContentTypeModel;
   sponsorInfo: Sponsors = {
     id: null,
@@ -55,13 +56,14 @@ export class SponsorsContainerComponent implements OnInit, OnDestroy {
 
   onChangeFilter(data: TabDirective): void {
     this.filterBy = data.heading;
+    this.skip = 0;
     this.getPostType();
+    this.searchPostContents();
   }
 
   getPostType() {
     this.store.select(state => state.cms.contentTypes).pipe().subscribe(item => {
       this.postType = item.filter(type => type.name === this.filterBy)[0];
-      this.searchPostContents();
     });
   }
 
@@ -75,7 +77,6 @@ export class SponsorsContainerComponent implements OnInit, OnDestroy {
   searchPostContents() {
     let contentTypeId = null;
     let sponsorId = null;
-    console.log(this.sponsorInfo);
     if (this.sponsorInfo && this.sponsorInfo.id) {
       sponsorId = this.sponsorInfo.id;
     }
@@ -84,8 +85,8 @@ export class SponsorsContainerComponent implements OnInit, OnDestroy {
     }
     this.spinner.show();
     this.store.dispatch(new FetchSponsorContents({
-      skip: 0,
-      limit: 5,
+      skip: this.skip,
+      limit: 10,
       contentTypeId: contentTypeId,
       sponsorId: sponsorId
     })).subscribe(res => {
@@ -94,10 +95,14 @@ export class SponsorsContainerComponent implements OnInit, OnDestroy {
   }
 
   getPostContents() {
-    this.pageConents$ = this.store.select(state => state.cms.sponsoredTopics);
+    this.store.select(state => state.cms.sponsoredTopics).subscribe(res => {
+      this.pageConents = res;
+      this.skip += 10;
+    });
   }
 
   onScroll() {
     console.log('hahahaha');
+    this.searchPostContents();
   }
 }

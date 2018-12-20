@@ -9,6 +9,7 @@ import { SponsorsContainerComponent } from './container/sponsors-container.compo
 import { CMSModule } from '../../cms/cms.module';
 import { SharedModule } from '../../shared/shared.module';
 import { SponsorPostsComponent } from './components/sponsor-posts/sponsor-posts.component';
+import { IndividualSponsorContainerComponent } from './components/individual-sponsor-container/individual-sponsor-container.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { SponsorPostsComponent } from './components/sponsor-posts/sponsor-posts.
   ],
   declarations: [
     SponsorsContainerComponent,
-    SponsorPostsComponent
+    SponsorPostsComponent,
+    IndividualSponsorContainerComponent
   ]
 })
 export class SponsorsModule { }
