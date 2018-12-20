@@ -5,11 +5,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { SponsorsRoutingModule } from './sponsors-routing.module';
-import { SponsorsContainerComponent } from './container/sponsors-container.component';
+import { SponsorsContainerComponent } from './components/sponsors-container/sponsors-container.component';
 import { CMSModule } from '../../cms/cms.module';
 import { SharedModule } from '../../shared/shared.module';
 import { SponsorPostsComponent } from './components/sponsor-posts/sponsor-posts.component';
-import { IndividualSponsorContainerComponent } from './components/individual-sponsor-container/individual-sponsor-container.component';
 
 @NgModule({
   imports: [
@@ -23,8 +22,7 @@ import { IndividualSponsorContainerComponent } from './components/individual-spo
   ],
   declarations: [
     SponsorsContainerComponent,
-    SponsorPostsComponent,
-    IndividualSponsorContainerComponent
+    SponsorPostsComponent
   ]
 })
 export class SponsorsModule { }

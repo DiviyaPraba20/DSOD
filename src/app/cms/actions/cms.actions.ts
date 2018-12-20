@@ -6,7 +6,7 @@ import {
   CMSContentTypeModel,
   CMSResponse,
   CMSPageContent,
-  Sponsors,
+  Sponsor,
   RemoveBookmarkPayload
 } from '../models';
 
@@ -202,7 +202,7 @@ export class FetchSponsorsList {
 export class FetchSponsorsListSuccess {
   static readonly type = CMSActions.FetchSponsorsListSuccess;
 
-  constructor(public payload: Sponsors[]) {}
+  constructor(public payload: Sponsor[]) {}
 }
 export class FetchSponsorsListFailure {
   static readonly type = CMSActions.FetchSponsorsListFailure;

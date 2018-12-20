@@ -8,14 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./latest.component.scss']
 })
 export class DSODLatestComponent {
-  @Input()
-  latestTopics: CMSPageContent[];
+  @Input() latestTopics: CMSPageContent[];
 
   constructor(private router: Router) {}
 
   navigateTo(content: CMSPageContent) {
-    if (content.contentTypeName == 'Videos')
+    if (content.contentTypeName === 'Videos') {
       this.router.navigate(['./video', content.id]);
-    else this.router.navigate(['./article', content.id]);
+    } else {
+      this.router.navigate(['./article', content.id]);
+    }
   }
 }
