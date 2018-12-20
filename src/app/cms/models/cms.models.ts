@@ -103,7 +103,7 @@ export interface CMSResponse<T> extends Response {
   resultMap: { data: T[]; totalCount: number; sponsors: any[] };
 }
 
-export interface Sponsors {
+export interface Sponsor {
   id: string;
   name: string;
 }

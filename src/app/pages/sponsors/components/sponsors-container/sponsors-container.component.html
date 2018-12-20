@@ -1,20 +1,23 @@
-<div class="sponsors-container">
+<div class="sponsors-container"
+  infiniteScroll
+  [infiniteScrollDistance]="0.05"
+  (scrolled)="onScroll()">
   <h2 class="title">From Our Sponsors</h2>
   <tabset class="dsod-tab-set">
     <tab heading="All" customClass="dsod-tab" (select)="onChangeFilter($event)">
-      <dsod-sponsor-posts [posts]="pageConents$ | async"></dsod-sponsor-posts>
+      <dsod-sponsor-posts [posts]="pageConents"></dsod-sponsor-posts>
     </tab>
     <tab heading="Articles" customClass="dsod-tab" (select)="onChangeFilter($event)">
-      <dsod-sponsor-posts [posts]="pageConents$ | async"></dsod-sponsor-posts>
+      <dsod-sponsor-posts [posts]="pageConents"></dsod-sponsor-posts>
     </tab>
     <tab heading="Videos" customClass="dsod-tab" (select)="onChangeFilter($event)">
-      <dsod-sponsor-posts [posts]="pageConents$ | async"></dsod-sponsor-posts>
+      <dsod-sponsor-posts [posts]="pageConents"></dsod-sponsor-posts>
     </tab>
     <tab heading="Podcasts" customClass="dsod-tab" (select)="onChangeFilter($event)">
-      <dsod-sponsor-posts [posts]="pageConents$ | async"></dsod-sponsor-posts>
+      <dsod-sponsor-posts [posts]="pageConents"></dsod-sponsor-posts>
     </tab>
     <tab heading="Visual Essay" customClass="dsod-tab" (select)="onChangeFilter($event)">
-      <dsod-sponsor-posts [posts]="pageConents$ | async"></dsod-sponsor-posts>
+      <dsod-sponsor-posts [posts]="pageConents"></dsod-sponsor-posts>
     </tab>
   </tabset>
 </div>
