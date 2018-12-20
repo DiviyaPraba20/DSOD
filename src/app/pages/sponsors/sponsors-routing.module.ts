@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SponsorsContainerComponent } from './components/sponsors-container/sponsors-container.component';
+import { SponsorContentComponent } from './components/sponsor-content/sponsor-content.component';
+import { SponsorsContainerComponent } from './container/sponsors-container.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: SponsorsContainerComponent,
     children: [
       {
         path: '',
-        component: SponsorsContainerComponent
+        component: SponsorContentComponent
       },
       {
         path: ':name',
-        component: SponsorsContainerComponent
+        component: SponsorContentComponent
       }
     ]
   }
