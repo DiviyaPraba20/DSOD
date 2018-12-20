@@ -30,7 +30,7 @@ export class NavbarService {
       },
       {
         title: 'From Our Sponsors',
-        link: 'sponsors/ALN',
+        link: 'sponsors',
         children: [
           { title: 'Align Technology, Inc', link: 'sponsors/ALN' },
           { title: 'GlaxoSmithKline', link: 'sponsors/GSK' },

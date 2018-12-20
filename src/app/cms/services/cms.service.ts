@@ -9,7 +9,7 @@ import {
   CMSContentParams,
   CMSResponse,
   CMSPageContent,
-  Sponsors,
+  Sponsor,
   RemoveBookmarkPayload
 } from '../models';
 import { Store } from '@ngxs/store';
@@ -70,7 +70,7 @@ export class CMSService {
   }
 
   getAllSponsors<T>() {
-    return this.http.post<CMSResponse<Sponsors>>(
+    return this.http.post<CMSResponse<Sponsor>>(
       `${environment.url}/sponsor/getAll`,
       {}
     );

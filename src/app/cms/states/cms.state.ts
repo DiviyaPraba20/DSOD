@@ -7,7 +7,7 @@ import { Response } from '../../core/models/common';
 import {
   CMSContentTypeModel,
   CMSPageContent,
-  Sponsors,
+  Sponsor,
   CMSResponse
 } from '../models';
 import * as actions from '../actions/cms.actions';
@@ -20,7 +20,7 @@ export interface State {
   featuredTopics: CMSPageContent[];
   latestTopics: CMSPageContent[];
   trendingTopics: CMSPageContent[];
-  sponsorsList: Sponsors[];
+  sponsorsList: Sponsor[];
   sponsoredTopics: CMSPageContent[];
   podcasts: CMSPageContent[];
   DSOPractices: CMSPageContent[];
