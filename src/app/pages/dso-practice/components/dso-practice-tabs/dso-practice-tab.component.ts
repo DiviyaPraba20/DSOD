@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, OnDestroy } from "@angular/core";
 import { CMSContentTypeModel, CMSContentParams, CMSPageContent } from "src/app/cms/models";
 import { Store } from "@ngxs/store";
-import { FetchDSOPractices } from "src/app/cms/actions";
+import { FetchDSOPractices, ResetState } from "src/app/cms/actions";
 import { Observable } from "rxjs";
 
 @Component({
@@ -9,8 +9,8 @@ import { Observable } from "rxjs";
   templateUrl: './dso-practice-tab.component.html',
   styleUrls: ['./dso-practice-tab.component.scss']
 })
-export class DSODPracticesTabComponent implements OnInit {
-  @Input() contentType: CMSContentTypeModel[];
+export class DSODPracticesTabComponent implements OnInit{
+  @Input() contentTypeId:string
   @Input() DSOPracicesPost$: Observable<CMSPageContent[]>;
   params: CMSContentParams = {
     skip: 0,
@@ -21,8 +21,9 @@ export class DSODPracticesTabComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new FetchDSOPractices({
         ...this.params,
-        contentTypeId: this.contentType[0] ? this.contentType[0].id : null
+      contentTypeId: this.contentTypeId
       }));
     this.DSOPracicesPost$ = this.store.select(state => state.cms.DSOPractices);
   }
+
 }

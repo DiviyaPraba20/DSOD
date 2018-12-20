@@ -5,7 +5,7 @@
       <h4>{{latestTopics[0].categoryName}}</h4>
       <dsod-rating [rating]="latestTopics[0].avgCommentRating"></dsod-rating>
     </div>
-    <div class="latest-block-thumbnail">
+    <div class="latest-block-thumbnail" *ngIf="latestTopics[0].featuredMedia">
       <img src={{latestTopics[0].featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail Large">
       <a href="" class="read-about">
         <img *ngIf="latestTopics[0].contentTypeName=='Articles'" src="assets/images/article-icon.png" alt="">
