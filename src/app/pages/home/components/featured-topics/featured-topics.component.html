@@ -5,7 +5,9 @@
     </h2>
     <div class="row" *ngIf="featuredTopics">
       <div class="col-lg-6" *ngFor="let topic of featuredTopics | slice : 0:1">
+        <div class="content-lg">
         <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-lg" [showRating]=true></dsod-topic>
+      </div>
       </div>
       <div class="col-lg-6">
         <div class="row">
