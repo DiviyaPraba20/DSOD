@@ -21,11 +21,11 @@ export interface SponsorContentInfo {
 }
 
 @Component({
-  selector: 'dsod-sponsors-container',
-  templateUrl: './sponsors-container.component.html',
-  styleUrls: ['./sponsors-container.component.scss']
+  selector: 'dsod-sponsor-content',
+  templateUrl: './sponsor-content.component.html',
+  styleUrls: ['./sponsor-content.component.scss']
 })
-export class SponsorsContainerComponent implements OnInit, OnDestroy {
+export class SponsorContentComponent implements OnInit, OnDestroy {
   filterBy = 'All';
   sponsorsList = [];
   sponsorName = '';
