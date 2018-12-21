@@ -1,7 +1,72 @@
+@import 'variables';
+
 .sponsor-content-container {
   .title {
     text-align: center;
     font-size: 38px;
     margin-bottom: 50px
   }
+  .tabs-wrapper {
+    /deep/ .nav-tabs {
+      justify-content: center;
+      border-bottom: none;
+      margin-bottom: 30px;
+      .nav-item {
+        .nav-link {
+          border-radius: 0px;
+          border: 1px solid #ccc;
+          border-width: 1px 0px 1px 1px;
+          min-width: 100px;
+          text-align: center;
+          color: $mine_grey;
+          font-size: 20px;
+          &.active {
+            background: $dropdown_grey;
+          }
+        }
+        &:last-child {
+          .nav-link {
+            border-right: 1px solid #ccc;
+          }
+        }
+      }
+    }
+  }
 }
+
+// /deep/ .dsod-tab-set {
+//   .tab-content {
+//     .dsod-tab {
+//       padding: 50px 100px 100px;
+//     }
+//   }
+// }
+// .tabs-wrapper {
+//   /deep/ .nav-tabs {
+//     justify-content: center;
+//     border-bottom: none;
+//     margin-bottom: 30px;
+
+//     .nav-item {
+//       .nav-link {
+//         border-radius: 0px;
+//         border: 1px solid #ccc;
+//         border-width: 1px 0px 1px 1px;
+//         min-width: 100px;
+//         text-align: center;
+//         color: $mine_grey;
+//         font-size: 20px;
+
+//         &.active {
+//           background: $dropdown_grey;
+//         }
+//       }
+
+//       &:last-child {
+//         .nav-link {
+//           border-right: 1px solid #ccc;
+//         }
+//       }
+//     }
+//   }
+// }

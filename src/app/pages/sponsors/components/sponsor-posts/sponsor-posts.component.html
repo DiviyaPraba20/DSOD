@@ -1,37 +1,27 @@
-<div class="sponsor-posts-container">
-  <div class="row">
-    <div class="col-md-12" *ngFor="let post of posts">
-      <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-4">
-          <div class="our-sponsors">
-            <div class="our-sponsors-header">
-              <h4 *ngIf="post.sponsorName === 'ALN'">
-                <img src="assets/images/align-logo.png" alt="">
-                Sponsored content from Align Technology, Inc.
-              </h4>
-              <h4 *ngIf="post.sponsorName === 'NBL'">
-                <img src="assets/images/nb-logo.png" alt="">
-                Sponsored content from Nobel Biocare, N.A.
-              </h4>
-              <h4 *ngIf="post.sponsorName === 'GSK'">
-                <img src="assets/images/gsk-icon-sm.png" alt="">
-                Sponsored content from GlaxoSmithKline
-              </h4>
-            </div>
-            <dsod-topic [topic]="post" [showImage]="false" styleFor="content-lg" [showHeader]="false"></dsod-topic>
+<div class="sponsor-post-container">
+  <div *ngFor="let post of posts; let i = index">
+    <div class="row post-container" [ngClass]="{'last-post': i >= posts.length - 2}">
+      <div class="col-md-6">
+        <div class="sponsor-desc">
+          <div class="sponsor-header">
+            <h3 *ngIf="post.sponsorName==='NBL'" class="bg-red">Sponsored conent from Nobel Biocare</h3>
+            <h3 *ngIf="post.sponsorName==='GSK'" class="bg-blue">Sponsored content from GlaxoSmithKline</h3>
+            <h3 *ngIf="post.sponsorName==='ALN'" class="bg-black">Sponsored content from Align Technology, Inc.</h3>
           </div>
+          <h2>{{post.title}}</h2>
+          <span>{{post.author.fullName}}</span>
+          <div class="d-flex justify-content-between align-items-center date-wrap">
+            <span>{{post.publishDate | date:'mediumDate'}}</span>
+            <a href="#" class="implant-btn">{{post.categoryName}}</a>
+          </div>
+          <div class="excerpt" [innerHtml]="post.excerpt"></div>
+          <hr class="mt-2 mb-2">
+          <a href="javascript:void(0)" (click)="navigateTo(post)" class="read-more-btn">Read More <span><i class="fa fa-arrow-right"
+                aria-hidden="true"></i></span></a>
         </div>
-        <div class="col-lg-4">
-          <section class="sponsors-ortho">
-            <div>
-              <dsod-media-content title="implant Dentisty" [placeholderImageSrc]="post.featuredMedia?.code.originalUrl"
-                [title]="post.categoryName">
-              </dsod-media-content>
-            </div>
-          </section>
-        </div>
-        <div class="col-lg-2"></div>
+      </div>
+      <div class="col-md-6 thumbnail">
+        <img *ngIf="post.featuredMedia" class="img-fluid" src="{{post.featuredMedia.code.originalUrl}}" alt="">
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsod-sponsor-posts',
@@ -9,7 +10,19 @@ import { CMSPageContent } from 'src/app/cms/models';
 export class SponsorPostsComponent implements OnInit {
   @Input() posts: CMSPageContent[];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() { }
+
+  navigateTo(e) {
+    if (e.contentTypeName === 'Videos') {
+      this.router.navigate(['./video', e.id]);
+    } else if (e.contentTypeName === 'Podcasts') {
+      this.router.navigate(['./podcast', e.id, 'author', 1]);
+    } else {
+      this.router.navigate(['./article', e.id]);
+    }
+  }
 }

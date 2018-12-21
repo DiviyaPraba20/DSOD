@@ -1,70 +1,79 @@
 @import 'variables';
 
-.our-sponsors {
-  padding: 13px 0;
-
-  .our-sponsors-header {
-    padding: 11px 0px 0px 16px;
-    border-bottom: 1px solid #8799A7;
-
-    h4 {
-      display: flex;
-      color: $color-primary;
-      font-size: 20px;
-      padding-right: 30px;
-
-      img {
-        align-self: center;
-        margin-right: 20px;
-      }
+.sponsor-post-container {
+  .post-container {
+    width: 80%;
+    background-color: $color-white;
+    margin: auto auto 70px;
+    &.last-post {
+      width: 100%;
+      margin-bottom: 0;
     }
-  }
-
-  /deep/ dsod-topic {
-    .block-wrap {
-      .topic-block {
-        background: none;
-
-        .topic-block-content {
-          /deep/ h2.topic-title-large {
-            font-size: 24px !important;
-          }
-
-          .excrept-content-lg {
-            /deep/ p:last-child {
-              max-height: 164px;
-            }
-          }
+    .sponsor-desc {
+      padding: 50px;
+      .sponsor-header {
+        h3 {
+          font-size: 18px;
+          padding: 13px;
+          color: $color-white;
+          text-align: center;
+          margin-bottom: 30px;
         }
       }
-    }
-  }
-}
-
-.sponsors-ortho {
-  font-family: $Arial;
-
-  .sponsors-ortho-block {
-    margin: 15px 0 33px;
-    background: #f8f8f8;
-
-    .sponsors-ortho-block-header {
-      display: flex;
-      justify-content: space-between;
-      padding: 21px 15px 9px;
-
-      h4 {
-        color: $color-primary;
-        font-size: 22px;
+      h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+      >span {
+        font-size: 18px;
+        display: block;
+        margin-bottom: 20px;
+        color: $dusty-gray;
+        font-weight: bold;
+      }
+      .date-wrap {
+        margin-bottom: 28px;
+        span {
+          font-size: 18px;
+          display: block;
+          color: $dusty-gray;
+        }
+        a {
+          display: inline-block;
+          padding: 4px 15px;
+          font-size: 18px;
+          background: $color-primary;
+          color: $color-white;
+          font-weight: 500;
+          border-radius: 3px;
+        }
+      }
+      .excerpt {
+        font-size: 18px;
+        color: $dusty-gray;
+        /deep/ p {
+          font-size: 18px;
+          color: $dusty-gray;
+        }
+      }
+      a.read-more-btn {
+        font-size: 16px;
+        color: $dusty-gray;
+      }
+      .bg-red {
+        background: $thunderbird;
+      }
+      .bg-blue {
+        background: $bg-blue;
+      }
+      .bg-black {
+        background: $lisbon-brown;
       }
     }
-
-    .sponsors-ortho-block-video {
-      position: relative;
-      border-top: 3px solid $mine_grey;
-      position: relative;
-
-      >img {
+    .thumbnail {
+      padding: 0;
+      img {
         width: 100%;
       }
     }
