@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SponsorPostsComponent implements OnInit {
   @Input() posts: CMSPageContent[];
+  @Output() loadMore: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private router: Router
@@ -24,5 +25,9 @@ export class SponsorPostsComponent implements OnInit {
     } else {
       this.router.navigate(['./article', e.id]);
     }
+  }
+
+  onLoadMore() {
+    this.loadMore.emit();
   }
 }

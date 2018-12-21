@@ -29,6 +29,7 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
   filterBy = 'All';
   sponsorsList = [];
   sponsorName = '';
+  fetchingLimit = 10;
   pageConents: CMSPageContent[] = [];
   postType: CMSContentTypeModel;
   sponsorContentsInfo: SponsorContentInfo[] = [];
@@ -48,7 +49,6 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.pageConents = [];
-      console.log(params.name, this.pageConents);
       this.sponsorName = params.name;
       this.getSponsorId();
       this.getPostType();
@@ -65,7 +65,7 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
     this.filterBy = data.heading;
     this.pageConents = [];
     this.getPostType();
-    this.searchAllSponsorPostContents();
+    this.searchAllSponsorPostContents(this.fetchingLimit);
   }
 
   getPostType() {
@@ -90,6 +90,7 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
               total: 0,
               isLast: false
             });
+            this.fetchingLimit = 10;
           }
         } else {
           if (sponsor.name !== 'TNMG') {
@@ -98,14 +99,15 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
               total: 0,
               isLast: false
             });
+            this.fetchingLimit = 2;
           }
         }
       });
-      this.searchAllSponsorPostContents();
+      this.searchAllSponsorPostContents(this.fetchingLimit);
     });
   }
 
-  async searchAllSponsorPostContents() {
+  async searchAllSponsorPostContents(limit: number) {
     let contentTypeId = null;
     if (this.postType && this.postType.id) {
       contentTypeId = this.postType.id;
@@ -115,13 +117,14 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
       await forkJoin(this.sponsorContentsInfo.map((item: SponsorContentInfo) => {
         return this.cmsService.findAllContents({
           skip: item.total,
-          limit: 5,
+          limit: limit,
           contentTypeId: contentTypeId,
           sponsorId: item.sponsorInfo.id
         }).pipe(
           tap(res => {
             if (res.code === 0) {
               item.total += res.resultMap.data.length;
+              console.log(res.resultMap.data);
               this.pageConents = this.pageConents.concat(res.resultMap.data);
             }
           })
@@ -134,7 +137,17 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
     }
   }
 
-  onScroll() {
-    this.searchAllSponsorPostContents();
+  onLoadMore() {
+    if (this.sponsorName) {
+      this.fetchingLimit = 5;
+    }
+    this.searchAllSponsorPostContents(this.fetchingLimit);
   }
+
+  // filterPostContents(data: CMSPageContent[]) {
+  //   let individualSponsorPosts: CMSPageContent[] = [];
+  //   this.sponsorContentsInfo.map(sponsorInfo => {
+
+  //   })
+  // }
 }

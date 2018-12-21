@@ -25,4 +25,7 @@
       </div>
     </div>
   </div>
+  <div class="load-more-container" *ngIf="posts.length">
+    <button class="btn btn-primary btn-load-more" (click)="onLoadMore()">Load More</button>
+  </div>
 </div>

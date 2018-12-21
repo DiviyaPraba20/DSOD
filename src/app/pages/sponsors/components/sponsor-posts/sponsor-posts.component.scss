@@ -78,4 +78,13 @@
       }
     }
   }
+  .load-more-container {
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btn-load-more {
+      width: 250px;
+    }
+  }
 }
