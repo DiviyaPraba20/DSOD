@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DSODPracticePageComponent } from './components/dso-practice/dso-practice.component';
+import { DSODPracticePageComponent } from './containers/dso-practice/dso-practice.component';
 
 const routes: Routes = [
   {

@@ -7,11 +7,10 @@ import {
 } from 'src/app/cms/actions';
 import {
   CMSContentParams,
-  CMSContentTypeModel,
   CMSPageContent,
   CMSResponse
 } from 'src/app/cms/models';
-import { Observable, Subscribable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -21,7 +20,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sponsors-post.component.scss']
 })
 export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
-  @Input() contentType: CMSContentTypeModel;
+  @Input() contentTypeId: string;
   storeSub: Subscription;
   sponsoredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   params: CMSContentParams = {
@@ -30,7 +29,10 @@ export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
   };
   constructor(private store: Store, private router: Router) {
     store.dispatch(new FetchSponsorsList());
-    this.storeSub = store
+  }
+
+  ngOnInit() {
+    this.storeSub = this.store
       .select(state => state.cms.sponsorsList)
       .pipe(skip(1))
       .subscribe(item => {
@@ -39,7 +41,7 @@ export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
             ...this.params,
             limit: 1,
             sponsorId: '197',
-            contentTypeId: this.contentType[0] ? this.contentType[0].id : null
+            contentTypeId: this.contentTypeId
           })
         );
         this.store.dispatch(
@@ -47,13 +49,10 @@ export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
             ...this.params,
             limit: 1,
             sponsorId: '502',
-            contentTypeId: this.contentType[0] ? this.contentType[0].id : null
+            contentTypeId: this.contentTypeId
           })
         );
       });
-  }
-
-  ngOnInit() {
     this.sponsoredTopics$ = this.store.select(
       state => state.cms.sponsoredTopics
     );
