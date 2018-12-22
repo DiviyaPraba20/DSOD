@@ -100,10 +100,40 @@ ul li {
   display: none;
 }
 
+.viewer-modal {
+  .modal-dialog {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+
+    .modal-content {
+      border: none;
+      border-radius: 0;
+
+      .modal-body {
+        height: calc(100vh - 153px);
+        overflow: hidden auto;
+      }
+
+      .modal-footer {
+        .btn {
+          width: auto;
+          min-width: 120px;
+        }
+
+        .text-black {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (min-width:1366px) {
   .container {
     max-width: 1300px;
   }
+
 }
 
 @media only screen and (min-width:1440px) {

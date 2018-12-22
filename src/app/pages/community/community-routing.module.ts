@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DSODCommunityComponent } from './components/community/community.component';
-import { DSODUniteMagazineComponent } from './components/unite-magazine/unite-magazine.component';
+import { DSODUniteMagazinePageComponent } from './containers/unite-magazine/unite-magazine.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'unite',
-    component: DSODUniteMagazineComponent
+    component: DSODUniteMagazinePageComponent
   }
 ];
 

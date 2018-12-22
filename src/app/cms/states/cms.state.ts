@@ -8,7 +8,8 @@ import {
   CMSContentTypeModel,
   CMSPageContent,
   Sponsor,
-  CMSResponse
+  CMSResponse,
+  UniteMagazine
 } from '../models';
 import * as actions from '../actions/cms.actions';
 import { CMSService } from '../services/cms.service';
@@ -25,6 +26,8 @@ export interface State {
   podcasts: CMSPageContent[];
   DSOPractices: CMSPageContent[];
   searchResults: CMSResponse<CMSPageContent>;
+  uniteMagzazines: UniteMagazine[];
+  uniteContent: CMSPageContent;
   isLoading: boolean;
   error: Error;
 }
@@ -42,6 +45,8 @@ export interface State {
     sponsoredTopics: [],
     podcasts: [],
     DSOPractices: [],
+    uniteMagzazines: [],
+    uniteContent: null,
     searchResults: null,
     isLoading: false,
     error: null
@@ -459,10 +464,10 @@ export class CMSState {
       sponsorsList: [],
       sponsoredTopics: [],
       pageContent: null,
-      podcasts: []
+      podcasts: [],
+      uniteMagzazines: []
     });
   }
-
 
   // search results  action decorators
   @Action(actions.FetchSearchResults)
@@ -609,6 +614,86 @@ export class CMSState {
   fetchDSOPracticesFailure(
     { patchState, getState }: StateContext<State>,
     action: actions.FetchDSOPracticesFailure
+  ) {
+    return patchState({
+      error: action.payload
+    });
+  }
+
+  // Unite Magazines list actions decorators
+
+  @Action(actions.FetchUnites)
+  fetchUnites(
+    { patchState, dispatch, getState }: StateContext<State>,
+    action: actions.FetchUnites
+  ) {
+    patchState({ DSOPractices: [] });
+    return this.service.findAllMagazine(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchUnitesSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchUnitesFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchUnitesSuccess)
+  fetchUnitesSuccess(
+    { patchState }: StateContext<State>,
+    action: actions.FetchUnitesSuccess
+  ) {
+    return patchState({ uniteMagzazines: action.payload });
+  }
+
+  @Action(actions.FetchUnitesFailure)
+  fetchUnitesFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchUnitesFailure
+  ) {
+    return patchState({
+      error: action.payload
+    });
+  }
+
+  // Unite Magazine content actions decorators
+
+  @Action(actions.FetchUniteContent)
+  fetchUniteContent(
+    { patchState, dispatch, getState }: StateContext<State>,
+    action: actions.FetchUniteContent
+  ) {
+    patchState({ DSOPractices: [] });
+    return this.service.findOneMagazine(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchUniteContentSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchUniteContentFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchUniteContentSuccess)
+  fetchUniteContentSuccess(
+    { patchState }: StateContext<State>,
+    action: actions.FetchUniteContentSuccess
+  ) {
+    return patchState({ uniteContent: action.payload });
+  }
+
+  @Action(actions.FetchUniteContentFailure)
+  fetchUniteContentFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchUniteContentFailure
   ) {
     return patchState({
       error: action.payload
