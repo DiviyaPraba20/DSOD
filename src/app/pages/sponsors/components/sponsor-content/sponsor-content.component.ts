@@ -133,6 +133,7 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
     } catch (e) {
       console.log(e);
     } finally {
+      this.filterPostContents(this.pageConents);
       this.spinner.hide();
     }
   }
@@ -144,10 +145,24 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
     this.searchAllSponsorPostContents(this.fetchingLimit);
   }
 
-  // filterPostContents(data: CMSPageContent[]) {
-  //   let individualSponsorPosts: CMSPageContent[] = [];
-  //   this.sponsorContentsInfo.map(sponsorInfo => {
-
-  //   })
-  // }
+  filterPostContents(data: CMSPageContent[]) {
+    const individualSponsorPosts: CMSPageContent[][] = [];
+    this.sponsorContentsInfo.map(sponsorInfo => {
+      individualSponsorPosts.push(data.filter(post => post.sponsorId === sponsorInfo.sponsorInfo.id));
+    });
+    let maxCount = 0;
+    individualSponsorPosts.map(sponsorPost => {
+      if (sponsorPost.length > maxCount) {
+        maxCount = sponsorPost.length;
+      }
+    });
+    this.pageConents = [];
+    for (let i = 0; i < maxCount; i++) {
+      individualSponsorPosts.map(sponsorPosts => {
+        if (sponsorPosts.length > i) {
+          this.pageConents.push(sponsorPosts[i]);
+        }
+      });
+    }
+  }
 }
