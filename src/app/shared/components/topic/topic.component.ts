@@ -8,15 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./topic.component.scss']
 })
 export class DSODTopicComponent {
-  @Input()
-  topic: CMSPageContent;
-  @Input()
-  showImage?: boolean;
-  @Input()
-  showHeader?: boolean;
-  @Input()
-  styleFor: string;
-  @Input() showRating:boolean
+  @Input() topic: CMSPageContent;
+  @Input() showImage?: boolean;
+  @Input() showHeader?: boolean;
+  @Input() styleFor: string;
+  @Input() showRating: boolean;
 
   constructor(private router: Router) {}
 
