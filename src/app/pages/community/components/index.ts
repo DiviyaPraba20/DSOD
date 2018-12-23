@@ -1,7 +1,4 @@
 import { DSODCommunityComponent } from './community/community.component';
-import { DSODUniteMagazineComponent } from './unite-magazine/unite-magazine.component';
+import { DSODUniteMagazineViewerComponent } from './unite-viewer/unite-viewer-modal.component';
 
-export const COMMUNITY_COMPONENTS = [
-  DSODCommunityComponent,
-  DSODUniteMagazineComponent
-];
+export const COMMUNITY_COMPONENTS = [DSODCommunityComponent, DSODUniteMagazineViewerComponent];

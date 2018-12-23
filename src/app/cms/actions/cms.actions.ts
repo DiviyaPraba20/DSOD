@@ -1,5 +1,5 @@
 import { Action } from '@ngxs/store';
-import { Bookmark } from '../models/cms.models';
+import { Bookmark, UniteMagazine } from '../models/cms.models';
 import { Response } from '../../core/models/common';
 import {
   CMSContentParams,
@@ -54,6 +54,12 @@ export enum CMSActions {
   FetchSponsorContents = '[CMS] Fetch Sponsor Contents',
   FetchSponsorContentsSuccess = '[CMS] Fetch Sponsor Contents Success',
   FetchSponsorContentsFailure = '[CMS] Fetch Sponsor Contents Failure',
+  FetchUnites = '[CMS] Fetch Unites',
+  FetchUnitesSuccess = '[CMS] Fetch Unites Success',
+  FetchUnitesFailure = '[CMS] Fetch Unites Failure',
+  FetchUniteContent = '[CMS] Fetch Unite Content',
+  FetchUniteContentSuccess = '[CMS] Fetch Unite Content Success',
+  FetchUniteContentFailure = '[CMS] Fetch Unite Content Failure'
 }
 
 // actions for categories
@@ -290,7 +296,33 @@ export class ResetState {
 
   constructor() {}
 }
+//  actions for Unite Magazines list
+export class FetchUnites {
+  static readonly type = CMSActions.FetchUnites;
+  constructor(public payload: CMSContentParams) {}
+}
+export class FetchUnitesSuccess {
+  static readonly type = CMSActions.FetchUnitesSuccess;
+  constructor(public payload: UniteMagazine[]) {}
+}
+export class FetchUnitesFailure {
+  static readonly type = CMSActions.FetchUnitesFailure;
+  constructor(public payload: Error) {}
+}
 
+//  actions for Unite content
+export class FetchUniteContent {
+         static readonly type = CMSActions.FetchUniteContent;
+         constructor(public payload: string) {}
+       }
+export class FetchUniteContentSuccess {
+         static readonly type = CMSActions.FetchUniteContentSuccess;
+         constructor(public payload: any) {}
+       }
+export class FetchUniteContentFailure {
+         static readonly type = CMSActions.FetchUniteContentFailure;
+         constructor(public payload: Error) {}
+       }
 
 export type CMSActionTypes =
   | FetchContentTypes
@@ -336,3 +368,9 @@ export type CMSActionTypes =
   | FetchSponsorContents
   | FetchSponsorContentsSuccess
   | FetchSponsorContentsFailure
+  | FetchUnites
+  | FetchUnitesSuccess
+  | FetchUnitesFailure
+  | FetchUniteContent
+  | FetchUniteContentSuccess
+  | FetchUniteContentFailure;

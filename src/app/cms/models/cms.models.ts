@@ -81,7 +81,7 @@ export interface CMSPageContent {
   visualEssays?: any;
   relativeTopics?: any;
   relativeTopicList?: any;
-  references?:any;
+  references?: any;
 }
 
 export interface CMSContentParams {
@@ -129,4 +129,21 @@ export interface Bookmark {
 export interface RemoveBookmarkPayload {
   email: string;
   contentId: string;
+}
+
+export interface UniteMagazine {
+  _id: string;
+  serial: any;
+  vol: string;
+  publishDate: any;
+  cover: string;
+  articles: Array<string>;
+  createDate: any;
+  createUser: string;
+  isRelease: boolean;
+  issue: string;
+  sort: number;
+  status: number;
+  pdfId: string;
+  version: number;
 }
