@@ -23,9 +23,11 @@ import { CMSModule } from './cms/cms.module';
 import { FormsModule } from '@angular/forms';
 import { PreviewModule } from './pages/preview/preview.module';
 import { HomeModule } from './pages/home/home.module';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AboutComponent, ContactComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

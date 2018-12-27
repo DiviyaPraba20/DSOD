@@ -1,0 +1,21 @@
+.contact-container {
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  .logo {
+    background-color: #191919;
+    padding: 50px;
+    width: 400px;
+  }
+  .content {
+    padding: 0 100px;
+    font-size: 22px;
+    .company {
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .item-group {
+      padding: 20px 0;
+    }
+  }
+}
