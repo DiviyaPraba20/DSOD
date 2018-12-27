@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DSODComingSoonComponent } from './shared/components/coming soon/coming-soon.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -26,10 +28,17 @@ const routes: Routes = [
         path: 'community',
         loadChildren: './pages/community/community.module#CommunityModule'
       },
-
       {
         path: 'practice',
         loadChildren: './pages/dso-practice/dso-practice.module#DSOPracticeModule'
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
       },
       {
         path: '',
