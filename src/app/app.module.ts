@@ -25,9 +25,15 @@ import { PreviewModule } from './pages/preview/preview.module';
 import { HomeModule } from './pages/home/home.module';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, ContactComponent],
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    ContactComponent,
+    PrivacyComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
