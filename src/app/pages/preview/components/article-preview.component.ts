@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   ]
 })
 export class DSODArticelPreviewComponent implements OnInit {
-  @Input() content:CMSPageContent;
+  @Input() content: CMSPageContent;
   contentString: any;
 
   constructor(private sanitizer: DomSanitizer) { }
