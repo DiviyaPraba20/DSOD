@@ -12,7 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./preview.component.scss']
 })
 export class DSODPreviewComponent implements OnInit {
-  isLoading:boolean;
+  isLoading: boolean;
   pageContent$: Observable<CMSResponse<CMSPageContent>>;
 
   constructor(private _route: ActivatedRoute, private store: Store, private actions$: Actions,
@@ -24,7 +24,7 @@ export class DSODPreviewComponent implements OnInit {
 
   ngOnInit() {
     this.spinnerService.show();
-    this.isLoading=true;
+    this.isLoading = true;
     this.pageContent$ = this.store.select(state => state.cms.pageContent);
     this.actions$
       .pipe(ofActionDispatched(actions.FetchPageContentSuccess))
