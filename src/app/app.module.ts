@@ -26,13 +26,15 @@ import { HomeModule } from './pages/home/home.module';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { TermsComponent } from './pages/terms/terms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     ContactComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
