@@ -17,7 +17,8 @@
       </div>
     </div>
     <div class="col-lg-8">
-      <dsod-audio-player [content]="content"></dsod-audio-player>
+      <!-- <dsod-audio-player [content]="content"></dsod-audio-player> -->
+      <div class="article-content" [innerHTML]="content.content"></div>
     </div>
   </div>
   <div class="row">
