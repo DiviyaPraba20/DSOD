@@ -3,14 +3,13 @@
 :host {
   .glide__slide {
     position: relative;
-    // height: 50vh;
     overflow: hidden;
     >img {
-      width: 60%;
-      // height: 50vh;
+      width: 73%;
       object-fit: cover;
       display: flex;
       margin: auto;
+      max-height: 400px;
     }
     .slide-caption {
       position: absolute;
