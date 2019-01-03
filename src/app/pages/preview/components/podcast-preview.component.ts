@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dsod-podcast-preview',
@@ -9,6 +9,8 @@ import { Component, Input } from '@angular/core';
     '../../../shared/components/author/author.component.scss'
   ]
 })
-export class DSODPodcastPreviewComponent {
+export class DSODPodcastPreviewComponent implements OnInit {
   @Input() content;
+
+  ngOnInit() { }
 }
