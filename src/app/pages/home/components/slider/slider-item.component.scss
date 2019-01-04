@@ -3,15 +3,16 @@
 :host {
   .glide__slide {
     position: relative;
-    // height: 50vh;
     overflow: hidden;
+
     >img {
-      width: 60%;
-      // height: 50vh;
+      width: 73%;
       object-fit: cover;
       display: flex;
       margin: auto;
+      max-height: 400px;
     }
+
     .slide-caption {
       position: absolute;
       top: 50%;
@@ -19,24 +20,28 @@
       transform: translate(-50%, -50%);
       text-align: center;
       max-width: 800px;
+
       h1 {
         font-size: 80px;
         color: $color-white;
         font-weight: 300;
       }
+
       h2 {
         color: $color-white;
-        font-size: 35px;
+        font-size: 30px;
         font-weight: 500;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
+
       p {
-        font-size: 29px;
+        font-size: 26px;
         color: $color-white;
         max-width: 600px;
         margin: 0 auto 25px;
         line-height: 35px;
       }
+
       a.join-btn {
         font-size: 31px;
         background: $color-primary;
