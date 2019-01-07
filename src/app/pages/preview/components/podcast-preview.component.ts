@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'dsod-podcast-preview',
@@ -11,6 +12,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DSODPodcastPreviewComponent implements OnInit {
   @Input() content;
+  contentString: any;
 
-  ngOnInit() { }
+  constructor(private sanitizer: DomSanitizer) { }
+  ngOnInit() {
+    this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
+   }
 }
