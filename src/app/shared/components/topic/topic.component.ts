@@ -13,6 +13,7 @@ export class DSODTopicComponent {
   @Input() showHeader?: boolean;
   @Input() styleFor: string;
   @Input() showRating: boolean;
+  @Input() imgLarge?:boolean
 
   constructor(private router: Router) {}
 

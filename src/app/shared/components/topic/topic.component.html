@@ -6,8 +6,12 @@
       <h4 *ngIf="!showRating">{{topic.publishDate | date:'mediumDate'}}</h4>
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && showImage">
-      <a role="button" (click)="navigateTo($event)"><img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid"
-          alt="Feautred Thumbnail Large"></a>
+      <a role="button" (click)="navigateTo($event)"><img *ngIf="imgLarge; else imgsm" src={{topic.featuredMedia.code.originalUrl}}
+          class="img-fluid img-lg" alt="Feautred Thumbnail Large">
+        <ng-template #imgsm>
+          <img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail small">
+        </ng-template>
+      </a>
       <a role="button" class="read-about" (click)="navigateTo($event)">
         <img *ngIf="topic.contentTypeName==='Articles'" src="assets/images/article-icon.png" alt="">
         <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="">
@@ -23,7 +27,8 @@
           <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="" (click)="navigateTo($event)">
           <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="" (click)="navigateTo($event)">
         </a> </em>
-      <div #contentDiv class="excrept-content-lg" [ngClass]="{'excrept-content-sm':styleFor=='content-sm'}" [innerHTML]="topic.excerpt">
+      <div #contentDiv [ngClass]="{'excrept-content-sm':styleFor=='content-sm','excrept-content-lg':styleFor=='content-lg'}"
+        [innerHTML]="topic.excerpt">
       </div>
       <p [ngClass]="{'read-more-sm':styleFor==='content-sm'}">...<a role="button" (click)="navigateTo($event)">more</a></p>
     </div>

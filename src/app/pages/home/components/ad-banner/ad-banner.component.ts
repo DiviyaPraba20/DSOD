@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [
     ` .ad-banner {
-        padding: 10px 0 20px;
+        padding: 25px 0 35px;
         width: 75%;
         margin: auto;
         text-align: center;
