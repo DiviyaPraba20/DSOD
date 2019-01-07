@@ -53,12 +53,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           new FetchFeaturedTopics({
             ...this.params,
             isFeatured: true,
-            limit: 5
+            limit: 6
           })
         );
         this.store.dispatch(
           new FetchLatestTopics({
             ...this.params,
+            isFeatured:false,
             limit: 6
           })
         );
