@@ -10,6 +10,6 @@ export class DSODReferecnceComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.references=[]
+    this.references = [];
   }
 }
