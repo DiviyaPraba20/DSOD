@@ -4,9 +4,7 @@
       <span class="pod-avi"><img *ngIf="podcast.authorPhotoUrl; else authorPlaceholder" src="{{podcast.authorPhotoUrl}}"
           alt="Speaker Thumbnail">
         <ng-template #authorPlaceholder>
-          <div class="author-placeholder">
             <img src="assets/images/author-placeholder.png" alt="Speaker Thumbnail">
-          </div>
         </ng-template>
       </span>
       {{podcast.title}}<span class="pod-time">36:19<img src="assets/images/play-icon-sm.png" alt=""></span></a></li>

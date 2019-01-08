@@ -8,7 +8,7 @@ import { debug } from 'util';
   template: `
     <li class="glide__slide">
       <ng-template #image>
-        <img src="{{content.src}}" alt="" />>
+        <img src="{{content.src}}" alt="" />
         <div class="slide-caption">
           <h1>{{ content.title }}</h1>
           <h2>{{ content.subtitle }}</h2>
