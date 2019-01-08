@@ -7,7 +7,7 @@
         <div class="podcast-player" *ngIf="content">
           <div class="row">
             <div class="col-lg-2">
-              <dsod-content-author [author]="content.author" [authorId]="authorId"></dsod-content-author>
+              <dsod-content-author [podcast]="content"></dsod-content-author>
             </div>
             <div class="col-lg-8">
               <dsod-audio-player [content]="pageContent$ | async"></dsod-audio-player>

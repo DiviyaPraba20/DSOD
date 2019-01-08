@@ -32,7 +32,6 @@ export class DSODPodcastComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private store: Store) {
     _route.params.subscribe(r => {
       this.contentId = r.id;
-      this.authorId = r.authorId;
       store.dispatch(new actions.FetchPageContent(this.contentId));
     });
   }

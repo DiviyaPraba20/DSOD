@@ -9,7 +9,7 @@
       <h3 class="podcasts-title">Podcasts</h3>
       <tabset>
         <tab heading="New" class="mt-2">
-<a href="javascript:void(0)" class="pod-left-control" (click)="updateAuthors($event)">
+          <a href="javascript:void(0)" class="pod-left-control" (click)="updateAuthors($event)">
             <img src="assets/images/arrow-left.png" alt="">
           </a>
           <a href="javascript:void(0)" class="pod-right-control" (click)="updateAuthors($event)">
@@ -29,12 +29,14 @@
                 </div>
               </div>
               <div class="podcasts-list">
-<dsod-podcast-items [podcasts]="podcasts$ | async" [indexStart]="indexStart" [indexEnd]="indexEnd" [imageIndex]="imageIndex"></dsod-podcast-items>
+                <dsod-podcast-items [podcasts]="podcasts$ | async" [indexStart]="indexStart" [indexEnd]="indexEnd"
+                  [imageIndex]="imageIndex"></dsod-podcast-items>
               </div>
             </div>
             <div class="col-xl-6">
-<dsod-podcasts-by [podcasts]="podcasts$ | async" [indexEnd]="indexEnd" [indexStart]="indexStart" [imageIndex]="imageIndex"></dsod-podcasts-by>
-                </div>
+              <dsod-podcasts-by [podcasts]="podcasts$ | async" [indexEnd]="indexEnd" [indexStart]="indexStart"
+                [imageIndex]="imageIndex"></dsod-podcasts-by>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-12">

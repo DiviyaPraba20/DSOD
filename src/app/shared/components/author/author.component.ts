@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DSODContentAuthor } from '../../models';
 import { Authors } from '../../authors/authors';
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-content-author',
@@ -9,9 +10,7 @@ import { Authors } from '../../authors/authors';
 })
 export class DSODContentAuthorComponent implements OnInit {
   @Input()
-  author: DSODContentAuthor;
-  @Input() authorId;
-  authors = Authors;
+  podcast: CMSPageContent;
   constructor() {}
   ngOnInit() {}
 }
