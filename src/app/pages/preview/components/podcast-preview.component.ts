@@ -12,9 +12,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DSODPodcastPreviewComponent implements OnInit {
   @Input() content;
+
   contentString: any;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(
+    private sanitizer: DomSanitizer
+  ) { }
+
   ngOnInit() {
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
    }

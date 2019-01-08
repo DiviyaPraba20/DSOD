@@ -1,38 +1,33 @@
-import {
-  Component,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnDestroy
-} from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, Input, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import * as WaveSurfer from 'wavesurfer.js';
 import { CMSPageContent } from 'src/app/cms/models';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'dsod-audio-player',
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.scss']
 })
-export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
-  @Input()
-  content: CMSPageContent;
+export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy, OnInit {
+  @Input() content: CMSPageContent;
+  @ViewChild('curretTime') curretTime: ElementRef;
+  @ViewChild('trackLength') trackLength: ElementRef;
+
   player: any;
   duration: any;
-  isLoading: boolean = true;
+  isLoading = true;
   volume = 100;
   isPlaying: boolean;
-  @ViewChild('curretTime')
-  curretTime: ElementRef;
-  @ViewChild('trackLength')
-  trackLength: ElementRef;
+  playIndex = -1;
 
-  constructor() {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private spinner: NgxSpinnerService
+  ) {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
     requestAnimationFrame(() => {
-      if (this.content) {
+      if (this.content && this.content.podcastUrls && this.content.podcastUrls.length) {
         const wavesurfer = WaveSurfer.create({
           container: '#playerContainer',
           reponsive: true,
@@ -41,7 +36,12 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
           barWidth: 2,
           barGap: 3
         });
-        wavesurfer.load(this.content.podcastUrls, null, 'auto');
+        this.isLoading = true;
+        this.playIndex = 0;
+        this.isPlaying = false;
+        this.spinner.show();
+        wavesurfer.load(this.content.podcastUrls[0], null, 'auto');
+        this.cdr.detectChanges();
 
         wavesurfer.on('audioprocess', () => {
           this.curretTime.nativeElement.innerHTML = this.formatTime(
@@ -53,13 +53,32 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
             wavesurfer.getDuration()
           );
           wavesurfer.setVolume(this.volume / 100);
+          this.isLoading = false;
+          this.spinner.hide();
+          this.cdr.detectChanges();
         });
         wavesurfer.on('waveform-ready', () => {
           this.isLoading = false;
+          this.cdr.detectChanges();
+        });
+        wavesurfer.on('finish', () => {
+          this.isPlaying = false;
+          if (this.playIndex < this.content.podcastUrls.length - 1) {
+            this.playIndex++;
+            this.onLoadPodcast();
+          }
+          this.cdr.detectChanges();
         });
         this.player = wavesurfer;
       }
     });
+  }
+
+  ngAfterViewInit() { }
+
+  onLoadPodcast() {
+    this.spinner.show();
+    this.player.load(this.content.podcastUrls[this.playIndex], null, 'auto');
   }
 
   onChangeVolume() {
@@ -67,8 +86,10 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
   }
 
   playPause() {
-    this.isPlaying = !this.isPlaying;
-    this.player.playPause();
+    if (!this.isLoading) {
+      this.isPlaying = !this.isPlaying;
+      this.player.playPause();
+    }
   }
 
   formatTime(time) {
@@ -79,6 +100,8 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.player) this.player.destroy();
+    if (this.player) {
+      this.player.destroy();
+    }
   }
 }
