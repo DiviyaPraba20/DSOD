@@ -1,11 +1,17 @@
 <div class="row">
   <div class="col-sm-4" *ngFor="let podcast of podcasts | slice:indexStart:indexEnd; let i=index">
-    <div class="featured-podcasts-block-sm" *ngIf="podcasts" [routerLink]="['./podcast', podcast.id,'author',authors[i+imageIndex].id]">
+    <div class="featured-podcasts-block-sm" *ngIf="podcasts" [routerLink]="['./podcast', podcast.id]">
       <div class="podcasts-block-header">
         <h4>{{podcast.categoryName}}</h4>
       </div>
       <div class="podcast-block-thumbnail">
-        <img src={{authors[i+imageIndex].imageUrl}} class="img-fluid" alt="Feautred Thumbnail Large">
+        <img *ngIf="podcast.authorPhotoUrl; else authorPlaceholder" src={{podcast.authorPhotoUrl}} class="img-fluid"
+          alt="Author Thumbnail">
+        <ng-template #authorPlaceholder>
+          <div class="author-icon">
+            <img src="assets/images/author-placeholder.png" class="img-fluid" alt="place Thumbnail">
+          </div>
+        </ng-template>
         <div class="podcasts-block-caption">
           <h4>{{podcast.title}}</h4>
         </div>

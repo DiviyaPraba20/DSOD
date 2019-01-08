@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let podcast of podcasts | slice :indexStart:indexEnd; let i =index"><a [routerLink]="['./podcast',podcast.id,'author',i+imageIndex]">
+  <li *ngFor="let podcast of podcasts | slice :indexStart:indexEnd; let i =index"><a [routerLink]="['./podcast',podcast.id]">
       <div>{{i+indexStart+1}}.</div>{{podcast.title}}<span>36:19</span>
     </a></li>
 </ul>

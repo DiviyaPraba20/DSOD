@@ -22,7 +22,13 @@
     >img {
       width: 100%;
     }
-
+    .author-icon {
+      min-height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #8b8b8b;
+    }
     .podcasts-block-caption {
       background: $dark_grey;
       padding: 5px 15px;

@@ -7,6 +7,16 @@
       height: 245px;
       object-fit: cover;
     }
+
+    .author-icon {
+      background: #8b8b8b;
+
+      img {
+        height: auto;
+        object-fit: none
+      }
+
+    }
   }
 
   .speaker-name {

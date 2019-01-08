@@ -1,6 +1,13 @@
 <ul>
   <li *ngFor="let podcast of (podcasts$ | async); let i= index"><a href="javascript:void(0)" (click)="navigateTo(podcast, i)"><span
         class="item-number">{{i+1}}</span>
-      <span class="pod-avi"><img src="{{authors[i].imageUrl}}" alt="Speaker Thumbnail"></span>
+      <span class="pod-avi"><img *ngIf="podcast.authorPhotoUrl; else authorPlaceholder" src="{{podcast.authorPhotoUrl}}"
+          alt="Speaker Thumbnail">
+        <ng-template #authorPlaceholder>
+          <div class="author-placeholder">
+            <img src="assets/images/author-placeholder.png" alt="Speaker Thumbnail">
+          </div>
+        </ng-template>
+      </span>
       {{podcast.title}}<span class="pod-time">36:19<img src="assets/images/play-icon-sm.png" alt=""></span></a></li>
 </ul>
