@@ -13,34 +13,39 @@ import { Subscription } from 'rxjs';
 })
 export class DSODUniteMagazineViewerComponent implements OnInit, OnDestroy {
   @Input() magazineId: string;
+
   magazine: any;
   pageIndex = 0;
-  storeSub:Subscription
-  constructor(public activeModal: NgbActiveModal, private store: Store) {}
+  storeSub: Subscription;
+
+  constructor(
+    public activeModal: NgbActiveModal,
+    private store: Store
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(new FetchUniteContent(this.magazineId));
-    this.storeSub=this.store
-      .select(state => state.cms.uniteContent)
-      .pipe(skip(1))
-      .subscribe(magazine => {
-        this.magazine = magazine
-      });
+    this.storeSub = this.store.select(state => state.cms.uniteContent).pipe(skip(1))
+    .subscribe(magazine => {
+      this.magazine = magazine;
+    });
   }
 
   getImageUrl(id) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
+
   onNavigation(btnName: string) {
-    let body=document.getElementById('viewer-body');
-    body.scrollTop=0;
-    if (btnName == 'previous') this.pageIndex -= 1;
-    else {
+    const body = document.getElementById('viewer-body');
+    body.scrollTop = 0;
+    if (btnName === 'previous') {
+      this.pageIndex -= 1;
+    } else {
       this.pageIndex += 1;
     }
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.storeSub.unsubscribe();
   }
 }

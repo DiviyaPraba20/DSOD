@@ -16,46 +16,35 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class DSODUniteMagazinePageComponent implements OnInit {
   uniteMagazines$: Observable<CMSResponse<UniteMagazine[]>>;
 
-  constructor(private store: Store, private modalService: NgbModal, private actions$:Actions, private spinnerService:NgxSpinnerService ) {
+  constructor(
+    private store: Store,
+    private modalService: NgbModal,
+    private actions$: Actions,
+    private spinnerService: NgxSpinnerService
+  ) {
     this.store.dispatch(new FetchUnites({ skip: 0, limit: 10 }));
   }
 
   ngOnInit() {
     this.spinnerService.show();
-    this.uniteMagazines$ = this.store.select(
-      state => state.cms.uniteMagzazines
-    );
+    this.uniteMagazines$ = this.store.select(state => state.cms.uniteMagzazines);
 
-    this.actions$
-      .pipe(
-        ofActionDispatched(
-          FetchUnites,
-          FetchUniteContent
-        )
-      )
-      .subscribe(data => {
-        this.spinnerService.show();
-      });
+    this.actions$.pipe(ofActionDispatched(FetchUnites, FetchUniteContent)).subscribe(data => {
+      this.spinnerService.show();
+    });
 
-    this.actions$
-      .pipe(
-        ofActionDispatched(
-          FetchUnitesSuccess,
-          FetchUniteContentSuccess
-        )
-      )
-      .subscribe(data => {
-        this.spinnerService.hide();
-      });
+    this.actions$.pipe(ofActionDispatched(FetchUnitesSuccess, FetchUniteContentSuccess))
+    .subscribe(data => {
+      this.spinnerService.hide();
+    });
   }
 
   getCoverUrl(id) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 
-  openMagazineViewer(id:string) {
+  openMagazineViewer(id: string) {
     const modalRef = this.modalService.open(DSODUniteMagazineViewerComponent, { windowClass: 'viewer-modal' });
     modalRef.componentInstance.magazineId = id;
-
   }
 }

@@ -106,21 +106,14 @@ export class CMSService {
     });
   }
 
-  findAllMagazine(
-    payload: CMSContentParams
-  ): Observable<CMSResponse<UniteMagazine>> {
+  findAllMagazine(payload: CMSContentParams): Observable<CMSResponse<UniteMagazine>> {
+    const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     const url = `${environment.url}/magazine/findAll`;
-    return this.http.post<CMSResponse<UniteMagazine>>(url, payload, {
-      withCredentials: true
-    });
+    return this.http.post<CMSResponse<UniteMagazine>>(url, payload, { withCredentials: true });
   }
 
-  findOneMagazine(
-    id:string
-  ): Observable<CMSResponse<any>> {
+  findOneMagazine(id: string): Observable<CMSResponse<any>> {
     const url = `${environment.url}/magazine/findOneById?id=${id}`;
-    return this.http.post<CMSResponse<any>>(url, null,{
-      withCredentials: true
-    });
+    return this.http.post<CMSResponse<any>>(url, null, { withCredentials: true });
   }
 }

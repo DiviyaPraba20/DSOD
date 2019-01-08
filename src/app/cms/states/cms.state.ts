@@ -643,30 +643,18 @@ export class CMSState {
   }
 
   @Action(actions.FetchUnitesSuccess)
-  fetchUnitesSuccess(
-    { patchState }: StateContext<State>,
-    action: actions.FetchUnitesSuccess
-  ) {
+  fetchUnitesSuccess({ patchState }: StateContext<State>, action: actions.FetchUnitesSuccess) {
     return patchState({ uniteMagzazines: action.payload });
   }
 
   @Action(actions.FetchUnitesFailure)
-  fetchUnitesFailure(
-    { patchState }: StateContext<State>,
-    action: actions.FetchUnitesFailure
-  ) {
-    return patchState({
-      error: action.payload
-    });
+  fetchUnitesFailure({ patchState }: StateContext<State>, action: actions.FetchUnitesFailure) {
+    return patchState({ error: action.payload });
   }
 
   // Unite Magazine content actions decorators
-
   @Action(actions.FetchUniteContent)
-  fetchUniteContent(
-    { patchState, dispatch, getState }: StateContext<State>,
-    action: actions.FetchUniteContent
-  ) {
+  fetchUniteContent({ patchState, dispatch, getState }: StateContext<State>, action: actions.FetchUniteContent) {
     patchState({ DSOPractices: [] });
     return this.service.findOneMagazine(action.payload).pipe(
       map(a => {
@@ -683,18 +671,12 @@ export class CMSState {
   }
 
   @Action(actions.FetchUniteContentSuccess)
-  fetchUniteContentSuccess(
-    { patchState }: StateContext<State>,
-    action: actions.FetchUniteContentSuccess
-  ) {
+  fetchUniteContentSuccess({ patchState }: StateContext<State>, action: actions.FetchUniteContentSuccess) {
     return patchState({ uniteContent: action.payload });
   }
 
   @Action(actions.FetchUniteContentFailure)
-  fetchUniteContentFailure(
-    { patchState }: StateContext<State>,
-    action: actions.FetchUniteContentFailure
-  ) {
+  fetchUniteContentFailure({ patchState }: StateContext<State>, action: actions.FetchUniteContentFailure) {
     return patchState({
       error: action.payload
     });

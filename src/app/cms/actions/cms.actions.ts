@@ -276,7 +276,7 @@ export class RemoveBookmarkFailure {
   constructor(public payload: any) {}
 }
 
-//DSO Practices
+// DSO Practices
 export class FetchDSOPractices {
   static readonly type = CMSActions.FetchDSOPractices;
   constructor(public payload: any) {}
