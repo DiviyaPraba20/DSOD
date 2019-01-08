@@ -27,7 +27,7 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy, OnIni
 
   ngOnInit() {
     requestAnimationFrame(() => {
-      if (this.content && this.content.podcastUrls.length) {
+      if (this.content && this.content.podcastUrls && this.content.podcastUrls.length) {
         const wavesurfer = WaveSurfer.create({
           container: '#playerContainer',
           reponsive: true,

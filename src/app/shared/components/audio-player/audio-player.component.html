@@ -1,7 +1,7 @@
 <ng-template #l>
   Loading
 </ng-template>
-<div class="podcast-player">
+<div class="podcast-player" *ngIf="content.podcastUrls">
   <div class="visualizer">
     <div class="row">
       <div class="col-md-8">
