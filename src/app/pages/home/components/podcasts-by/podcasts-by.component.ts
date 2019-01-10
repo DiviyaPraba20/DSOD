@@ -9,10 +9,11 @@ import { Authors } from '../../../../shared/authors/authors';
 })
 export class DSODPodcastsByComponent {
   authors = Authors;
-  @Input()
-  podcasts: CMSPageContent[];
+
+  @Input() podcasts: CMSPageContent[];
   @Input() imageIndex: number;
   @Input() indexStart: number;
   @Input() indexEnd: number;
+
   constructor() {}
 }

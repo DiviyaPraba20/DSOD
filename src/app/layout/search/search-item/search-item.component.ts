@@ -8,14 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-item.component.scss']
 })
 export class DSODSearchItemComponent {
-  @Input()
-  topic: CMSPageContent;
+  @Input() topic: CMSPageContent;
+
   constructor(private router: Router) {}
+
   navigateTo(result) {
-    if (result.contentTypeName == 'Videos')
+    if (result.contentTypeName === 'Videos') {
       this.router.navigate(['./video', result.id]);
-    else if (result.contentTypeName == 'Articles')
+    } else if (result.contentTypeName === 'Articles') {
       this.router.navigate(['./article', result.id]);
-    else this.router.navigate(['./podcast', result.id, 'author', 0]);
+    } else {
+      this.router.navigate(['./podcast', result.id, 'author', 0]);
+    }
   }
 }

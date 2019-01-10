@@ -53,8 +53,9 @@ export class DSODPodcastsComponent implements OnInit {
   }
 
   updateAuthors(e) {
-    if (this.activePage == 1) this.activePage += 1;
-    else {
+    if (this.activePage === 1) {
+      this.activePage += 1;
+    } else {
       this.activePage -= 1;
     }
     this.podcastPagination(null, this.activePage);

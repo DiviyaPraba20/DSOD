@@ -8,18 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./latest-item.component.scss']
 })
 export class DSODLatestItemComponent implements OnInit {
-  @Input()
-  latestTopic: CMSPageContent;
+  @Input() latestTopic: CMSPageContent;
 
   constructor(private router: Router) {}
 
   ngOnInit() {}
 
   navigateTo(latestTopic) {
-    if (latestTopic.contentTypeName == 'Videos')
+    if (latestTopic.contentTypeName === 'Videos') {
       this.router.navigate(['./video', latestTopic.id]);
-    else if (latestTopic.contentTypeName == 'Podcasts')
+    } else if (latestTopic.contentTypeName === 'Podcasts') {
       this.router.navigate(['./podcast', latestTopic.id]);
-    else this.router.navigate(['./article', latestTopic.id]);
+    } else {
+      this.router.navigate(['./article', latestTopic.id]);
+    }
   }
 }
