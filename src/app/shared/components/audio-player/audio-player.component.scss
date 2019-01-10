@@ -2,7 +2,28 @@
 
 .podcast-player {
   .visualizer {
-    margin-bottom: 54px;
+    margin-bottom: 15px;
+    .play-icon-lg {
+      height: 100%;
+      a {
+        font-size: 80px;
+        text-align: center;
+        display: block;
+        color: $text-main;
+        border: 1px solid $text-main;
+        min-height: 207px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    
+    div#playerContainer {
+      // border-bottom: 1px solid #ccc;
+      /deep/ wave {
+        border: none !important;
+      }
+    }
   }
 
   .pod-timings {
@@ -23,22 +44,25 @@
 }
 
 .media-controls {
-  background: $alabaster_white;
-  padding: 23px 0;
+  // background: $alabaster_white;
+  padding: 23px 0 0;
 
   .controls-wrap,
   .volume-wrap {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    // -webkit-box-pack: justify;
+    // -ms-flex-pack: justify;
+    // justify-content: space-between;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 0 50px;
-    border-right: 1px solid $text-main;
+    padding: 0 15px;
+    // border-right: 1px solid $text-main;
+    a{
+      margin: 0 10px;
+    }
   }
 
   .volume-wrap {
@@ -50,7 +74,7 @@
   input[type=range] {
     -webkit-appearance: none;
     margin: 18px 0;
-    width: 70%;
+    width: auto;
   }
 
   input[type=range]:focus {
@@ -140,4 +164,7 @@
   input[type=range]:focus::-ms-fill-upper {
     background: #367ebd;
   }
+}
+.bb-grey{
+  border-bottom: 2px solid $text-main;
 }

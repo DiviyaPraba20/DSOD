@@ -50,6 +50,13 @@
 
 .podcast-player {
   margin-bottom: 115px;
+  .link-icon{
+    font-size:35px;
+    color: $text-main; 
+    .fa{
+      color: #8799A7;
+    }
+  }
 }
 
 .subscribe-today {
