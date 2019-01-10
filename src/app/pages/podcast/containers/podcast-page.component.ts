@@ -29,12 +29,17 @@ export class DSODPodcastComponent implements OnInit {
   pageContent$: Observable<CMSResponse<CMSPageContent>>;
   podCasts$: Observable<CMSResponse<CMSPageContent>>;
   isLoggedIn: boolean;
-  constructor(private _route: ActivatedRoute, private store: Store) {
+
+  constructor(
+    private _route: ActivatedRoute,
+    private store: Store
+  ) {
     _route.params.subscribe(r => {
       this.contentId = r.id;
       store.dispatch(new actions.FetchPageContent(this.contentId));
     });
   }
+
   ngOnInit() {
     this.isLoggedIn = this.store.selectSnapshot(AuthState.isLoggedIn);
     this.pageContent$ = this.store.select(state => state.cms.pageContent);

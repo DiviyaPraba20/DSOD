@@ -7,10 +7,10 @@ import { CMSPageContent } from 'src/app/cms/models';
   styleUrls: ['./podcast-items.component.scss']
 })
 export class DSODPodcastItemsComponent {
-  @Input()
-  podcasts: CMSPageContent[];
+  @Input() podcasts: CMSPageContent[];
   @Input() imageIndex;
   @Input() indexEnd;
   @Input() indexStart;
+
   constructor() {}
 }
