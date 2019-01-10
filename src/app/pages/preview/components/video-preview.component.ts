@@ -7,18 +7,23 @@ import { CMSPageContent } from 'src/app/cms/models';
   selector: 'dsod-video-preview',
   templateUrl: './video-preview.component.html',
   styleUrls: [
+    '../../podcast/components/podcast-content/podcast-content.component.scss',
     '../../video/components/video-title/video-title.component.scss',
     './content.scss'
   ]
 })
 export class DSODVideoPreviewComponent implements OnInit {
-  @Input() content:CMSPageContent;
-  contentString:any;
-  constructor(private sanitizer: DomSanitizer){}
-  ngOnInit(){
+  @Input() content: CMSPageContent;
+
+  contentString: any;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnInit() {
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
   }
-  getUrl(id:string) {
+
+  getUrl(id: string) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 }

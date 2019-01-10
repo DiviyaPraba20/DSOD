@@ -17,13 +17,14 @@
       </div>
     </div>
     <div class="col-lg-8">
-      <dsod-audio-player [content]="contentString"></dsod-audio-player>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
+      <dsod-audio-player [content]="content"></dsod-audio-player>
       <div class="speakers-content mt-5" [innerHTML]="contentString"></div>
     </div>
   </div>
+  <!-- <div class="row">
+    <div class="col-lg-12">
+      <div class="speakers-content mt-5" [innerHTML]="contentString"></div>
+    </div>
+  </div> -->
   <dsod-references [references]="content.references"></dsod-references>
 </div>

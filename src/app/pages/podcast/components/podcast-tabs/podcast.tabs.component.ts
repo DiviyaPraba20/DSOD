@@ -7,7 +7,7 @@ import { CMSPageContent } from 'src/app/cms/models';
   styleUrls: ['./podcast.tabs.component.scss']
 })
 export class DSODPodcastTabsComponent {
-  @Input()
-  content: CMSPageContent;
+  @Input() content: CMSPageContent;
+
   constructor() {}
 }

@@ -7,6 +7,5 @@ import { CMSPageContent } from 'src/app/cms/models';
   styleUrls: ['./podcast-content.component.scss']
 })
 export class DSODPodcastContentComponent {
-  @Input()
-  content: CMSPageContent;
+  @Input() content: CMSPageContent;
 }
