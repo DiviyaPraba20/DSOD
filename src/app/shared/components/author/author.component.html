@@ -2,10 +2,11 @@
   <div class="speaker-thumbnail">
     <img *ngIf="podcast.authorPhotoUrl; else authorPlaceholder" src={{podcast.authorPhotoUrl}} class="img-fluid">
     <ng-template #authorPlaceholder>
-        <img src="assets/images/author-placeholder.png" class="img-fluid">
+      <img src="assets/images/author-placeholder.png" class="img-fluid">
     </ng-template>
   </div>
   <div class="speaker-name">
-    <span>{{podcast.author.firstName}} {{podcast.author.lastName}}</span>
+    <span class="episode-nbr">Episode 001</span>
+    <span>{{podcast.title}}&nbsp;with&nbsp;{{podcast.author.fullName}}</span>
   </div>
 </div>

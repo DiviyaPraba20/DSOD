@@ -10,15 +10,32 @@
   }
 
   .speaker-name {
-    background: $alabaster_white;
-    padding: 15px;
+    background: rgba(51, 51, 51, 0.8);
+    padding: 25px 15px 7px;
     text-align: center;
     color: $black;
     max-width: 255px;
+    position: relative;
+
+
+    span.episode-nbr{
+      position: absolute;
+      transform: translateY(-50%);   
+      top: 0; 
+      left: 15px;
+      right: 15px;
+      background: #0198c6;
+      color: #fff;
+      padding: 10px 0;
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
 
     span {
       font-size: 15px;
       line-height: 19px;
       font-weight: 700;
+      color: $color-white;
     }
   }

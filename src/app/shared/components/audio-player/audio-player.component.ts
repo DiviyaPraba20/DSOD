@@ -31,8 +31,8 @@ export class DSODAudioPlayerComponent implements AfterViewInit, OnDestroy, OnIni
         const wavesurfer = WaveSurfer.create({
           container: '#playerContainer',
           reponsive: true,
-          waveColor: '#d4d3d3',
-          progressColor: '#869aa8',
+          waveColor: '#0198c6',
+          progressColor: '#d4d3d3',
           barWidth: 2,
           barGap: 3
         });
