@@ -10,21 +10,16 @@
 }
 
 .content-wrapper {
-  width: 60%;
+  // width: 60%;
+  max-width: 1510px;
   margin: auto;
-  padding: 60px 30px 30px;
-
-  .item-tile:nth-child(odd) {
-    display: flex;
-    justify-content: flex-end;
-  }
-
+  padding: 60px 0px 30px;
   .content-item-wrapper {
     position: relative;
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 30px;
-    max-width: 347px;
+    width: 100%;
     margin: 0 0 30px;
 
     >img {
