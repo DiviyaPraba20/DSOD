@@ -37,6 +37,11 @@ export const DSODEducationCategoryData: DSOEducationCategory[] = [{
   name: 'prosthodontics',
   image: './assets/images/education/prosthodontics.png',
   count: 123
+}, {
+  title: 'Sponsored Courses',
+  name: 'sponsoredCourses',
+  image: './assets/images/education/sponsoredCourses.png',
+  count: 123
 }];
 
 @Component({
