@@ -7,15 +7,11 @@
     </div>
   </div>
 </div>
-<div class="content-wrapper">
-  <div class="row">
-    <div class="col-sm-3 item-tile" *ngFor="let image of careerImages">
-      <div class="content-item-wrapper">
-        <img src={{image.url}}>
-        <div class="item-overlay">
-          <span class="title">{{image.title}}</span>
-        </div>
-      </div>
+<div class="content-item-wrapper">
+  <div class="content-item" *ngFor="let image of careerImages">
+    <img class="img-category" src={{image.url}}>
+    <div class="category-content">
+      <span class="category-title">{{image.title}}</span>
     </div>
   </div>
 </div>
