@@ -99,8 +99,7 @@
     padding: 0 15px;
 
     .event-timing {
-      display: flex;
-      align-items: center;
+      display: flex;      
       justify-content: space-between;
       padding: 9px 0 6px;
 
@@ -114,6 +113,7 @@
     .event-city {
       font-size: 17px;
       font-family: $helvetica_font;
+      font-weight: normal;
     }
 
     .register-btn-wrap {
