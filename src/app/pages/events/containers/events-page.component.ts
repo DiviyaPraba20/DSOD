@@ -6,6 +6,8 @@ import Glide, {
 } from '@glidejs/glide/dist/glide.modular.esm';
 import { DSODSliderContent } from '../../../shared/models';
 import { DSODContentType } from 'src/app/core/models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DSODCreateEvent } from '../components/create-event/create-event.component';
 
 @Component({
   selector: 'dsod-events-page',
@@ -13,6 +15,7 @@ import { DSODContentType } from 'src/app/core/models';
   styleUrls: ['./events-page.component.scss']
 })
 export class DSODEventsPageComponent implements AfterViewInit {
+  eventDate: any;
   @ViewChild('slider')
   slider: ElementRef;
   content: DSODSliderContent[] = [
@@ -26,7 +29,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       url: ''
     }
   ];
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
   ngAfterViewInit() {
     const elems = this.slider.nativeElement as HTMLUListElement;
     if (elems.children.length > 0) {
@@ -41,5 +44,9 @@ export class DSODEventsPageComponent implements AfterViewInit {
         dragDistance: 100
       }).mount({ Autoplay, Controls, Anchors });
     }
+  }
+
+  onSelectDate(e) {
+    const modalRef = this.modalService.open(DSODCreateEvent, {windowClass:'create-event'});
   }
 }

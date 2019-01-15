@@ -1,0 +1,38 @@
+@import "variables";
+
+.event-details-title {
+  border-bottom: 1px solid $dusty-gray;
+  h4 {
+    font-size: 20px;
+    line-height: 29px;
+    margin: 0;
+    
+    span {
+      height: 40px;
+      min-width: 40px;
+      color: $color-white;
+      display: inline-block;
+      margin-right: 10px;
+      background: $deep-cerulean;
+      text-align: center;
+      font-size: 23px;
+      line-height: 36px;
+    }
+  }
+}
+.create-event-form{
+  padding: 30px 0;
+  label.form-control-label{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .action-wrap{
+    a{
+      display: inline-block;
+      margin-right: 20px;
+      i.fa{
+        margin-right: 5px;
+      }
+    }
+  }
+}
