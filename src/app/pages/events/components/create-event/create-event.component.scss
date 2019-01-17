@@ -20,6 +20,25 @@
     }
   }
 }
+
+.event-action-btn {
+  height: auto;
+  min-width: 120px;
+  border-radius: 4px;
+}
+
+.btn-blue {
+  background: #fff;
+  border: 2px solid $layout-blue;
+  color: $layout-blue;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  background-color: $layout-blue;
+  border-color: $layout-blue;
+}
+
 .create-event-form{
   padding: 30px 0;
   label.form-control-label{

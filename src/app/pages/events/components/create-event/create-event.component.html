@@ -1,8 +1,8 @@
 <div class="modal-header d-flex">
   <h4 class="modal-title">Create An Event</h4>
   <div class="btn-actions alig-self-end d-flex">
-    <a href="#" class="btn btn-primary mr-2">Save</a>
-    <a href="#" class="btn btn-primary">Preview</a>
+<button *ngIf="!isEditingEnable" class="btn btn-primary btn-blue event-action-btn mr-2" (click)="onEditEvent($event)">Save</button>
+<button *ngIf="!isEditingEnable" class="btn btn-primary btn-blue event-action-btn mr-2" (click)="onEditEvent($event)">Preview</button>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
