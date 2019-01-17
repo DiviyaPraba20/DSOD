@@ -27,7 +27,7 @@
       <h2 class="section-title mt-5 d-flex justify-content-between">{{(isEditingEnable?'Edit Event':'Events')}}
         <div class="d-flex">
           <button *ngIf="!isEditingEnable" class="btn btn-primary btn-blue event-action-btn mr-2" (click)="onEditEvent($event)">Edit</button>
-          <!-- <button *ngIf="!isEditingEnable" class="btn event-action-btn btn-danger mr-2" (click)="onEditEvent($event)">Delete</button> -->
+          <button *ngIf="!isEditingEnable" class="btn event-action-btn btn-danger mr-2" (click)="onDeleteEvent($event)">Delete</button>
           <button *ngIf="isEditingEnable" class="btn btn-primary btn-blue event-action-btn" (click)="onSaveEvents($event)">Save</button>
         </div>
       </h2>

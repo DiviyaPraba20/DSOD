@@ -49,7 +49,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '9pm EST',
       eventType: 'In-Person Event',
       level: 'Advanced',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-5-lg.png',
@@ -63,7 +63,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'Virtual Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-6-lg.png',
@@ -78,7 +78,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '10am EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-7-lg.png',
@@ -92,7 +92,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-8-lg.png',
@@ -106,7 +106,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '3pm EST',
       eventType: 'In-Person Event',
       level: 'Advanced',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-9-lg.png',
@@ -121,7 +121,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '11am EST',
       eventType: 'In-Person Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-5-lg.png',
@@ -135,7 +135,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'Virtual Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-9-lg.png',
@@ -150,7 +150,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '11am EST',
       eventType: 'In-Person Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-7-lg.png',
@@ -164,7 +164,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price:'Free'
+      price: 'Free'
     }
   ];
   isEditingEnable = false;
@@ -212,5 +212,8 @@ export class DSODEventsPageComponent implements AfterViewInit {
     this.childrenCardComponents.forEach(component => {
       component.enableEditing = false;
     });
+  }
+
+  onDeleteEvent(){
   }
 }
