@@ -18,7 +18,7 @@ export class DSODSearchItemComponent {
     } else if (result.contentTypeName === 'Articles') {
       this.router.navigate(['./article', result.id]);
     } else {
-      this.router.navigate(['./podcast', result.id, 'author', 0]);
+      this.router.navigate(['./podcast', result.id]);
     }
   }
 }

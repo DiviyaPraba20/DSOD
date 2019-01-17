@@ -31,7 +31,7 @@ export class DSODRelatedContentComponent implements OnInit {
     if (this.contentTypeName === 'Videos') {
       this.router.navigate(['./video', this.content.id]);
     } else if (this.contentTypeName === 'Podcasts') {
-      this.router.navigate(['./podcast', this.content.id, 'author', 0]);
+      this.router.navigate(['./podcast', this.content.id]);
     } else {
       this.router.navigate(['./article', this.content.id]);
     }
