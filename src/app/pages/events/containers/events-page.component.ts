@@ -1,4 +1,16 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
+import {
+  NgbDateAdapter,
+  NgbDateStruct,
+  NgbDateNativeAdapter
+} from '@ng-bootstrap/ng-bootstrap';
 import Glide, {
   Controls,
   Autoplay,
@@ -6,15 +18,156 @@ import Glide, {
 } from '@glidejs/glide/dist/glide.modular.esm';
 import { DSODSliderContent } from '../../../shared/models';
 import { DSODContentType } from 'src/app/core/models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DSODCreateEvent } from '../components/create-event/create-event.component';
+import { DSODEventCardComponent } from '../components';
 
 @Component({
   selector: 'dsod-events-page',
   templateUrl: './events-page.component.html',
-  styleUrls: ['./events-page.component.scss']
+  styleUrls: ['./events-page.component.scss'],
+  providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
 })
 export class DSODEventsPageComponent implements AfterViewInit {
+  eventDate: any;
   @ViewChild('slider')
   slider: ElementRef;
+  @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<
+    DSODEventCardComponent
+  >;
+
+  events = [
+    {
+      image: 'assets/images/event-4-lg.png',
+      title: 'The Importance of Oral Hygiene for the Pediatric Patient',
+      author: 'Dr. Greg Psaltis',
+      content:
+        "This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will",
+      date: 'Feb 10 2018 12:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '9pm EST',
+      eventType: 'In-Person Event',
+      level: 'Advanced',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-5-lg.png',
+      title: 'Simple Steps for Managing Student Loan Debt',
+      author: 'Dr. Ashley Keen',
+      content:
+        'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
+      date: 'Mar 22 2018 12:00:00 GMT-0500',
+      duration: '1hr 30m',
+      place: 'Online',
+      time: '1pm EST',
+      eventType: 'Virtual Event',
+      level: 'Beginner',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-6-lg.png',
+      title:
+        'Managing the Relationship Between the Teeth and the Oral Environment',
+      author: 'Dr. Kenneth Markowitz ',
+      content:
+        "This webinar will explain the relationship between a patient's saliva",
+      date: 'Apr 11 2018 12:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '10am EST',
+      eventType: 'In-Person Event',
+      level: 'Expert',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-7-lg.png',
+      title: 'Self-service Analytics for Dental Support Organizations',
+      author: 'Dr Mark Hodge',
+      content:
+        'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
+      date: 'May 10 2018 12:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '1pm EST',
+      eventType: 'In-Person Event',
+      level: 'Expert',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-8-lg.png',
+      title: 'Excellence in Digital Photography & Case Acceptance',
+      author: 'Jack D. Griffin Jr., DMD',
+      content:
+        'This presentation will highlight the benefits of digital scanning and shows how it is a better option for your new or future',
+      date: 'Jun 22 2018 12:00:00 GMT-0500',
+      duration: '1hr 30m',
+      place: 'Online',
+      time: '3pm EST',
+      eventType: 'In-Person Event',
+      level: 'Advanced',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-9-lg.png',
+      title:
+        'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
+      author: 'John Fazio, DMD ',
+      content:
+        'The objective of this webinar is to help attendees gain an accurate',
+      date: 'Jul 11 2018 12:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '11am EST',
+      eventType: 'In-Person Event',
+      level: 'Beginner',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-5-lg.png',
+      title: 'Simple Steps for Managing Student Loan Debt',
+      author: 'Dr. Ashley Keen',
+      content:
+        'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
+      date: 'Mar 22 2018 12:00:00 GMT-0500',
+      duration: '1hr 30m',
+      place: 'Online',
+      time: '1pm EST',
+      eventType: 'Virtual Event',
+      level: 'Beginner',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-9-lg.png',
+      title:
+        'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
+      author: 'John Fazio, DMD ',
+      content:
+        'The objective of this webinar is to help attendees gain an accurate',
+      date: 'Jul 11 2019 12:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '11am EST',
+      eventType: 'In-Person Event',
+      level: 'Beginner',
+      price:'Free'
+    },
+    {
+      image: 'assets/images/event-7-lg.png',
+      title: 'Self-service Analytics for Dental Support Organizations',
+      author: 'Dr Mark Hodge',
+      content:
+        'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
+      date: 'May 10 2018 12:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '1pm EST',
+      eventType: 'In-Person Event',
+      level: 'Expert',
+      price:'Free'
+    }
+  ];
+  isEditingEnable = false;
   content: DSODSliderContent[] = [
     {
       title: '4 Important "Must Do" Steps for New Dentists',
@@ -26,7 +179,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       url: ''
     }
   ];
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
   ngAfterViewInit() {
     const elems = this.slider.nativeElement as HTMLUListElement;
     if (elems.children.length > 0) {
@@ -41,5 +194,23 @@ export class DSODEventsPageComponent implements AfterViewInit {
         dragDistance: 100
       }).mount({ Autoplay, Controls, Anchors });
     }
+  }
+
+  onSelectDate(e) {
+    const modalRef = this.modalService.open(DSODCreateEvent, {
+      windowClass: 'create-event'
+    });
+    modalRef.componentInstance.selectedDate = this.eventDate;
+  }
+
+  onEditEvent(e) {
+    this.isEditingEnable = true;
+  }
+
+  onSaveEvents() {
+    this.isEditingEnable = false;
+    this.childrenCardComponents.forEach(component => {
+      component.enableEditing = false;
+    });
   }
 }

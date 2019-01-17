@@ -8,6 +8,34 @@
   }
 }
 
+.event-action-btn {
+  height: auto;
+  min-width: 120px;
+  border-radius: 4px;
+}
+
+.btn-blue {
+  background: #fff;
+  border: 2px solid $layout-blue;
+  color: $layout-blue;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  background-color: $layout-blue;
+  border-color: $layout-blue;
+}
+
+.event-action-btn.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
 .filter-events {
   padding-top: 40px;
+
+  label {
+    font-size: 22px;
+  }
 }

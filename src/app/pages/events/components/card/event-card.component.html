@@ -1,4 +1,4 @@
-<div class="event-card">
+<div class="event-card" (click)="onCardClick()" [ngClass]="{'focused':enableEditing}">
   <div class="event-card-header">
     <span class="header-logo">
       <img src="./assets/images/card-dso-logo.png" alt="">
@@ -6,27 +6,58 @@
     <span class="sponsored-by">Online Talks</span>
   </div>
   <div class="event-card-level">
-    <span class="level-text">Virtual Event</span>
-    <span class="event-level"><img src="./assets/images/level-1.png" alt="">Beginner</span>
+    <div>
+      <span *ngIf="!enableEditing" class="level-text">{{event.eventType}}</span>
+      <select *ngIf="enableEditing" name="event-type" [(ngModel)]="event.eventType" class="form-control">
+        <option value="In-Person Event">In-Person Event</option>
+        <option value="Virtual Event">Virtual Event</option>
+      </select>
+    </div>
+    <div>
+      <span *ngIf="!enableEditing" class="event-level">
+        <img src="./assets/images/{{event.level}}-level.png" alt="">{{event.level}}</span>
+      <select *ngIf="enableEditing" name="level" [(ngModel)]="event.level" class="form-control">
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+    </div>
   </div>
   <div class="card-thumbnail">
-    <img src="./assets/images/card-thumbnail-2.png" alt="">
+    <img src={{event.image}} alt="">
   </div>
   <div class="card-content">
-    <h3>Key Questions to Ask When Considering an Associateship</h3>
-    <span class="event-by">Dr. Niv Rajagopalan</span>
-    <p>This module will present best practices that allow you to use Invisalign outcome simulator in your
-      practice… <a href="#">[more] <i class="fa fa-chevron-down" aria-hidden="true"></i></a></p>
+    <h3>{{event.title}}</h3>
+    <span class="event-by">{{event.author}}</span>
+    <p>{{event.content}}… <a *ngIf="!enableEditing" href="javascript:void(0)">[more] <i class="fa fa-chevron-down"
+          aria-hidden="true"></i></a></p>
   </div>
   <div class="event-card-footer">
     <div class="event-timing">
-      <span>Jan 26, 2019 | 1hr 30m </span>
-      <span>FREE</span>
+      <span>
+        <div class="d-flex align-items-center">
+          <div>{{event.date |date:'mediumDate'}} | {{event.duration}}</div>
+          <div class="date-pick ml-2 datepicker-wrap" *ngIf="enableEditing">
+            <input class="form-control p-0 m-0 b-0" placement="top-center" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
+              [(ngModel)]="event.date" ngbDatepicker #d2="ngbDatepicker">
+            <button class="btn btn-outline-secondary calendar p-0" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"
+                aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="event-city">{{event.place}} | {{event.time}}</div>
+      </span>
+      <span *ngIf="!enableEditing">{{event.price}}
+      </span>
+      <select *ngIf="enableEditing" name="price" [(ngModel)]="event.price" class="form-control form-control-small">
+        <option value="$5">$5</option>
+        <option value="$10">$10</option>
+        <option value="$20">$20</option>
+        <option value="$25">$25</option>
+      </select>
     </div>
-    <div class="event-city">Online | 9pm EST</div>
     <div class="register-btn-wrap">
-      <a href="" class="card-action"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
-      <a href="#" class="register-btn">Register</a>
+      <button role="button" class="card-action"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
+      <button role="button" class="register-btn" [ngClass]="{'register-enabled':enableEditing}">Register</button>
     </div>
   </div>
 </div>
