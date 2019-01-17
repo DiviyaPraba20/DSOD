@@ -37,6 +37,6 @@ export class DSODPodcastPlayListComponent implements OnInit {
   }
 
   navigateTo(podcast, index) {
-    this.router.navigate(['./podcast', podcast.id, 'author', index]);
+    this.router.navigate(['./podcast', podcast.index]);
   }
 }

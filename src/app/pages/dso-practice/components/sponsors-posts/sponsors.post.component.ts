@@ -67,7 +67,7 @@ export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
     if (e.contentTypeName === 'Videos') {
       this.router.navigate(['./video', e.id]);
     } else if (e.contentTypeName === 'Podcasts') {
-      this.router.navigate(['./podcast', e.id, 'author', 1]);
+      this.router.navigate(['./podcast', e.id]);
     } else {
       this.router.navigate(['./article', e.id]);
     }
