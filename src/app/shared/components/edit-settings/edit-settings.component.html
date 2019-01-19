@@ -1,0 +1,13 @@
+<div class="edit-settings-container" [ngClass]="{'show': expanded}">
+  <div class="new-item-container flex-container">
+    <p class="title">Notification Alert</p>
+    <div class="item-body">
+      <ui-switch
+        size="small">
+      </ui-switch>
+    </div>
+  </div>
+  <div class="new-item-container flex-container">
+    <button class="btn btn-primary" (click)="onSave()">Save</button>
+  </div>
+</div>

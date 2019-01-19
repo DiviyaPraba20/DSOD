@@ -318,4 +318,8 @@ export class ProfileEditViewComponent implements OnInit, AfterViewInit {
     });
     return isValidDate;
   }
+
+  updateSettings(settings) {
+    console.log(settings);
+  }
 }
