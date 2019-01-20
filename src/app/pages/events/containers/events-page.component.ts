@@ -19,7 +19,7 @@ import Glide, {
 import { DSODSliderContent } from '../../../shared/models';
 import { DSODContentType } from 'src/app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DSODCreateEvent } from '../components/create-event/create-event.component';
+import { DSODCreateEventComponent } from '../components/create-event/create-event.component';
 import { DSODEventCardComponent } from '../components';
 
 @Component({
@@ -29,27 +29,24 @@ import { DSODEventCardComponent } from '../components';
   providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
 })
 export class DSODEventsPageComponent implements AfterViewInit {
-  eventDate: any;
-  @ViewChild('slider')
-  slider: ElementRef;
-  @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<
-    DSODEventCardComponent
-  >;
+  @ViewChild('slider') slider: ElementRef;
+  @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<DSODEventCardComponent>;
 
+  eventDate: any;
   events = [
     {
       image: 'assets/images/event-4-lg.png',
       title: 'The Importance of Oral Hygiene for the Pediatric Patient',
       author: 'Dr. Greg Psaltis',
       content:
-        "This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will",
+        `This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will`,
       date: 'Feb 10 2018 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
       time: '9pm EST',
       eventType: 'In-Person Event',
       level: 'Advanced',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-5-lg.png',
@@ -63,7 +60,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'Virtual Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-6-lg.png',
@@ -71,14 +68,14 @@ export class DSODEventsPageComponent implements AfterViewInit {
         'Managing the Relationship Between the Teeth and the Oral Environment',
       author: 'Dr. Kenneth Markowitz ',
       content:
-        "This webinar will explain the relationship between a patient's saliva",
+        `This webinar will explain the relationship between a patient's saliva`,
       date: 'Apr 11 2018 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
       time: '10am EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-7-lg.png',
@@ -92,7 +89,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-8-lg.png',
@@ -106,7 +103,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '3pm EST',
       eventType: 'In-Person Event',
       level: 'Advanced',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-9-lg.png',
@@ -121,7 +118,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '11am EST',
       eventType: 'In-Person Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-5-lg.png',
@@ -135,7 +132,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'Virtual Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-9-lg.png',
@@ -150,7 +147,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '11am EST',
       eventType: 'In-Person Event',
       level: 'Beginner',
-      price:'Free'
+      price: 'Free'
     },
     {
       image: 'assets/images/event-7-lg.png',
@@ -164,9 +161,10 @@ export class DSODEventsPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price:'Free'
+      price: 'Free'
     }
   ];
+
   isEditingEnable = false;
   content: DSODSliderContent[] = [
     {
@@ -179,7 +177,9 @@ export class DSODEventsPageComponent implements AfterViewInit {
       url: ''
     }
   ];
-  constructor(private modalService: NgbModal) {}
+
+  constructor(private modalService: NgbModal) { }
+
   ngAfterViewInit() {
     const elems = this.slider.nativeElement as HTMLUListElement;
     if (elems.children.length > 0) {
@@ -197,7 +197,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
   }
 
   onSelectDate(e) {
-    const modalRef = this.modalService.open(DSODCreateEvent, {
+    const modalRef = this.modalService.open(DSODCreateEventComponent, {
       windowClass: 'create-event'
     });
     modalRef.componentInstance.selectedDate = this.eventDate;
