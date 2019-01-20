@@ -1,0 +1,27 @@
+<div class="settings-container">
+  <div class="body-item-wrapper">
+    <div class="icon-body-item gray-background">
+      <i class="icon-profile-settings fa fa-cogs"></i>
+    </div>
+    <div class="item-content-wrapper">
+      <div class="item-content">
+        <span class="title no-content">
+          Set notific actions and alerts.
+        </span>
+      </div>
+    </div>
+    <div *ngIf="editable">
+      <div class="icon-add-new" *ngIf="!expandedSettings" (click)="expandSettingsSection(true)">
+        <img src="./assets/images/icons/icon_add_new.png">
+      </div>
+      <div class="icon-add-new" *ngIf="expandedSettings" (click)="expandSettingsSection(false)">
+        <img src="./assets/images/icons/icon_close_new.png">
+      </div>
+    </div>
+  </div>
+  <div class="add-new-item-container">
+    <dsod-edit-settings
+      [expanded]="expandedSettings">
+    </dsod-edit-settings>
+  </div>
+</div>

@@ -31,6 +31,8 @@ import { DSODEssayAuthorComponent } from './essay-author/essay-author.component'
 import { DSODGalleryComponent } from './gallery/gallery.component';
 import { DSODReferecnceComponent } from './references/reference.component';
 import { DSODFeaturedMediaComponent } from './featured-media/featured-media.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { EditSettingsComponent } from './edit-settings/edit-settings.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -55,6 +57,7 @@ export const SHARED_COMPONENTS = [
   ProfileEducationComponent,
   ProfileAddressComponent,
   ProfileResidencyComponent,
+  ProfileSettingsComponent,
   EditExperienceComponent,
   EditEducationComponent,
   EditResidencyComponent,
@@ -66,5 +69,6 @@ export const SHARED_COMPONENTS = [
   DSODEssayAuthorComponent,
   DSODGalleryComponent,
   DSODReferecnceComponent,
-  DSODFeaturedMediaComponent
+  DSODFeaturedMediaComponent,
+  EditSettingsComponent
 ];
