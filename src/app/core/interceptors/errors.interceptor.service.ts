@@ -5,7 +5,7 @@ import {  of, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Select, Store } from '@ngxs/store';
 
-import { Logout, Unauthorized } from '../../pages/auth/actions';
+import { Unauthorized } from '../../pages/auth/actions';
 import { ApplicationStateService } from '../../app.service';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
-        console.log(err);
         if (err.error instanceof Error) {
           // A client-side or network error occurred. Handle it accordingly.
           console.error('An error occurred:', err.error.message);
@@ -32,7 +31,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           if (err.status === 401) {
             this.appService._unsubscribeAll.next();
             this.appService._unsubscribeAll.complete();
-            this.store.dispatch(new Logout());
+            this.store.dispatch(new Unauthorized());
             this.router.navigate(['login']);
           } else {
             if (err.status >= 200 && err.status < 500) {
