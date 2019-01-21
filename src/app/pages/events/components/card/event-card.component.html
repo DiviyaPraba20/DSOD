@@ -4,7 +4,7 @@
       <img src="./assets/images/card-dso-logo.png" alt="">
     </span>
     <span class="sponsored-by">Online Talks</span>
-    <span class="delete-icon">
+    <span class="delete-icon" *ngIf="isdeleteable" (click)="openConfirmDialog()">
       <i class="fa fa-times" aria-hidden="true"></i>
     </span>
   </div>

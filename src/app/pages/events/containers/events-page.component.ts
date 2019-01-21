@@ -21,6 +21,11 @@ import { DSODContentType } from 'src/app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DSODCreateEvent } from '../components/create-event/create-event.component';
 import { DSODEventCardComponent } from '../components';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Observable } from 'rxjs';
+import { skip } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
+import { authState } from '../../auth/states';
 
 @Component({
   selector: 'dsod-events-page',
@@ -30,6 +35,9 @@ import { DSODEventCardComponent } from '../components';
 })
 export class DSODEventsPageComponent implements AfterViewInit {
   eventDate: any;
+  isEditingEnable = false;
+  isdeletionEnable = false;
+  isLoggedIn$ = this.authService.isLoggedIn$;
   @ViewChild('slider')
   slider: ElementRef;
   @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<
@@ -167,7 +175,6 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     }
   ];
-  isEditingEnable = false;
   content: DSODSliderContent[] = [
     {
       title: '4 Important "Must Do" Steps for New Dentists',
@@ -179,7 +186,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       url: ''
     }
   ];
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private authService: AuthService) {}
   ngAfterViewInit() {
     const elems = this.slider.nativeElement as HTMLUListElement;
     if (elems.children.length > 0) {
@@ -214,6 +221,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
     });
   }
 
-  onDeleteEvent(){
+  onDeleteEvent() {
+    this.isdeletionEnable = true;
+  }
+
+  deleteEvent(e) {
+    this.events.filter(event => e.id);
   }
 }
