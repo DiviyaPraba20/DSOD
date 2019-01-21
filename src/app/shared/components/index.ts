@@ -31,6 +31,7 @@ import { DSODEssayAuthorComponent } from './essay-author/essay-author.component'
 import { DSODGalleryComponent } from './gallery/gallery.component';
 import { DSODReferecnceComponent } from './references/reference.component';
 import { DSODFeaturedMediaComponent } from './featured-media/featured-media.component';
+import { DSODConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { EditSettingsComponent } from './edit-settings/edit-settings.component';
 
@@ -70,5 +71,6 @@ export const SHARED_COMPONENTS = [
   DSODGalleryComponent,
   DSODReferecnceComponent,
   DSODFeaturedMediaComponent,
+  DSODConfirmDialogComponent,
   EditSettingsComponent
 ];

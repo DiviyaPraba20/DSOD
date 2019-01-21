@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { SHARED_COMPONENTS, DSODAddReviewComponent } from './components';
 import { AvatarCropperComponent } from './components/avatar-cropper/avatar-cropper.component';
+import { DSODConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import { AvatarCropperComponent } from './components/avatar-cropper/avatar-cropp
   ],
   declarations: [...SHARED_COMPONENTS],
   exports: [...SHARED_COMPONENTS],
-  entryComponents: [DSODAddReviewComponent, AvatarCropperComponent]
+  entryComponents: [DSODAddReviewComponent, AvatarCropperComponent, DSODConfirmDialogComponent]
 })
 export class SharedModule {}
