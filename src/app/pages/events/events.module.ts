@@ -7,12 +7,12 @@ import { EVENTS_COMPONENTS } from './components';
 import { EventsRoutingModule } from './events-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { DSODCreateEvent } from './components/create-event/create-event.component';
+import { DSODCreateEventComponent } from './components/create-event/create-event.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [CommonModule, SharedModule, FormsModule, EventsRoutingModule, NgbModule, BsDatepickerModule.forRoot()],
   declarations: [...EVENTS_CONTAINERS, ...EVENTS_COMPONENTS],
-  entryComponents:[DSODCreateEvent]
+  entryComponents: [DSODCreateEventComponent]
 })
 export class EventsModule {}

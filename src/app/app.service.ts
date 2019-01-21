@@ -3,10 +3,12 @@ import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ApplicationStateService {
   private isMobileResolution: boolean;
+  _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(@Inject(DOCUMENT) private document: Document, private deviceService: DeviceDetectorService) {
     if (environment.production) {

@@ -18,7 +18,7 @@
         <div><label><i class="fa fa-plus mr-2"></i>Create Event</label></div>
 
         <div class="d-flex justify-content-center datepicker-wrap">
-          <ngb-datepicker #dp [(ngModel)]="eventDate" (ngModelChange)="onSelectDate(e)"></ngb-datepicker>
+          <ngb-datepicker #dp [(ngModel)]="eventDate" (ngModelChange)="onSelectDate($event)"></ngb-datepicker>
         </div>
         <dsod-event-training></dsod-event-training>
       </section>

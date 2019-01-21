@@ -1,10 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import * as moment from 'moment';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import { Education } from 'src/app/layout/profile/models/userProfile';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'dsod-profile-education',

@@ -19,7 +19,7 @@ import Glide, {
 import { DSODSliderContent } from '../../../shared/models';
 import { DSODContentType } from 'src/app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DSODCreateEvent } from '../components/create-event/create-event.component';
+import { DSODCreateEventComponent } from '../components/create-event/create-event.component';
 import { DSODEventCardComponent } from '../components';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Observable } from 'rxjs';
@@ -43,14 +43,13 @@ export class DSODEventsPageComponent implements AfterViewInit {
   @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<
     DSODEventCardComponent
   >;
-
   events = [
     {
       image: 'assets/images/event-4-lg.png',
       title: 'The Importance of Oral Hygiene for the Pediatric Patient',
       author: 'Dr. Greg Psaltis',
       content:
-        "This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will",
+        `This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will`,
       date: 'Feb 10 2018 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -79,7 +78,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
         'Managing the Relationship Between the Teeth and the Oral Environment',
       author: 'Dr. Kenneth Markowitz ',
       content:
-        "This webinar will explain the relationship between a patient's saliva",
+        `This webinar will explain the relationship between a patient's saliva`,
       date: 'Apr 11 2018 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -175,6 +174,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     }
   ];
+
   content: DSODSliderContent[] = [
     {
       title: '4 Important "Must Do" Steps for New Dentists',
@@ -204,7 +204,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
   }
 
   onSelectDate(e) {
-    const modalRef = this.modalService.open(DSODCreateEvent, {
+    const modalRef = this.modalService.open(DSODCreateEventComponent, {
       windowClass: 'create-event'
     });
     modalRef.componentInstance.selectedDate = this.eventDate;
