@@ -5,6 +5,7 @@ export interface CMSContentTypeModel {
   name: string;
   sort: number;
 }
+
 export interface DSODComment {
   email: string;
   comment_rating: number;

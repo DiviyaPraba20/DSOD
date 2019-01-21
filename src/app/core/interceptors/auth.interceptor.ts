@@ -42,7 +42,6 @@ export class AuthInterceptor implements HttpInterceptor {
         this.store.dispatch(new Unauthorized());
         return throwError({message: 'Current Session has been expired. Please login again.'});
       }
-
       duplicate = this.applyAccessToken(req);
     }
 
@@ -50,6 +49,7 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError(error => {
         if (error.status === 401) {
           this.store.dispatch(new Logout());
+          this.router.navigate(['login']);
         }
         return throwError(error);
       })
