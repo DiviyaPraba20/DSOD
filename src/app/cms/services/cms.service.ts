@@ -14,20 +14,21 @@ import {
 } from '../models';
 import { Store } from '@ngxs/store';
 import { AuthState } from 'src/app/pages/auth/states/auth.state';
+import { ApiClientService } from '../../core/services/api-client.service';
 
 @Injectable()
 export class CMSService {
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(private http: ApiClientService, private store: Store) {}
 
   findAllCategory() {
-    return this.http.post<CMSResponse<CMSContentTypeModel>>(
+    return this.http.post(
       `${environment.url}/category/findAllCategory`,
       {}
     );
   }
 
   findAllContentType() {
-    return this.http.post<CMSResponse<CMSContentTypeModel>>(
+    return this.http.post(
       `${environment.url}/category/findAllContentType`,
       {}
     );
@@ -37,7 +38,7 @@ export class CMSService {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     isLoggedIn ? (url = 'findAllContents') : (url = 'public/findAllContents');
-    return this.http.post<CMSResponse<CMSPageContent>>(
+    return this.http.post(
       `${environment.url}/content/${url}`,
       params,
       isLoggedIn ? { withCredentials: true } : {}
@@ -46,7 +47,7 @@ export class CMSService {
 
   findOneContents<T>(id: string, isPreview?: boolean) {
     if (isPreview) {
-      return this.http.post<CMSResponse<CMSPageContent>>(
+      return this.http.post(
         `${environment.url}/content/public/findOneContents?id=${id}`,
         {}
       );
@@ -54,7 +55,7 @@ export class CMSService {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     isLoggedIn ? (url = 'findOneContents') : (url = 'public/findOneContents');
-    return this.http.post<CMSResponse<CMSPageContent>>(
+    return this.http.post(
       `${environment.url}/content/${url}?id=${id}`,
       {},
       isLoggedIn ? { withCredentials: true } : {}
@@ -65,7 +66,7 @@ export class CMSService {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     isLoggedIn ? (url = 'trending') : (url = 'public/trending');
-    return this.http.post<CMSResponse<CMSPageContent>>(
+    return this.http.post(
       `${environment.url}/content/${url}`,
       params,
       isLoggedIn ? { withCredentials: true } : {}
@@ -73,7 +74,7 @@ export class CMSService {
   }
 
   getAllSponsors<T>() {
-    return this.http.post<CMSResponse<Sponsor>>(
+    return this.http.post(
       `${environment.url}/sponsor/getAll`,
       {}
     );
@@ -83,7 +84,7 @@ export class CMSService {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     isLoggedIn ? (url = 'findAllByValue') : (url = 'public/findAllByValue');
-    return this.http.post<CMSResponse<CMSPageContent>>(
+    return this.http.post(
       `${environment.url}/content/${url}`,
       { ...term, categoryName: 'Dental Public Health' },
       isLoggedIn ? { withCredentials: true } : {}
@@ -92,7 +93,7 @@ export class CMSService {
 
   addBookmark(payload: Bookmark): Observable<Response> {
     const url = `${environment.url}/bookmark/save`;
-    return this.http.post<Response>(url, payload, { withCredentials: true });
+    return this.http.post(url, payload, { withCredentials: true });
   }
 
   removeBookmark(payload: RemoveBookmarkPayload): Observable<Response> {
@@ -100,7 +101,7 @@ export class CMSService {
     params = params.set('email', payload.email);
     params = params.set('contentId', payload.contentId);
     const url = `${environment.url}/bookmark/deleteOneByEmailAndContentId`;
-    return this.http.post<Response>(url, null, {
+    return this.http.post(url, null, {
       params,
       withCredentials: true
     });
@@ -109,11 +110,11 @@ export class CMSService {
   findAllMagazine(payload: CMSContentParams): Observable<CMSResponse<UniteMagazine>> {
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     const url = `${environment.url}/magazine/findAll`;
-    return this.http.post<CMSResponse<UniteMagazine>>(url, payload, { withCredentials: true });
+    return this.http.post(url, payload, { withCredentials: true });
   }
 
   findOneMagazine(id: string): Observable<CMSResponse<any>> {
     const url = `${environment.url}/magazine/findOneById?id=${id}`;
-    return this.http.post<CMSResponse<any>>(url, null, { withCredentials: true });
+    return this.http.post(url, null, { withCredentials: true });
   }
 }

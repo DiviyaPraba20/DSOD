@@ -150,6 +150,17 @@ export class AuthState {
     this.toastr.success('Logout Successfully!', 'Logout');
   }
 
+  @Action(actions.Unauthorized)
+  Unauthorized({ patchState }: StateContext<State>, action: actions.Unauthorized) {
+    patchState({
+      pending: false,
+      error: null,
+      isLoggedIn: false,
+      accessToken: null
+    });
+    this.toastr.error('Current Session has been expired. Please login again.', 'Logout');
+  }
+
   @Action(actions.LoginWithLinkedIn)
   loginWithLinkedIn({ patchState, dispatch }: StateContext<State>, action: actions.LoginWithLinkedIn) {
     patchState({
