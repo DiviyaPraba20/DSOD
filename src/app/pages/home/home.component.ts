@@ -43,10 +43,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private store: Store, private authService: AuthService) {
     store.dispatch(new actions.FetchContentTypes());
     store.dispatch(new actions.FetchSponsorsList());
-    this.storeSub = store
-      .select(state => state.cms.contentTypes)
-      .pipe(skip(1))
-      .subscribe(item => {
+    this.storeSub = store.select(state => state.cms.contentTypes)
+      .pipe(skip(1)).subscribe(item => {
         this.podcastType = item.filter(o => o.name === 'Podcasts');
         this.videoType = item.filter(o => o.name === 'Videos');
         this.store.dispatch(
@@ -59,7 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.store.dispatch(
           new FetchLatestTopics({
             ...this.params,
-            isFeatured:false,
+            isFeatured: false,
             limit: 6
           })
         );
