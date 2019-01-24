@@ -13,7 +13,8 @@
         </ng-template>
       </a>
       <a role="button" class="read-about" (click)="navigateTo($event)">
-        <img *ngIf="topic.contentTypeName==='Articles'" src="assets/images/article-icon.png" alt="">
+        <img *ngIf="topic.contentTypeName==='Articles'" src="assets/images/article-icon.png"
+          alt="">
         <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="">
         <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="">
       </a>
@@ -21,8 +22,9 @@
     <div class="topic-block-content">
       <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-sm'}" (click)="navigateTo($event)">{{topic.title}}</h2>
       <em *ngIf="topic.author">By&nbsp;{{topic.author.fullName}}
-        <a role="button" class="read-about" *ngIf="!topic.featuredMedia" (click)="navigateTo(topic)">
-          <img *ngIf="topic.contentTypeName==='Articles'&& !topic.featuredMediaId" src="assets/images/article-icon.png"
+        <a role="button" class="read-about" *ngIf="styleFor==='content-sm'&& (!topic.featuredMedia || !showImage)"
+          (click)="navigateTo(topic)">
+          <img *ngIf="topic.contentTypeName==='Articles'" src="assets/images/article-icon.png"
             alt="" (click)="navigateTo($event)">
           <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="" (click)="navigateTo($event)">
           <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="" (click)="navigateTo($event)">

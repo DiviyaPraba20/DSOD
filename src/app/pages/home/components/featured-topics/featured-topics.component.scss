@@ -3,9 +3,18 @@
 
 .feautred-topics {
   font-family: $Arial;
-  .content-lg{
-    /deep/ .topic-block{
-      height: auto;
+
+  .content-lg {
+    height: 100%;
+
+    /deep/ .topic-block {
+      height: 100%;
+    }
+  }
+
+  .no-thumbnail {
+    /deep/ .topic-title-large.topic-title-small {
+      border: none !important;
     }
   }
 }
