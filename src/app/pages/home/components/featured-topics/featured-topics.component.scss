@@ -13,7 +13,7 @@
   }
 
   .no-thumbnail {
-    .topic-title-large.topic-title-small {
+    /deep/ .topic-title-large.topic-title-small {
       border: none !important;
     }
   }
