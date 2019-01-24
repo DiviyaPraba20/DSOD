@@ -4,8 +4,8 @@
 .feautred-topics {
   font-family: $Arial;
   .content-lg{
-    /deep/ .topic-block{
-      height: auto;
+    /deep/ .topic-block {
+      height: 100%;
     }
   }
 }
