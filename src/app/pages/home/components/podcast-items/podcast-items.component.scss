@@ -6,8 +6,8 @@ ul {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     font-size: 22px;
     color: $boulder_grey;
     padding: 23px 36px;
@@ -38,7 +38,8 @@ ul {
   ul {
     li {
       font-size: 18px;
-      span{
+
+      span {
         font-size: 18px;
       }
     }
