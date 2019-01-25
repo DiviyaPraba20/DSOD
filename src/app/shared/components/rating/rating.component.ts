@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'dsod-rating',
   template: ` 
-    <div class="topic-rating">
+    <div class="topic-rating text-right">
         <div *ngIf="rating">
         <span [ngClass]="{'filled':number<=_rating, 'un-filled':number>_rating }" *ngFor="let number of [1,2,3,4,5]" (click)="onClick($event, number)"><i class="fa fa-star" aria-hidden="true"></i></span>
         </div>

@@ -12,11 +12,9 @@
           <img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail small">
         </ng-template>
       </a>
-      <a role="button" class="read-about" (click)="navigateTo($event)">
-        <img *ngIf="topic.contentTypeName==='Articles'" src="assets/images/article-icon.png"
-          alt="">
-        <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="">
-        <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="">
+      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)">
+
+        <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
       </a>
     </div>
     <div class="topic-block-content">
@@ -24,10 +22,7 @@
       <em *ngIf="topic.author">By&nbsp;{{topic.author.fullName}}
         <a role="button" class="read-about" *ngIf="styleFor==='content-sm'&& (!topic.featuredMedia || !showImage)"
           (click)="navigateTo(topic)">
-          <img *ngIf="topic.contentTypeName==='Articles'" src="assets/images/article-icon.png"
-            alt="" (click)="navigateTo($event)">
-          <img *ngIf="topic.contentTypeName==='Videos'" src="assets/images/youtube-icon.png" alt="" (click)="navigateTo($event)">
-          <img *ngIf="topic.contentTypeName==='Podcasts'" src="assets/images/podcast-icon.png" alt="" (click)="navigateTo($event)">
+          <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="" (click)="navigateTo($event)">
         </a> </em>
       <div #contentDiv [ngClass]="{'excrept-content-sm':styleFor=='content-sm','excrept-content-lg':styleFor=='content-lg'}"
         [innerHTML]="topic.excerpt">

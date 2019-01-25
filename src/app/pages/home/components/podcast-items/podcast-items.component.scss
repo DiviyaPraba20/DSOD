@@ -2,8 +2,12 @@
 
 ul {
   li {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     font-size: 22px;
     color: $boulder_grey;
     padding: 23px 36px;
@@ -12,6 +16,8 @@ ul {
     a {
       width: 100%;
       color: $boulder_grey;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
     }
 
@@ -24,6 +30,17 @@ ul {
 
     &:nth-child(odd) {
       background: $color-strokes;
+    }
+  }
+}
+
+@media only screen and (max-width:1440px) {
+  ul {
+    li {
+      font-size: 18px;
+      span{
+        font-size: 18px;
+      }
     }
   }
 }

@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
         text-align: center;
       }
       .ad-banner img {
-        max-width: 70%;
+        max-width: 80%;
       }
     `
   ]

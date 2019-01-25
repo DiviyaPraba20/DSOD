@@ -2,9 +2,15 @@
 
 .events {
   h2.section-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 
     a {
       color: $color-primary;
@@ -14,6 +20,8 @@
 }
 
 .event-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 13px 0;
   cursor: pointer;
@@ -45,7 +53,8 @@
       width: 100%;
       max-width: 161px;
       height: 100%;
-      object-fit: cover;
+      -o-object-fit: cover;
+         object-fit: cover;
     }
   }
 
@@ -74,9 +83,15 @@
     }
 
     .event-content-footer {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
 
       span.event-level {
         font-size: 19px;
@@ -98,6 +113,14 @@
         font-weight: bold;
         text-transform: uppercase;
       }
+    }
+  }
+}
+
+@media only screen and (max-width:1440px) {
+  .event-block {
+    .event-thumbnail {
+      min-width: 140px;
     }
   }
 }

@@ -5,9 +5,7 @@
         <img src={{latestTopic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail Large"
           (click)="navigateTo(latestTopic)">
         <a href="javascript:void(0)" (click)="navigateTo(latestTopic)" class="read-about">
-          <img *ngIf="latestTopic.contentTypeName=='Articles'" src="assets/images/article-icon.png" alt="">
-          <img *ngIf="latestTopic.contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
-          <img *ngIf="latestTopic.contentTypeName=='Podcasts'" src="assets/images/podcast-icon.png" alt="">
+          <img src="assets/images/icons/{{latestTopic.contentTypeName}}.png" alt="">
         </a>
       </div>
     </div>

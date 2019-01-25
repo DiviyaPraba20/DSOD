@@ -7,7 +7,10 @@
 
     >img {
       width: 100%;
-      object-fit: cover;
+      -o-object-fit: cover;
+         object-fit: cover;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       margin: auto;
       max-height: 400px;
@@ -17,7 +20,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
       text-align: center;
       max-width: 800px;
 
@@ -49,6 +53,27 @@
         line-height: 24px;
         display: inline-block;
         color: $color-white;
+      }
+    }
+  }
+
+  @media only screen and (max-width:1440px) {
+    .glide__slide {
+      .slide-caption {
+        max-width: 700px;
+
+        h1 {
+          font-size: 45px;
+        }
+
+        h2 {
+          font-size: 24px;
+        }
+
+        p{
+          font-size: 20px;
+          max-width: 100%;
+        }
       }
     }
   }

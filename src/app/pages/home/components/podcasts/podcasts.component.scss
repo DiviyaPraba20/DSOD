@@ -22,9 +22,11 @@
   .podcasts-tabs {
     margin: 50px 0;
     position: relative;
+
     /deep/.tab-container {
       width: 100%;
     }
+
     h3.podcasts-title {
       font-size: 28px;
       font-weight: 300;
@@ -136,9 +138,11 @@
       a.pod-right-control {
         position: absolute;
         top: 50%;
-        box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.5);
+                box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.5);
         border-radius: 50%;
         overflow: hidden;
+        z-index: 10;
       }
 
       a.pod-left-control {
@@ -147,6 +151,22 @@
 
       a.pod-right-control {
         right: -60px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:1440px) {
+  .podcasts-tabs {
+    /deep/ .tab-content {
+      .tab-pane {
+        a.pod-left-control {
+          left: -30px;
+        }
+
+        a.pod-right-control {
+          right: -30px;
+        }
       }
     }
   }
