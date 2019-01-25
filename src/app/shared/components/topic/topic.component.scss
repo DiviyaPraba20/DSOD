@@ -5,11 +5,17 @@
     font-family: $Arial;
     background: #f8f8f8;
     height: 100%;
+
     .topic-block-header {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between;
       padding: 16px 15px 14px;
       border-bottom: 1px solid #8799a7;
+
       h4 {
         color: $color-primary;
         font-size: 18px;
@@ -17,39 +23,56 @@
         line-height: 20px;
       }
     }
+
     .topic-block-thumbnail {
       position: relative;
       border-top: 3px solid $mine_grey;
+      padding-top: 75%;
+      width: 100%;
+
       a {
         >img {
           width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          -o-object-fit: cover;
+          object-fit: cover;
         }
       }
+
       >video {
         width: 100%;
       }
+
       a.read-about {
         position: absolute;
         display: inline-block;
         left: 25px;
         bottom: 25px;
+
         >img {
           max-width: 42px;
+          position: relative;
         }
       }
     }
+
     .topic-block-content {
       padding: 15px 30px;
+
       .topic-title-large {
         font-weight: 500;
         font-size: 27px;
         color: #000000;
         padding-bottom: 10px;
         cursor: pointer;
+
         &:hover {
           color: $deep-cerulean;
         }
       }
+
       .topic-title-small {
         font-size: 20px;
         border-top: 1px solid #c0cad1;
@@ -57,51 +80,68 @@
         line-height: 30px;
         padding-bottom: 10px;
       }
+
       em {
         font-size: 18px;
         font-weight: 600;
+
         a.read-about {
           margin-left: 10px;
+          img{
+            max-width: 42px;
+          }
         }
       }
+
       p {
         font-size: 22px;
+
         a {
           color: $deep-cerulean;
         }
       }
+
       .excrept-content-lg {
         font-size: 18px;
       }
     }
   }
+
   .bg-none {
     background: transparent;
   }
+
   .topic-block-sm {
     height: 100%;
+
     .topic-block-thumbnail {
       >img {
         height: 260px;
+        -o-object-fit: cover;
         object-fit: cover;
       }
+
       a.read-about {
         bottom: 40px;
         cursor: pointer;
       }
     }
+
     .topic-block-content {
       padding: 15px;
+
       h2.topic-title {
         font-size: 22px;
         border-top: 1px solid #c0cad1;
         padding-top: 15px;
         line-height: 30px;
       }
+
       .excrept-content-lg {
         padding-top: 5px;
         display: none;
       }
+
       .excrept-content-sm {
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -113,26 +153,31 @@
       }
     }
   }
+
   .read-more-lg {
     p {
       font-size: 22px;
       line-height: 3px;
+
       a {
         color: $deep-cerulean;
         cursor: pointer;
       }
     }
   }
+
   .read-more-sm {
     p {
       font-size: 17px;
       line-height: 3px;
+
       a {
         color: $deep-cerulean;
         cursor: pointer;
       }
     }
   }
+
   /deep/ p {
     a {
       font-size: 17px;
@@ -140,17 +185,17 @@
     }
   }
 }
+
 .topic-block-lg {
   .topic-block-thumbnail {
     img {
+      -o-object-fit: unset;
       object-fit: unset;
       height: 100%;
       width: 100%;
     }
-    .img-lg {
-      // height: 430px !important;
-    }
   }
+
   a {
     font-size: 18px;
     cursor: pointer;
@@ -164,12 +209,62 @@
         font-size: 16px;
       }
     }
+
     .topic-block-content {
       h2.topic-title {
         font-size: 20px;
       }
+
       em {
         font-size: 18px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:1440px) {
+  :host {
+
+    .topic-block {
+      .topic-block-header {
+        padding: 16px 10px 14px;
+
+        h4 {
+          font-size: 16px;
+        }
+      }
+
+      .topic-block-content {
+        .excrept-content-sm {
+          max-height: 80px;
+          font-size: 16px;
+        }
+
+        .topic-title-large {
+          font-size: 22px;
+        }
+
+        .topic-title-small {
+          font-size: 17px;
+        }
+
+        em {
+          font-size: 16px;
+        }
+
+
+        .excrept-content-lg {
+          font-size: 17px;
+          max-height: 148px;
+          overflow: hidden;
+
+          /deep/ p {
+            font-size: 17px;
+            max-height: 125px;
+            overflow: hidden;
+            margin: 0;
+          }
+        }
       }
     }
   }

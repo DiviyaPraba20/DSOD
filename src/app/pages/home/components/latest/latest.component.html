@@ -8,8 +8,7 @@
     <div class="latest-block-thumbnail" *ngIf="latestTopics[0].featuredMedia">
       <img src={{latestTopics[0].featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail Large">
       <a href="" class="read-about">
-        <img *ngIf="latestTopics[0].contentTypeName=='Articles'" src="assets/images/article-icon.png" alt="">
-        <img *ngIf="latestTopics[0].contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
+        <img src="assets/images/icons/{{latestTopics[0].contentTypeName}}.png" alt="">
       </a>
     </div>
     <div class="latest-block-caption">

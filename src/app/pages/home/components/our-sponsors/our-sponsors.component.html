@@ -3,7 +3,7 @@
   <div class="col-md-12" *ngFor="let topic of sponsoredTopics | slice:0:3">
 
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-md-12">
         <div class="our-sponsors">
           <div class="our-sponsors-header">
             <h4 *ngIf="topic.sponsorName==='ALN'">
@@ -22,7 +22,7 @@
           <dsod-topic [topic]="topic" [showImage]="false" styleFor="content-lg" [showHeader]="false"></dsod-topic>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-md-12">
         <section class="sponsors-ortho">
           <div>
             <dsod-media-content title="implant Dentisty" [placeholderImageSrc]="topic.featuredMedia.code.originalUrl"
