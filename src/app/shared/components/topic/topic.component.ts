@@ -14,6 +14,7 @@ export class DSODTopicComponent {
   @Input() styleFor: string;
   @Input() showRating: boolean;
   @Input() imgLarge?: boolean;
+  @Input() contentLength?:number;
 
   constructor(private router: Router) {}
 
@@ -25,5 +26,18 @@ export class DSODTopicComponent {
     } else {
       this.router.navigate(['./article', this.topic.id]);
     }
+  }
+
+  getContent(topic) {
+    debugger;
+    console.log(topic, topic.length);
+    if (topic.length > 160) {
+      return topic.substring(0, 160) + '...';
+    } else {
+      return topic + '...';
+    }
+  }
+  getString() {
+    return `<p[ngClass]="{'read-more-sm':styleFor==='content-sm'}" >...<a role="button"(click) = "navigateTo($event)" > more < /a></p >`;
   }
 }

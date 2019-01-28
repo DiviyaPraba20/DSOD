@@ -3,22 +3,25 @@
     <h2 class="section-title">
       Featured Topics
     </h2>
+
     <div class="row" *ngIf="featuredTopics">
-      <div class="col-lg-6">
+      <div class="col-6">
         <div class="content-lg" *ngFor="let topic of featuredTopics | slice : 0:1">
-          <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-lg" [showRating]=true
-            [imgLarge]=true></dsod-topic>
+          <dsod-topic [topic]="topic" [contentLength]=234 [showImage]="true" [showHeader]="true" styleFor="content-lg"
+            [showRating]=true [imgLarge]=true></dsod-topic>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-6">
         <div class="row">
-          <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let topic of featuredTopics | slice:1:3">
-            <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-sm" [showRating]=true></dsod-topic>
+          <div class="col-6" *ngFor="let topic of featuredTopics | slice:1:3">
+            <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
+              [showRating]=true></dsod-topic>
           </div>
         </div>
         <div class="row no-thumbnail">
-          <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let topic of featuredTopics | slice:3:5">
-            <dsod-topic [topic]="topic" [showImage]="false" [showHeader]="true" styleFor="content-sm" [showRating]=true></dsod-topic>
+          <div class="col-6" *ngFor="let topic of featuredTopics | slice:3:5">
+            <dsod-topic [topic]="topic" [contentLength]=170 [showImage]="false" [showHeader]="true" styleFor="content-sm"
+              [showRating]=true></dsod-topic>
           </div>
         </div>
       </div>

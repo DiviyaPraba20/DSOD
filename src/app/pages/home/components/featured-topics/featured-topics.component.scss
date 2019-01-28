@@ -1,6 +1,7 @@
 @import 'variables.scss';
 // Featured Topics Section
 
+
 .feautred-topics {
   font-family: $Arial;
 
@@ -16,5 +17,12 @@
     /deep/ .topic-title-large.topic-title-small {
       border: none !important;
     }
+  }
+}
+
+@media only screen and (max-width:1600px){
+  .feautred-wrap {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
   }
 }

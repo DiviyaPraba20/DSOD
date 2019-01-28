@@ -11,6 +11,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { SHARED_COMPONENTS, DSODAddReviewComponent } from './components';
 import { AvatarCropperComponent } from './components/avatar-cropper/avatar-cropper.component';
 import { DSODConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { TruncatePipe } from './pipe/truncate-pipe.component';
 
 @NgModule({
   imports: [
@@ -24,8 +25,12 @@ import { DSODConfirmDialogComponent } from './components/confirm-dialog/confirm-
     NgbModule.forRoot(),
     ImageCropperModule
   ],
-  declarations: [...SHARED_COMPONENTS],
-  exports: [...SHARED_COMPONENTS],
-  entryComponents: [DSODAddReviewComponent, AvatarCropperComponent, DSODConfirmDialogComponent]
+  declarations: [...SHARED_COMPONENTS, TruncatePipe],
+  exports: [...SHARED_COMPONENTS, TruncatePipe],
+  entryComponents: [
+    DSODAddReviewComponent,
+    AvatarCropperComponent,
+    DSODConfirmDialogComponent
+  ]
 })
 export class SharedModule {}

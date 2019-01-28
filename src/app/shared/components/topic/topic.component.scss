@@ -27,7 +27,7 @@
     .topic-block-thumbnail {
       position: relative;
       border-top: 3px solid $mine_grey;
-      padding-top: 75%;
+      padding-top: 60%;
       width: 100%;
 
       a {
@@ -38,6 +38,7 @@
           left: 0;
           -o-object-fit: cover;
           object-fit: cover;
+          height: 100%;
         }
       }
 
@@ -57,6 +58,7 @@
         }
       }
     }
+
 
     .topic-block-content {
       padding: 15px 30px;
@@ -79,15 +81,19 @@
         padding-top: 15px;
         line-height: 30px;
         padding-bottom: 10px;
+        max-height: 80px;
+        overflow: hidden;
       }
 
       em {
         font-size: 18px;
         font-weight: 600;
+         display: block;
 
         a.read-about {
           margin-left: 10px;
-          img{
+
+          img {
             max-width: 42px;
           }
         }
@@ -103,6 +109,19 @@
 
       .excrept-content-lg {
         font-size: 18px;
+
+      }
+    }
+  }
+
+  .topic-block-lg {
+    .topic-block-thumbnail {
+      padding-top: 0;
+
+      a {
+        img {
+          position: relative !important;
+        }
       }
     }
   }
@@ -153,37 +172,6 @@
       }
     }
   }
-
-  .read-more-lg {
-    p {
-      font-size: 22px;
-      line-height: 3px;
-
-      a {
-        color: $deep-cerulean;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .read-more-sm {
-    p {
-      font-size: 17px;
-      line-height: 3px;
-
-      a {
-        color: $deep-cerulean;
-        cursor: pointer;
-      }
-    }
-  }
-
-  /deep/ p {
-    a {
-      font-size: 17px;
-      cursor: pointer;
-    }
-  }
 }
 
 .topic-block-lg {
@@ -217,6 +205,7 @@
 
       em {
         font-size: 18px;
+       
       }
     }
   }
@@ -235,11 +224,6 @@
       }
 
       .topic-block-content {
-        .excrept-content-sm {
-          max-height: 80px;
-          font-size: 16px;
-        }
-
         .topic-title-large {
           font-size: 22px;
         }
@@ -253,18 +237,18 @@
         }
 
 
-        .excrept-content-lg {
-          font-size: 17px;
-          max-height: 148px;
-          overflow: hidden;
+        // .excrept-content-lg {
+        //   font-size: 17px;
+        //   max-height: 148px;
+        //   overflow: hidden;
 
-          /deep/ p {
-            font-size: 17px;
-            max-height: 125px;
-            overflow: hidden;
-            margin: 0;
-          }
-        }
+        //   /deep/ p {
+        //     font-size: 17px;
+        //     max-height: 125px;
+        //     overflow: hidden;
+        //     margin: 0;
+        //   }
+        // }
       }
     }
   }
