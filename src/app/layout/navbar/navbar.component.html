@@ -1,22 +1,23 @@
-<div class="profile-out-click-container"
-  [ngClass]="{'hide': !(isOpenedProfilePanel$ | async)}"
-  (click)="onClickedOutProfilePanel()"
-></div>
+<div class="profile-out-click-container" [ngClass]="{'hide': !(isOpenedProfilePanel$ | async)}" (click)="onClickedOutProfilePanel()"></div>
 <div class="nav-wrapper" onScroll-update>
   <div class="container-fluid">
     <div class="d-flex justify-content-between">
       <div class="brand">
         <a [routerLink]="['/']"><img class="img img-fluid" src="assets/images/dso-logo.png"></a>
       </div>
-      <div class="col-10 d-flex">
-        <div class="nav-menu ml-auto">
-          <nav class="">
+      <div class="col-sm-10">
+        <div class="nav-menu">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button> -->
             <div class="" id="navbarSupportedContent">
               <!-- Menu  -->
-              <ul class="nav-menu ml-auto">
+              <ul class="navbar-nav ml-auto flex-row">
                 <!-- Menu Items  -->
-                <li class=" sub-menu-parent" *ngFor="let nav of navigation">
-                  <a class="" routerLink={{nav.link}} routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
+                <li class="nav-item sub-menu-parent" *ngFor="let nav of navigation">
+                  <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
                   <!-- Sub Menu -->
                   <ul class="sub-menu" *ngIf="nav.children">
                     <li *ngFor="let child of nav.children" [ngClass]="{'sub-menu-child': child.children}">
@@ -29,7 +30,7 @@
                     </li>
                   </ul>
                 </li>
-                <li class="">
+                <li class="nav-item">
                   <div class="search-area" [ngClass]="{'li-hidden':!isOpen, 'li-open':isOpen}">
                     <button #searchButton type="button" class="nav-link" (click)="toggle()">
                       <img src="assets/images/search-icon.png">
@@ -37,35 +38,35 @@
                     <dsod-search [isOpen]=isOpen></dsod-search>
                   </div>
                 </li>
-                <li class=" login-wrap" *ngIf="(isLoggedIn$ | async)" ngbDropdown placement="bottom-right">
+                <li class="nav-item login-wrap" *ngIf="(isLoggedIn$ | async)" ngbDropdown placement="bottom-right">
                   <div class="nav-link avatar-wrap">
                     <img class="avatar" [src]="userProfile?.photo_url ? (avatarBaseUrl + userProfile.photo_url) : './assets/images/no-avatar.png'">
-                    <li class=" sub-menu-parent" ngbDropdownToggle>
-                      <a class="nav-link profile-name">{{userProfile?.full_name}}</a>
-                      <ul class="sub-menu">
-                        <li>
-                          <a (click)="toggleProfilePanel()">Profile</a>
-                          <a (click)="toggleProfilePanel()">Settings</a>
-                          <a (click)="logout()">Log Out</a>
-                        </li>
-                      </ul>
+                <li class="nav-item sub-menu-parent" ngbDropdownToggle>
+                  <a class="nav-link profile-name">{{userProfile?.full_name}}</a>
+                  <ul class="sub-menu">
+                    <li>
+                      <a (click)="toggleProfilePanel()">Profile</a>
+                      <a (click)="toggleProfilePanel()">Settings</a>
+                      <a (click)="logout()">Log Out</a>
                     </li>
-                  </div>
+                  </ul>
                 </li>
-                <li class=" login-wrap" *ngIf="(isLoggedIn$ | async)">
-                  <div class="nav-link avatar-wrap notify-wrapper">
-                    <i class="fa fa-bell icon-bell"></i>
-                    <span class="alert-count">5</span>
-                  </div>
-                </li>
-                <li class=" login-wrap" *ngIf="!(isLoggedIn$ | async)">
-                  <a [routerLink]="['login']" class="nav-link">Login</a>
-                </li>
-              </ul>
             </div>
-          </nav>
+            </li>
+            <li class="nav-item login-wrap" *ngIf="(isLoggedIn$ | async)">
+              <div class="nav-link avatar-wrap notify-wrapper">
+                <i class="fa fa-bell icon-bell"></i>
+                <span class="alert-count">5</span>
+              </div>
+            </li>
+            <li class="nav-item login-wrap" *ngIf="!(isLoggedIn$ | async)">
+              <a [routerLink]="['login']" class="nav-link">Login</a>
+            </li>
+            </ul>
         </div>
+        </nav>
       </div>
     </div>
   </div>
+</div>
 </div>
