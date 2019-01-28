@@ -1,0 +1,4 @@
+<div [ngClass]="{'excrept-content-sm':styleFor=='content-sm','excrept-content-lg':styleFor=='content-lg'}" [innerHTML]="topic.excerpt | truncate : contentLength : false : ''">
+</div>
+<p [ngClass]="{'read-more-sm':styleFor==='content-sm', 'read-more-lg':styleFor==='content-lg' }">...<a role="button"
+    (click)="navigateTo($event)">[more]</a></p>

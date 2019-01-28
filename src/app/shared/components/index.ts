@@ -34,6 +34,7 @@ import { DSODFeaturedMediaComponent } from './featured-media/featured-media.comp
 import { DSODConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { EditSettingsComponent } from './edit-settings/edit-settings.component';
+import { DSODExcerptComponent } from './excerpt/excerpt.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -72,5 +73,6 @@ export const SHARED_COMPONENTS = [
   DSODReferecnceComponent,
   DSODFeaturedMediaComponent,
   DSODConfirmDialogComponent,
-  EditSettingsComponent
+  EditSettingsComponent,
+  DSODExcerptComponent
 ];

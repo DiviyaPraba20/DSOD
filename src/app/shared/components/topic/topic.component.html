@@ -24,10 +24,11 @@
           (click)="navigateTo(topic)">
           <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="" (click)="navigateTo($event)">
         </a> </em>
-      <div #contentDiv [ngClass]="{'excrept-content-sm':styleFor=='content-sm','excrept-content-lg':styleFor=='content-lg'}"
-        [innerHTML]="topic.excerpt">
+      <!-- <div [ngClass]="{'excrept-content-sm':styleFor=='content-sm','excrept-content-lg':styleFor=='content-lg'}"
+        [innerHTML]="topic.excerpt | truncate : 125 : false : ''">
       </div>
-      <p [ngClass]="{'read-more-sm':styleFor==='content-sm'}">...<a role="button" (click)="navigateTo($event)">more</a></p>
+      <p [ngClass]="{'read-more-sm':styleFor==='content-sm'}">...<a role="button" (click)="navigateTo($event)">[more]</a></p> -->
+      <dsod-excerpt [topic]="topic" [contentLength]="contentLength" [styleFor]="styleFor"></dsod-excerpt>
     </div>
   </div>
 </div>

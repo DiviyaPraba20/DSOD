@@ -23,7 +23,7 @@
         <section class="trending-videos" *ngIf="(trendingTopics$ | async).length">
           <h2 class="section-title">Trending Topics</h2>
           <div *ngFor="let topic of trendingTopics$ | async">
-            <dsod-topic [topic]="topic" [showImage]="true" [showHeader]="true" styleFor="content-sm" [showRating]=true></dsod-topic>
+            <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm" [showRating]=true></dsod-topic>
           </div>
           <dsod-sponsored-ad></dsod-sponsored-ad>
         </section>
