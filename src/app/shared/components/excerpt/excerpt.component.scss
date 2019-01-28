@@ -5,6 +5,9 @@
     padding-top: 5px;
     font-size: 20px;
     display: inline;
+    /deep/ p:last-child{
+      display: inline;
+    }
   }
 
 

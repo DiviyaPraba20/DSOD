@@ -1,25 +1,22 @@
 <div class="search-item latest-layout-row">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-5">
       <div class="search-item-thumbnail">
         <img (click)="navigateTo(topic)" src={{topic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail Large">
         <a href="javascript:void(0)" (click)="navigateTo(topic)" class="read-about">
-          <img *ngIf="topic.contentTypeName=='Articles'" src="assets/images/article-icon.png" alt="">
-          <img *ngIf="topic.contentTypeName=='Videos'" src="assets/images/youtube-icon.png" alt="">
-          <img *ngIf="topic.contentTypeName=='Podcasts'" src="assets/images/podcast-icon.png" alt="">
+          <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
         </a>
       </div>
-
     </div>
-    <div class="col-md-7 pr-5">
+    <div class="col-7 pr-5">
       <div class="search-item-header">
         <h4>{{topic.categoryName}}</h4>
         <dsod-rating></dsod-rating>
       </div>
       <div class="search-item-content">
         <h2 class="topic-title mb-3">{{topic.title}}</h2>
-        <div class="excerpt-content" [innerHTML]="topic.excerpt" slice-content></div>
-        <p><a href="javascript:void(0)" (click)="navigateTo(topic)">...more</a></p>
+        <em *ngIf="topic.author">By&nbsp;{{topic.author.fullName}}</em>
+        <dsod-excerpt [topic]="topic" contentLength=400 styleFor="content-lg"></dsod-excerpt>
       </div>
     </div>
   </div>

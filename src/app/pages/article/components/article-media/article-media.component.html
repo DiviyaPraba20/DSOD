@@ -7,12 +7,12 @@
 </div>
 <div class="article-header" *ngIf="content">
   <div class="row">
-    <div class="col-lg-10">
+    <div class="col-10">
       <h2>{{content.title}}:</h2>
       <!-- <h3>The Morning Huddle</h3> -->
       <span class="by" *ngIf="content.author">by {{content.author.fullName}}</span>
     </div>
-    <div class="col-lg-2">
+    <div class="col-2">
       <dsod-content-actions [content]="content"></dsod-content-actions>
     </div>
   </div>

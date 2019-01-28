@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-4" *ngFor="let podcast of podcasts | slice:indexStart:indexEnd; let i=index">
+  <div class="col-4" *ngFor="let podcast of podcasts | slice:indexStart:indexEnd; let i=index">
     <div class="featured-podcasts-block-sm" *ngIf="podcasts" [routerLink]="['./podcast', podcast.id]">
       <div class="podcasts-block-header">
         <h4>{{podcast.categoryName}}</h4>

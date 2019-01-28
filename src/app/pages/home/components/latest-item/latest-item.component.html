@@ -1,6 +1,6 @@
 <div class="latest-block latest-layout-row">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-5">
       <div class="latest-block-thumbnail">
         <img src={{latestTopic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail Large"
           (click)="navigateTo(latestTopic)">
@@ -9,7 +9,7 @@
         </a>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-7">
       <dsod-topic [topic]="latestTopic" [contentLength]=493 [showImage]="false" [showHeader]="true" styleFor="content-lg"
         [showRating]=true>
       </dsod-topic>
