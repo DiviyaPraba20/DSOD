@@ -39,17 +39,12 @@ body {
 a {
   text-decoration: none !important;
 }
-.site-wrap{
-  min-width: 1900px;
-}
+
+
 
 .container {
-  // max-width: 1710px;
   margin: 0 auto;
-  width: 100% !important;
   padding: 0 15px;
-  min-width: 1710px !important;
-
 }
 
 h2.section-title {
@@ -153,33 +148,16 @@ ul li {
   .modal-dialog {
     max-width: 1000px;
   }
-  .modal-body{
+
+  .modal-body {
     padding: 50px;
   }
 }
 
-@media only screen and (min-width:1366px) {
-  .container {
-    max-width: 1300px;
-  }
-
-}
 
 @media only screen and (min-width:1440px) {
   .container {
     max-width: 1380px;
-  }
-}
-
-@media only screen and (min-width:1600px) {
-  .container {
-    max-width: 1540px;
-  }
-}
-
-@media only screen and (min-width:1730px) {
-  .container {
-    max-width: 1710px;
   }
 }
 
@@ -188,5 +166,26 @@ ul li {
 @media only screen and (max-width:1680px) {
   h2.section-title {
     font-size: 22px;
+  }
+}
+
+@media only screen and (max-width:1440px) {
+  h2.section-title {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width:1199px) {
+  body {
+    overflow-x: scroll;
+  }
+
+  .site-wrap {
+    min-width: 1180px;
+  }
+
+  .container {
+    max-width: 100%;
+    width: 100%;
   }
 }

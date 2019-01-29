@@ -61,7 +61,18 @@
   .featured-podcasts-block-sm {
     .podcasts-block-header {
       h4 {
-        font-size: 18px;
+        font-size: 15px;
+      }
+    }
+
+    .podcast-block-thumbnail {
+      .podcasts-block-caption {
+        height: 40px;
+
+        h4 {
+          font-size: 14px;
+          line-height: 17px;
+        }
       }
     }
   }

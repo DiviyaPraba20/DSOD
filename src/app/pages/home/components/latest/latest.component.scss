@@ -7,6 +7,7 @@
     margin: 15px 0 33px;
     background: #f8f8f8;
 
+
     .latest-block-header {
       display: flex;
       justify-content: space-between;
@@ -64,7 +65,15 @@
           color: $deep-cerulean;
         }
       }
+
     }
+
+    /deep/ .topic-block-content {
+      .excrept-content-lg {
+        line-height: 25px;
+      }
+    }
+
 
     .latest-block-caption {
       background: $regent-gray;
