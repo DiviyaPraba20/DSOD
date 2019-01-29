@@ -6,12 +6,13 @@
   .latest-block {
     margin: 15px 0 33px;
     background: #f8f8f8;
+    display: block;
 
 
     .latest-block-header {
       display: flex;
       justify-content: space-between;
-      padding: 21px 15px 9px;
+      padding: 17px 15px 9px;
 
       h4 {
         color: $color-primary;

@@ -25,7 +25,7 @@
     position: relative;
     border-top: 3px solid $mine_grey;
     height: auto;
-    padding-top: 100%;
+    padding-top: 93%;
 
     >img {
       width: 100%;
@@ -142,6 +142,7 @@
 
 @media only screen and (max-width:1440px) {
   .latest-layout-row {
+
     /deep/ .excrept-content-lg {
       padding-top: 5px;
       font-size: 16px;
@@ -161,4 +162,9 @@
       }
     }
   }
+    .latest-block {
+      .latest-block-thumbnail {
+        padding-top: 96%;
+      }
+    }
 }

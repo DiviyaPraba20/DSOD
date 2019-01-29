@@ -8,7 +8,7 @@
   /deep/ iframe {
     width: 100% !important;
     position: relative !important;
-    height: 250px !important;
+    height: 223px !important;
   }
 
   .trending-block-header {
@@ -46,11 +46,16 @@
 
   .trending-block-caption {
     background: $regent-gray;
-    padding: 5px 15px;
+    padding: 9px 15px;
 
     h4 {
       color: $color-white;
       font-size: 18px;
+      margin: 0;
+      overflow: hidden;
+      display: block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
@@ -71,6 +76,12 @@
       h4 {
         font-size: 16px;
       }
+    }
+
+    /deep/ iframe {
+      width: 100% !important;
+      position: relative !important;
+      height: 173px !important;
     }
   }
 }
