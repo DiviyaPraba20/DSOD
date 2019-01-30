@@ -38,9 +38,9 @@
   <div class="event-card-footer">
     <div class="event-timing">
       <span>
-        <div class="d-flex align-items-center">
+        <div class="d-flex">
           <div>{{event.date |date:'mediumDate'}} | {{event.duration}}</div>
-          <div class="date-pick ml-2 datepicker-wrap" *ngIf="enableEditing">
+          <div class="date-pick ml-2 datepicker-wrap mr-2" *ngIf="enableEditing">
             <input class="form-control p-0 m-0 b-0" placement="top-center" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
               [(ngModel)]="event.date" ngbDatepicker #d2="ngbDatepicker">
             <button class="btn btn-outline-secondary calendar p-0" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"
