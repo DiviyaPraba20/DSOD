@@ -17,6 +17,4 @@
     </div>
   </div>
 </div>
-<div class="article-thumbnail" *ngIf="content">
-  <img src={{content.featuredMedia?.code?.originalUrl}} class="img-fluid" alt="">
-</div>
+<dsod-feartured-media [featuredMedia]="content.featuredMedia"></dsod-feartured-media>
