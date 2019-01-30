@@ -7,12 +7,14 @@
   </div>
 
   <div class="modal-body" id="viewer-body">
-    <div>
+    <div class="container">
       <h2>{{magazine.contents[pageIndex].title}}</h2>
       <span class="by" *ngIf="magazine.contents[pageIndex].author">by {{magazine.contents[pageIndex].author.fullName}}</span>
     </div>
-    <img class="cover" [src]="getImageUrl(magazine.contents[pageIndex].featuredMedia?.code?.thumbnail)" class="img-fluid" alt="">
-    <div class="article-content" [innerHTML]="magazine.contents[pageIndex].content"></div>
+    <div class="container">
+      <img class="cover" [src]="getImageUrl(magazine.contents[pageIndex].featuredMedia?.code?.thumbnail)" class="img-fluid mb-3 mt-3" alt="">
+      <div class="article-content" [innerHTML]="magazine.contents[pageIndex].content"></div>
+    </div>
   </div>
 
   <div class="modal-footer">
