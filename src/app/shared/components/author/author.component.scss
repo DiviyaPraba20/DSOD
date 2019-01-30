@@ -5,6 +5,7 @@
       width: 100%;
       max-width: 254px;
       height: 245px;
+      -o-object-fit: cover;
       object-fit: cover;
     }
   }
@@ -18,10 +19,11 @@
     position: relative;
 
 
-    span.episode-nbr{
+    span.episode-nbr {
       position: absolute;
-      transform: translateY(-50%);   
-      top: 0; 
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      top: 0;
       left: 15px;
       right: 15px;
       background: #0198c6;
@@ -37,5 +39,22 @@
       line-height: 19px;
       font-weight: 700;
       color: $color-white;
+    }
+  }
+
+
+  @media only screen and (max-width:1440px) {
+    .pod-thumbnail {
+      max-width: 25%;
+    }
+
+    .pod-visual {
+      max-width: 75%;
+    }
+
+    .speaker-name {
+      span.episode-nbr {
+        font-size: 18px;
+      }
     }
   }
