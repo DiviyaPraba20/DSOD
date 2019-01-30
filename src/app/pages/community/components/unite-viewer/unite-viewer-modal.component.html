@@ -12,8 +12,13 @@
       <span class="by" *ngIf="magazine.contents[pageIndex].author">by {{magazine.contents[pageIndex].author.fullName}}</span>
     </div>
     <div class="container">
-      <img class="cover" [src]="getImageUrl(magazine.contents[pageIndex].featuredMedia?.code?.thumbnail)" class="img-fluid mb-3 mt-3" alt="">
-      <div class="article-content" [innerHTML]="magazine.contents[pageIndex].content"></div>
+      <div class="row">
+        <div class="col-9">
+          <img class="cover" [src]="getImageUrl(magazine.contents[pageIndex].featuredMedia?.code?.thumbnail)" class="img-fluid mb-3 mt-3"
+            alt="">
+            <div class="article-content" [innerHTML]="magazine.contents[pageIndex].content"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -21,8 +26,8 @@
     <div class="row ml-auto mr-auto">
       <div class="col-12">
         <div class="paginator">
-          <button class="btn btn-dark text-center" (click)="onNavigation('previous')" [disabled]="pageIndex==0"><i class="fa fa-chevron-left"
-              aria-hidden="true"></i></button>
+          <button class="btn btn-dark text-center" (click)="onNavigation('previous')" [disabled]="pageIndex==0"><i
+              class="fa fa-chevron-left" aria-hidden="true"></i></button>
           <span class="btn btn-light text-black">{{pageIndex +1}}</span>
           <button class="btn btn-dark text-center" (click)="onNavigation('next')" [disabled]="pageIndex==magazine.contents.length-1"><i
               class="fa fa-chevron-right" aria-hidden="true"></i></button>
@@ -32,4 +37,3 @@
     <button type="button" class="btn btn-dark" (click)="activeModal.close('Close click')">Close</button>
   </div>
 </div>
-
