@@ -7,9 +7,10 @@
     margin: 0 auto;
     width: 100%;
     height: 400px;
-    // background: url('../../../../assets/images/dso-practice-banner.png');
-    background: url("../../../../../assets/images/dso-practice-banner.jpg") no-repeat right top;
+    background: url("../../../../../assets/images/dso-practice-banner.jpg");
     background-size: cover;
+    background-position: right top;
+    background-repeat: no-repeat;
 
     img {
       width: 100%;
@@ -31,6 +32,7 @@
       left: 50%;
       z-index: 2;
       max-width: 1300px;
+      -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       width: 100%;
       text-align: center;
@@ -60,6 +62,8 @@
 
     .tabs-wrapper {
       /deep/ .nav-tabs {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         border-bottom: none;
         margin-bottom: 30px;
@@ -86,8 +90,9 @@
           }
         }
       }
-      /deep/ .tab-content{
-        .tab-pane{
+
+      /deep/ .tab-content {
+        .tab-pane {
           min-height: 600px;
         }
       }
@@ -95,3 +100,21 @@
   }
 }
 
+
+@media only screen and (max-width:1440px) {
+  .dso-practice {
+    .dso-practice-banner {
+      .banner-caption {
+        h1 {
+          font-size: 35px;
+          margin-bottom: 40px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+
+      }
+    }
+  }
+}
