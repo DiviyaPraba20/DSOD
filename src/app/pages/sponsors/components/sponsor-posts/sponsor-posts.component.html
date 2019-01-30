@@ -1,7 +1,7 @@
 <div class="sponsor-post-container">
   <div *ngFor="let post of posts; let i = index">
     <div class="row post-container" [ngClass]="{'last-post': i >= posts.length - 2}">
-      <div class="col-md-6">
+      <div class="col-6">
         <div class="sponsor-desc">
           <div class="sponsor-header">
             <h3 *ngIf="post.sponsorName==='NBL'" class="bg-red">Sponsored conent from Nobel Biocare</h3>
@@ -20,7 +20,7 @@
                 aria-hidden="true"></i></span></a>
         </div>
       </div>
-      <div class="col-md-6 thumbnail">
+      <div class="col-6 thumbnail">
         <img *ngIf="post.featuredMedia" class="img-fluid" src="{{post.featuredMedia.code.originalUrl}}" alt="">
       </div>
     </div>

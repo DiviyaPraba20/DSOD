@@ -10,7 +10,10 @@
       top: 0;
       height: 100%;
       width: 100%;
-      background: url("../../../../../assets/images/slider-overlay.png") no-repeat center 50px / cover;
+      background: url("../../../../../assets/images/slider-overlay.png");
+      background-position: center 50px;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     .slide-content {
@@ -45,6 +48,32 @@
         font-family: $neue_hgd_Medium;
         background: $layout-blue;
         padding: 28px 76px;
+      }
+    }
+  }
+}
+
+
+
+@media only screen and (max-width:1600px) {
+  :host {
+    .slide-content-wrap {
+      .slide-content {
+        bottom: 20%;
+        h2 {
+          font-size: 40px;
+          line-height: 48px;
+        }
+
+        h3 {
+          font-size: 23px;
+          line-height: 45px;
+        }
+
+        a.learn-more-btn {
+          font-size: 22px;
+          padding: 11px 36px;
+        }
       }
     }
   }

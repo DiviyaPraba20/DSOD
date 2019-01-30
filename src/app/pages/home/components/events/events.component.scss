@@ -122,5 +122,36 @@
     .event-thumbnail {
       min-width: 140px;
     }
+
+    .event-date {
+      h3 {
+        font-size: 20px;
+      }
+
+      h4 {
+        font-size: 30px;
+      }
+    }
+
+    .event-content {
+      h3 {
+        font-size: 15px;
+        line-height: 21px;
+      }
+
+      span.event-by {
+        font-size: 15px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .event-content-footer {
+        span.free-text {
+          font-size: 18px;
+        }
+      }
+    }
   }
 }

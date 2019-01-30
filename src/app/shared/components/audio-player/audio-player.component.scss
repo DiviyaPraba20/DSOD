@@ -3,27 +3,37 @@
 .podcast-player {
   .visualizer {
     margin-bottom: 15px;
+
     .play-icon-lg {
       height: 100%;
+
       a {
         font-size: 80px;
         text-align: center;
         display: block;
         color: $text-main;
         border: 1px solid $text-main;
-        min-height: 207px;
+        min-height: 161px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
       }
     }
-    
+
     div#playerContainer {
+
       // border-bottom: 1px solid #ccc;
       /deep/ wave {
         border: none !important;
       }
     }
+
   }
 
   .pod-timings {
@@ -59,8 +69,9 @@
     -ms-flex-align: center;
     align-items: center;
     padding: 0 15px;
+
     // border-right: 1px solid $text-main;
-    a{
+    a {
       margin: 0 10px;
     }
   }
@@ -165,6 +176,25 @@
     background: #367ebd;
   }
 }
-.bb-grey{
+
+.bb-grey {
   border-bottom: 2px solid $text-main;
+}
+
+
+@media only screen and (max-width:1440px) {
+  .podcast-player {
+    .visualizer {
+      h3 {
+        font-size: 20px;
+      }
+
+      .play-icon-lg {
+        a {
+          font-size: 56px;
+          min-height: 115px;
+        }
+      }
+    }
+  }
 }

@@ -14,10 +14,31 @@
   padding: 30px;
   .content-item-wrapper {
     height: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     font-size: 50px;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+@media only screen and (max-width:1440px) {
+
+  .image-header-container {
+    height: 295px;
+
+    .banner-caption {
+      h1 {
+        font-size: 35px;
+      }
+    }
   }
 }

@@ -1,9 +1,19 @@
 :host {
   .unite-mega-wrap {
-    background: url('../../../../../assets/images/pattern.png') repeat left top;
+    background: url('../../../../../assets/images/pattern.png') repeat;
     padding-bottom: 20px;
+    background-position: left top;
   }
-  .cover{
+
+  .cover {
     height: 70%;
+  }
+}
+
+@media only screen and (max-width:1440px) {
+  :host {
+    .unite-mega-wrap {
+      padding-top: 30px;
+    }
   }
 }

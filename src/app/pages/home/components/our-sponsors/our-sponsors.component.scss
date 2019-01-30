@@ -10,7 +10,7 @@
     h4 {
       display: flex;
       color: $color-primary;
-      font-size: 20px;
+      font-size: 18px;
       padding-right: 30px;
 
       img {
@@ -66,6 +66,30 @@
 
       >img {
         width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:1440px) {
+  .our-sponsors {
+
+    .our-sponsors-header {
+
+      h4 {
+        font-size: 15px;
+      }
+    }
+
+    /deep/ dsod-topic {
+      .block-wrap {
+        .topic-block {
+          .topic-block-content {
+            h2.topic-title-large {
+              font-size: 17px !important;
+            }
+          }
+        }
       }
     }
   }

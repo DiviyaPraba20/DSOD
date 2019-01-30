@@ -4,7 +4,7 @@
 <div class="podcast-player" *ngIf="content.podcastUrls">
   <div class="visualizer">
     <div class="row align-items-center">
-      <div class="col-md-2">
+      <div class="col-2">
         <div class="play-icon-lg">
           <a href="javascript:void(0)" (click)="playPause()">
             <i *ngIf="!isPlaying" class="fa fa-play" aria-hidden="true"></i>
@@ -13,14 +13,14 @@
           </a>
         </div>
       </div>
-      <div class="col-md-10 bb-grey">
+      <div class="col-10 bb-grey">
         <h3>Episode #001</h3>
         <h3>{{content.title}}&nbsp;with&nbsp;{{content.author.fullName}}</h3>
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-10">
             <div id="playerContainer"></div>
           </div>
-          <div class="col-md-2 d-flex align-items-center justify-content-end">
+          <div class="col-2 d-flex align-items-center justify-content-end">
             <div class="pod-timings mr-5">
               <span #curretTime class="playin-time">0:00</span>
               <span #trackLength class="total-time">0:00</span>
@@ -33,7 +33,7 @@
   </div>
   <div class="media-controls">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <div class="controls-wrap ">
           <a href="javascript:void(0)">
             <img src="assets/images/media-repeat.png" alt="">

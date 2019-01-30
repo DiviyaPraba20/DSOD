@@ -1,7 +1,7 @@
 <div class="unite-mega-wrap text-center p-t-115">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4" *ngFor="let magazine of (uniteMagazines$ | async)">
+      <div class="col-4" *ngFor="let magazine of (uniteMagazines$ | async)">
         <a href="javascript:void(0)" (click)="openMagazineViewer(magazine._id)">
           <img class="cover" [src]="getCoverUrl(magazine.cover)" class="img-fluid" alt=""></a>
       </div>

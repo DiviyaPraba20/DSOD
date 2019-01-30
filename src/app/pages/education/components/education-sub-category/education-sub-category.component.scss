@@ -1,18 +1,21 @@
 .sub-category-container {
   background-color: #F8F8F8;
-  padding: 50px 200px 100px;
+  padding: 50px 0px 100px;
+
   .title {
     color: #333333;
     font-size: 38px;
     text-align: center;
     margin-bottom: 50px;
   }
-  .filter-container {
 
-  }
+  .filter-container {}
+
   .category-item-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     grid-column-gap: 40px;
     grid-row-gap: 40px;
@@ -21,9 +24,15 @@
 
 @media only screen and (max-width:1440px) {
   .sub-category-container {
+    .title {
+      font-size: 30px;
+    }
+
     .category-item-container {
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: auto auto auto auto;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
       grid-column-gap: 40px;
       grid-row-gap: 40px;

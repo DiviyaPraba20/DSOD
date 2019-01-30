@@ -20,36 +20,24 @@
   }
 }
 
-@media only screen and (max-width:1600px) {
+@media only screen and (max-width:1440px) {
   :host {
     h2 {
-      font-size: 60px;
-      line-height: 75px;
-    }
-
-    h3 {
-      font-size: 42px;
-      line-height: 55px;
-    }
-  }
-}
-
-@media only screen and (max-width:1199px) {
-  .top-head {
-    padding: 20px 0;
-  }
-}
-
-@media only screen and (max-width:1199px) {
-  :host {
-    h2 {
-      font-size: 52px;
-      line-height: 70px;
-    }
-
-    h3 {
       font-size: 35px;
-      line-height: 45px;
+       line-height: 50px;
+    }
+
+    span.by {
+      font-size: 26px;
+    }
+  }
+}
+
+@media only screen and (max-width:1366px) {
+  :host {
+    h2 {
+      font-size: 31px;
+       line-height: 40px;
     }
 
     span.by {

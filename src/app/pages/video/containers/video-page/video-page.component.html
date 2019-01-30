@@ -1,7 +1,7 @@
 <div class="page-content">
   <div class="container" *ngIf="(pageContent$ | async)">
     <div class="row">
-      <div class="col-xl-9">
+      <div class="col-9">
         <div class="video-content">
           <div class="top-head d-flex justify-content-between">
             <ul>
@@ -24,12 +24,12 @@
             </div>
             <dsod-rating></dsod-rating>
           </div>
-          <div class="video-header">
+          <div class="video-header article-header">
             <div class="row">
-              <div class="col-lg-10">
+              <div class="col-10">
                 <dsod-video-title [content]="pageContent$ | async"></dsod-video-title>
               </div>
-              <div class="col-lg-2">
+              <div class="col-2">
                 <dsod-content-actions [content]="pageContent$ | async"></dsod-content-actions>
               </div>
             </div>
@@ -41,7 +41,7 @@
         <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicList.length">
           <h2 class="section-title">Related Content</h2>
           <div class="row">
-            <div class="col-lg-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicList">
+            <div class="col-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicList">
               <dsod-related-content [content]="topic" [contentTypeName]="(pageContent$ | async)?.contentTypeName"></dsod-related-content>
             </div>
           </div>
@@ -50,7 +50,7 @@
           <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
         </div>
       </div>
-      <div class="col-xl-3">
+      <div class="col-3">
         <section class="trending-videos" *ngIf="(trendingTopics$ |async)?.length">
           <h2 class="section-title">Trending Topics</h2>
           <div *ngFor="let topic of trendingTopics$ |async">

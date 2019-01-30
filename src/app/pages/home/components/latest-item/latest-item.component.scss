@@ -25,7 +25,7 @@
     position: relative;
     border-top: 3px solid $mine_grey;
     height: auto;
-    padding-top: 100%;
+    padding-top: 93%;
 
     >img {
       width: 100%;
@@ -47,6 +47,7 @@
         max-width: 42px;
       }
     }
+
   }
 
   .latest-block-content {
@@ -99,6 +100,24 @@
   .latest-block-thumbnail {
     border: none;
   }
+
+  /deep/ dsod-topic {
+    .block-wrap {
+      padding-bottom: 15px;
+    }
+
+    .topic-block-lg {
+      em {
+        margin-bottom: 4px !important;
+      }
+    }
+
+    .topic-block {
+      .topic-block-content {
+        padding-bottom: 0 !important;
+      }
+    }
+  }
 }
 
 .latest-block-sm {
@@ -119,4 +138,33 @@
       }
     }
   }
+}
+
+@media only screen and (max-width:1440px) {
+  .latest-layout-row {
+
+    /deep/ .excrept-content-lg {
+      padding-top: 5px;
+      font-size: 16px;
+      display: block;
+      line-height: 23px;
+      max-height: 120px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    /deep/ .topic-block {
+      .topic-block-content {
+        .topic-title-large {
+          font-size: 20px !important;
+          padding-bottom: 5px !important;
+        }
+      }
+    }
+  }
+    .latest-block {
+      .latest-block-thumbnail {
+        padding-top: 96%;
+      }
+    }
 }

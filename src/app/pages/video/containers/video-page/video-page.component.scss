@@ -5,9 +5,14 @@
 }
 
 .top-head {
-  padding: 20px 150px 20px 0;
+  padding: 20px 50px 20px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 
   ul {
+    margin: 0;
+
     li {
       display: inline-block;
       font-size: 17px;
@@ -57,7 +62,7 @@
       line-height: 26px;
     }
   }
-  
+
 }
 
 @media only screen and (max-width:1600px) {

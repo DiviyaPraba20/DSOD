@@ -16,7 +16,7 @@
             <img src="assets/images/arrow-right.png" alt="">
           </a>
           <div class="row">
-            <div class="col-xl-6">
+            <div class="col-6">
               <div class="featured-podcasts-block">
                 <div class="podcasts-block-header">
                   <h4>Featured Podcast</h4>
@@ -33,13 +33,13 @@
                   [imageIndex]="imageIndex"></dsod-podcast-items>
               </div>
             </div>
-            <div class="col-xl-6">
+            <div class="col-6">
               <dsod-podcasts-by [podcasts]="podcasts$ | async" [indexEnd]="indexEnd" [indexStart]="indexStart"
                 [imageIndex]="imageIndex"></dsod-podcasts-by>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-12">
               <div class="podcasts-pagination">
                 <ul>
                   <li *ngFor="let number of [1, 2]; let i=index" [ngClass]="{'active':number==activePage}"><button

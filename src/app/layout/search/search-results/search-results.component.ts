@@ -38,6 +38,7 @@ export class DSODSearchResults implements OnInit {
       this.searchValue = val;
       this.store.dispatch(
         new actions.FetchSearchResults({
+          searchValue:this.searchValue,
           skip: 0,
           limit: 6,
         })
