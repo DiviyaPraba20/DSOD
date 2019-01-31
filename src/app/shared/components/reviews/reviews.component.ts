@@ -41,6 +41,7 @@ export class DSODRatingReviewComponent implements OnInit {
 
   @Input('content')
   set content(value: CMSPageContent) {
+    debugger;
     if (value && value.comment.length) {
       this.avgRating = parseFloat(value.avgCommentRating);
       this.reviewsCount = value.countOfComment;

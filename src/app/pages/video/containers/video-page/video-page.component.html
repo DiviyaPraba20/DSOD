@@ -22,7 +22,7 @@
                 Sponsored content from GlaxoSmithKline
               </div>
             </div>
-            <dsod-rating></dsod-rating>
+            <dsod-rating [rating]="(pageContent$ | async)?.avgCommentRating"></dsod-rating>
           </div>
           <div class="video-header article-header">
             <div class="row">

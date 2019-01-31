@@ -7,7 +7,7 @@ import { environment } from '../../../../environments/environment';
     <div class="trending-block">
       <div class="trending-block-header">
         <h4>{{ title }}</h4>
-        <dsod-rating></dsod-rating>
+        <dsod-rating [rating]="rating"></dsod-rating>
       </div>
       <div class="trending-block-video">
         <img src="{{placeholderImageSrc}}" alt="" />
@@ -20,6 +20,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./media-placeholder.component.scss']
 })
 export class DSODMediaContentComponent {
+  @Input() rating:number;
   @Input()
   title: string;
   @Input()
