@@ -4,9 +4,7 @@
       <div class="col-6">
         <div class="sponsor-desc">
           <div class="sponsor-header">
-            <h3 *ngIf="post.sponsorName==='NBL'" class="bg-red">Sponsored conent from Nobel Biocare</h3>
-            <h3 *ngIf="post.sponsorName==='GSK'" class="bg-blue">Sponsored content from GlaxoSmithKline</h3>
-            <h3 *ngIf="post.sponsorName==='ALN'" class="bg-black">Sponsored content from Align Technology, Inc.</h3>
+            <img class="mb-3" src="assets/images/icons/{{post.sponsorName}}-bar.jpg" alt="">
           </div>
           <h2>{{post.title}}</h2>
           <span>{{post.author.fullName}}</span>
