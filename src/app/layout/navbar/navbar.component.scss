@@ -1,5 +1,11 @@
 @import 'variables';
 
+.header-container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 .profile-out-click-container {
   position: fixed;
   width: 100%;
@@ -22,6 +28,7 @@
   margin: 0 auto;
   width: 100%;
   min-height: 96px;
+  -webkit-transition: 0.3s ease all;
   transition: 0.3s ease all;
 
   nav.navbar {
@@ -32,7 +39,11 @@
 
       li.nav-item {
         border-right: 1px solid $color-white;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         position: relative;
 
@@ -62,7 +73,7 @@
 
         &.login-wrap {
           a.nav-link {
-            background: $black;
+            background: none;
             padding: 7px 10px;
             line-height: 27px;
             font-size: 22px;
@@ -77,8 +88,14 @@
           }
 
           .avatar-wrap {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
             justify-content: center;
             padding: 0 0.5rem;
             cursor: pointer;
@@ -103,8 +120,14 @@
                 color: white;
                 width: 20px;
                 height: 20px;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
                 align-items: center;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
                 justify-content: center;
                 top: -10px;
                 right: 0px;
@@ -112,7 +135,12 @@
             }
 
             .user-name {
+              display: -webkit-box;
+              display: -ms-flexbox;
               display: flex;
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -ms-flex-direction: column;
               flex-direction: column;
               color: $color-white;
               font-size: 16px;
@@ -140,6 +168,7 @@
               color: $text-main;
               padding: 7px 25px 7px 15px;
               display: block;
+              -webkit-transition: 0.2s all ease;
               transition: 0.2s all ease;
               line-height: 20px;
 
@@ -153,13 +182,22 @@
 
         .search-area {
           margin: 0 20px;
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
           justify-content: flex-start;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
           align-items: center;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: reverse;
+          -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 
           .nav-link {
-            background: $black;
+            background: none;
             padding: 5px 10px;
             line-height: 24px;
             border: none;
@@ -190,7 +228,6 @@
 
   .brand {
     text-align: left;
-    // padding-right: 15px;
     padding-top: 10px;
     min-width: 150px;
 
@@ -249,6 +286,8 @@
   .nav-wrapper {
     nav.navbar {
       ul.navbar-nav {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
 
         li.nav-item {
@@ -311,6 +350,7 @@ li.sub-menu-child>a::after {
   position: absolute;
   right: 10px;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -330,8 +370,10 @@ li.sub-menu-child>a:hover::after {
   top: 100%;
   left: 0;
   width: 100%;
+  -webkit-transform: translateY(-2em);
   transform: translateY(-2em);
   z-index: -1;
+  -webkit-transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
   transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
   background: #fff;
   border: 1px solid $text-main;
@@ -347,7 +389,9 @@ li.sub-menu-child>a:hover::after {
   visibility: visible;
   opacity: 1;
   z-index: 1;
+  -webkit-transform: translateY(0%);
   transform: translateY(0%);
+  -webkit-transition-delay: 0s, 0s, 0.3s;
   transition-delay: 0s, 0s, 0.3s;
 }
 
