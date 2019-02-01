@@ -3,12 +3,14 @@
 .sponsor-content-container {
   .title {
     text-align: center;
-    font-size: 38px;
+    font-size: 30px;
     margin-bottom: 50px
   }
   .tabs-wrapper {
     /deep/ .nav-tabs {
-      justify-content: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
       border-bottom: none;
       margin-bottom: 30px;
       .nav-item {
