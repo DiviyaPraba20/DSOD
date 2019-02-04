@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { DSODAddReviewComponent } from './add-review/add-review-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -38,8 +38,10 @@ export class DSODRatingReviewComponent implements OnInit, OnDestroy {
     skip: 0,
     limit: 0
   };
+  newCommentRating:number;
+  totalRating:number;
   subscription: Subscription;
-
+  @Output() updateRating=new EventEmitter();
   @Input('content')
   set content(value: CMSPageContent) {
     if (value && value.comment.length) {
@@ -74,12 +76,15 @@ export class DSODRatingReviewComponent implements OnInit, OnDestroy {
       this.commentsLength = data.length;
       data.forEach(e => {
         rating += e.comment_rating;
+        this.totalRating=rating;
       });
       this.avgRating = Math.round((rating / data.length) * 10) / 10;
     });
 
     //close modal and fetch comments again
     this.actions$.pipe(ofActionDispatched(AddReviewSuccess)).subscribe(data => {
+      let updatedRating = Math.round(((this.totalRating + this.newCommentRating) / (this.commentsLength+1)) * 10) / 10;
+      this.updateRating.emit(updatedRating);
       this.modalRef.close();
       this.store.dispatch(
         new actions.FetchComments({
@@ -96,6 +101,7 @@ export class DSODRatingReviewComponent implements OnInit, OnDestroy {
     (modalRef.componentInstance.contentId = this.contentId),
       (modalRef.componentInstance.title = this.title);
     modalRef.componentInstance.userReview.subscribe(data => {
+      this.newCommentRating=data.commentRating;
       this.store.dispatch(new actions.AddReview(data));
     });
     this.modalRef = modalRef;

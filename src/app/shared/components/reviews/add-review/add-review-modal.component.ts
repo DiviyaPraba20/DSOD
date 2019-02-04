@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserInfoPayload } from 'src/app/core/models';
 
@@ -9,10 +9,11 @@ import { UserInfoPayload } from 'src/app/core/models';
 })
 export class DSODAddReviewComponent {
   loggedInUser: UserInfoPayload;
-  title: string;
+  @Input()title: string;
   contentId: string;
   commentRating = 0;
   commentText: string;
+  commentDate=new Date();
   @Output()
   userReview = new EventEmitter();
   constructor(public activeModal: NgbActiveModal) {}

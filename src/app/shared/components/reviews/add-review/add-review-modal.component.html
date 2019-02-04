@@ -1,14 +1,14 @@
 <div class="add-review">
   <div class="add-top-head">
     <span (click)="closeModal()">
-      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" aria-hidden="false"></i>
     </span>
     <h3>ADD A REVIEW</h3>
   </div>
   <div class="add-header">
     <h3>Rate the article</h3>
-    <h4>{{title}}</h4>
-    <h5>October 2018</h5>
+    <h4>{{(title)}}</h4>
+    <h5>{{commentDate | date :'mediumDate'}}</h5>
     <dsod-rating [clickAble]="true" (updateRating)="articleRating($event)"></dsod-rating>
   </div>
   <div class="review-as">
