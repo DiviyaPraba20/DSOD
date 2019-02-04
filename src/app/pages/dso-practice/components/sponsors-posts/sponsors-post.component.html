@@ -4,10 +4,7 @@
       <div class="col-6">
         <div class="sponsor-desc">
           <div class="sponsor-header mb-3">
-            <h3 *ngIf="topic.sponsorName==='NBL'" class=" bg-red">Sponsored events from Nobel Biocare</h3>
-            <h3 *ngIf="topic.sponsorName==='GSK'" class="bg-blue"><img src="../assets/images/gsk-icon-sm.png" alt="">
-              Sponsored events
-              from GSK</h3>
+            <img src="assets/images/icons/{{topic.sponsorName}}-bar.jpg" alt="">
           </div>
           <h2>{{topic.title}}</h2>
           <span>{{topic.author.fullName}}</span>

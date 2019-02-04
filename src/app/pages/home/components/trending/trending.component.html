@@ -4,6 +4,8 @@
     <div *ngFor="let topic of trendingTopics">
       <dsod-trending-item [trendingItem]="topic"></dsod-trending-item>
     </div>
-    <dsod-sponsored-ad *ngIf="trendingTopics.length"></dsod-sponsored-ad>
+    <a [routerLink]="['/sponsors/GSK']">
+      <dsod-sponsored-ad *ngIf="trendingTopics.length"></dsod-sponsored-ad>
+    </a>
   </section>
 </div>
