@@ -8,6 +8,7 @@ import { CMSPageContent } from 'src/app/cms/models';
 })
 export class DSODArticleMediaComponent implements OnInit {
   @Input() content: CMSPageContent;
+  @Input() rating:number;
 
   constructor() {}
 

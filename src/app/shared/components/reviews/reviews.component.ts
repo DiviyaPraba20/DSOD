@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { DSODAddReviewComponent } from './add-review/add-review-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -13,7 +13,7 @@ import { UserInfoPayload } from 'src/app/core/models';
 import * as actions from '../../actions';
 import { Actions, ofActionDispatched } from '@ngxs/store';
 import { AddReviewSuccess } from '../../actions';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedState } from '../../state';
 import { skip } from 'rxjs/operators';
@@ -23,7 +23,7 @@ import { skip } from 'rxjs/operators';
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss']
 })
-export class DSODRatingReviewComponent implements OnInit {
+export class DSODRatingReviewComponent implements OnInit, OnDestroy {
   regex = /[+-]?\d+(\.\d+)?/g;
   avgRating: any;
   comments$: Observable<DSODComment[]>;
@@ -38,11 +38,14 @@ export class DSODRatingReviewComponent implements OnInit {
     skip: 0,
     limit: 0
   };
-
+  newCommentRating:number;
+  totalRating:number;
+  subscription: Subscription;
+  @Output() updateRating=new EventEmitter();
   @Input('content')
   set content(value: CMSPageContent) {
     if (value && value.comment.length) {
-      this.avgRating = parseFloat(value.avgCommentRating);
+      this.avgRating = Math.round(parseFloat(value.avgCommentRating) * 10) / 10;
       this.reviewsCount = value.countOfComment;
       this.contentId = value.id;
       this.title = value.title;
@@ -64,20 +67,31 @@ export class DSODRatingReviewComponent implements OnInit {
         new actions.FetchComments({ ...this.params, contentId: r.id })
       );
     });
-
-    //close modal and fetch comments again
-    this.actions$.pipe(ofActionDispatched(AddReviewSuccess)).subscribe(data => {
-      this.modalRef.close();
-      this.store.dispatch(
-        new actions.FetchComments({ ...this.params, contentId: this.contentId })
-      );
-    });
   }
 
   ngOnInit() {
     this.comments$ = this.store.select(state => state.shared.comments);
-    this.comments$.pipe(skip(1)).subscribe(data => {
+    this.subscription = this.comments$.pipe(skip(1)).subscribe(data => {
+      let rating = 0;
       this.commentsLength = data.length;
+      data.forEach(e => {
+        rating += e.comment_rating;
+        this.totalRating=rating;
+      });
+      this.avgRating = Math.round((rating / data.length) * 10) / 10;
+    });
+
+    //close modal and fetch comments again
+    this.actions$.pipe(ofActionDispatched(AddReviewSuccess)).subscribe(data => {
+      let updatedRating = Math.round(((this.totalRating + this.newCommentRating) / (this.commentsLength+1)) * 10) / 10;
+      this.updateRating.emit(updatedRating);
+      this.modalRef.close();
+      this.store.dispatch(
+        new actions.FetchComments({
+          ...this.params,
+          contentId: this.contentId
+        })
+      );
     });
   }
 
@@ -87,6 +101,7 @@ export class DSODRatingReviewComponent implements OnInit {
     (modalRef.componentInstance.contentId = this.contentId),
       (modalRef.componentInstance.title = this.title);
     modalRef.componentInstance.userReview.subscribe(data => {
+      this.newCommentRating=data.commentRating;
       this.store.dispatch(new actions.AddReview(data));
     });
     this.modalRef = modalRef;
@@ -96,5 +111,9 @@ export class DSODRatingReviewComponent implements OnInit {
     this.toIndex == this.commentsLength
       ? (this.toIndex = 4)
       : (this.toIndex = this.commentsLength);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

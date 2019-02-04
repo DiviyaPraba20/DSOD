@@ -29,8 +29,6 @@ export class DSODTopicComponent {
   }
 
   getContent(topic) {
-    debugger;
-    console.log(topic, topic.length);
     if (topic.length > 160) {
       return topic.substring(0, 160) + '...';
     } else {

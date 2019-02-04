@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-9">
         <div class="article-content">
-          <dsod-article-media [content]="pageContent$ | async"></dsod-article-media>
+          <dsod-article-media [content]="pageContent$ | async" [rating]="!avgRating?(pageContent$ | async)?.avgCommentRating:avgRating"></dsod-article-media>
           <dsod-article-content [content]="(pageContent$ | async)?.content"></dsod-article-content>
           <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
         </div>
@@ -16,14 +16,15 @@
           </div>
         </div>
         <div *ngIf="isLoggedIn">
-          <dsod-article-reviews [content]="pageContent$ | async"></dsod-article-reviews>
+          <dsod-article-reviews [content]="pageContent$ | async" (updateRating)="updateRating($event)"></dsod-article-reviews>
         </div>
       </div>
       <div class="col-3">
         <section class="trending-videos" *ngIf="(trendingTopics$ | async).length">
           <h2 class="section-title">Trending Topics</h2>
           <div *ngFor="let topic of trendingTopics$ | async">
-            <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm" [showRating]=true></dsod-topic>
+            <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
+              [showRating]=true></dsod-topic>
           </div>
           <dsod-sponsored-ad></dsod-sponsored-ad>
         </section>

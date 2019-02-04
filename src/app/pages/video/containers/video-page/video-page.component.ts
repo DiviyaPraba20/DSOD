@@ -16,6 +16,7 @@ import { AuthState } from 'src/app/pages/auth/states/auth.state';
   styleUrls: ['./video-page.component.scss']
 })
 export class DSODVideoPageComponent implements OnInit {
+  avgRating: any;
   trendingTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   params: CMSContentParams = {
     skip: 0
@@ -34,5 +35,9 @@ export class DSODVideoPageComponent implements OnInit {
   ngOnInit() {
     this.trendingTopics$ = this.store.select(state => state.cms.trendingTopics);
     this.pageContent$ = this.store.select(state => state.cms.pageContent);
+  }
+
+  updateRating(e) {
+    this.avgRating = e;
   }
 }
