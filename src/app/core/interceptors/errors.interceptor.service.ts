@@ -30,7 +30,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           const {status, statusText} = err;
           if (err.status === 401) {
             this.appService._unsubscribeAll.next();
-            this.appService._unsubscribeAll.complete();
             this.store.dispatch(new Unauthorized());
             this.router.navigate(['login']);
           } else {
