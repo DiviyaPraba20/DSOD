@@ -13,8 +13,7 @@ import { Router } from '@angular/router';
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(
     private store: Store,
-    private appService: ApplicationStateService,
-    private router: Router
+    private appService: ApplicationStateService
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -31,7 +30,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           if (err.status === 401) {
             this.appService._unsubscribeAll.next();
             this.store.dispatch(new Unauthorized());
-            this.router.navigate(['login']);
           } else {
             if (err.status >= 200 && err.status < 500) {
               return of(new HttpResponse({ body: body, status, statusText}));
