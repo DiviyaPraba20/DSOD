@@ -9,7 +9,7 @@
   <div class="modal-body" id="viewer-body">
     <div class="container">
       <div class="row">
-        <div class="col-9 ml-auto mr-auto">
+        <div class="col-6 ml-auto mr-auto">
           <h2>{{magazine.contents[pageIndex].title}}</h2>
           <span class="by" *ngIf="magazine.contents[pageIndex].author">by
             {{magazine.contents[pageIndex].author.fullName}}</span>
@@ -18,7 +18,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-9 ml-auto mr-auto">
+        <div class="col-6 ml-auto mr-auto">
           <img class="cover" [src]="getImageUrl(magazine.contents[pageIndex].featuredMedia?.code?.thumbnail)" class="img-fluid mb-3 mt-3"
             alt="">
           <div class="article-content" [innerHTML]="magazine.contents[pageIndex].content"></div>
