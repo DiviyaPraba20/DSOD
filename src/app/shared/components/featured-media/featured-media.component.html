@@ -1,3 +1,6 @@
 <div class="article-thumbnail" *ngIf="featuredMedia">
   <img src={{featuredMedia?.code?.originalUrl}} class="img-fluid w-100 mt-2 mb-3" alt="">
+  <video *ngIf="featuredMedia?.type === '3'" width="100%" controls>
+    <source [src]="getUrl(featuredMedia.code.thumbnail)" type="video/mp4">
+  </video>
 </div>
