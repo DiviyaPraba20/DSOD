@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'dsod-podcast-preview',
   templateUrl: './podcast-preview.component.html',
@@ -22,4 +24,8 @@ export class DSODPodcastPreviewComponent implements OnInit {
   ngOnInit() {
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
    }
+
+   getUrl(id: string) {
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
+  }
 }

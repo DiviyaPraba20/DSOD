@@ -7,7 +7,15 @@ import { PreviewRoutingModule } from './preview-routing.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, PreviewRoutingModule, NgxSpinnerModule],
-  declarations: [...PREIVEW_CONTAINERS, ...PREVIEW_COMPONENTS]
+  imports: [
+    CommonModule,
+    SharedModule,
+    PreviewRoutingModule,
+    NgxSpinnerModule
+  ],
+  declarations: [
+    ...PREIVEW_CONTAINERS,
+    ...PREVIEW_COMPONENTS
+  ]
 })
 export class PreviewModule {}
