@@ -16,7 +16,10 @@ export class DSODArticelPreviewComponent implements OnInit {
   @Input() content: CMSPageContent;
   contentString: any;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(
+    private sanitizer: DomSanitizer
+  ) { }
+
   ngOnInit() {
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
    }

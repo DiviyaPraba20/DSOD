@@ -17,7 +17,9 @@ export class DSODVideoPreviewComponent implements OnInit {
 
   contentString: any;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
