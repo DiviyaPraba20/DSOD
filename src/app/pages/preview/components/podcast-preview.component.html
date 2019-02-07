@@ -7,7 +7,7 @@
           <h3>Podcasts</h3>
         </div>
         <span>{{content.categoryName}}</span>
-        <span>{{content.title}}</span>
+        <span></span>
       </div>
     </div>
   </div>
@@ -15,22 +15,40 @@
     <div class="col-2">
       <div>
         <div class="speaker-thumbnail">
-          <img alt="assets/images/speaker-avi.png" class="img-fluid" src="assets/images/Dr-Calleros_blk-wht.jpg">
+          <img *ngIf="content.authorPhotoUrl; else authorPlaceholder" src={{content.authorPhotoUrl}} class="img-fluid">
+          <ng-template #authorPlaceholder>
+            <img src="assets/images/author-placeholder.png" class="img-fluid">
+          </ng-template>
         </div>
         <div class="speaker-name" *ngIf="content.author">
           <span>{{content.author.fullName}}</span>
         </div>
       </div>
     </div>
-    <div class="col-8">
+    <div class="col-8 mb-5 d-flex justify-content-center align-items-center">
+      <h3 style="color: #7D7C7C;">{{content.title}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="md-5 mt-5">
+        <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
+          <img *ngIf="content.featuredMedia?.type === '1' || content.featuredMedia?.type === '4'" [src]="getUrl(content.featuredMedia.code.thumbnail)" />
+          <audio *ngIf="content.featuredMedia?.type === '2'" controls>
+            <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="audio/mp3">
+          </audio>
+          <video *ngIf="content.featuredMedia?.type === '3'" width="100%" controls>
+            <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
       <dsod-audio-player [content]="content"></dsod-audio-player>
       <div class="speakers-content mt-5" [innerHTML]="contentString"></div>
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="col-12">
-      <div class="speakers-content mt-5" [innerHTML]="contentString"></div>
-    </div>
-  </div> -->
   <dsod-references [references]="content.references"></dsod-references>
 </div>
