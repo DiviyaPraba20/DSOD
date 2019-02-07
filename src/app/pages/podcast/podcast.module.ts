@@ -13,6 +13,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     PodcastRoutingModule,
     TabsModule.forRoot()
   ],
-  declarations: [...PODCAST_CONTAINERS, PODCAST_COMPONENTS]
+  declarations: [
+    ...PODCAST_CONTAINERS,
+    PODCAST_COMPONENTS
+  ]
 })
 export class PodcastModule {}
