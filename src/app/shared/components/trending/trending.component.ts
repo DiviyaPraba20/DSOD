@@ -5,18 +5,19 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'dsod-trending-item',
   template: `
-    <a [routerLink]="['/video', trendingItem.id]"
-      ><div class="trending-block">
+    <div class="trending-block">
         <div class="trending-block-header">
           <h4>{{ trendingItem.categoryName }}</h4>
-          <dsod-rating [rating]="trendingItem.avgCommentRating"></dsod-rating>
+           <dsod-rating [avgRating]="trendingItem.avgCommentRating" readingType="short" [clickAble]="true"
+        [contentId]="trendingItem.id" [title]="trendingItem.title" [commentsCount]="trendingItem.countOfComment"></dsod-rating>
         </div>
         <div class="trending-block-video" [innerHTML]="iframe"></div>
+        <a [routerLink]="['/video', trendingItem.id]">
         <div class="trending-block-caption">
           <h4>{{ trendingItem.title }}</h4>
         </div>
-      </div></a
-    >
+        </a>
+      </div>
   `,
   styleUrls: ['./trending.component.scss']
 })
