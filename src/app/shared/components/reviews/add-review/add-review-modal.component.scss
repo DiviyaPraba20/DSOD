@@ -26,6 +26,7 @@
     background: $alabaster_white;
     padding: 20px;
     text-align: center;
+    min-height: 149px;
 
     h3 {
       font-size: 14px;
@@ -45,15 +46,21 @@
       margin-bottom: 5px;
     }
 
-    .topic-rating {
+    /deep/ .topic-rating {
       margin: 0;
+      text-align: center !important;
     }
   }
 
   .review-as {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     padding: 12px 15px;
+    min-height: 54px;
 
     span.user-ico {
       height: 30px;
@@ -103,6 +110,7 @@
         width: 100%;
         cursor: pointer;
         outline: none;
+        -webkit-box-shadow: none;
         box-shadow: none;
         border: none;
       }

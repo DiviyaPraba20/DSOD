@@ -2,7 +2,8 @@
   <div class="topic-block" [ngClass]="{'topic-block-sm':styleFor==='content-sm','topic-block-lg':styleFor=='content-lg'}">
     <div class="topic-block-header" *ngIf="showHeader">
       <h4>{{topic.categoryName}}</h4>
-      <dsod-rating *ngIf="showRating" [rating]="topic.avgCommentRating"></dsod-rating>
+      <dsod-rating *ngIf="showRating" [avgRating]="topic.avgCommentRating" readingType="short" [clickAble]="true"
+        [contentId]="topic.id" [title]="topic.title" [commentsCount]="topic.countOfComment"></dsod-rating>
       <h4 *ngIf="!showRating">{{topic.publishDate | date:'mediumDate'}}</h4>
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && showImage">

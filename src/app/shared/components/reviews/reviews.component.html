@@ -7,10 +7,10 @@
     <div class="">
       <h4>{{reviewsCount}} reviews</h4>
       <div class="rating-points d-flex align-items-center">
-        <dsod-rating [rating]="avgRating"></dsod-rating> <span *ngIf="avgRating" class="points ml-2">{{avgRating}}</span>
+        <dsod-rating [avgRating]="avgRating"></dsod-rating> <span *ngIf="avgRating" class="points ml-2">{{avgRating}}</span>
       </div>
     </div>
-    <div *ngIf="commentsLength > 4">
+    <div *ngIf="commentsCount > 4">
       <a href="javascript:void(0)" (click)="showAllComments()">{{(toIndex==4?'View all':'View less')}}</a>
     </div>
   </div>
@@ -23,7 +23,7 @@
         <div class="review-content">
           <h4>
             {{comment.email}}
-            <dsod-rating [rating]="comment.comment_rating"></dsod-rating>
+            <dsod-rating [avgRating]="comment.comment_rating"></dsod-rating>
           </h4>
           <span>{{comment.create_time | date:'mediumDate'}}</span>
           <p>{{comment.comment_text}}</p>
