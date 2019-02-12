@@ -16,7 +16,7 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
   contentTypes$: Observable<CMSContentTypeModel[]>;
   sponsorsList$: Observable<CMSContentTypeModel[]>;
   DSOPracicesPost$: Observable<CMSPageContent[]>;
-  sponsoredTopics$: Observable<CMSContentTypeModel[]>;
+  sponsoredTopics$: Observable<CMSPageContent[]>;
   contentTypesSub: Subscription;
   categoriesSub: Subscription;
   params: CMSContentParams = {
