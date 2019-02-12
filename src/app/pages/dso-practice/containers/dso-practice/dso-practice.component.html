@@ -29,7 +29,7 @@
             <dsod-practice-page-tab *ngIf="selectedTab=='Visual Essay'" [contentTypeId]="contentTypeId" [categoryId]="categoryId"></dsod-practice-page-tab>
           </tab>
         </tabset>
-        <h2 class="no-post" *ngIf="!isLoading && (SponsorsList$ | async)?.length<1 && (DSOPracicesPost$ | async)?.length<1">0
+        <h2 class="no-post" *ngIf="!isLoading && (sponsorerTopics$ | async)?.length<1 && (DSOPracicesPost$ | async)?.length<1">0
           Posts
           Found</h2>
       </div>

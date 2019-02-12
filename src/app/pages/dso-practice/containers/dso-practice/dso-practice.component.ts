@@ -18,6 +18,7 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
   DSOPracicesPost$: Observable<CMSPageContent[]>;
   sponsorerTopics$: Observable<CMSContentTypeModel[]>;
   contentTypesSub: Subscription;
+  categoriesSub: Subscription;
   params: CMSContentParams = {
     skip: 0
   };
@@ -40,7 +41,9 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
     this.contentTypes$ = this.store.select(state => state.cms.contentTypes);
     this.sponsorsList$ = this.store.select(state => state.cms.sponsorsList);
     this.DSOPracicesPost$ = this.store.select(state => state.cms.DSOPractices);
-    this.sponsorerTopics$ = this.store.select(state => state.cms.sponsorsList);
+    this.sponsorerTopics$ = this.store.select(
+      state => state.cms.sponsoredTopics
+    );
     this.contentTypeId = null;
     this.contentTypesSub = this.store
       .select(state => state.cms.contentTypes)
@@ -64,7 +67,7 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
         this.isLoading=false;
       });
 
-    this.store.select(state => state.cms.categories).pipe(skip(1)).subscribe(data=>{
+    this.categoriesSub= this.store.select(state => state.cms.categories).pipe(skip(1)).subscribe(data=>{
       let categories = data.filter(item => item.id == this.categoryId)
       this.title=categories[0].name
     })
@@ -82,6 +85,7 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.contentTypesSub.unsubscribe();
+    this.categoriesSub.unsubscribe();
     this.store.dispatch(new ResetState());
   }
 }
