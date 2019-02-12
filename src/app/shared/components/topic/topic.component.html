@@ -1,7 +1,7 @@
 <div class="block-wrap">
   <div class="topic-block" [ngClass]="{'topic-block-sm':styleFor==='content-sm','topic-block-lg':styleFor=='content-lg'}">
     <div class="topic-block-header" *ngIf="showHeader">
-      <a [routerLink]="['category', topic.categoryId]">
+      <a href="javascript:void(0)" (click)="onClickCategory(topic.categoryId)">
         <h4>{{topic.categoryName}}</h4>
       </a>
       <dsod-rating *ngIf="showRating" [avgRating]="topic.avgCommentRating" readingType="short" [clickAble]="true"

@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsod-trending-item',
   template: `
     <div class="trending-block">
         <div class="trending-block-header">
-          <h4>{{ trendingItem.categoryName }}</h4>
+         <a href="javascript:void(0)" (click)="onClickCategory(trendingItem.categoryId)"> <h4>{{ trendingItem.categoryName }}</h4></a>
            <dsod-rating [avgRating]="trendingItem.avgCommentRating" readingType="short" [clickAble]="true"
         [contentId]="trendingItem.id" [title]="trendingItem.title" [commentsCount]="trendingItem.countOfComment"></dsod-rating>
         </div>
@@ -30,7 +31,7 @@ export class DSODTrendingItemComponent implements OnInit {
   showSummary: boolean;
   iframe: any;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer, private router:Router) {}
 
   ngOnInit() {
     const regex = /(<iframe.+?<\/iframe>)/g;
@@ -38,5 +39,9 @@ export class DSODTrendingItemComponent implements OnInit {
       return v;
     });
     this.iframe = this.sanitizer.bypassSecurityTrustHtml(this.iframe[0]);
+  }
+
+  onClickCategory(e) {
+    this.router.navigate(['./category', e]);
   }
 }

@@ -27,4 +27,7 @@ export class DSODTopicComponent {
       this.router.navigate(['./article', this.topic.id]);
     }
   }
+  onClickCategory(e){
+    this.router.navigate(['./category', e]);
+  }
 }
