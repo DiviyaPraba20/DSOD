@@ -4,16 +4,9 @@
     <div class="filter-container">
     </div>
     <div class="category-item-container">
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
-      <dsod-education-item-card></dsod-education-item-card>
+      <div *ngFor="let sampleVideo of sampleVideos">
+        <dsod-education-item-card [sampleVideo]="sampleVideo"></dsod-education-item-card>
+      </div>
     </div>
   </div>
 </div>
