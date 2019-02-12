@@ -5,7 +5,7 @@
   </div>
   <div class="reviews-avg">
     <div class="">
-      <h4>{{reviewsCount}} reviews</h4>
+      <h4>{{reviewsCount}} Reviews</h4>
       <div class="rating-points d-flex align-items-center">
         <dsod-rating [avgRating]="avgRating"></dsod-rating> <span *ngIf="avgRating" class="points ml-2">{{avgRating}}</span>
       </div>
@@ -22,7 +22,7 @@
         </div>
         <div class="review-content">
           <h4>
-            {{comment.email}}
+            {{(comment.fullName?comment.fullName:comment.email)}}
             <dsod-rating [avgRating]="comment.comment_rating"></dsod-rating>
           </h4>
           <span>{{comment.create_time | date:'mediumDate'}}</span>
