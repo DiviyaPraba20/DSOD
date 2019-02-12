@@ -1,7 +1,9 @@
 <div class="block-wrap">
   <div class="topic-block" [ngClass]="{'topic-block-sm':styleFor==='content-sm','topic-block-lg':styleFor=='content-lg'}">
     <div class="topic-block-header" *ngIf="showHeader">
-      <h4>{{topic.categoryName}}</h4>
+      <a href="javascript:void(0)" (click)="onClickCategory(topic.categoryId)">
+        <h4>{{topic.categoryName}}</h4>
+      </a>
       <dsod-rating *ngIf="showRating" [avgRating]="topic.avgCommentRating" readingType="short" [clickAble]="true"
         [contentId]="topic.id" [title]="topic.title" [commentsCount]="topic.countOfComment"></dsod-rating>
       <h4 *ngIf="!showRating">{{topic.publishDate | date:'mediumDate'}}</h4>

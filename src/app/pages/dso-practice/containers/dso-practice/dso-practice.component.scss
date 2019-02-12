@@ -61,12 +61,14 @@
     }
 
     .tabs-wrapper {
+      position: relative;
       /deep/ .nav-tabs {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
         border-bottom: none;
         margin-bottom: 30px;
+        position: relative;
 
         .nav-item {
           .nav-link {
@@ -95,6 +97,11 @@
         .tab-pane {
           min-height: 600px;
         }
+      }
+      .no-post{
+        position: absolute;
+        top: 60px;
+        left: 60px
       }
     }
   }

@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: DSODPracticePageComponent
+  },
+  {
+    path: ':id',
+    component: DSODPracticePageComponent
   }
 ];
 
