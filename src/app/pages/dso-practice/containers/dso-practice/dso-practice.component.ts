@@ -16,7 +16,7 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
   contentTypes$: Observable<CMSContentTypeModel[]>;
   sponsorsList$: Observable<CMSContentTypeModel[]>;
   DSOPracicesPost$: Observable<CMSPageContent[]>;
-  sponsorerTopics$: Observable<CMSContentTypeModel[]>;
+  sponsoredTopics$: Observable<CMSContentTypeModel[]>;
   contentTypesSub: Subscription;
   categoriesSub: Subscription;
   params: CMSContentParams = {
@@ -41,7 +41,7 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
     this.contentTypes$ = this.store.select(state => state.cms.contentTypes);
     this.sponsorsList$ = this.store.select(state => state.cms.sponsorsList);
     this.DSOPracicesPost$ = this.store.select(state => state.cms.DSOPractices);
-    this.sponsorerTopics$ = this.store.select(
+    this.sponsoredTopics$ = this.store.select(
       state => state.cms.sponsoredTopics
     );
     this.contentTypeId = null;
