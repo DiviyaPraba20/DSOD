@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
 })
 export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
   @Input() contentTypeId: string;
+  @Input() categoryId: string;
   storeSub: Subscription;
   sponsoredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   params: CMSContentParams = {
@@ -41,7 +42,8 @@ export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
             ...this.params,
             limit: 1,
             sponsorId: '197',
-            contentTypeId: this.contentTypeId
+            contentTypeId: this.contentTypeId,
+            categoryId: this.categoryId
           })
         );
         this.store.dispatch(
@@ -49,7 +51,8 @@ export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
             ...this.params,
             limit: 1,
             sponsorId: '502',
-            contentTypeId: this.contentTypeId
+            contentTypeId: this.contentTypeId,
+            categoryId: this.categoryId
           })
         );
       });

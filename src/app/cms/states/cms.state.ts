@@ -66,7 +66,8 @@ export class CMSState {
 
   // categories action decorators
   @Action(actions.FetchCategories)
-  fetchCategories({ dispatch }: StateContext<State>) {
+  fetchCategories({ dispatch, patchState }: StateContext<State>) {
+    patchState({categories:[]})
     return this.service.findAllCategory().pipe(
       map(a => {
         if (a.code === 0) {
@@ -308,7 +309,7 @@ export class CMSState {
     { dispatch, patchState }: StateContext<State>,
     action: actions.FetchSponsorContents
   ) {
-    patchState({ sponsoredTopics: [] });
+    // patchState({ sponsoredTopics: [] });
     return this.service.findAllContents(action.payload).pipe(
       map(a => {
         if (a.code === 0) {

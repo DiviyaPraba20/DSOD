@@ -27,15 +27,4 @@ export class DSODTopicComponent {
       this.router.navigate(['./article', this.topic.id]);
     }
   }
-
-  getContent(topic) {
-    if (topic.length > 160) {
-      return topic.substring(0, 160) + '...';
-    } else {
-      return topic + '...';
-    }
-  }
-  getString() {
-    return `<p[ngClass]="{'read-more-sm':styleFor==='content-sm'}" >...<a role="button"(click) = "navigateTo($event)" > more < /a></p >`;
-  }
 }

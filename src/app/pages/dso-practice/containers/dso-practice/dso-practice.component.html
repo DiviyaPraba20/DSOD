@@ -9,25 +9,29 @@
   </div>
   <div class="practice-content">
     <div class="container">
-      <h2 class="content-title">DSO Practice</h2>
+      <h2 *ngIf="!categoryId" class="content-title">DSO Practice</h2>
+      <h2 *ngIf="categoryId" class="content-title">{{title}}</h2>
       <div class="tabs-wrapper">
         <tabset>
           <tab heading="All" (select)="filterType('All')">
-            <dsod-practice-page-tab *ngIf="selectedTab=='All'" [contentTypeId]="contentTypeId"></dsod-practice-page-tab>
+            <dsod-practice-page-tab *ngIf="selectedTab=='All'" [contentTypeId]="contentTypeId" [categoryId]="categoryId"></dsod-practice-page-tab>
           </tab>
           <tab heading="Article" (select)="filterType('Articles')">
-            <dsod-practice-page-tab *ngIf="selectedTab=='Articles'" [contentTypeId]="contentTypeId"></dsod-practice-page-tab>
+            <dsod-practice-page-tab *ngIf="selectedTab=='Articles'" [contentTypeId]="contentTypeId" [categoryId]="categoryId"></dsod-practice-page-tab>
           </tab>
           <tab heading="Video" (select)="filterType('Videos')">
-            <dsod-practice-page-tab *ngIf="selectedTab=='Videos'" [contentTypeId]="contentTypeId"></dsod-practice-page-tab>
+            <dsod-practice-page-tab *ngIf="selectedTab=='Videos'" [contentTypeId]="contentTypeId" [categoryId]="categoryId"></dsod-practice-page-tab>
           </tab>
           <tab heading="Podcast" (select)="filterType('Podcasts')">
-            <dsod-practice-page-tab *ngIf="selectedTab=='Podcasts'" [contentTypeId]="contentTypeId"></dsod-practice-page-tab>
+            <dsod-practice-page-tab *ngIf="selectedTab=='Podcasts'" [contentTypeId]="contentTypeId" [categoryId]="categoryId"></dsod-practice-page-tab>
           </tab>
           <tab heading="Visual Essays" (select)="filterType('Visual Essay')">
-            <dsod-practice-page-tab *ngIf="selectedTab=='Visual Essay'" [contentTypeId]="contentTypeId"></dsod-practice-page-tab>
+            <dsod-practice-page-tab *ngIf="selectedTab=='Visual Essay'" [contentTypeId]="contentTypeId" [categoryId]="categoryId"></dsod-practice-page-tab>
           </tab>
         </tabset>
+        <h2 class="no-post" *ngIf="!isLoading && (SponsorsList$ | async)?.length<1 && (DSOPracicesPost$ | async)?.length<1">0
+          Posts
+          Found</h2>
       </div>
     </div>
   </div>
