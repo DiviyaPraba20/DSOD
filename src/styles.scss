@@ -17,7 +17,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 h1 {
   font-size: 20px;
@@ -29,7 +30,7 @@ h2 {
 }
 body {
   font-size: 13px;
-  overflow: hidden auto;
+  overflow:  auto;
   position: relative;
 }
 a {
@@ -56,7 +57,8 @@ ul, li, ul li {
     padding: 0;
     border: 0;
     outline: none;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 .p-t-115 {
@@ -147,8 +149,31 @@ ul, li, ul li {
 }
 
 @media only screen and (max-width:1199px) {
+  body {
+    overflow-x: scroll;
+  }
+
+   .site-wrap {
+     min-width: 1180px;
+  }
   .container {
     max-width: 100%;
     width: 100%;
   }
 }
+
+
+
+// @media only screen and (max-width:1170px) {
+//   body {
+//     overflow-x: hidden;
+//   }
+
+//    .site-wrap {
+//      min-width: 100%;
+//   }
+//   .container {
+//     max-width: 100%;
+//     width: 100%;
+//   }
+// }

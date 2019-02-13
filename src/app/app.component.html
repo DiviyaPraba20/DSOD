@@ -1,10 +1,12 @@
 <div *ngIf="!isPreview; else preview">
-  <dsod-navbar></dsod-navbar>
-  <dsod-profile-panel></dsod-profile-panel>
-  <div class="page-container">
-    <router-outlet></router-outlet>
-  </div>
-  <dsod-footer></dsod-footer>
+ <div class="site-wrap">
+<dsod-navbar></dsod-navbar>
+<dsod-profile-panel></dsod-profile-panel>
+<div class="page-container">
+  <router-outlet></router-outlet>
+</div>
+<dsod-footer></dsod-footer>
+ </div>
 </div>
 <ng-template #preview>
   <router-outlet></router-outlet>
