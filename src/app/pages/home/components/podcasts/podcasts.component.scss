@@ -141,6 +141,9 @@
         border-radius: 50%;
         overflow: hidden;
         z-index: 9;
+        img{
+          max-width: 100%;
+        }
       }
 
       a.pod-left-control {
@@ -155,20 +158,7 @@
 }
 
 @media only screen and (max-width:1440px) {
-
-  .podcasts-tabs {
-    /deep/ .tab-content {
-      .tab-pane {
-        a.pod-left-control {
-          left: -30px;
-        }
-
-        a.pod-right-control {
-          right: -30px;
-        }
-      }
-    }
-  }
+ 
 
   .podcasts {
     .podcasts-about {
@@ -209,4 +199,31 @@
       }
     }
   }
+}
+
+@media only screen and (max-width:1250px) {
+   .podcasts-tabs {
+     /deep/ .tab-content {
+       .tab-pane {
+         a.pod-left-control {
+           max-width: 30px;
+           max-height: 30px;
+           left: -40px;
+          }
+          
+          a.pod-right-control {
+            max-width: 30px;
+            max-height: 30px;
+            right: -40px;
+         }
+       }
+     }
+   }
+}
+@media only screen and (max-width:1199px) {
+   .podcasts {
+     .podcasts-tabs {
+       padding: 0 35px;
+     }
+   }
 }
