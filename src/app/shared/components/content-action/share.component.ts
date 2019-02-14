@@ -54,7 +54,6 @@ export class DSODShareComponent implements OnInit {
   @Input() content: CMSPageContent;
 
   currentUrl = window.location.href;
-  // currentUrl = 'https://devangular1.dsodentist.com/dsodt/article/5c0ea07bcfde7f36a7b666c3';
   title = '';
   description = '';
   image = '';
@@ -64,8 +63,6 @@ export class DSODShareComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.content);
-    console.log(this.currentUrl);
     this.title = this.content.title;
     this.description = this.content.excerpt;
     this.image = this.content.featuredMedia ? this.content.featuredMedia.code.originalUrl : null;
@@ -75,5 +72,4 @@ export class DSODShareComponent implements OnInit {
       {name: 'image', content: this.content.featuredMedia ? this.content.featuredMedia.code.originalUrl : null}
     ]);
   }
-
 }
