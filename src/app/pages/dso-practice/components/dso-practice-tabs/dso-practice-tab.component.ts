@@ -11,7 +11,8 @@ import { Observable } from "rxjs";
 })
 export class DSODPracticesTabComponent implements OnInit{
   @Input() contentTypeId:string
-  @Input() DSOPracicesPost$: Observable<CMSPageContent[]>;
+  @Input() categoryId: string
+  DSOPracicesPost$: Observable<CMSPageContent[]>;
   params: CMSContentParams = {
     skip: 0,
     limit: 4
@@ -21,7 +22,8 @@ export class DSODPracticesTabComponent implements OnInit{
   ngOnInit() {
     this.store.dispatch(new FetchDSOPractices({
         ...this.params,
-      contentTypeId: this.contentTypeId
+      contentTypeId: this.contentTypeId,
+      categoryId: this.categoryId
       }));
     this.DSOPracicesPost$ = this.store.select(state => state.cms.DSOPractices);
   }

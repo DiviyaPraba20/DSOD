@@ -35,6 +35,10 @@ const routes: Routes = [
         loadChildren: './pages/dso-practice/dso-practice.module#DSOPracticeModule'
       },
       {
+        path: 'category',
+        loadChildren: './pages/dso-practice/dso-practice.module#DSOPracticeModule'
+      },
+      {
         path: 'about',
         component: AboutComponent
       },

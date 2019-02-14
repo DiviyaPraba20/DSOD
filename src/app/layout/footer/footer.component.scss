@@ -22,7 +22,11 @@ footer {
   }
 
   ul.ftr-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 
     li {
@@ -36,7 +40,11 @@ footer {
   }
 
   ul.social-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
 
     li {
@@ -52,6 +60,7 @@ footer {
         border-radius: 50%;
         display: block;
         font-size: 28px;
+        -webkit-transition: 0.2s all ease;
         transition: 0.2s all ease;
         border: 1px solid transparent;
 
@@ -75,10 +84,17 @@ footer {
   border-radius: 50%;
   display: block;
   font-size: 28px;
+  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   border: 1px solid #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding-bottom: 3px;
   position: fixed;
@@ -100,7 +116,7 @@ footer {
         margin: 0 12px;
 
         a {
-          font-size: 18px;
+          font-size: 16px;
         }
       }
     }
