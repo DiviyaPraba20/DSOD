@@ -147,7 +147,9 @@ export class AuthState {
       isLoggedIn: false,
       accessToken: null
     });
-    this.toastr.success('Logout Successfully!', 'Logout');
+    if (action.showMsg) {
+      this.toastr.success('Logout Successfully!', 'Logout');
+    }
   }
 
   @Action(actions.Unauthorized)

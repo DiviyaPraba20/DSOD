@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { LocationStrategy } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
@@ -20,10 +21,16 @@ export class AppComponent implements OnInit {
   constructor(
     private store: Store,
     private service: ApplicationStateService,
-    private router: Router
+    private router: Router,
+    private location: LocationStrategy
   ) {
     this.service.getIsMobileResolution();
     store.dispatch(new actions.AppInit());
+
+    this.location.onPopState(() => {
+      this.service.setBackClicked(true);
+      return false;
+    });
   }
 
   ngOnInit() {

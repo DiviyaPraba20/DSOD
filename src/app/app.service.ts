@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ApplicationStateService {
   private isMobileResolution: boolean;
+  backClicked = false;
   _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(@Inject(DOCUMENT) private document: Document, private deviceService: DeviceDetectorService) {
@@ -20,5 +21,13 @@ export class ApplicationStateService {
 
   public getIsMobileResolution(): boolean {
     return this.deviceService.isMobile();
+  }
+
+  setBackClicked(flag: boolean) {
+    this.backClicked = flag;
+  }
+
+  getBackClicked() {
+    return this.backClicked;
   }
 }

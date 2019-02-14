@@ -5,9 +5,11 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LinkedinCallbackComponent } from './linkedin-callback/linkedin-callback.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { NavigationGuard } from '../../core/guards/navigation.guard';
 
 const routes: Routes = [{
   path: 'login',
+  canActivate: [NavigationGuard],
   component: LoginComponent
 }, {
   path: 'signup',

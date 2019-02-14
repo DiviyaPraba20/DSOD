@@ -124,7 +124,6 @@ export class SponsorContentComponent implements OnInit, OnDestroy {
           tap(res => {
             if (res.code === 0) {
               item.total += res.resultMap.data.length;
-              console.log(res.resultMap.data);
               this.pageConents = this.pageConents.concat(res.resultMap.data);
             }
           })
