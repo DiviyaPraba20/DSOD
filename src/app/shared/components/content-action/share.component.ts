@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
+
+import { CMSPageContent } from '../../../cms/models/cms.models';
 
 @Component({
   selector: 'dsod-share',
@@ -16,6 +19,9 @@ import { Component, OnInit } from '@angular/core';
               [button]="'facebook'"
               [size]="-7"
               [url]="currentUrl"
+              [title]="title"
+              [description]="description"
+              [image]="image"
             ></share-button>
           </li>
           <li>
@@ -24,6 +30,9 @@ import { Component, OnInit } from '@angular/core';
               [button]="'twitter'"
               [size]="-7"
               [url]="currentUrl"
+              [title]="title"
+              [description]="description"
+              [image]="image"
             ></share-button>
           </li>
           <li>
@@ -32,6 +41,9 @@ import { Component, OnInit } from '@angular/core';
               [button]="'linkedin'"
               [size]="-7"
               [url]="currentUrl"
+              [title]="title"
+              [description]="description"
+              [image]="image"
             ></share-button>
           </li>
         </ul>
@@ -39,13 +51,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./actions.scss']
 })
 export class DSODShareComponent implements OnInit {
+  @Input() content: CMSPageContent;
 
-  // currentUrl = window.location.href;
-  currentUrl = 'https://devangular1.dsodentist.com/dsodt';
-  constructor() { }
+  currentUrl = window.location.href;
+  title = '';
+  description = '';
+  image = '';
+
+  constructor(
+    private meta: Meta
+  ) { }
 
   ngOnInit() {
-
+    this.title = this.content.title;
+    this.description = this.content.excerpt;
+    this.image = this.content.featuredMedia ? this.content.featuredMedia.code.originalUrl : null;
+    this.meta.addTags([
+      {name: 'title', content: this.content.title},
+      {name: 'description', content: this.content.excerpt},
+      {name: 'image', content: this.content.featuredMedia ? this.content.featuredMedia.code.originalUrl : null}
+    ]);
   }
-
 }
