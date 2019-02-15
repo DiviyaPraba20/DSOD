@@ -55,6 +55,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.store.dispatch(new authActions.Logout());
+    this.router.navigate(['/login']);
   }
 
   onClickedOutProfilePanel() {

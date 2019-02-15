@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
 import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
 
 import * as actions from './actions';
 import { ApplicationStateService } from './app.service';
@@ -16,7 +15,7 @@ import { filter } from 'rxjs/internal/operators/filter';
 })
 export class AppComponent implements OnInit {
   title = 'DSODDesktop';
-  isPreview: boolean = false;
+  isPreview = false;
 
   constructor(
     private store: Store,

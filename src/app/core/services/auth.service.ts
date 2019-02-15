@@ -34,8 +34,7 @@ export class AuthService {
     private http: ApiClientService,
     private httpClient: HttpClient,
     private store: Store
-  ) {
-  }
+  ) { }
 
   get accessToken() {
     const token = this.store.selectSnapshot<string>(AuthState.accessToken);
