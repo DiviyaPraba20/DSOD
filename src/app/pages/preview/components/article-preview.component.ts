@@ -7,9 +7,9 @@ import { DomSanitizer } from '@angular/platform-browser';
   selector: 'dsod-articel-preivew',
   templateUrl: './article-preview.component.html',
   styleUrls: [
-    './content.scss',
     '../../podcast/components/podcast-content/podcast-content.component.scss',
-    '../../article/components/article-media/article-media.component.scss'
+    '../../article/components/article-media/article-media.component.scss',
+    './content.scss'
   ]
 })
 export class DSODArticelPreviewComponent implements OnInit {
