@@ -3,7 +3,6 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { AuthState } from '../../pages/auth/states/auth.state';
-import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +10,18 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private store: Store,
-    private router: Router,
-    private authService: AuthService
-  ) {}
+    private router: Router
+  ) { }
+
+  get accessToken() {
+    const token = this.store.selectSnapshot<string>(AuthState.accessToken);
+    return token;
+  }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (!!this.authService.accessToken) {
+      if (!!this.accessToken) {
         return true;
       } else {
         this.router.navigate(['login']);

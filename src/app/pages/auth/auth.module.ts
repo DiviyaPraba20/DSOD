@@ -8,8 +8,6 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LinkedinCallbackComponent } from './linkedin-callback/linkedin-callback.component';
-import { AuthService } from '../../core/services/auth.service';
-import { AuthGuard } from '../../core/guards/auth.guard';
 import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { TermsModalComponent } from './terms-modal/terms-modal.component';
@@ -38,9 +36,7 @@ import { HttpErrorInterceptor } from 'src/app/core/interceptors/errors.intercept
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true,
-    },
-    AuthService,
-    AuthGuard
+    }
   ],
   entryComponents: [
     TermsModalComponent,

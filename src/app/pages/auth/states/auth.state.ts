@@ -1,5 +1,5 @@
 import { Action, State, StateContext, Store, Selector } from '@ngxs/store';
-import { catchError, tap, map, exhaustMap } from 'rxjs/operators';
+import { exhaustMap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 import * as actions from '../actions';
