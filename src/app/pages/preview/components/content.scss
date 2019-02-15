@@ -120,3 +120,74 @@
      }
    }
  }
+ .pod-title-container {
+   padding: 20px;
+   .pod-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .title {
+      padding-left: 20px;
+    }
+   }
+   .pod-category-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    font-size: 30px;
+    text-align: center;
+   }
+ }
+ .author-container {
+  padding: 20px;
+  display: flex;
+   .author-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+     .speaker-thumbnail {
+      width: 200px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+     }
+     .speaker-name {
+       width: 200px;
+     }
+   }
+   .content-title {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    color: #7D7C7C;
+   }
+ }
+.featured-media-container {
+  margin-top: 20px;
+  width: 50%;
+  margin: auto;
+}
+@media only screen and (max-width:768px) {
+  .featured-media-container {
+    width: 100%;
+  }
+  .pod-title-container {
+    .pod-title {
+      width: 100%;
+      padding-bottom: 30px;
+     .title {
+       padding-left: 20px;
+     }
+    }
+  }
+  .author-container {
+    flex-direction: column;
+    .content-title {
+      padding: 20px;
+    }
+  }
+}

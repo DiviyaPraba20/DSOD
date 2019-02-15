@@ -7,16 +7,14 @@
       </div>
     </div>
   </div>
-  <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
-    <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
-      <img *ngIf="content.featuredMedia?.type === '1' || content.featuredMedia?.type === '4'" [src]="getUrl(content.featuredMedia.code.thumbnail)" />
-      <audio *ngIf="content.featuredMedia?.type === '2'" controls>
-        <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="audio/mp3">
-      </audio>
-      <video *ngIf="content.featuredMedia?.type === '3'" width="100%" controls>
-        <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="video/mp4">
-      </video>
-    </div>
+  <div *ngIf="content.featuredMedia" class="featured-media-container">
+    <img *ngIf="content.featuredMedia?.type === '1' || content.featuredMedia?.type === '4'" [src]="getUrl(content.featuredMedia.code.thumbnail)" />
+    <audio *ngIf="content.featuredMedia?.type === '2'" controls>
+      <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="audio/mp3">
+    </audio>
+    <video *ngIf="content.featuredMedia?.type === '3'" width="100%" controls>
+      <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="video/mp4">
+    </video>
   </div>
   <div class="row">
     <div class="col-12">
