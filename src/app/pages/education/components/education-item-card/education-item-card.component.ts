@@ -21,10 +21,6 @@ export class EducationItemCardComponent implements OnInit, AfterViewInit {
     this.video.addEventListener('ended', ()=> {
       this.video.play();
     });
-
-    this.video.addEventListener('progress', (v) => {
-      this.video.removeAttribute('poster');
-    });
   }
 
   onMouseOver(e) {

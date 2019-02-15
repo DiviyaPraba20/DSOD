@@ -67,7 +67,9 @@
     max-height: 180px;
     video[poster]{
       width: 320px;
-      margin-left:50px; 
+    }
+    video{
+      max-width: 100%;
     }
   }
 }
