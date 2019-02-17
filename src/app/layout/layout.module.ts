@@ -11,6 +11,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ShareModule } from '@ngx-share/core';
 
 import { LayoutComponent } from './layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -43,7 +44,8 @@ import { AuthService } from '../core/services/auth.service';
     BrowserAnimationsModule,
     GoTopButtonModule,
     ClickOutsideModule,
-    UiSwitchModule
+    UiSwitchModule,
+    ShareModule
   ],
   declarations: [
     LayoutComponent,
