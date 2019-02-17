@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dsod-footer',
@@ -6,6 +6,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DSODFooterComponent {
+export class DSODFooterComponent implements OnInit {
+  currentUrl = window.location.hostname;
+
   constructor() {}
+
+  ngOnInit() { }
 }
