@@ -33,7 +33,7 @@ export class DSODCarouselComponent implements AfterViewInit {
       actionName: 'Join',
       actionLink: '/signup',
       contentType: DSODContentType.Image,
-      src: 'assets/images/home-banner1.jpg',
+      src: 'assets/images/home-slide.png',
       url: ''
     },
     {
