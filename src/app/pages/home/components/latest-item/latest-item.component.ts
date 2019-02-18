@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'dsod-latest-item',
@@ -22,5 +23,9 @@ export class DSODLatestItemComponent implements OnInit {
     } else {
       this.router.navigate(['./article', latestTopic.id]);
     }
+  }
+
+  getImageUrl(id: string) {
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`
   }
 }

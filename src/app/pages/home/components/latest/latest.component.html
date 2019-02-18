@@ -3,11 +3,11 @@
   <a class="latest-block" *ngIf="latestTopics.length" href="javascript:void(0)">
     <div class="latest-block-header">
       <h4>{{latestTopics[0].categoryName}}</h4>
-<dsod-rating [avgRating]="latestTopics[0].avgCommentRating" readingType="short" [clickAble]="true" [contentId]="latestTopics[0].id"
-[title]="latestTopics[0].title" [commentsCount]="latestTopics[0].countOfComment"></dsod-rating>
+      <dsod-rating [avgRating]="latestTopics[0].avgCommentRating" readingType="short" [clickAble]="true" [contentId]="latestTopics[0].id"
+        [title]="latestTopics[0].title" [commentsCount]="latestTopics[0].countOfComment"></dsod-rating>
     </div>
     <div class="latest-block-thumbnail" *ngIf="latestTopics[0].featuredMedia" (click)="navigateTo(latestTopics[0])">
-      <img src={{latestTopics[0].featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail Large">
+      <img [src]="getImageUrl(latestTopics[0].featuredMedia.code.original)" class="img-fluid" alt="Feautred Thumbnail Large">
       <a href="javascript:void(0)" class="read-about">
         <img src="assets/images/icons/{{latestTopics[0].contentTypeName}}.png" alt="">
       </a>
