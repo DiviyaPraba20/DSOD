@@ -25,7 +25,10 @@
   <dsod-references [references]="content.references"></dsod-references>
   <div class="row" *ngFor="let essay of content.visualEssays">
     <div class="col-12" *ngIf="essay.visualEssayImages">
-      <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
+      <div class="featured-media-container">
+        <img [src]="getUrl(selectedCarouselImage)" />
+      </div>
+      <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages" (changeImage)="onChangeImage($event)"></dsod-essay-images-carousel>
     </div>
     <div class="col-12">
       <div class="article-content">

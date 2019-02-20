@@ -9,6 +9,7 @@ import {
 } from 'src/app/cms/models';
 import { Observable } from 'rxjs';
 import { AuthState } from 'src/app/pages/auth/states/auth.state';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'dsod-article',
@@ -16,13 +17,14 @@ import { AuthState } from 'src/app/pages/auth/states/auth.state';
   styleUrls: ['./article.component.scss']
 })
 export class DSODArticelComponent implements OnInit {
-  avgRating:any;
+  avgRating: any;
   trendingTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   params: CMSContentParams = {
     skip: 0
   };
   pageContent$: Observable<CMSPageContent>;
   isLoggedIn: boolean;
+  selectedCarouselImage = null;
 
   constructor(private _route: ActivatedRoute, private store: Store) {
     this.isLoggedIn = store.selectSnapshot(AuthState.isLoggedIn);
@@ -41,5 +43,14 @@ export class DSODArticelComponent implements OnInit {
 
   updateRating(e) {
     this.avgRating = e;
+  }
+
+  onChangeImage(carouselImage) {
+    console.log('imageIndex = ', carouselImage);
+    this.selectedCarouselImage = carouselImage;
+  }
+
+  getUrl(id) {
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 }

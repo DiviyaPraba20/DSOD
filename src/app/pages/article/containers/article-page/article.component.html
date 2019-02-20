@@ -7,8 +7,11 @@
           <dsod-article-content [content]="(pageContent$ | async)?.content"></dsod-article-content>
           <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
           <div class="row" *ngFor="let essay of (pageContent$ | async)?.visualEssays">
-            <div class="col-lg-12" *ngIf="essay.visualEssayImages">
-              <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
+            <div class="col-12" *ngIf="essay.visualEssayImages">
+              <div class="carousel-image-container">
+                <img [src]="getUrl(selectedCarouselImage)" />
+              </div>
+              <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages" (changeImage)="onChangeImage($event)"></dsod-essay-images-carousel>
             </div>
             <div class="col-lg-12">
               <div class="article-content">
