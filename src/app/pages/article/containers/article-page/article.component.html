@@ -1,7 +1,7 @@
 <div class="page-content">
   <div class="container" *ngIf="(pageContent$ | async)">
     <div class="row">
-      <div class="col-lg-9">
+      <div class="col-lg-9 article-content-wrap pr-3 pr-lg-4">
         <div class="article-content">
           <dsod-article-media [content]="pageContent$ | async" [rating]="!avgRating?(pageContent$ | async)?.avgCommentRating:avgRating"></dsod-article-media>
           <dsod-article-content [content]="(pageContent$ | async)?.content"></dsod-article-content>
@@ -24,19 +24,8 @@
             </div>
           </div>
         </div>
-        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicList.length">
-          <h2 class="section-title">Related Content</h2>
-          <div class="row">
-            <div class="col-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicList">
-              <dsod-related-content [content]="topic" [contentTypeName]="(pageContent$ | async)?.contentTypeName"></dsod-related-content>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="isLoggedIn">
-          <dsod-article-reviews [content]="pageContent$ | async" (updateRating)="updateRating($event)"></dsod-article-reviews>
-        </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-3 trending-videos-wrap">
         <section class="trending-videos" *ngIf="(trendingTopics$ | async).length">
           <h2 class="section-title">Trending Topics</h2>
           <div class="row">
@@ -51,6 +40,21 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicList.length">
+          <h2 class="section-title">Related Content</h2>
+          <div class="row">
+            <div class="col-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicList">
+              <dsod-related-content [content]="topic" [contentTypeName]="(pageContent$ | async)?.contentTypeName"></dsod-related-content>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isLoggedIn">
+          <dsod-article-reviews [content]="pageContent$ | async" (updateRating)="updateRating($event)"></dsod-article-reviews>
+        </div>
       </div>
     </div>
   </div>

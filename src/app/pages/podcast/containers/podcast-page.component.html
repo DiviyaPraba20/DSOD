@@ -3,6 +3,7 @@
     <div class="col-12" *ngIf="content">
       <div class="podcast-intro p-t-115">
         <dsod-podcast-header [content]="pageContent$ | async"></dsod-podcast-header>
+        <h1 class="overview-title">Overview</h1>
         <div class="podcast-player" *ngIf="content">
           <div class="row">
             <div class="col-lg-3 col-md-4">

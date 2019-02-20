@@ -6,7 +6,12 @@
     padding: 20px 20px 20px 0;
   }
 }
-
+.overview-title{
+  font-size: 30px;
+  font-weight: normal;
+  color: $color-secondary;
+  margin-bottom: 25px;
+}
 .page-heading {
   font-size: 42px;
   color: $color-primary;
@@ -210,6 +215,3 @@
     }
   }
 }
-
-
-

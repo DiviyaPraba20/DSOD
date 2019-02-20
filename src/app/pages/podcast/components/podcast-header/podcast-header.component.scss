@@ -2,6 +2,8 @@
 
 :host {
   .top-head {
+    border-bottom:1px solid $color-secondary;
+    margin-bottom: 30px;
     .pod-title {
       h3 {
         font-size: 30px;
