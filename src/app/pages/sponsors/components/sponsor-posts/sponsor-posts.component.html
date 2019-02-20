@@ -1,6 +1,6 @@
 <div class="sponsor-post-container">
   <div *ngFor="let post of posts; let i = index">
-    <div class="row post-container" [ngClass]="{'last-post': i >= posts.length - 2}">
+<div class="row post-container flex-sm-column-reverse flex-xl-row" [ngClass]="{'last-post': i >= posts.length - 2}">
       <div class="col-xl-6">
         <div class="sponsor-desc">
           <div class="sponsor-header">

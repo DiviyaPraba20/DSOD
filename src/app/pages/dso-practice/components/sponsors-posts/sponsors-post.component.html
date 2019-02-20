@@ -1,11 +1,11 @@
 <div class="practice-sponsors">
   <div class="container-fluid">
-    <div class="row mb-5" *ngFor="let topic of (sponsoredTopics$ | async)">
+    <div class="row mb-5 flex-sm-column-reverse flex-xl-row" *ngFor="let topic of (sponsoredTopics$ | async)">
       <div class="col-xl-6">
         <div class="sponsor-desc">
           <div class="sponsor-header mb-3">
             <img class="img-fluid" src="assets/images/icons/{{topic.sponsorName}}-bar.jpg" alt="">
-          </div> 
+          </div>
           <h2>{{topic.title}}</h2>
           <span>{{topic.author.fullName}}</span>
           <div class="d-flex justify-content-between align-items-center date-wrap">
