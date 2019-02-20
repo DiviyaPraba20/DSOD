@@ -13,7 +13,6 @@ import { CMSPageContent } from 'src/app/cms/models';
         <h3>Podcasts</h3>
       </div>
       <span>{{ content.publishDate | date: 'mediumDate' }}</span>
-      <span><dsod-bookmark></dsod-bookmark></span>
     </div>
   `,
   styleUrls: ['./podcast-header.component.scss']

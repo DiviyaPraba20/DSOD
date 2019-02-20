@@ -198,3 +198,22 @@
     }
   }
 }
+
+@media only screen and (max-width:991px) {
+  .podcast-player {
+    .visualizer {
+      .play-icon-lg {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        a {
+          max-width: 130px;
+          min-width: 130px;
+        }
+      }
+    }
+    .media-controls {
+      padding-top: 10px;
+    }
+  }
+}

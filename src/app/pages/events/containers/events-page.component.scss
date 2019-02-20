@@ -1,9 +1,10 @@
 @import 'variables';
 
 .events-banner {
+  position: relative;
   .event-controls {
     .glide__arrow {
-      top: 33%;
+      top: 50%;
     }
   }
 }
