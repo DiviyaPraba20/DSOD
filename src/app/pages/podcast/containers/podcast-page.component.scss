@@ -187,13 +187,29 @@
       padding: 20px 50px 20px 0;
     }
   }
+
   .podcast-player {
     .pod-thumbnail {
       max-width: 25%;
-    }
+    }                              
 
     .pod-visual {
       max-width: 75%;
     }
   }
 }
+
+@media only screen and (max-width:991px) {
+  .podcast-player {
+    .pod-thumbnail {
+      max-width: 35%;
+    }
+
+    .pod-visual {
+      max-width: 65%;
+    }
+  }
+}
+
+
+

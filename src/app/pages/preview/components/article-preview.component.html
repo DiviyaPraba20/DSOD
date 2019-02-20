@@ -7,16 +7,14 @@
       </div>
     </div>
   </div>
-  <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
-    <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
-      <img *ngIf="content.featuredMedia?.type === '1' || content.featuredMedia?.type === '4'" [src]="getUrl(content.featuredMedia.code.thumbnail)" />
-      <audio *ngIf="content.featuredMedia?.type === '2'" controls>
-        <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="audio/mp3">
-      </audio>
-      <video *ngIf="content.featuredMedia?.type === '3'" width="100%" controls>
-        <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="video/mp4">
-      </video>
-    </div>
+  <div *ngIf="content.featuredMedia" class="featured-media-container">
+    <img *ngIf="content.featuredMedia?.type === '1' || content.featuredMedia?.type === '4'" [src]="getUrl(content.featuredMedia.code.thumbnail)" />
+    <audio *ngIf="content.featuredMedia?.type === '2'" controls>
+      <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="audio/mp3">
+    </audio>
+    <video *ngIf="content.featuredMedia?.type === '3'" width="100%" controls>
+      <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="video/mp4">
+    </video>
   </div>
   <div class="row">
     <div class="col-12">
@@ -47,7 +45,7 @@
       <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
       <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
       <div class="row">
-        <div class="col-4" *ngFor="let topic of content.relativeTopicList">
+        <div class="col-12 col-sm-6 col-md-4" *ngFor="let topic of content.relativeTopicList">
           <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
         </div>
       </div>

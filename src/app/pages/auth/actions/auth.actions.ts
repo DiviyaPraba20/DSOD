@@ -18,6 +18,7 @@ export enum AuthActionTypes {
   SignUpSuccess = '[Auth] SignUp Success',
   SignUpFailure = '[Auth] SignUp Failure',
   Logout = '[Auth] Logout',
+  LogoutWithoutMsg = '[Auth] LogoutWithoutMsg',
   Unauthorized = '[Auth] Unauthorized',
   LoginWithLinkedin = '[Auth] Login with LinkedIn',
   LoginWithLinkedinSuccess = '[Auth] Login with LinkedIn Success',
@@ -74,6 +75,8 @@ export class SignUpFailure {
 
 export class Logout {
   static readonly type = AuthActionTypes.Logout;
+
+  constructor(public showMsg: boolean = true) {}
 }
 
 export class Unauthorized {

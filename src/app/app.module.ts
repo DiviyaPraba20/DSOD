@@ -22,7 +22,6 @@ import { CoreModule } from './core/core.module';
 import { CMSModule } from './cms/cms.module';
 import { FormsModule } from '@angular/forms';
 import { PreviewModule } from './pages/preview/preview.module';
-import { HomeModule } from './pages/home/home.module';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
@@ -39,8 +38,8 @@ import { TermsComponent } from './pages/terms/terms.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgxsModule.forRoot(states),
     ToastrModule.forRoot({}),
+    NgxsModule.forRoot(states),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production || false
     }),

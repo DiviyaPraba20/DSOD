@@ -9,14 +9,13 @@
       <h4 *ngIf="!showRating">{{topic.publishDate | date:'mediumDate'}}</h4>
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && showImage">
-      <a role="button" (click)="navigateTo($event)"><img *ngIf="imgLarge; else imgsm" src={{topic.featuredMedia.code.originalUrl}}
+<a role="button" (click)="navigateTo($event)"><img *ngIf="imgLarge; else imgsm" [src]="getImageUrl(topic.featuredMedia.code.original)"
           class="img-fluid img-lg" alt="Feautred Thumbnail Large">
         <ng-template #imgsm>
-          <img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail small">
+<img [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid" alt="Feautred Thumbnail small">
         </ng-template>
       </a>
       <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)">
-
         <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
       </a>
     </div>

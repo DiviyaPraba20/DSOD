@@ -9,7 +9,8 @@ import { environment } from '../../../../environments/environment';
   styleUrls: [
     '../../podcast/components/podcast-content/podcast-content.component.scss',
     '../../podcast/components/podcast-header/podcast-header.component.scss',
-    '../../../shared/components/author/author.component.scss'
+    '../../../shared/components/author/author.component.scss',
+    './content.scss'
   ]
 })
 export class DSODPodcastPreviewComponent implements OnInit {

@@ -149,31 +149,9 @@ ul, li, ul li {
 }
 
 @media only screen and (max-width:1199px) {
-  body {
-    overflow-x: scroll;
-  }
 
-   .site-wrap {
-     min-width: 1180px;
-  }
   .container {
     max-width: 100%;
     width: 100%;
   }
 }
-
-
-
-// @media only screen and (max-width:1170px) {
-//   body {
-//     overflow-x: hidden;
-//   }
-
-//    .site-wrap {
-//      min-width: 100%;
-//   }
-//   .container {
-//     max-width: 100%;
-//     width: 100%;
-//   }
-// }

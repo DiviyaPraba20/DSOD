@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'dsod-topic',
@@ -29,5 +30,9 @@ export class DSODTopicComponent {
   }
   onClickCategory(e){
     this.router.navigate(['./category', e]);
+  }
+
+  getImageUrl(id:string){
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`
   }
 }

@@ -1,4 +1,5 @@
 <div class="profile-out-click-container" [ngClass]="{'hide': !(isOpenedProfilePanel$ | async)}" (click)="onClickedOutProfilePanel()"></div>
+<div class="colllapse-menu" *ngIf="menuStatus" (click)="toggleMenu()"></div>
 <div class="nav-wrapper" onScroll-update>
   <div class="header-container">
     <div class="d-flex justify-content-between align-items-center">
@@ -6,19 +7,51 @@
         <a [routerLink]="['/']"><img class="img img-fluid" src="assets/images/dso-logo.png"></a>
       </div>
       <div class="col-sm-10 d-flex">
-        <div class="nav-menu ml-auto">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="nav-menu ml-auto w-100">
           <nav class="navbar navbar-expand-lg navbar-light">
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> -->
-            <div class="" id="navbarSupportedContent">
+            <div class="w-100 d-flex align-items-center justify-content-end" id="navbarSupportedContent">
               <!-- Menu  -->
-              <ul class="navbar-nav ml-auto flex-row">
+              <div class="medium-menu" [ngClass]="menuStatus ? 'open' : 'close'">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" tabindex="0" (click)="toggleMenu()"
+                  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <ul class="navbar-nav ml-auto flex-row">
+                  <li class="nav-item sub-menu-parent" *ngFor="let nav of navigation" [ngClass]="{'menu-has-children': nav.children}">
+                    <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active" (click)="toggleMenu()"
+                      [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
+                    <!-- Sub Menu -->
+                    <span class="touch-toggler" *ngIf="nav.children">
+                      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </span>
+                    <ul class="sub-menu" *ngIf="nav.children">
+                      <li *ngFor="let child of nav.children" [ngClass]="{'sub-menu-child': child.children}">
+                        <a routerLink={{child.link}} (click)="toggleMenu()">{{child.title}}</a>
+                        <ul *ngIf="child.children" class="sub-menu-nested">
+                          <li *ngFor="let child of child.children">
+                            <a routerLink={{child.link}}>{{child.title}}</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <ul class="navbar-nav flex-row">
                 <!-- Menu Items  -->
-                <li class="nav-item sub-menu-parent" *ngFor="let nav of navigation">
+                <li class="nav-item sub-menu-parent hidden-medium" *ngFor="let nav of navigation" [ngClass]="{'menu-has-children': nav.children}">
                   <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
                   <!-- Sub Menu -->
+                  <span class="touch-toggler" *ngIf="nav.children">
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                  </span>
                   <ul class="sub-menu" *ngIf="nav.children">
                     <li *ngFor="let child of nav.children" [ngClass]="{'sub-menu-child': child.children}">
                       <a routerLink={{child.link}}>{{child.title}}</a>
