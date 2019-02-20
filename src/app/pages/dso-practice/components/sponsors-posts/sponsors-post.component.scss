@@ -89,3 +89,26 @@
     }
   }
 }
+
+@media only screen and (max-width:1440px) {
+  :host {
+    .practice-sponsors {
+      .sponsor-desc {
+        h2 {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width:1199px) {
+  :host {
+    .practice-sponsors {
+      .sponsor-desc {
+        h2 {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

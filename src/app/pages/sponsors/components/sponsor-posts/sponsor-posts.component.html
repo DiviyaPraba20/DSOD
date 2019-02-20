@@ -1,7 +1,7 @@
 <div class="sponsor-post-container">
   <div *ngFor="let post of posts; let i = index">
-    <div class="row post-container" [ngClass]="{'last-post': i >= posts.length - 2}">
-      <div class="col-6">
+<div class="row post-container flex-sm-column-reverse flex-xl-row" [ngClass]="{'last-post': i >= posts.length - 2}">
+      <div class="col-xl-6">
         <div class="sponsor-desc">
           <div class="sponsor-header">
             <img class="mb-3 img-fluid" src="assets/images/icons/{{post.sponsorName}}-bar.jpg" alt="">
@@ -18,7 +18,7 @@
                 aria-hidden="true"></i></span></a>
         </div>
       </div>
-      <div class="col-6 thumbnail">
+      <div class="col-xl-6 thumbnail">
         <div class="img-container">
           <img *ngIf="post.featuredMedia" class="img-fluid" src="{{post.featuredMedia.code.originalUrl}}" alt="">
         </div>
