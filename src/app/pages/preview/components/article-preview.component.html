@@ -23,21 +23,12 @@
     </div>
   </div>
   <dsod-references [references]="content.references"></dsod-references>
-  <div class="row" *ngFor="let essay of content.visualEssays">
-    <div class="col-12" *ngIf="essay.visualEssayImages">
-      <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
-    </div>
+  <div class="row essay-container" *ngIf="content.visualEssays.length">
     <div class="col-12">
-      <div class="article-content">
-        <p>{{essay.description}}</p>
-      </div>
+      <h3 class="essay-title">Visual Essay</h3>
     </div>
-    <div class="col-12">
-      <div class="row">
-        <div class="col-8">
-          <dsod-essay-author [essay]="essay"></dsod-essay-author>
-        </div>
-      </div>
+    <div class="col-lg-12" *ngFor="let essay of content.visualEssays">
+      <a class="essay-item" [routerLink]="['/preview/visual-essay', essay.id]">{{essay.title}}</a>
     </div>
   </div>
   <div class="row">

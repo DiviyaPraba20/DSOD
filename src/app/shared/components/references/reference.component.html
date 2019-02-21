@@ -1,8 +1,8 @@
-<div class="row" *ngIf="references">
+<div class="row">
   <div class="col-12">
-    <h2 *ngIf="references.length">References</h2>
+    <h2 *ngIf="references">References</h2>
     <ul>
-      <li *ngFor="let ref of references">{{ref}}</li>
+      <li *ngFor="let ref of references" [innerHTML]="ref"></li>
     </ul>
   </div>
 </div>

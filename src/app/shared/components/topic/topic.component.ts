@@ -15,7 +15,7 @@ export class DSODTopicComponent {
   @Input() styleFor: string;
   @Input() showRating: boolean;
   @Input() imgLarge?: boolean;
-  @Input() contentLength?:number;
+  @Input() contentLength?: number;
 
   constructor(private router: Router) {}
 
@@ -28,11 +28,12 @@ export class DSODTopicComponent {
       this.router.navigate(['./article', this.topic.id]);
     }
   }
-  onClickCategory(e){
+
+  onClickCategory(e) {
     this.router.navigate(['./category', e]);
   }
 
   getImageUrl(id:string){
-    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 }

@@ -15,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class DSODArticelPreviewComponent implements OnInit {
   @Input() content: CMSPageContent;
   contentString: any;
+  selectedCarouselImage = null;
 
   constructor(
     private sanitizer: DomSanitizer
@@ -26,5 +27,9 @@ export class DSODArticelPreviewComponent implements OnInit {
 
   getUrl(id) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
+  }
+
+  onChangeImage(carouselImage) {
+    this.selectedCarouselImage = carouselImage;
   }
 }

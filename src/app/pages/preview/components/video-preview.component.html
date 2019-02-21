@@ -29,21 +29,12 @@
     </div>
   </div>
   <dsod-references [references]="content.references"></dsod-references>
-  <div class="row" *ngFor="let essay of content.visualEssays">
-    <div class="col-12" *ngIf="essay.visualEssayImages">
-      <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
-    </div>
+  <div class="row essay-container" *ngIf="content.visualEssays.length">
     <div class="col-12">
-      <div class="article-content">
-        <p>{{essay.description}}</p>
-      </div>
+      <h3 class="essay-title">Visual Essay</h3>
     </div>
-    <div class="col-12">
-      <div class="row">
-        <div class="col-8">
-          <dsod-essay-author [essay]="essay"></dsod-essay-author>
-        </div>
-      </div>
+    <div class="col-lg-12" *ngFor="let essay of content.visualEssays">
+      <a class="essay-item" [routerLink]="['/preview/visual-essay', essay.id]">{{essay.title}}</a>
     </div>
   </div>
   <div class="row">
@@ -51,7 +42,7 @@
       <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
     <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
       <div class="row">
-        <div class="col-4" *ngFor="let topic of content.relativeTopicList">
+        <div class="col-12 col-sm-6 col-md-4" *ngFor="let topic of content.relativeTopicList">
           <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
         </div>
       </div>

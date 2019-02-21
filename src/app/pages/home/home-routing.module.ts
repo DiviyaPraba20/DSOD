@@ -5,9 +5,8 @@ import { DSODArticelComponent } from '../article/containers';
 import { DSODPodcastComponent } from '../podcast/containers';
 import { DSODVideoPageComponent } from '../video/containers/video-page/video-page.component';
 import { DSODEventsPageComponent } from '../events/containers';
-import { DSODComingSoonComponent } from 'src/app/shared/components/coming soon/coming-soon.component';
-import { DSODEventSlideComponent } from '../events/components';
 import { DSODEventDetailPageComponent } from '../events/containers/event-detail-page/event-detail-page.component';
+import { VisualEssayComponent } from '../visual-essay/containers/visual-essay/visual-essay.component';
 
 const routes: Routes = [
   {
@@ -25,6 +24,10 @@ const routes: Routes = [
   {
     path: 'article/:id',
     component: DSODArticelComponent
+  },
+  {
+    path: 'visual-essay/:id',
+    component: VisualEssayComponent
   },
   {
     path: 'podcast/:id',

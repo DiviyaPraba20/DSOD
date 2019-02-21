@@ -148,3 +148,22 @@ export interface UniteMagazine {
   pdfId: string;
   version: number;
 }
+
+export interface EssayImages {
+  alternateText?: string;
+  caption?: string;
+  originalID?: string;
+  thumbnailID?: string;
+  title?: string;
+}
+
+export interface Essay {
+  id?: string;
+  authorImage?: EssayImages;
+  authorDetails?: string;
+  authorName?: string;
+  description?: string;
+  title?: string;
+  createTime?: string;
+  visualEssayImages?: EssayImages[];
+}
