@@ -4,31 +4,34 @@
 <div class="podcast-player" *ngIf="content.podcastUrls">
   <div class="visualizer">
     <div class="row align-items-center">
-      <div class="col-2">
+      <div class="col-lg-3">
         <div class="play-icon-lg">
           <a href="javascript:void(0)" (click)="playPause()">
             <i *ngIf="!isPlaying" class="fa fa-play" aria-hidden="true"></i>
             <i *ngIf="isPlaying" class="fa fa-pause" aria-hidden="true"></i>
             <!-- <img *ngIf="isPlaying" src="assets/images/media-pause.png" alt=""> -->
           </a>
+          <div class="pod-timings ml-5 d-none d-lg-none d-md-block">
+            <span #curretTime class="playin-time">0:00</span>
+            <span #trackLength class="total-time">0:00</span>
+          </div>
         </div>
       </div>
-      <div class="col-10 bb-grey">
+      <div class="col-lg-9 bb-grey">
         <h3>Episode #001</h3>
         <h3>{{content.title}}&nbsp;with&nbsp;{{content.author.fullName}}</h3>
         <div class="row">
-          <div class="col-10">
+          <div class="col-lg-10">
             <div id="playerContainer"></div>
           </div>
-          <div class="col-2 d-flex align-items-center justify-content-end">
-            <div class="pod-timings mr-5">
+          <div class="col-lg-2 d-flex align-items-center justify-content-end">
+            <div class="pod-timings  d-none d-lg-block ">
               <span #curretTime class="playin-time">0:00</span>
               <span #trackLength class="total-time">0:00</span>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
   <div class="media-controls">
@@ -58,16 +61,11 @@
           <a href="javascript:void(0)" (click)="player.skipForward()">
             <img src="assets/images/media-next.png" alt="">
           </a>
-          <a href="javascript:void(0)" style="margin-left:auto;">
-            <dsod-share></dsod-share>
-          </a>
 
           <!-- </div> -->
         </div>
       </div>
-
     </div>
   </div>
-
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-scale-multiple"></ngx-spinner>

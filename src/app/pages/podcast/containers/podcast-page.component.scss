@@ -6,7 +6,12 @@
     padding: 20px 20px 20px 0;
   }
 }
-
+.overview-title{
+  font-size: 30px;
+  font-weight: normal;
+  color: $color-secondary;
+  margin-bottom: 25px;
+}
 .page-heading {
   font-size: 42px;
   color: $color-primary;
@@ -187,13 +192,26 @@
       padding: 20px 50px 20px 0;
     }
   }
+
   .podcast-player {
     .pod-thumbnail {
       max-width: 25%;
-    }
+    }                              
 
     .pod-visual {
       max-width: 75%;
+    }
+  }
+}
+
+@media only screen and (max-width:991px) {
+  .podcast-player {
+    .pod-thumbnail {
+      max-width: 35%;
+    }
+
+    .pod-visual {
+      max-width: 65%;
     }
   }
 }

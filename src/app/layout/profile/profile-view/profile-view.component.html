@@ -23,8 +23,7 @@
         <div class="body-wrapper">
           <div *ngIf="userProfile?.experiences.length; else noExperience">
             <div *ngFor="let experience of userProfile.experiences">
-              <dsod-profile-experience
-                [experience]="experience">
+              <dsod-profile-experience [experience]="experience">
               </dsod-profile-experience>
             </div>
           </div>
@@ -40,8 +39,7 @@
         <div class="body-wrapper">
           <div *ngIf="userProfile?.profileResidency.length; else noResidency">
             <div *ngFor="let residency of userProfile.profileResidency">
-              <dsod-profile-residency
-                [residency]="residency">
+              <dsod-profile-residency [residency]="residency">
               </dsod-profile-residency>
             </div>
           </div>
@@ -57,8 +55,7 @@
         <div class="body-wrapper">
           <div *ngIf="userProfile?.educations.length; else noEducation">
             <div *ngFor="let education of userProfile.educations">
-              <dsod-profile-education
-                [education]="education">
+              <dsod-profile-education [education]="education">
               </dsod-profile-education>
             </div>
           </div>
@@ -72,8 +69,7 @@
       <div class="info-container">
         <p class="title">Contact</p>
         <div class="body-wrapper">
-          <dsod-profile-address
-            [address]="address">
+          <dsod-profile-address [address]="address">
           </dsod-profile-address>
           <div class="body-item-wrapper">
             <div class="icon-body-item">
@@ -108,6 +104,13 @@
         <div class="body-wrapper">
           <dsod-profile-settings></dsod-profile-settings>
         </div>
+        <p class="title d-flex align-items-center">
+          <span>Job Alerts</span>
+          <label class="switch ml-3">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </p>
       </div>
     </div>
     <div class="section-container">
@@ -123,6 +126,10 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="section-container">
+      <div class="info-container">
       </div>
     </div>
   </div>
