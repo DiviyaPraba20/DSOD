@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-5">
       <div class="latest-block-thumbnail">
-        <img [src]="getImageUrl(latestTopic.featuredMedia.code.thumbnail)" class="img-fluid" alt="Feautred Thumbnail Large"
+        <img *ngIf="latestTopic.featuredMedia"
+          [src]="getImageUrl(latestTopic.featuredMedia.code.thumbnail)"
+          class="img-fluid" alt="Feautred Thumbnail Large"
           (click)="navigateTo(latestTopic)">
         <a href="javascript:void(0)" (click)="navigateTo(latestTopic)" class="read-about">
           <img src="assets/images/icons/{{latestTopic.contentTypeName}}.png" alt="">

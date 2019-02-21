@@ -11,7 +11,7 @@
               <h3 class="essay-title">Visual Essay</h3>
             </div>
             <div class="col-lg-12" *ngFor="let essay of (pageContent$ | async)?.visualEssays">
-              <a class="essay-item" [routerLink]="['/visual-essay', essay.id]" target="_blank">{{essay.title}}</a>
+              <a class="essay-item" [routerLink]="['/visual-essay', essay.id]">{{essay.title}}</a>
             </div>
           </div>
         </div>
