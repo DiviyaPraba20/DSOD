@@ -4,17 +4,10 @@
   .glide__slide {
     position: relative;
     overflow: hidden;
-    height: calc(100vh - 96px);
 
     >img {
       width: 100%;
-      -o-object-fit: cover;
-      object-fit: cover;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
       margin: auto;
-      height: 100%;
     }
 
     .slide-caption {
