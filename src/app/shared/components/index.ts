@@ -35,6 +35,7 @@ import { DSODConfirmDialogComponent } from './confirm-dialog/confirm-dialog.comp
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { EditSettingsComponent } from './edit-settings/edit-settings.component';
 import { DSODExcerptComponent } from './excerpt/excerpt.component';
+import { DSODSharedCarousalComponent } from './shared-carousal/shared-carousal.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -74,5 +75,6 @@ export const SHARED_COMPONENTS = [
   DSODFeaturedMediaComponent,
   DSODConfirmDialogComponent,
   EditSettingsComponent,
-  DSODExcerptComponent
+  DSODExcerptComponent,
+  DSODSharedCarousalComponent
 ];

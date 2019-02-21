@@ -29,6 +29,8 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
   contentTypes: CMSContentTypeModel[];
   isLoading:boolean=true;
   title:string;
+  bannerImages = ['dsopractice-1.jpg','dsopractice-2.jpg','dsopractice-3.jpg'];
+  caption='Work Together Effectively'
   constructor(private store: Store, private actions$: Actions, private spinnerService: NgxSpinnerService, private route:ActivatedRoute) {
     store.dispatch(new FetchContentTypes());
     store.dispatch(new FetchCategories());

@@ -1,6 +1,13 @@
 @import "variables";
 
 .dso-practice {
+  /deep/ .glide__slide {
+    text-align: center;
+    img {
+      max-height: 400px;
+      max-width: 1140px;
+    }
+  }
   .dso-practice-banner {
     position: relative;
     max-width: 1145px;

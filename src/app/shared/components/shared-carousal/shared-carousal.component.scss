@@ -1,0 +1,72 @@
+@import 'variables';
+
+.shared-carousal {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  .banner-overlay {
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .banner-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    max-width: 1300px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+
+    h1 {
+      font-size: 50px;
+      font-weight: normal;
+      margin-bottom: 50px;
+    }
+
+    p {
+      color: $color-white;
+      font-size: 20px;
+    }
+
+  }
+  .glide__slide {
+    img {
+      width: 100%;
+      height: -webkit-calc(100vh - 96px);
+      height: expression(100vh - 96px);
+      height: -o-calc(100vh - 96px);
+      height: calc(100vh - 96px);
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+  }
+
+  .slider-controls {
+    .glide__arrow {
+      top: 50%;
+    }
+  }
+}
+
+
+
+@media only screen and (max-width:1199px) {
+  .shared-carousal{
+    .banner-caption{
+       h1 {
+         font-size: 30px;
+         font-weight: normal;
+         margin-bottom: 15px;
+       }
+    }
+  }
+ 
+}
