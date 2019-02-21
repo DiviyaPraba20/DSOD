@@ -38,11 +38,7 @@ export class CMSService {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     isLoggedIn ? (url = 'findAllContents') : (url = 'public/findAllContents');
-    return this.http.post(
-      `${environment.url}/content/${url}`,
-      params,
-      isLoggedIn ? { withCredentials: true } : {}
-    );
+    return this.http.post(`${environment.url}/content/${url}`, params, isLoggedIn ? { withCredentials: true } : {});
   }
 
   findOneContents<T>(id: string, isPreview?: boolean) {

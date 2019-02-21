@@ -32,17 +32,15 @@ export class DSODPodcastsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(
-      new actions.FetchPodcasts({
-        ...this.params,
-        contentTypeId: this.contentType.id
+    this.store.dispatch(new actions.FetchPodcasts({
+      ...this.params,
+      contentTypeId: this.contentType.id
       })
     );
     this.podcasts$ = this.store.select(state => state.cms.podcasts);
 
     this.cmsService.findAllCategory().subscribe(res => {
       if (res.code === 0) {
-        console.log(res.resultMap.data);
         this.categories = res.resultMap.data;
       }
     });
@@ -71,12 +69,29 @@ export class DSODPodcastsComponent implements OnInit {
   }
 
   selectNewType() {
-    console.log('selectNewType');
     this.selectedType = 'new';
+    this.store.dispatch(new actions.FetchPodcasts({
+      ...this.params,
+      contentTypeId: this.contentType.id
+      })
+    );
+    this.indexStart = 0;
+    this.indexEnd = 9;
+    this.activePage = 1;
+    this.imageIndex = 0;
   }
 
   changeCategory(category: CMSContentTypeModel) {
-    console.log(category);
     this.selectedType = 'category';
+    this.store.dispatch(new actions.FetchPodcasts({
+      ...this.params,
+      contentTypeId: this.contentType.id,
+      categoryId: category.id
+      })
+    );
+    this.indexStart = 0;
+    this.indexEnd = 9;
+    this.activePage = 1;
+    this.imageIndex = 0;
   }
 }
