@@ -2,15 +2,6 @@
 
 .header-container {
   background-color: $alabaster_white;
-  /deep/ .glide__slide {
-    text-align: center;
-
-    img {
-      max-height: 400px;
-      max-width: 1140px;
-    }
-  }
-
   .image-header-container {
     background-image: url('../../../../assets/images/sponsors_header.png');
     height: 400px;
