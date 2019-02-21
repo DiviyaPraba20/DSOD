@@ -1,7 +1,7 @@
 @import 'variables.scss';
 
 .trending-block {
-  margin: 15px 0 33px;
+  margin: 0px 0 33px;
   background: #f8f8f8;
   cursor: pointer;
 
@@ -12,8 +12,12 @@
   }
 
   .trending-block-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 21px 15px 9px;
 
     h4 {
@@ -40,7 +44,8 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
     }
   }
 
