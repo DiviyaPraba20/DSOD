@@ -1,12 +1,9 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import {
-  CMSPageContent,
-  CMSContentParams,
-  CMSContentTypeModel
-} from 'src/app/cms/models';
+import { Component, Input, OnInit } from '@angular/core';
+import { CMSPageContent, CMSContentParams, CMSContentTypeModel } from 'src/app/cms/models';
 import { Store } from '@ngxs/store';
 import * as actions from '../../../../cms/actions';
 import { Observable } from 'rxjs';
+import { CMSService } from '../../../../cms/services/cms.service';
 
 @Component({
   selector: 'dsod-podcasts',
@@ -14,8 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./podcasts.component.scss']
 })
 export class DSODPodcastsComponent implements OnInit {
-  @Input()
-  contentType: CMSContentTypeModel;
+  @Input() contentType: CMSContentTypeModel;
 
   podcasts$: Observable<CMSPageContent[]>;
   indexStart = 0;
@@ -27,7 +23,13 @@ export class DSODPodcastsComponent implements OnInit {
   };
   podcastItem: number;
   imageIndex = 0;
-  constructor(private store: Store) {}
+  categories: CMSContentTypeModel[] = [];
+  selectedType = 'new';
+
+  constructor(
+    private store: Store,
+    private cmsService: CMSService
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(
@@ -37,11 +39,18 @@ export class DSODPodcastsComponent implements OnInit {
       })
     );
     this.podcasts$ = this.store.select(state => state.cms.podcasts);
+
+    this.cmsService.findAllCategory().subscribe(res => {
+      if (res.code === 0) {
+        console.log(res.resultMap.data);
+        this.categories = res.resultMap.data;
+      }
+    });
   }
 
   podcastPagination(e?, page?) {
     this.activePage = page;
-    if (page == 1) {
+    if (page === 1) {
       this.indexStart = 0;
       this.indexEnd = 9;
       this.imageIndex = 0;
@@ -59,5 +68,15 @@ export class DSODPodcastsComponent implements OnInit {
       this.activePage -= 1;
     }
     this.podcastPagination(null, this.activePage);
+  }
+
+  selectNewType() {
+    console.log('selectNewType');
+    this.selectedType = 'new';
+  }
+
+  changeCategory(category: CMSContentTypeModel) {
+    console.log(category);
+    this.selectedType = 'category';
   }
 }
