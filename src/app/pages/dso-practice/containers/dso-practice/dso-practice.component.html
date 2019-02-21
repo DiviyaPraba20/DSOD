@@ -1,12 +1,5 @@
 <div class="dso-practice">
-  <div class="dso-practice-banner">
-    <!-- <img src="assets/images/dso-practice-banner.png" alt=""> -->
-    <div class="banner-overlay"></div>
-    <div class="banner-caption">
-      <h1 class="text-white">Slogan Here</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptate a</p>
-    </div>
-  </div>
+<dsod-shared-carousal [images]="bannerImages" [caption]="caption"></dsod-shared-carousal>
   <div class="practice-content">
     <div class="container">
       <h2 *ngIf="!categoryId" class="content-title">DSO Practice</h2>
