@@ -26,6 +26,6 @@ export class DSODLatestItemComponent implements OnInit {
   }
 
   getImageUrl(id: string) {
-    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 }

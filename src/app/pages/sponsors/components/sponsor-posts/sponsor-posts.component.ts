@@ -22,6 +22,8 @@ export class SponsorPostsComponent implements OnInit {
       this.router.navigate(['./video', e.id]);
     } else if (e.contentTypeName === 'Podcasts') {
       this.router.navigate(['./podcast', e.id]);
+    } else if (e.contentTypeName === 'Visual Essay') {
+      this.router.navigate(['./visual-essay', e.id]);
     } else {
       this.router.navigate(['./article', e.id]);
     }

@@ -117,4 +117,11 @@ export class CMSService {
     const url = `${environment.url}/magazine/findOneById?id=${id}`;
     return this.http.post(url, null, { withCredentials: true });
   }
+
+  getVisualEssay(id: string): Observable <any> {
+    const url = `${environment.url}/content/visualEssay/findOneById`;
+    const form = new FormData();
+    form.append('id', id);
+    return this.http.post(url, form);
+   }
 }

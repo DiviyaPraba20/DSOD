@@ -6,24 +6,12 @@
           <dsod-article-media [content]="pageContent$ | async" [rating]="!avgRating?(pageContent$ | async)?.avgCommentRating:avgRating"></dsod-article-media>
           <dsod-article-content [content]="(pageContent$ | async)?.content"></dsod-article-content>
           <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
-          <div class="row" *ngFor="let essay of (pageContent$ | async)?.visualEssays">
-            <div class="col-12" *ngIf="essay.visualEssayImages">
-              <div class="carousel-image-container">
-                <img [src]="getUrl(selectedCarouselImage)" />
-              </div>
-              <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages" (changeImage)="onChangeImage($event)"></dsod-essay-images-carousel>
+          <div class="row essay-container" *ngIf="(pageContent$ | async)?.visualEssays.length">
+            <div class="col-12">
+              <h3 class="essay-title">Visual Essay</h3>
             </div>
-            <div class="col-lg-12">
-              <div class="article-content">
-                <p>{{essay.description}}</p>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="row">
-                <div class="col-md-8">
-                  <dsod-essay-author [essay]="essay"></dsod-essay-author>
-                </div>
-              </div>
+            <div class="col-lg-12" *ngFor="let essay of (pageContent$ | async)?.visualEssays">
+              <a class="essay-item" [routerLink]="['/visual-essay', essay.id]" target="_blank">{{essay.title}}</a>
             </div>
           </div>
         </div>

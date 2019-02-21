@@ -174,6 +174,20 @@
     width: 100%;
   }
 }
+.essay-container {
+  padding: 30px 0;
+  .essay-title {
+    color: #7D7C7C;
+    font-family: "helvetica";
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  .essay-item {
+    padding: 20px;
+    font-size: 18px;
+  }
+}
 @media only screen and (max-width:768px) {
   .featured-media-container {
     width: 100%;

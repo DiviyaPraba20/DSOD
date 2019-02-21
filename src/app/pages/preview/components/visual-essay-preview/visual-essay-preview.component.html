@@ -1,0 +1,26 @@
+<div class="page-content">
+  <div class="container" *ngIf="visualEssay">
+    <div class="essay-container">
+      <div class="row">
+        <div class="col-12" *ngIf="visualEssay.visualEssayImages">
+          <div class="carousel-image-container">
+            <img [src]="getUrl(selectedCarouselImage)" />
+          </div>
+          <dsod-essay-images-carousel [visualEssayImages]="visualEssay.visualEssayImages" (changeImage)="onChangeImage($event)"></dsod-essay-images-carousel>
+        </div>
+        <div class="col-lg-12">
+          <div class="article-content">
+            <p>{{visualEssay.description}}</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="row section-container">
+            <div class="col-md-8 col-12">
+              <dsod-essay-author [essay]="visualEssay"></dsod-essay-author>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

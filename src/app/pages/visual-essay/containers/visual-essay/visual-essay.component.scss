@@ -1,12 +1,12 @@
 @import 'variables';
 
-.article-content {
+.essay-container {
+  padding: 100px 0;
   p {
     display: block;
     font-size: 20px;
     line-height: 35px;
     margin-bottom: 25px;
-
     &:first-letter {
       float: left;
       font-size: 60px;
@@ -24,18 +24,7 @@
       width: 100%;
     }
   }
-}
-.essay-container {
-  padding: 30px 0;
-  .essay-title {
-    color: #7D7C7C;
-    font-family: "helvetica";
-    font-weight: bold;
-    font-size: 22px;
-    margin-bottom: 15px;
-  }
-  .essay-item {
-    padding: 20px;
-    font-size: 18px;
+  .section-container {
+    padding: 30px 0;
   }
 }

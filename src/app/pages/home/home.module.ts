@@ -11,6 +11,7 @@ import { ArticleModule } from '../article/article.module';
 import { VideoModule } from '../video/video.module';
 import { PodcastModule } from '../podcast/podcast.module';
 import { EventsModule } from '../events/events.module';
+import { VisualEssayModule } from '../visual-essay/visual-essay.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { EventsModule } from '../events/events.module';
     VideoModule,
     PodcastModule,
     EventsModule,
+    VisualEssayModule,
     CMSModule,
     NgxSpinnerModule
   ],
