@@ -34,7 +34,8 @@ export class DSODPodcastsComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new actions.FetchPodcasts({
       ...this.params,
-      contentTypeId: this.contentType.id
+      contentTypeId: this.contentType.id,
+      sponsorId: '501'
       })
     );
     this.podcasts$ = this.store.select(state => state.cms.podcasts);
@@ -72,7 +73,8 @@ export class DSODPodcastsComponent implements OnInit {
     this.selectedType = 'new';
     this.store.dispatch(new actions.FetchPodcasts({
       ...this.params,
-      contentTypeId: this.contentType.id
+      contentTypeId: this.contentType.id,
+      sponsorId: '501'
       })
     );
     this.indexStart = 0;
@@ -86,7 +88,8 @@ export class DSODPodcastsComponent implements OnInit {
     this.store.dispatch(new actions.FetchPodcasts({
       ...this.params,
       contentTypeId: this.contentType.id,
-      categoryId: category.id
+      categoryId: category.id,
+      sponsorId: '501'
       })
     );
     this.indexStart = 0;
