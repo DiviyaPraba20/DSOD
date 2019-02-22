@@ -1,4 +1,4 @@
-<section class="podcasts" *ngIf="(podcasts$ | async)?.length">
+<section class="podcasts">
   <div class="container">
     <h2 class="section-title">Podcasts</h2>
     <div class="podcasts-about text-center">
@@ -7,49 +7,62 @@
     </div>
     <div class="podcasts-tabs d-flex align-items-center">
       <h3 class="podcasts-title">Podcasts</h3>
-      <tabset>
-        <tab heading="New" class="mt-2">
-          <a href="javascript:void(0)" class="pod-left-control" (click)="updateAuthors($event)">
-            <img src="assets/images/arrow-left.png" alt="">
-          </a>
-          <a href="javascript:void(0)" class="pod-right-control" (click)="updateAuthors($event)">
-            <img src="assets/images/arrow-right.png" alt="">
-          </a>
-          <div class="row">
-            <div class="col-lg-6 col-md-12">
-              <div class="featured-podcasts-block">
-                <div class="podcasts-block-header">
-                  <h4>Featured Podcast</h4>
-                </div>
-                <div class="podcast-block-thumbnail">
-                  <img src="./assets/images/featured-podcast.png" class="img-fluid" alt="Feautred Thumbnail Large">
-                  <div class="podcasts-block-caption">
-                    <h4>Awesome Topic Info | Christina Calleros, RDH, MS</h4>
-                  </div>
-                </div>
-              </div>
-              <div class="podcasts-list">
-                <dsod-podcast-items [podcasts]="podcasts$ | async" [indexStart]="indexStart" [indexEnd]="indexEnd"
-                  [imageIndex]="imageIndex"></dsod-podcast-items>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-              <dsod-podcasts-by [podcasts]="podcasts$ | async" [indexEnd]="indexEnd" [indexStart]="indexStart"
-                [imageIndex]="imageIndex"></dsod-podcasts-by>
+      <ul class="nav nav-tabs">
+        <li class="nav-item" [ngClass]="{'active': selectedType === 'new'}">
+          <a (click)="selectNewType()">New</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'active': selectedType === 'category'}">
+          <div ngbDropdown>
+            <a id="categories" ngbDropdownToggle>Category</a>
+            <div class="dropdown-container" ngbDropdownMenu aria-labelledby="categories">
+              <a class="dropdown-item" *ngFor="let category of categories" (click)="changeCategory(category)">{{category.name}}</a>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="podcasts-pagination">
-                <ul>
-                  <li *ngFor="let number of [1, 2]; let i=index" [ngClass]="{'active':number==activePage}"><button
-                      class="btn btn-default" (click)="podcastPagination($event, number)" [disabled]="number==activePage">{{number}}</button></li>
-                </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="podcast-container">
+      <div *ngIf="(podcasts$ | async)?.length > 9">
+        <a href="javascript:void(0)" class="pod-left-control" (click)="updateAuthors($event)">
+          <img src="assets/images/arrow-left.png" alt="">
+        </a>
+        <a href="javascript:void(0)" class="pod-right-control" (click)="updateAuthors($event)">
+          <img src="assets/images/arrow-right.png" alt="">
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="featured-podcasts-block">
+            <div class="podcasts-block-header">
+              <h4>Featured Podcast</h4>
+            </div>
+            <div class="podcast-block-thumbnail">
+              <img src="./assets/images/featured-podcast.png" class="img-fluid" alt="Feautred Thumbnail Large">
+              <div class="podcasts-block-caption">
+                <h4>Awesome Topic Info | Christina Calleros, RDH, MS</h4>
               </div>
             </div>
           </div>
-        </tab>
-      </tabset>
+          <div class="podcasts-list">
+            <dsod-podcast-items [podcasts]="podcasts$ | async" [indexStart]="indexStart" [indexEnd]="indexEnd"
+              [imageIndex]="imageIndex"></dsod-podcast-items>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <dsod-podcasts-by [podcasts]="podcasts$ | async" [indexEnd]="indexEnd" [indexStart]="indexStart"
+            [imageIndex]="imageIndex"></dsod-podcasts-by>
+        </div>
+      </div>
+      <div class="row" *ngIf="(podcasts$ | async)?.length > 9">
+        <div class="col-12">
+          <div class="podcasts-pagination">
+            <ul>
+              <li *ngFor="let number of [1, 2]; let i=index" [ngClass]="{'active':number==activePage}"><button
+                  class="btn btn-default" (click)="podcastPagination($event, number)" [disabled]="number==activePage">{{number}}</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HOME_COMPONENTS, HOME_CONTAINERS } from './index';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CMSModule } from 'src/app/cms/cms.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -19,6 +20,7 @@ import { VisualEssayModule } from '../visual-essay/visual-essay.module';
     HomeRoutingModule,
     SharedModule,
     TabsModule.forRoot(),
+    NgbModule,
     ArticleModule,
     VideoModule,
     PodcastModule,

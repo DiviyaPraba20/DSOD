@@ -10,7 +10,5 @@ export class DSODReferecnceComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.references);
-  }
+  ngOnInit() { }
 }

@@ -7,81 +7,97 @@
       color: $mine_grey;
       text-transform: uppercase;
     }
-
     h4 {
       font-size: 28px;
       color: $mine_grey;
-
       span {
         color: $color-primary;
         font-weight: 500;
       }
     }
   }
-
   .podcasts-tabs {
-    margin: 50px 0;
+    margin: 50px 0 0;
     position: relative;
-
     /deep/.tab-container {
       width: 100%;
     }
-
     h3.podcasts-title {
       font-size: 28px;
       font-weight: 300;
       color: $color-primary;
       position: absolute;
-      top: 25px;
     }
-
     /deep/ ul.nav.nav-tabs {
       margin-left: 300px;
       border: none;
-
       li.nav-item {
         font-size: 20px;
         color: $mine_grey;
         padding: 10px;
         margin: 0 17px;
         border-bottom: 2px solid transparent;
-
+        cursor: pointer;
         a.nav-link {
           font-size: 20px;
           color: $mine_grey;
           padding: 10px;
           border: none;
         }
-
         &.active {
           border-bottom: 2px solid $color-primary;
         }
       }
     }
+    .dropdown-container {
+      max-height: 250px;
+      overflow: auto;
+      .dropdown-item:active {
+        background-color: #f8f8f8;
+      }
+    }
+  }
+  .podcast-container {
+    width: 100%;
+    position: relative;
+    margin-bottom: 50px;
+    a.pod-left-control,
+    a.pod-right-control {
+      position: absolute;
+      top: 50%;
+      -webkit-box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 9;
+      img{
+        max-width: 100%;
+      }
+    }
+    a.pod-left-control {
+      left: -60px;
+    }
+    a.pod-right-control {
+      right: -60px;
+    }
   }
 }
-
 .featured-podcasts-block {
   margin: 15px auto;
-
   .podcasts-block-header {
     padding: 21px 15px 9px;
     background: $alabaster_white;
-
     h4 {
       color: $color-primary;
       font-size: 22px;
     }
   }
-
   .podcast-block-thumbnail {
     position: relative;
     border-top: 3px solid $mine_grey;
-
     >img {
       width: 100%;
     }
-
     .podcasts-block-caption {
       background: $dark_grey;
       padding: 14px 15px;
@@ -90,7 +106,6 @@
       width: 100%;
       left: 0;
       bottom: 0;
-
       h4 {
         color: $color-white;
         font-size: 16px;
@@ -98,26 +113,21 @@
     }
   }
 }
-
 .podcasts-list {
   padding-top: 15px;
 }
-
 .podcasts-pagination {
   ul {
     text-align: center;
-
     >li {
       display: inline-block;
       margin: 0 10px;
-
       .btn {
         background: transparent;
         font-size: 35px;
         line-height: 30px;
         color: $color-primary;
       }
-
       &.active {
         .btn {
           color: $text-main;
@@ -127,51 +137,17 @@
   }
 }
 
-.podcasts-tabs {
-  /deep/ .tab-content {
-    .tab-pane {
-      position: relative;
-
-      a.pod-left-control,
-      a.pod-right-control {
-        position: absolute;
-        top: 50%;
-        -webkit-box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.5);
-        box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.5);
-        border-radius: 50%;
-        overflow: hidden;
-        z-index: 9;
-        img{
-          max-width: 100%;
-        }
-      }
-
-      a.pod-left-control {
-        left: -60px;
-      }
-
-      a.pod-right-control {
-        right: -60px;
-      }
-    }
-  }
-}
-
 @media only screen and (max-width:1440px) {
- 
-
   .podcasts {
     .podcasts-about {
       h3 {
         font-size: 32px;
       }
-
       h4 {
         font-size: 24px;
       }
     }
   }
-
   .featured-podcasts-block {
     .podcasts-block-header {
       h4 {
@@ -210,7 +186,6 @@
            max-height: 30px;
            left: -40px;
           }
-          
           a.pod-right-control {
             max-width: 30px;
             max-height: 30px;
@@ -226,4 +201,23 @@
        padding: 0 35px;
      }
    }
+}
+::-webkit-scrollbar {
+  width: 5px;
+	background-color: #F5F5F5;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  border-radius: 8px;
+	background-color: #555;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(110, 110, 110, 1);
 }
