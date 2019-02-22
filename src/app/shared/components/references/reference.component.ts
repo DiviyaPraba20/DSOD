@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'dsod-references',
@@ -8,7 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DSODReferecnceComponent implements OnInit {
   @Input() references = [];
 
-  constructor() {}
+  constructor(
+    private sanitizer: DomSanitizer,
+  ) {}
 
   ngOnInit() { }
+
+  transform(content) {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
 }
