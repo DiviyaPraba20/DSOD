@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SponsorsContainerComponent implements OnInit {
 
   constructor() { }
-
+  bannerImages = ['sponsor-1.jpg', 'sponsor-2.jpg', 'sponsor-3.jpg']
+  caption ='Engaging education, anywhere'
   ngOnInit() {
   }
 
