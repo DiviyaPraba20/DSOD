@@ -1,32 +1,13 @@
-import {
-  Component,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-  ViewChildren,
-  QueryList
-} from '@angular/core';
-import {
-  NgbDateAdapter,
-  NgbDateStruct,
-  NgbDateNativeAdapter
-} from '@ng-bootstrap/ng-bootstrap';
-import Glide, {
-  Controls,
-  Autoplay,
-  Anchors
-} from '@glidejs/glide/dist/glide.modular.esm';
+import { Component, AfterViewInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbDateAdapter, NgbDateNativeAdapter, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Glide, { Controls, Autoplay, Anchors } from '@glidejs/glide/dist/glide.modular.esm';
+
 import { DSODSliderContent } from '../../../shared/models';
 import { DSODContentType } from 'src/app/core/models';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DSODCreateEventComponent } from '../components/create-event/create-event.component';
 import { DSODEventCardComponent } from '../components';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Observable } from 'rxjs';
-import { skip } from 'rxjs/operators';
-import { Store } from '@ngxs/store';
-import { authState } from '../../auth/states';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsod-events-page',
@@ -39,19 +20,17 @@ export class DSODEventsPageComponent implements AfterViewInit {
   isEditingEnable = false;
   isdeletionEnable = false;
   isLoggedIn$ = this.authService.isLoggedIn$;
-  @ViewChild('slider')
-  slider: ElementRef;
-  @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<
-    DSODEventCardComponent
-  >;
+
+  @ViewChild('slider') slider: ElementRef;
+  @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<DSODEventCardComponent>;
+
   events = [
     {
-      id:1,
+      id: 1,
       image: 'assets/images/event-4-lg.png',
       title: 'The Importance of Oral Hygiene for the Pediatric Patient',
       author: 'Dr. Greg Psaltis',
-      content:
-        `This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will`,
+      content: `This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will`,
       date: 'Feb 23 2019 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -61,12 +40,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:2,
+      id: 2,
       image: 'assets/images/event-5-lg.png',
       title: 'Simple Steps for Managing Student Loan Debt',
       author: 'Dr. Ashley Keen',
-      content:
-        'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
+      content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
       date: 'Mar 22 2019 12:00:00 GMT-0500',
       duration: '1hr 30m',
       place: 'Online',
@@ -76,13 +54,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:3,
+      id: 3,
       image: 'assets/images/event-6-lg.png',
-      title:
-        'Managing the Relationship Between the Teeth and the Oral Environment',
+      title: 'Managing the Relationship Between the Teeth and the Oral Environment',
       author: 'Dr. Kenneth Markowitz ',
-      content:
-        `This webinar will explain the relationship between a patient's saliva`,
+      content: `This webinar will explain the relationship between a patient's saliva`,
       date: 'Apr 11 2019 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -92,12 +68,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:4,
+      id: 4,
       image: 'assets/images/event-7-lg.png',
       title: 'Self-service Analytics for Dental Support Organizations',
       author: 'Dr Mark Hodge',
-      content:
-        'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
+      content: 'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
       date: 'May 10 2019 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -107,12 +82,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:5,
+      id: 5,
       image: 'assets/images/event-8-lg.png',
       title: 'Excellence in Digital Photography & Case Acceptance',
       author: 'Jack D. Griffin Jr., DMD',
-      content:
-        'This presentation will highlight the benefits of digital scanning and shows how it is a better option for your new or future',
+      content: 'This presentation will highlight the benefits of digital scanning and shows how it is a better option for your new or future',
       date: 'Jun 22 2018 12:00:00 GMT-0500',
       duration: '1hr 30m',
       place: 'Online',
@@ -122,13 +96,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:6,
+      id: 6,
       image: 'assets/images/event-9-lg.png',
-      title:
-        'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
+      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
       author: 'John Fazio, DMD ',
-      content:
-        'The objective of this webinar is to help attendees gain an accurate',
+      content: 'The objective of this webinar is to help attendees gain an accurate',
       date: 'Jul 11 2018 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -138,12 +110,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:7,
+      id: 7,
       image: 'assets/images/event-5-lg.png',
       title: 'Simple Steps for Managing Student Loan Debt',
       author: 'Dr. Ashley Keen',
-      content:
-        'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
+      content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
       date: 'Mar 22 2018 12:00:00 GMT-0500',
       duration: '1hr 30m',
       place: 'Online',
@@ -153,13 +124,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:8,
+      id: 8,
       image: 'assets/images/event-9-lg.png',
-      title:
-        'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
+      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
       author: 'John Fazio, DMD ',
-      content:
-        'The objective of this webinar is to help attendees gain an accurate',
+      content: 'The objective of this webinar is to help attendees gain an accurate',
       date: 'Jul 11 2019 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -169,12 +138,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
       price: 'Free'
     },
     {
-      id:9,
+      id: 9,
       image: 'assets/images/event-7-lg.png',
       title: 'Self-service Analytics for Dental Support Organizations',
       author: 'Dr Mark Hodge',
-      content:
-        'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
+      content: 'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
       date: 'May 10 2018 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
@@ -196,7 +164,12 @@ export class DSODEventsPageComponent implements AfterViewInit {
       url: ''
     }
   ];
-  constructor(private modalService: NgbModal, private authService: AuthService, private router:Router) {}
+  constructor(
+    private modalService: NgbModal,
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
   ngAfterViewInit() {
     const elems = this.slider.nativeElement as HTMLUListElement;
     if (elems.children.length > 0) {
@@ -239,10 +212,11 @@ export class DSODEventsPageComponent implements AfterViewInit {
     this.events.filter(event => e.id);
   }
 
-  navigateTo(e){
-    if(e.id==1){
-      this.router.navigate(['events', e.id])
+  navigateTo(e) {
+    if (e.id === 1) {
+      this.router.navigate(['events', e.id]);
+    } else {
+      return;
     }
-    else return
   }
 }

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CMSPageContent } from 'src/app/cms/models';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

@@ -34,6 +34,7 @@ export interface DSODFeaturedMedia {
     original: string;
     thumbnailUrl: string;
     originalUrl: string;
+    iFrameCode?: string;
   };
 }
 

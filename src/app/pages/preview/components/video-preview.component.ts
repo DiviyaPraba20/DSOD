@@ -16,6 +16,7 @@ export class DSODVideoPreviewComponent implements OnInit {
   @Input() content: CMSPageContent;
 
   contentString: any;
+  iFrameCode: any;
 
   constructor(
     private sanitizer: DomSanitizer
@@ -23,6 +24,9 @@ export class DSODVideoPreviewComponent implements OnInit {
 
   ngOnInit() {
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
+    if (this.content.featuredMedia.type === '6') {
+      this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.content.featuredMedia.code.iFrameCode);
+    }
   }
 
   getUrl(id: string) {
