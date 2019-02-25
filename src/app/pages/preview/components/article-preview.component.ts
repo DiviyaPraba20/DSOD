@@ -14,15 +14,21 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DSODArticelPreviewComponent implements OnInit {
   @Input() content: CMSPageContent;
+
   contentString: any;
   selectedCarouselImage = null;
+  iFrameCode: any;
 
   constructor(
     private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
+    console.log('content = ', this.content);
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
+    if (this.content.featuredMedia.type === '6') {
+      this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.content.featuredMedia.code.iFrameCode);
+    }
    }
 
   getUrl(id) {
