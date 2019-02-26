@@ -9,14 +9,20 @@ import { Router } from '@angular/router';
     <div class="trending-block">
         <div class="trending-block-header">
          <a href="javascript:void(0)" (click)="onClickCategory(trendingItem.categoryId)"> <h4>{{ trendingItem.categoryName }}</h4></a>
-           <dsod-rating [avgRating]="trendingItem.avgCommentRating" readingType="short" [clickAble]="true"
-        [contentId]="trendingItem.id" [title]="trendingItem.title" [commentsCount]="trendingItem.countOfComment"></dsod-rating>
+           <dsod-rating
+            [avgRating]="trendingItem.avgCommentRating"
+            readingType="short"
+            [clickAble]="true"
+            [contentId]="trendingItem.id"
+            [title]="trendingItem.title"
+            [commentsCount]="trendingItem.countOfComment">
+          </dsod-rating>
         </div>
         <div class="trending-block-video" [innerHTML]="iframe"></div>
         <a [routerLink]="['/video', trendingItem.id]">
-        <div class="trending-block-caption">
-          <h4>{{ trendingItem.title }}</h4>
-        </div>
+          <div class="trending-block-caption">
+            <h4>{{ trendingItem.title }}</h4>
+          </div>
         </a>
       </div>
   `,
@@ -31,7 +37,10 @@ export class DSODTrendingItemComponent implements OnInit {
   showSummary: boolean;
   iframe: any;
 
-  constructor(private sanitizer: DomSanitizer, private router:Router) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     const regex = /(<iframe.+?<\/iframe>)/g;

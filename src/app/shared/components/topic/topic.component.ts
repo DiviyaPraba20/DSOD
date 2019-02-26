@@ -33,7 +33,7 @@ export class DSODTopicComponent {
     this.router.navigate(['./category', e]);
   }
 
-  getImageUrl(id:string){
+  getImageUrl(id: string) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 }
