@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './latest.component.html',
   styleUrls: ['./latest.component.scss']
 })
-export class DSODLatestComponent implements OnInit {
+export class DSODLatestComponent implements OnInit, OnChanges {
   @Input() latestTopics: CMSPageContent[];
 
   iFrameCode: any;
@@ -20,10 +20,12 @@ export class DSODLatestComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit() {
-    console.log('latestComponent = ', this.latestTopics);
-    if (this.latestTopics[0] && this.latestTopics[0].featuredMedia && this.latestTopics[0].featuredMedia.type === '6') {
-      this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.latestTopics[0].featuredMedia.code.iFrameCode);
+  ngOnInit() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.latestTopics[0] && changes.latestTopics[0].currentValue.featuredMedia.type === '6') {
+      this.iFrameCode = this.latestTopics[0].featuredMedia.code.iFrameCode;
+      console.log('latestComponent = ', this.latestTopics[0], this.iFrameCode);
     }
   }
 
