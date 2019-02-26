@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CMSPageContent } from 'src/app/cms/models';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { CMSPageContent } from 'src/app/cms/models';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,12 +10,23 @@ import { environment } from 'src/environments/environment';
   templateUrl: './latest-item.component.html',
   styleUrls: ['./latest-item.component.scss']
 })
-export class DSODLatestItemComponent implements OnInit {
+export class DSODLatestItemComponent implements OnInit, OnChanges {
   @Input() latestTopic: CMSPageContent;
 
-  constructor(private router: Router) {}
+  iFrameCode: any;
 
-  ngOnInit() {}
+  constructor(
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  ngOnInit() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.latestTopic.currentValue.featuredMedia.type === '6') {
+      this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.latestTopic.featuredMedia.code.iFrameCode);
+    }
+  }
 
   navigateTo(latestTopic) {
     if (latestTopic.contentTypeName === 'Videos') {

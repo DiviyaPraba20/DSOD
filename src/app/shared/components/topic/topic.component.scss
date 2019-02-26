@@ -29,6 +29,9 @@
       border-top: 3px solid $mine_grey;
       padding-top: 57%;
       width: 100%;
+      &.iframe-section {
+        padding-top: 0;
+      }
 
       a {
         >img {
@@ -118,12 +121,6 @@
   .topic-block-lg {
     .topic-block-thumbnail {
       padding-top: 66.6%;
-
-      a {
-        img {
-          // position: relative !important;
-        }
-      }
     }
 
     /deep/ em {

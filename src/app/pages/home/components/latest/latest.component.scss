@@ -2,33 +2,27 @@
 
 .the-latest {
   font-family: $Arial;
-
   .latest-block {
     margin: 15px 0 33px;
     background: #f8f8f8;
     display: block;
-
-
     .latest-block-header {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
       padding: 17px 15px 9px;
-
       h4 {
         color: $color-primary;
         font-size: 22px;
       }
     }
-
     .latest-block-thumbnail {
       position: relative;
       border-top: 3px solid $mine_grey;
       padding-top: 66.6%;
-
       >img {
         width: 100%;
         width: 100%;
@@ -39,11 +33,9 @@
         top: 0;
         left: 0;
       }
-
       >Video {
         width: 100%;
       }
-
       a.read-about {
         position: absolute;
         display: inline-block;
@@ -51,47 +43,36 @@
         bottom: 25px;
       }
     }
-
     .latest-block-content {
       padding: 15px 30px 25px 0;
-
       h2.topic-title {
         font-weight: 500;
         font-size: 35px;
         color: $black;
       }
-
       em {
         font-size: 20px;
         font-weight: 500;
-
         a.read-about {
           margin-left: 10px;
         }
       }
-
       p {
         font-size: 22px;
         line-height: 36px;
-
         a {
           color: $deep-cerulean;
         }
       }
-
     }
-
     /deep/ .topic-block-content {
       .excrept-content-lg {
         line-height: 25px;
       }
     }
-
-
     .latest-block-caption {
       background: $regent-gray;
       padding: 5px 15px;
-
       h4 {
         color: $color-white;
         font-size: 20px;

@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-6" *ngFor="let post of DSOPracicesPost$ | async">
-      <dsod-topic [topic]="post" [showImage]="true" [contentLength]=300 [showHeader]="true" styleFor="content-lg" [showRating]=false></dsod-topic>
+  <div class="col-6" *ngFor="let post of DSOPracicesPost$ | async">
+    <dsod-topic [topic]="post" [showImage]="true" [contentLength]=300 [showHeader]="true" styleFor="content-lg" [showRating]=false></dsod-topic>
   </div>
 </div>
 <dsod-pracrices-sposnors-post [contentTypeId]="contentTypeId" [categoryId]="categoryId"></dsod-pracrices-sposnors-post>

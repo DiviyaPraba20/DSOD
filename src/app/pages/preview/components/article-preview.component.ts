@@ -24,7 +24,6 @@ export class DSODArticelPreviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('content = ', this.content);
     this.contentString = this.sanitizer.bypassSecurityTrustHtml(this.content.content);
     if (this.content.featuredMedia.type === '6') {
       this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.content.featuredMedia.code.iFrameCode);
