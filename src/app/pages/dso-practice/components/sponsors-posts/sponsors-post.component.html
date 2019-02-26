@@ -19,7 +19,15 @@
         </div>
       </div>
       <div class="col-xl-6 thumbnail">
-        <img *ngIf="topic.featuredMedia" class="img-fluid" src="{{topic.featuredMedia.code.originalUrl}}" alt="">
+        <dsod-feartured-media [featuredMedia]="topic.featuredMedia"></dsod-feartured-media>
+        <!-- <img *ngIf="topic.featuredMedia && topic.featuredMedia.type !== '6'"
+          class="img-fluid"
+          src="{{topic.featuredMedia.code.originalUrl}}"
+          alt="" />
+        <div *ngIf="topic.featuredMedia && topic.featuredMedia?.type === '6'"
+          class="img-fluid"
+          [innerHTML]="getIFrameCode(topic.featuredMedia.code.iFrameCode)">
+        </div> -->
       </div>
     </div>
   </div>

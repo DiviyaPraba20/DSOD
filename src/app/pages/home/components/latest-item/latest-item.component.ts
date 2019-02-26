@@ -41,8 +41,4 @@ export class DSODLatestItemComponent implements OnInit, OnChanges {
   getImageUrl(id: string) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
-
-  getIFrameCode(iFrameCode) {
-    return this.sanitizer.bypassSecurityTrustHtml(iFrameCode);
-  }
 }

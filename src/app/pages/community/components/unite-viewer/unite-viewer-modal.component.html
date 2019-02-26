@@ -19,8 +19,14 @@
     <div class="container">
       <div class="row">
         <div class="col-6 ml-auto mr-auto">
-          <img class="cover" [src]="getImageUrl(magazine.contents[pageIndex].featuredMedia?.code?.thumbnail)" class="img-fluid mb-3 mt-3"
-            alt="">
+          <img *ngIf="magazine.contents[pageIndex].featuredMedia?.type !== '6'"
+            class="cover img-fluid mb-3 mt-3"
+            [src]="getImageUrl(magazine.contents[pageIndex].featuredMedia?.code?.thumbnail)"
+            alt="" />
+          <div *ngIf="magazine.contents[pageIndex].featuredMedia?.type === '6'"
+            class="cover img-fluid mb-3 mt-3"
+            [innerHTML]="getIFrameCode(magazine.contents[pageIndex].featuredMedia?.code?.iFrameCode)">
+          </div>
           <div class="article-content" [innerHTML]="magazine.contents[pageIndex].content"></div>
         </div>
       </div>

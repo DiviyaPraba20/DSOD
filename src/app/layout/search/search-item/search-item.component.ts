@@ -1,16 +1,29 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CMSPageContent } from 'src/app/cms/models';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-search-result-item',
   templateUrl: 'search-item.component.html',
   styleUrls: ['./search-item.component.scss']
 })
-export class DSODSearchItemComponent {
+export class DSODSearchItemComponent implements OnInit {
   @Input() topic: CMSPageContent;
 
-  constructor(private router: Router) {}
+  iFrameCode: any;
+
+  constructor(
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  ngOnInit() {
+    if (this.topic.featuredMedia.type === '6') {
+      this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.topic.featuredMedia.code.iFrameCode);
+    }
+  }
 
   navigateTo(result) {
     if (result.contentTypeName === 'Videos') {

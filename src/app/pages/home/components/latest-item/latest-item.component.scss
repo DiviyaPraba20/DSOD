@@ -5,7 +5,6 @@
   margin: 15px 0 33px;
   background: #f8f8f8;
   cursor: pointer;
-
   .latest-block-header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -14,19 +13,16 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 21px 15px 9px;
-
     h4 {
       color: $color-primary;
       font-size: 22px;
     }
   }
-
   .latest-block-thumbnail {
     position: relative;
     border-top: 3px solid $mine_grey;
     height: auto;
     padding-top: 93%;
-
     >img {
       width: 100%;
       height: 100%;
@@ -36,52 +32,41 @@
       top: 0;
       left: 0;
     }
-
     a.read-about {
       position: absolute;
       display: inline-block;
       left: 25px;
       bottom: 25px;
-
       >img {
         max-width: 42px;
       }
     }
-
   }
-
   .latest-block-content {
     padding: 15px 30px 25px 0;
-
     h2.topic-title {
       font-weight: 500;
       font-size: 35px;
       color: $black;
     }
-
     em {
       font-size: 20px;
       font-weight: 500;
-
       a.read-about {
         margin-left: 10px;
       }
     }
-
     p {
       font-size: 22px;
       line-height: 36px;
-
       a {
         color: $deep-cerulean;
       }
     }
   }
-
   .latest-block-caption {
     background: $regent-gray;
     padding: 5px 15px;
-
     h4 {
       color: $color-white;
       font-size: 20px;
@@ -89,29 +74,24 @@
     }
   }
 }
-
 .latest-layout-row {
   .latest-block-header {
     padding-left: 0;
     padding-right: 0;
     border-bottom: 1px solid $regent-gray;
   }
-
   .latest-block-thumbnail {
     border: none;
   }
-
   /deep/ dsod-topic {
     .block-wrap {
       padding-bottom: 15px;
     }
-
     .topic-block-lg {
       em {
         margin-bottom: 4px !important;
       }
     }
-
     .topic-block {
       .topic-block-content {
         padding-bottom: 0 !important;
@@ -119,7 +99,6 @@
     }
   }
 }
-
 .latest-block-sm {
   .latest-block-thumbnail {
     a.read-about {
@@ -142,7 +121,6 @@
 
 @media only screen and (max-width:1440px) {
   .latest-layout-row {
-
     /deep/ .excrept-content-lg {
       padding-top: 5px;
       font-size: 16px;
@@ -152,7 +130,6 @@
       overflow: hidden;
       margin-bottom: 8px;
     }
-
     /deep/ .topic-block {
       .topic-block-content {
         .topic-title-large {
@@ -162,9 +139,9 @@
       }
     }
   }
-    .latest-block {
-      .latest-block-thumbnail {
-        padding-top: 96%;
-      }
+  .latest-block {
+    .latest-block-thumbnail {
+      padding-top: 96%;
     }
+  }
 }

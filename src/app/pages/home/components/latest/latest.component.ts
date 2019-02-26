@@ -23,9 +23,8 @@ export class DSODLatestComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.latestTopics[0] && changes.latestTopics[0].currentValue.featuredMedia.type === '6') {
-      this.iFrameCode = this.latestTopics[0].featuredMedia.code.iFrameCode;
-      console.log('latestComponent = ', this.latestTopics[0], this.iFrameCode);
+    if (changes.latestTopics.currentValue.length && changes.latestTopics.currentValue[0].featuredMedia.type === '6') {
+      this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.latestTopics[0].featuredMedia.code.iFrameCode);
     }
   }
 

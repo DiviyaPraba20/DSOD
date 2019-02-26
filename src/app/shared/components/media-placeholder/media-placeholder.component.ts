@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { environment } from '../../../../environments/environment';
-import { CMSPageContent } from 'src/app/cms/models';
 import { Router } from '@angular/router';
+
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-media-content',
@@ -23,21 +23,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./media-placeholder.component.scss']
 })
 export class DSODMediaContentComponent {
-  @Input() topic:CMSPageContent;
-  @Input()
-  title: string;
-  @Input()
-  placeholderImageSrc: string;
-  @Input()
-  url: string;
-  @Input()
-  caption: string;
+  @Input() topic: CMSPageContent;
+  @Input() title: string;
+  @Input() placeholderImageSrc: string;
+  @Input() url: string;
+  @Input() caption: string;
+
   imageUrl;
 
-  constructor( private router:Router){
+  constructor(
+    private router: Router
+  ) { }
 
-  }
-  
   onClickCategory(e) {
     this.router.navigate(['./category', e]);
   }
