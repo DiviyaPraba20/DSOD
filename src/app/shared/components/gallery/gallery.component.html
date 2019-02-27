@@ -1,8 +1,7 @@
-<div class="essay-gallery">
-  <h1 class="mb-4" *ngIf="photosUrls">Gallery</h1>
-  <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 mb-3" *ngFor="let image of photosUrls">
-      <img src={{image.thumbnailUrl}} class="img-fluid" alt="">
-    </div>
+<div class="gallery-container" *ngIf="galleryImages.length">
+  <h2 class="mb-4">Gallery</h2>
+  <div class="carousel-image-container">
+    <img [src]="getUrl(selectedCarouselImage)" />
   </div>
+  <dsod-essay-images-carousel [visualEssayImages]="galleryImages" (changeImage)="onChangeImage($event)"></dsod-essay-images-carousel>
 </div>

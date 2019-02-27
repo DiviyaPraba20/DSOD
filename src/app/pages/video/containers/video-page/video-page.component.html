@@ -36,6 +36,7 @@
           </div>
           <dsod-feartured-media [featuredMedia]="(pageContent$ | async).featuredMedia"></dsod-feartured-media>
           <dsod-video-content [content]="(pageContent$ | async)?.content"></dsod-video-content>
+          <dsod-gallery [photos]="(pageContent$ | async)?.photos"></dsod-gallery>
           <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
           <div class="row essay-container" *ngIf="(pageContent$ | async)?.visualEssays.length">
             <div class="col-12">
