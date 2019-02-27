@@ -29,6 +29,7 @@
       <div class="speakers-content mt-5" [innerHTML]="contentString"></div>
     </div>
   </div>
+  <dsod-gallery [photos]="content.photos"></dsod-gallery>
   <dsod-references [references]="content.references"></dsod-references>
   <div class="row essay-container" *ngIf="content.visualEssays.length">
     <div class="col-12">
@@ -40,8 +41,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
-    <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
+      <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
       <div class="row">
         <div class="col-12 col-sm-6 col-md-4" *ngFor="let topic of content.relativeTopicList">
           <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>

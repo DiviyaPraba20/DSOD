@@ -5,6 +5,7 @@
         <div class="article-content">
           <dsod-article-media [content]="pageContent$ | async" [rating]="!avgRating?(pageContent$ | async)?.avgCommentRating:avgRating"></dsod-article-media>
           <dsod-article-content [content]="(pageContent$ | async)?.content"></dsod-article-content>
+          <dsod-gallery [photos]="(pageContent$ | async)?.photos"></dsod-gallery>
           <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
           <div class="row essay-container" *ngIf="(pageContent$ | async)?.visualEssays.length">
             <div class="col-12">
