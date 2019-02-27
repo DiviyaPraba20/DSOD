@@ -68,7 +68,7 @@ export class DSODPracticePageComponent implements OnInit, OnDestroy {
     });
 
     this.actions$.pipe(ofActionDispatched(FetchSponsoredTopics, FetchDSOPractices)).subscribe(data => {
-      this.spinnerService.hide();
+      this.spinnerService.show();
       this.isLoading = true;
     });
     this.actions$.pipe(ofActionDispatched(FetchSponsorContentsSuccess, FetchDSOPracticesSuccess)).subscribe(data => {

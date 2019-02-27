@@ -59,7 +59,10 @@ export enum CMSActions {
   FetchUnitesFailure = '[CMS] Fetch Unites Failure',
   FetchUniteContent = '[CMS] Fetch Unite Content',
   FetchUniteContentSuccess = '[CMS] Fetch Unite Content Success',
-  FetchUniteContentFailure = '[CMS] Fetch Unite Content Failure'
+  FetchUniteContentFailure = '[CMS] Fetch Unite Content Failure',
+  FetchContents = '[CMS] Fetch Contents',
+  FetchContentsSuccess = '[CMS] Fetch Contents Success',
+  FetchContentsFailure = '[CMS] Fetch Contents Failure'
 }
 
 // actions for categories
@@ -312,17 +315,34 @@ export class FetchUnitesFailure {
 
 //  actions for Unite content
 export class FetchUniteContent {
-         static readonly type = CMSActions.FetchUniteContent;
-         constructor(public payload: string) {}
-       }
+  static readonly type = CMSActions.FetchUniteContent;
+  constructor(public payload: string) {}
+}
 export class FetchUniteContentSuccess {
-         static readonly type = CMSActions.FetchUniteContentSuccess;
-         constructor(public payload: any) {}
-       }
+  static readonly type = CMSActions.FetchUniteContentSuccess;
+  constructor(public payload: any) {}
+}
 export class FetchUniteContentFailure {
-         static readonly type = CMSActions.FetchUniteContentFailure;
-         constructor(public payload: Error) {}
-       }
+  static readonly type = CMSActions.FetchUniteContentFailure;
+  constructor(public payload: Error) {}
+}
+
+// actions for author contents
+export class FetchContents {
+  static readonly type = CMSActions.FetchContents;
+
+  constructor(public payload: CMSContentParams) {}
+}
+export class FetchContentsSuccess {
+  static readonly type = CMSActions.FetchContentsSuccess;
+
+  constructor(public payload: CMSPageContent[]) {}
+}
+export class FetchContentsFailure {
+  static readonly type = CMSActions.FetchContentsFailure;
+
+  constructor(public payload: Error) {}
+}
 
 export type CMSActionTypes =
   | FetchContentTypes
@@ -373,4 +393,7 @@ export type CMSActionTypes =
   | FetchUnitesFailure
   | FetchUniteContent
   | FetchUniteContentSuccess
-  | FetchUniteContentFailure;
+  | FetchUniteContentFailure
+  | FetchContents
+  | FetchContentsSuccess
+  | FetchContentsFailure;

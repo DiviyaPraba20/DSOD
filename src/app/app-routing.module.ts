@@ -12,6 +12,10 @@ const routes: Routes = [
     path: '',
     children: [
       {
+        path: 'contents/author',
+        loadChildren: './pages/author-posts/author-posts.module#AuthorPostsModule'
+      },
+      {
         path: 'education',
         loadChildren: './pages/education/education.module#EducationModule'
       },

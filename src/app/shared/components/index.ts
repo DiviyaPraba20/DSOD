@@ -36,6 +36,7 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
 import { EditSettingsComponent } from './edit-settings/edit-settings.component';
 import { DSODExcerptComponent } from './excerpt/excerpt.component';
 import { DSODSharedCarousalComponent } from './shared-carousal/shared-carousal.component';
+import { DSODAuthorBioComponent } from './author-bio/author.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -76,5 +77,6 @@ export const SHARED_COMPONENTS = [
   DSODConfirmDialogComponent,
   EditSettingsComponent,
   DSODExcerptComponent,
-  DSODSharedCarousalComponent
+  DSODSharedCarousalComponent,
+  DSODAuthorBioComponent
 ];

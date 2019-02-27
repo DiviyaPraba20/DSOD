@@ -30,7 +30,7 @@
     </div>
     <div class="topic-block-content">
       <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-sm'}" (click)="navigateTo($event)">{{topic.title}}</h2>
-      <em *ngIf="topic.author">By&nbsp;{{topic.author.fullName}}
+      <em *ngIf="topic.author" (click)="onClickAuthor(topic.authorId)">By&nbsp;{{topic.author.fullName}}
         <a role="button" class="read-about" *ngIf="styleFor==='content-sm'&& (!topic.featuredMedia || !showImage)"
           (click)="navigateTo(topic)">
           <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="" (click)="navigateTo($event)">

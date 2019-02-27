@@ -45,6 +45,10 @@ export class DSODTopicComponent implements OnInit {
     this.router.navigate(['./category', e]);
   }
 
+  onClickAuthor(id){
+    this.router.navigate(['contents/author', id])
+  }
+
   getImageUrl(id: string) {
     return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }

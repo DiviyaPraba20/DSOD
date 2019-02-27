@@ -1,0 +1,35 @@
+@import 'variables';
+
+.header-container {
+  background-color: $alabaster_white;
+
+  .image-header-container {
+    background-image: url('../../../../assets/images/sponsors_header.png');
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    position: relative;
+    width: 60%;
+    margin: auto;
+  }
+}
+
+.content-wrapper {
+  padding-top: 50px;
+  background-color: $alabaster_white;
+}
+
+@media only screen and (max-width:1440px) {
+  .header-container {
+    .image-header-container {
+      height: 295px;
+
+      .banner-caption {
+        h1 {
+          font-size: 35px;
+        }
+      }
+    }
+  }
+}
