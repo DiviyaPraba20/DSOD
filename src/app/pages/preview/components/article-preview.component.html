@@ -35,10 +35,12 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-4" *ngFor="let topic of content.relativeTopicList">
-          <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
+      <div class="related-content" *ngIf="content?.relativeTopicList.length">
+        <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4" *ngFor="let topic of content.relativeTopicList">
+            <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
+          </div>
         </div>
       </div>
     </div>

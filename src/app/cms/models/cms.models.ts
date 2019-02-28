@@ -81,6 +81,7 @@ export interface CMSPageContent {
   excerpt?: any;
   countOfEssay?: number;
   visualEssays?: any;
+  visualEssayIds?: string[];
   relativeTopics?: any;
   relativeTopicList?: any;
   references?: any;
