@@ -1,11 +1,11 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/internal/operators/filter';
 import { Store } from '@ngxs/store';
 
 import * as actions from './actions';
 import { ApplicationStateService } from './app.service';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/internal/operators/filter';
 
 @Component({
   selector: 'dsod-root',
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     private location: LocationStrategy
   ) {
     this.service.getIsMobileResolution();
-    store.dispatch(new actions.AppInit());
+    this.store.dispatch(new actions.AppInit());
 
     this.location.onPopState(() => {
       this.service.setBackClicked(true);

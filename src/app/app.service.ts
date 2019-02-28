@@ -13,7 +13,7 @@ export class ApplicationStateService {
 
   constructor(@Inject(DOCUMENT) private document: Document, private deviceService: DeviceDetectorService) {
     if (environment.production) {
-      if (screen.width<768) {
+      if (screen.width < 768) {
         this.document.location.href = 'https://mobile.dsodentist.com';
       }
     }
