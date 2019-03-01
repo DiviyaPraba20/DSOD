@@ -1,0 +1,26 @@
+<section class="the-latest">
+  <h2 class="section-title">The Latest</h2>
+  <a class="latest-block" *ngIf="latestTopics.length" href="javascript:void(0)">
+    <div class="latest-block-header">
+      <h4>{{latestTopics[0].categoryName}}</h4>
+      <dsod-rating [avgRating]="latestTopics[0].avgCommentRating" readingType="short" [clickAble]="true" [contentId]="latestTopics[0].id"
+        [title]="latestTopics[0].title" [commentsCount]="latestTopics[0].countOfComment"></dsod-rating>
+    </div>
+    <div *ngIf="latestTopics[0].featuredMedia"
+      class="latest-block-thumbnail"
+      (click)="navigateTo(latestTopics[0])"
+    >
+      <img *ngIf="latestTopics[0].featuredMedia?.type !== '6'" class="img-fluid" [src]="getImageUrl(latestTopics[0].featuredMedia.code.original)" alt="Feautred Thumbnail Large">
+      <div *ngIf="latestTopics[0].featuredMedia?.type === '6'" class="img-fluid" [innerHTML]="iFrameCode"></div>
+      <a href="javascript:void(0)" class="read-about">
+        <img src="assets/images/icons/{{latestTopics[0].contentTypeName}}.png" alt="">
+      </a>
+    </div>
+    <div class="latest-block-caption">
+      <h4>{{latestTopics[0].title}}</h4>
+    </div>
+  </a>
+  <div *ngFor="let topic of latestTopics | slice:1:6">
+    <dsod-latest-item [latestTopic]="topic"></dsod-latest-item>
+  </div>
+</section>

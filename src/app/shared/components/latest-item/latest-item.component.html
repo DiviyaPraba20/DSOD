@@ -1,0 +1,24 @@
+<div class="latest-block latest-layout-row">
+  <div class="row">
+    <div class="col-5">
+      <div class="latest-block-thumbnail">
+        <img *ngIf="latestTopic.featuredMedia && latestTopic.featuredMedia.type !== '6'"
+          [src]="getImageUrl(latestTopic.featuredMedia.code.thumbnail)"
+          class="img-fluid" alt="Feautred Thumbnail Large"
+          (click)="navigateTo(latestTopic)" />
+        <div *ngIf="latestTopic.featuredMedia && latestTopic.featuredMedia.type === '6'"
+          class="img-fluid"
+          [innerHTML]="iFrameCode">
+        </div>
+        <a href="javascript:void(0)" (click)="navigateTo(latestTopic)" class="read-about">
+          <img src="assets/images/icons/{{latestTopic.contentTypeName}}.png" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="col-7">
+      <dsod-topic [topic]="latestTopic" [contentLength]=276 [showImage]="false" [showHeader]="true" styleFor="content-lg"
+        [showRating]=true>
+      </dsod-topic>
+    </div>
+  </div>
+</div>
