@@ -1,0 +1,11 @@
+@import 'variables';
+
+.banner {
+  position: relative;
+
+  .controls {
+    .glide__arrow {
+      top: 50%;
+    }
+  }
+}
