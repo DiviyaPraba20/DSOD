@@ -1,6 +1,6 @@
 import { DSODRatingComponent } from './rating/rating.component';
 import { DSODTopicComponent } from './topic/topic.component';
-import { DSODTrendingItemComponent } from './trending/trending.component';
+import { DSODTrendingItemComponent } from './trending-item/trending-item.component';
 import { DSODSponsoredAdComponent } from './sponsor-ad/sponsored-ad.component';
 import { DSODMediaContentComponent } from './media-placeholder/media-placeholder.component';
 import { DSODContnetComponent } from './content-placeholder/content-placeholder.component';
@@ -37,6 +37,12 @@ import { EditSettingsComponent } from './edit-settings/edit-settings.component';
 import { DSODExcerptComponent } from './excerpt/excerpt.component';
 import { DSODSharedCarousalComponent } from './shared-carousal/shared-carousal.component';
 import { DSODAuthorBioComponent } from './author-bio/author.component';
+import { DSODFeaturedTopicsComponent } from './featured-topics/featured-topics.component';
+import { DSODLatestComponent } from './latest/latest.component';
+import { DSODLatestItemComponent } from './latest-item/latest-item.component';
+import { DSODTrendingComponent } from './trending/trending.component';
+import { DSODCarousalLargeComponent } from './large-carousel/carousal-container/carousal-container.component';
+import { DSODCarousalItemLargeComponent } from './large-carousel/carousal-item-lg/carousal-item-lg.component';
 
 export const SHARED_COMPONENTS = [
   DSODRatingComponent,
@@ -78,5 +84,11 @@ export const SHARED_COMPONENTS = [
   EditSettingsComponent,
   DSODExcerptComponent,
   DSODSharedCarousalComponent,
-  DSODAuthorBioComponent
+  DSODAuthorBioComponent,
+  DSODFeaturedTopicsComponent,
+  DSODLatestComponent,
+  DSODLatestItemComponent,
+  DSODTrendingComponent,
+  DSODCarousalLargeComponent,
+  DSODCarousalItemLargeComponent
 ];
