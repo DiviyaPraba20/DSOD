@@ -4,7 +4,7 @@
       <div class="col-9">
         <div class="essay-container">
           <div class="row">
-            <div class="col-12" *ngIf="visualEssay.visualEssayImages">
+            <div class="col-12" *ngIf="visualEssay.visualEssayImages.length">
               <div class="carousel-image-container">
                 <img [src]="getUrl(selectedCarouselImage)" />
               </div>

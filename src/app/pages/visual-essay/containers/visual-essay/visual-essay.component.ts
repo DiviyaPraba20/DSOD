@@ -32,7 +32,6 @@ export class VisualEssayComponent implements OnInit {
 
   ngOnInit() {
     this.trendingTopics$ = this.store.select(state => state.cms.trendingTopics);
-    // this.pageContent$ = this.store.select(state => state.cms.pageContent);
     this.route.params.subscribe(res => {
       this.visualEssayId = res.id;
       if (this.visualEssayId) {
