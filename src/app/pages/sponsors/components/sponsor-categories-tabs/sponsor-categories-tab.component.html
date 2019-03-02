@@ -1,0 +1,7 @@
+<div class="tabs-wrapper" [ngClass]="{'logo-aln': sponsorName=='ALN','logo-gsk': sponsorName=='GSK','logo-nbl': sponsorName=='NBL'}">
+<tabset *ngIf="extractedId">
+<tab *ngFor="let tab of (filterTabs$ | async) |sponsored_categories:extractedId" [heading]="tab.name" (select)="onChangeFilter($event)">
+    </tab>
+  </tabset>
+<dsod-sponsor-category-content></dsod-sponsor-category-content>
+</div>

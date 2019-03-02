@@ -2,16 +2,16 @@
   <div class="topic-block" [ngClass]="{'topic-block-sm':styleFor==='content-sm','topic-block-lg':styleFor=='content-lg'}">
     <div class="topic-block-header" *ngIf="showHeader">
       <a href="javascript:void(0)" (click)="onClickCategory(topic.categoryId)">
-        <h4>{{topic.categoryName}}</h4>
+        <h4 [ngClass]="{'aln':sponsorName=='ALN','nbl':sponsorName=='NBL','gsk':sponsorName=='GSK'}">{{topic.categoryName}}</h4>
       </a>
       <dsod-rating *ngIf="showRating" [avgRating]="topic.avgCommentRating" readingType="short" [clickAble]="true"
-        [contentId]="topic.id" [title]="topic.title" [commentsCount]="topic.countOfComment"></dsod-rating>
+[contentId]="topic.id" [title]="topic.title" [commentsCount]="topic.countOfComment" [sponsorName]="sponsorName"></dsod-rating>
       <h4 *ngIf="!showRating">{{topic.publishDate | date:'mediumDate'}}</h4>
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && topic.featuredMedia.type !== '6' && showImage">
       <a role="button" (click)="navigateTo($event)">
-        <img *ngIf="imgLarge; else imgsm" [src]="getImageUrl(topic.featuredMedia.code.original)"
-          class="img-fluid img-lg" alt="Feautred Thumbnail Large">
+        <img *ngIf="imgLarge; else imgsm" [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid img-lg"
+          alt="Feautred Thumbnail Large">
         <ng-template #imgsm>
           <img [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid" alt="Feautred Thumbnail small">
         </ng-template>

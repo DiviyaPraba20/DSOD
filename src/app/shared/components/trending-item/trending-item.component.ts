@@ -8,19 +8,19 @@ import { Router } from '@angular/router';
   template: `
     <div class="trending-block">
         <div class="trending-block-header">
-         <a href="javascript:void(0)" (click)="onClickCategory(trendingItem.categoryId)"> <h4>{{ trendingItem.categoryName }}</h4></a>
+         <a href="javascript:void(0)" (click)="onClickCategory(trendingItem.categoryId)"> <h4 [ngClass]="{'aln':sponsorName=='ALN','nbl':sponsorName=='NBL','gsk':sponsorName=='GSK'}">{{ trendingItem.categoryName }}</h4></a>
            <dsod-rating
             [avgRating]="trendingItem.avgCommentRating"
             readingType="short"
             [clickAble]="true"
             [contentId]="trendingItem.id"
             [title]="trendingItem.title"
-            [commentsCount]="trendingItem.countOfComment">
+            [commentsCount]="trendingItem.countOfComment" [sponsorName]="sponsorName">
           </dsod-rating>
         </div>
         <div class="trending-block-video" [innerHTML]="iframe"></div>
         <a [routerLink]="['/video', trendingItem.id]">
-          <div class="trending-block-caption">
+          <div class="trending-block-caption" [ngClass]="{'aln':sponsorName=='ALN','nbl':sponsorName=='NBL','gsk':sponsorName=='GSK'}">
             <h4>{{ trendingItem.title }}</h4>
           </div>
         </a>
@@ -35,6 +35,7 @@ export class DSODTrendingItemComponent implements OnInit {
   showCaption: boolean;
   @Input()
   showSummary: boolean;
+  @Input() sponsorName:string;
   iframe: any;
 
   constructor(

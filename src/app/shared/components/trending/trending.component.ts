@@ -9,5 +9,6 @@ import { CMSPageContent } from 'src/app/cms/models';
 export class DSODTrendingComponent {
   @Input()
   trendingTopics: CMSPageContent[];
+  @Input() sponsorName:string;
   constructor() {}
 }

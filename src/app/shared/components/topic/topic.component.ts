@@ -17,6 +17,7 @@ export class DSODTopicComponent implements OnInit {
   @Input() showRating: boolean;
   @Input() imgLarge?: boolean;
   @Input() contentLength?: number;
+  @Input() sponsorName:string;
 
   iFrameCode: any;
 

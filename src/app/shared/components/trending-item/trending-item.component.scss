@@ -16,13 +16,25 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     padding: 21px 15px 9px;
 
     h4 {
       color: $color-primary;
       font-size: 18px;
+
+      &.nbl {
+        color: #ed1b2f
+      }
+
+      &.gsk {
+        color: #f15d22;
+      }
+
+      &.aln {
+        color: #3d3935;
+      }
     }
   }
 
@@ -45,13 +57,25 @@
       left: 50%;
       top: 50%;
       -webkit-transform: translate(-50%, -50%);
-              transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
     }
   }
 
   .trending-block-caption {
     background: $regent-gray;
     padding: 9px 15px;
+
+    &.nbl {
+      background: #ed1b2f;
+    }
+
+    &.gsk {
+      background: #f15d22;
+    }
+
+    &.aln {
+      background: #3d3935;
+    }
 
     h4 {
       color: $color-white;

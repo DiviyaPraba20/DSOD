@@ -17,10 +17,7 @@ import { AddReviewSuccess } from '../../actions';
     <div class="topic-rating text-right">
       <div *ngIf="avgRating">
         <span
-          [ngClass]="{
-            filled: number <= avgRating,
-            'un-filled': number > avgRating
-          }"
+          [ngClass]="{ filled: number <= avgRating,'nbl':number <= avgRating&&sponsorName=='NBL','gsk':number <= avgRating&&sponsorName=='GSK','aln':number <= avgRating&&sponsorName=='ALN', 'un-filled': number > avgRating }"
           *ngFor="let number of [1, 2, 3, 4, 5]"
           (click)="onClick($event, number)"
           ><i class="fa fa-star" aria-hidden="true"></i
@@ -49,6 +46,7 @@ export class DSODRatingComponent implements OnInit {
   @Input() commentsCount: any;
   @Output()
   updateRating = new EventEmitter();
+  @Input() sponsorName:string;
   newCommentRating: number;
   user: UserInfoPayload;
 

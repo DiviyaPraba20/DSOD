@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DSODLatestItemComponent implements OnInit, OnChanges {
   @Input() latestTopic: CMSPageContent;
+  @Input() sponsorName:string;
 
   iFrameCode: any;
 

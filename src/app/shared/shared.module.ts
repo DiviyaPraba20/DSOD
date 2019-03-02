@@ -12,6 +12,7 @@ import { SHARED_COMPONENTS, DSODAddReviewComponent } from './components';
 import { AvatarCropperComponent } from './components/avatar-cropper/avatar-cropper.component';
 import { DSODConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { TruncatePipe } from './pipe/truncate-pipe.component';
+import { SponsorCategoriesPipe } from './pipe/sponsor-categories';
 
 @NgModule({
   imports: [
@@ -25,8 +26,8 @@ import { TruncatePipe } from './pipe/truncate-pipe.component';
     NgbModule.forRoot(),
     ImageCropperModule
   ],
-  declarations: [...SHARED_COMPONENTS, TruncatePipe],
-  exports: [...SHARED_COMPONENTS, TruncatePipe],
+  declarations: [...SHARED_COMPONENTS, TruncatePipe, SponsorCategoriesPipe],
+  exports: [...SHARED_COMPONENTS, TruncatePipe, SponsorCategoriesPipe],
   entryComponents: [
     DSODAddReviewComponent,
     AvatarCropperComponent,
