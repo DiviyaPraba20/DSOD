@@ -17,7 +17,19 @@
       h4 {
         color: $color-primary;
         font-size: 22px;
+       &.aln {
+          color: #3d3935;
+        }
+
+        &.nbl {
+          color: #ed1b2f;
+        }
+
+        &.gsk {
+          color: #f15d22;
+        }
       }
+      
     }
     .latest-block-thumbnail {
       position: relative;
@@ -72,6 +84,15 @@
     }
     .latest-block-caption {
       background: $regent-gray;
+      &.nbl{
+         background: #ed1b2f;
+      }
+      &.gsk {
+        background: #f15d22;
+      }
+      &.aln {
+        background: #3d3935;
+      }
       padding: 5px 15px;
       h4 {
         color: $color-white;

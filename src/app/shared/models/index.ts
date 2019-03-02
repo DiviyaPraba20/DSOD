@@ -5,6 +5,9 @@ export interface DSODSliderContent extends DSODContent {
   actionName: string;
   src: string;
   url: string;
+  filterby?:string;
+  sponsoredBy?:string;
+  logo?:string
 }
 export interface DSODContentAuthor {
   _id: string;

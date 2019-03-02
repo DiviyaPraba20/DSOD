@@ -9,5 +9,6 @@ import { CMSPageContent } from 'src/app/cms/models';
 export class DSODFeaturedTopicsComponent {
   @Input()
   featuredTopics: CMSPageContent[];
+  @Input() sponsorName:string;
   constructor() {}
 }

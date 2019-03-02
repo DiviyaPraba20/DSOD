@@ -29,6 +29,7 @@ export interface State {
   searchResults: CMSResponse<CMSPageContent>;
   uniteMagzazines: UniteMagazine[];
   uniteContent: CMSPageContent;
+  sponsoredCategories: CMSContentTypeModel[];
   isLoading: boolean;
   error: Error;
 }
@@ -51,7 +52,10 @@ export interface State {
     searchResults: null,
     isLoading: false,
     error: null,
-    contents:[]
+    contents:[],
+    sponsoredCategories:[]
+
+
   }
 })
 export class CMSState {
@@ -686,13 +690,12 @@ export class CMSState {
     });
   }
 
-  // author contents action decorators
+  // contents action decorators
   @Action(actions.FetchContents)
   fetchContents(
     { dispatch, patchState }: StateContext<State>,
     action: actions.FetchContents
   ) {
-    // patchState({ sponsoredTopics: [] });
     return this.service.findAllContents(action.payload).pipe(
       map(a => {
         if (a.code === 0) {
@@ -726,4 +729,44 @@ export class CMSState {
       error: action.payload
     });
   }
+
+  // sponsored categories action decorators
+  @Action(actions.FetchSponsoredCategories)
+  fetchSponsoredCategories(
+    { dispatch, patchState }: StateContext<State>,
+    action: actions.FetchSponsoredCategories
+  ) {
+    return this.service.findAllSponsoredCategory(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchSponsoredCategoriesSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchSponsoredCategoriesFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchSponsoredCategoriesSuccess)
+  fetchSponsoredCategoriesSuccess(
+    { patchState, getState }: StateContext<State>,
+    action: actions.FetchSponsoredCategoriesSuccess
+  ) {
+
+    return patchState({ sponsoredCategories: action.payload });
+  }
+
+  @Action(actions.FetchSponsoredCategoriesFailure)
+  fetchSponsoredCategoriesFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchSponsoredCategoriesFailure
+  ) {
+    return patchState({
+      error: action.payload
+    });
+  }
+
 }

@@ -8,20 +8,20 @@
       <div class="col-lg-6 col-md-12">
         <div class="content-lg" *ngFor="let topic of featuredTopics | slice : 0:1">
           <dsod-topic [topic]="topic" [contentLength]=268 [showImage]="true" [showHeader]="true" styleFor="content-lg"
-            [showRating]=true [imgLarge]=true></dsod-topic>
+            [showRating]=true [imgLarge]=true [sponsorName]="sponsorName"></dsod-topic>
         </div>
       </div>
       <div class="col-lg-6 col-md-12">
         <div class="row">
           <div class="col-md-6 col-sm-12" *ngFor="let topic of featuredTopics | slice:1:3">
             <dsod-topic [topic]="topic" [contentLength]=100 [showImage]="true" [showHeader]="true" styleFor="content-sm"
-              [showRating]=true></dsod-topic>
+              [showRating]=true [sponsorName]="sponsorName"></dsod-topic>
           </div>
         </div>
         <div class="row no-thumbnail">
           <div class="col-md-6 col-sm-12" *ngFor="let topic of featuredTopics | slice:3:5">
             <dsod-topic [topic]="topic" [contentLength]=140 [showImage]="false" [showHeader]="true" styleFor="content-sm"
-              [showRating]=true></dsod-topic>
+              [showRating]=true [sponsorName]="sponsorName"></dsod-topic>
           </div>
         </div>
       </div>

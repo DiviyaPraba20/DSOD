@@ -21,6 +21,18 @@
         font-size: 16px;
         margin: 0;
         line-height: 20px;
+
+        &.nbl {
+          color: #ed1b2f
+        }
+
+        &.gsk {
+          color: #f15d22
+        }
+
+        &.aln {
+          color: #3d3935
+        }
       }
     }
 
@@ -29,6 +41,7 @@
       border-top: 3px solid $mine_grey;
       padding-top: 57%;
       width: 100%;
+
       &.iframe-section {
         padding-top: 0;
       }

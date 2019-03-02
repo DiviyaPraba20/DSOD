@@ -1,6 +1,9 @@
 <div class="slide-content-wrap">
   <img class="img-fluid" [src]="content.src" alt="">
   <div class="slider-overlay">
+    <div class="sponsored-by-tag">
+      <span><img [src]="content.logo" alt="">{{content.sponsoredBy}} </span>
+    </div>
     <div class="slide-content text-center">
       <h2>{{content.title}}</h2>
       <h3>{{content.description}}</h3>

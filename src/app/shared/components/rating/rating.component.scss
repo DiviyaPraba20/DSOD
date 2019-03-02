@@ -22,11 +22,31 @@
       &.filled {
         color: #fff;
         background: $color-primary;
+        &.nbl{
+          background: #ed1b2f
+        }
+        &.gsk {
+          background: #f15d22
+
+        }
+        &.aln {
+          background: #3d3935
+
+        }
       }
 
       &.un-filled {
         color: #fff;
         background: #d1d1d1;
+        &.nbl{
+          background: #e79fa6;
+        }
+        &.gsk {
+          background: #998f85;
+        }
+        &.aln {
+          background: #e79fa6;
+        }
       }
     }
   }

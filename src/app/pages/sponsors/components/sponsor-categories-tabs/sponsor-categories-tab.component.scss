@@ -1,0 +1,87 @@
+@import "variables.scss";
+
+.tabs-wrapper {
+  /deep/ .nav-tabs {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-bottom: none;
+    margin-bottom: 30px;
+
+    .nav-item {
+      .nav-link {
+        border-radius: 0px;
+        border: none;
+        border-right: 1px solid #ccc;
+        min-width: 100px;
+        text-align: center;
+        color: $mine_grey;
+        font-size: 20px;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        &.active {
+          // background: $dropdown_grey;
+          background: transparent;
+        }
+      }
+
+      &:first-child {
+        .nav-link::before {
+          display: inline-block;
+          vertical-align: middle;
+          // content: url(../../../../../assets/images/nb-logo.png);
+          content: "";
+          margin-right: 15px;
+        }
+      }
+
+      &:last-child {
+        .nav-link {
+          border-right: 0px solid #ccc;
+        }
+      }
+    }
+  }
+
+  &.logo-aln {
+    /deep/ .nav-tabs {
+      .nav-item {
+        &:first-child {
+          .nav-link::before {
+            content: url(../../../../../assets/images/sponsor-images/aln-icon-md.png);
+          }
+        }
+      }
+    }
+  }
+
+  &.logo-gsk {
+    /deep/ .nav-tabs {
+      .nav-item {
+        &:first-child {
+          .nav-link::before {
+            content: url(../../../../../assets/images/sponsor-images/gs-icon-md.png);
+          }
+        }
+      }
+    }
+  }
+
+  &.logo-nbl {
+    /deep/ .nav-tabs {
+      .nav-item {
+        &:first-child {
+          .nav-link::before {
+            content: url(../../../../../assets/images/sponsor-images/nbl-logo-md.png);
+          }
+        }
+      }
+    }
+  }
+}

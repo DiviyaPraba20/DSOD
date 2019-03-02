@@ -34,6 +34,13 @@ export class CMSService {
     );
   }
 
+  findAllSponsoredCategory(id) {
+    return this.http.post(
+      `${environment.url}/category/findAllCatogoryBySponsor?sponsorId=${id}`,
+      {}
+    );
+  }
+
   findAllContents<T>(params: CMSContentParams) {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);

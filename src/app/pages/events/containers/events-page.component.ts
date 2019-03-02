@@ -15,13 +15,11 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./events-page.component.scss'],
   providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
 })
-export class DSODEventsPageComponent implements AfterViewInit {
+export class DSODEventsPageComponent{
   eventDate: any;
   isEditingEnable = false;
   isdeletionEnable = false;
   isLoggedIn$ = this.authService.isLoggedIn$;
-
-  @ViewChild('slider') slider: ElementRef;
   @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<DSODEventCardComponent>;
 
   events = [
@@ -153,7 +151,7 @@ export class DSODEventsPageComponent implements AfterViewInit {
     }
   ];
 
-  content: DSODSliderContent[] = [
+  contents: DSODSliderContent[] = [
     {
       title: '4 Important "Must Do" Steps for New Dentists',
       description: 'November 15, 2018 | 9 pm EST',
@@ -169,22 +167,6 @@ export class DSODEventsPageComponent implements AfterViewInit {
     private authService: AuthService,
     private router: Router
   ) { }
-
-  ngAfterViewInit() {
-    const elems = this.slider.nativeElement as HTMLUListElement;
-    if (elems.children.length > 0) {
-      new Glide('.events-banner', {
-        type: 'carousel',
-        autoheight: false,
-        autoplay: 8000,
-        animationTimingFunc: 'ease',
-        animationDuration: 1000,
-        padding: 0,
-        gap: 0,
-        dragDistance: 100
-      }).mount({ Autoplay, Controls, Anchors });
-    }
-  }
 
   onSelectDate(e) {
     const modalRef = this.modalService.open(DSODCreateEventComponent, {

@@ -62,7 +62,10 @@ export enum CMSActions {
   FetchUniteContentFailure = '[CMS] Fetch Unite Content Failure',
   FetchContents = '[CMS] Fetch Contents',
   FetchContentsSuccess = '[CMS] Fetch Contents Success',
-  FetchContentsFailure = '[CMS] Fetch Contents Failure'
+  FetchContentsFailure = '[CMS] Fetch Contents Failure',
+  FetchSponsoredCategories = '[CMS] Fetch Sponsored Sponsored Categories',
+  FetchSponsoredCategoriesSuccess = '[CMS] Fetch Sponsored Categories Success',
+  FetchSponsoredCategoriesFailure = '[CMS] Fetch Sponsored Categories Failure'
 }
 
 // actions for categories
@@ -327,7 +330,7 @@ export class FetchUniteContentFailure {
   constructor(public payload: Error) {}
 }
 
-// actions for author contents
+// actions for contents list
 export class FetchContents {
   static readonly type = CMSActions.FetchContents;
 
@@ -342,6 +345,23 @@ export class FetchContentsFailure {
   static readonly type = CMSActions.FetchContentsFailure;
 
   constructor(public payload: Error) {}
+}
+
+//sponsored categories
+export class FetchSponsoredCategories {
+  static readonly type = CMSActions.FetchSponsoredCategories;
+
+  constructor(public payload: CMSContentParams) { }
+}
+export class FetchSponsoredCategoriesSuccess {
+  static readonly type = CMSActions.FetchSponsoredCategoriesSuccess;
+
+  constructor(public payload: CMSContentTypeModel[]) { }
+}
+export class FetchSponsoredCategoriesFailure {
+  static readonly type = CMSActions.FetchSponsoredCategoriesFailure;
+
+  constructor(public payload: Error) { }
 }
 
 export type CMSActionTypes =
@@ -396,4 +416,8 @@ export type CMSActionTypes =
   | FetchUniteContentFailure
   | FetchContents
   | FetchContentsSuccess
-  | FetchContentsFailure;
+  | FetchContentsFailure
+  | FetchSponsoredCategories
+  | FetchSponsoredCategoriesSuccess
+  | FetchSponsoredCategoriesFailure
+

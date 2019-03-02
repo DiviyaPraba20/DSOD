@@ -1,0 +1,11 @@
+<dsod-featured-topics [featuredTopics]="featuredTopics$ | async" [sponsorName]="sponsorName"></dsod-featured-topics>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-12">
+      <dsod-latest [latestTopics]="latestTopics$ | async" [sponsorName]="sponsorName"></dsod-latest>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <dsod-trending [trendingTopics]="trendingTopics$ | async" [sponsorName]="sponsorName"></dsod-trending>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./latest.component.scss']
 })
 export class DSODLatestComponent implements OnInit, OnChanges {
+  @Input() sponsorName:string;
   @Input() latestTopics: CMSPageContent[];
 
   iFrameCode: any;

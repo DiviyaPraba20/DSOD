@@ -1,15 +1,4 @@
-<div class="events-banner">
-  <div class="glide__track" data-glide-el="track">
-    <ul class="glide__slides" #slider>
-      <dsod-event-slide [content]="con" *ngFor="let con of content">
-      </dsod-event-slide>
-    </ul>
-  </div>
-  <div class="glide__arrows event-controls" data-glide-el="controls">
-    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><img src="assets/images/arrow-left.png" alt=""></button>
-    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><img src="assets/images/arrow-right.png" alt=""></button>
-  </div>
-</div>
+<dsod-carousal-lg [carousalItems]="contents"></dsod-carousal-lg>
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
