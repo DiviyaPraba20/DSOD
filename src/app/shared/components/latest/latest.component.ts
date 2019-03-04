@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./latest.component.scss']
 })
 export class DSODLatestComponent implements OnInit, OnChanges {
-  @Input() sponsorName:string;
+  @Input() sponsorName: string;
   @Input() latestTopics: CMSPageContent[];
 
   iFrameCode: any;
@@ -24,7 +24,9 @@ export class DSODLatestComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.latestTopics.currentValue.length && changes.latestTopics.currentValue[0].featuredMedia.type === '6') {
+    if (changes.latestTopics && changes.latestTopics.currentValue.length
+      && changes.latestTopics.currentValue[0].featuredMedia
+      && changes.latestTopics.currentValue[0].featuredMedia.type === '6') {
       this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.latestTopics[0].featuredMedia.code.iFrameCode);
     }
   }
@@ -32,6 +34,8 @@ export class DSODLatestComponent implements OnInit, OnChanges {
   navigateTo(content: CMSPageContent) {
     if (content.contentTypeName === 'Videos') {
       this.router.navigate(['./video', content.id]);
+    } else if (content.contentTypeName === 'Podcasts') {
+      this.router.navigate(['./podcast', content.id]);
     } else {
       this.router.navigate(['./article', content.id]);
     }

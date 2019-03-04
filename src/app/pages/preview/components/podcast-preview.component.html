@@ -5,6 +5,7 @@
       <h3 class="title">Podcasts</h3>
     </div>
     <span class="pod-category-name">{{content.categoryName}}</span>
+    <span class="pod-category-name">{{content.title}}</span>
   </div>
   <div class="author-container">
     <div class="author-info">
@@ -18,11 +19,9 @@
         <span>{{content.author.fullName}}</span>
       </div>
     </div>
-    <div class="content-title">
-      <h3>{{content.title}}</h3>
-    </div>
+    <dsod-audio-player [content]="content"></dsod-audio-player>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-12">
       <div class="md-5 mt-5">
         <div *ngIf="content.featuredMedia" class="featured-media-container">
@@ -37,10 +36,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col-12">
-      <dsod-audio-player [content]="content"></dsod-audio-player>
       <div class="speakers-content mt-5" [innerHTML]="contentString"></div>
     </div>
   </div>
