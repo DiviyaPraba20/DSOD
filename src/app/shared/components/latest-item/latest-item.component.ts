@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DSODLatestItemComponent implements OnInit, OnChanges {
   @Input() latestTopic: CMSPageContent;
-  @Input() sponsorName:string;
+  @Input() sponsorName: string;
 
   iFrameCode: any;
 
@@ -24,7 +24,9 @@ export class DSODLatestItemComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.latestTopic.currentValue.featuredMedia.type === '6') {
+    if (changes.latestTopic && changes.latestTopic.currentValue
+      && changes.latestTopic.currentValue.featuredMedia
+      && changes.latestTopic.currentValue.featuredMedia.type === '6') {
       this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.latestTopic.featuredMedia.code.iFrameCode);
     }
   }
