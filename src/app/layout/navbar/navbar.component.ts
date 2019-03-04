@@ -63,6 +63,12 @@ export class NavbarComponent implements OnInit {
   toggleMenu() {
      this.menuStatus = !this.menuStatus;
   }
+
+  navigateTo(link){
+    if(link){
+      this.router.navigate([link])
+    }
+  }
   onClickedOutProfilePanel() {
     this.store.dispatch(new layoutActions.ChangeProfilePanelStatus(false));
   }

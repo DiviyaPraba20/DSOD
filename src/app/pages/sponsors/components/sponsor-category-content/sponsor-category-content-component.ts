@@ -1,10 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Observable, Subscription, from, Subject } from 'rxjs';
 import { CMSResponse, CMSPageContent, CMSContentTypeModel, CMSContentParams } from 'src/app/cms/models';
-import { Store } from '@ngxs/store';
+import { Store, ofActionDispatched, Actions } from '@ngxs/store';
 import * as actions from '../../../../cms/actions'
 import { skip, takeLast, take, takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { FetchLatestTopics, FetchTrendingTopics } from '../../../../cms/actions';
 
 @Component({
   selector: 'dsod-sponsor-category-content',
@@ -12,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./sponsor-category-content-component.scss']
 })
 export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
+  @Input() categoryId:string;
+  isLoading:boolean;
   sponsorName:any
   sponsor: CMSContentTypeModel;
   featuredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
@@ -22,7 +26,8 @@ export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
   };
   _unsubscribeAll: Subject<any> = new Subject();
   storeSub: Subscription;
-  constructor(private store:Store, private route:ActivatedRoute) {
+  constructor(private store: Store, private route: ActivatedRoute, private actions$: Actions,
+    private spinnerService: NgxSpinnerService,) {
   }
 
   ngOnInit(){
@@ -33,9 +38,17 @@ export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
     this.featuredTopics$ = this.store.select(state => state.cms.featuredTopics);
     this.latestTopics$ = this.store.select(state => state.cms.latestTopics);
     this.trendingTopics$ = this.store.select(state => state.cms.trendingTopics);
+    this.actions$.pipe(ofActionDispatched(actions.FetchFeaturedTopics, FetchLatestTopics, FetchTrendingTopics)).subscribe(data => {
+      this.spinnerService.show();
+      this.isLoading = true;
+    });
+    this.actions$.pipe(ofActionDispatched(actions.FetchFeaturedTopicsSuccess, actions.FetchLatestTopicsSuccess, actions.FetchTrendingTopicsSuccess)).subscribe(data => {
+      this.spinnerService.hide();
+      this.isLoading = false;
+    });
   }
 
-  getSponsorContent(){
+  getSponsorContent(categoryId?:string){
     this.storeSub = this.store.select(state => state.cms.sponsorsList)
       .pipe(takeUntil(this._unsubscribeAll)).subscribe(item => {
         if(item.length){
@@ -45,6 +58,7 @@ export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
               ...this.params,
               isFeatured: true,
               sponsorId: this.sponsor[0].id,
+              categoryId:this.categoryId?this.categoryId:null,
               limit: 6
             })
           );
@@ -53,6 +67,7 @@ export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
               ...this.params,
               isFeatured: false,
               sponsorId: this.sponsor[0].id,
+              categoryId: this.categoryId ? this.categoryId : null,
               limit: 6
             })
           );
@@ -61,6 +76,7 @@ export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
               ...this.params,
               limit: 4,
               sponsorId: this.sponsor[0].id,
+              categoryId: this.categoryId ? this.categoryId : null,
               contentTypeId: "29"
             })
           );
@@ -68,6 +84,8 @@ export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
      
       });
   }
+
+
   ngOnDestroy(){
     this.storeSub.unsubscribe();
     this._unsubscribeAll.next();

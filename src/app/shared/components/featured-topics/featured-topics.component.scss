@@ -17,6 +17,14 @@
       border: none !important;
       padding-top: 0 !important;
       max-height: 50px !important;
+
+
+    }
+
+    /deep/ .topic-block {
+      .topic-block-header {
+        border-width: 0 0 3px 0 !important;
+      }
     }
   }
 }

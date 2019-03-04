@@ -47,7 +47,7 @@
               <ul class="navbar-nav flex-row">
                 <!-- Menu Items  -->
                 <li class="nav-item sub-menu-parent hidden-medium" *ngFor="let nav of navigation" [ngClass]="{'menu-has-children': nav.children}">
-                  <a class="nav-link" routerLink={{nav.link}} routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{nav.title}}</a>
+                  <a class="nav-link" href="javascript:void(0)" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="navigateTo(nav.link)">{{nav.title}}</a>
                   <!-- Sub Menu -->
                   <span class="touch-toggler" *ngIf="nav.children">
                     <i class="fa fa-chevron-down" aria-hidden="true"></i>

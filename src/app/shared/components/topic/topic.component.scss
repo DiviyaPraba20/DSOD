@@ -23,15 +23,21 @@
         line-height: 20px;
 
         &.nbl {
-          color: #ed1b2f
+          color: #ed1b2f;
+          font-weight: bold;
+
         }
 
         &.gsk {
-          color: #f15d22
+          color: #f15d22;
+          font-weight: bold;
+
         }
 
         &.aln {
-          color: #3d3935
+          color: #212529;
+          font-weight: bold;
+
         }
       }
     }

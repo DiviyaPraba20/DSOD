@@ -1,7 +1,10 @@
 <div class="tabs-wrapper" [ngClass]="{'logo-aln': sponsorName=='ALN','logo-gsk': sponsorName=='GSK','logo-nbl': sponsorName=='NBL'}">
-<tabset *ngIf="extractedId">
-<tab *ngFor="let tab of (filterTabs$ | async) |sponsored_categories:extractedId" [heading]="tab.name" (select)="onChangeFilter($event)">
+  <tabset *ngIf="extractedId">
+    <tab (select)="onChangeFilter(null)">
+      <dsod-sponsor-category-content [categoryId]=selectedCategoryId *ngIf="selectedCategoryId==null"></dsod-sponsor-category-content>
+    </tab>
+    <tab *ngFor="let tab of (filterTabs$ | async) |sponsored_categories:extractedId" [heading]="tab.name" (select)="onChangeFilter(tab.id)">
+      <dsod-sponsor-category-content [categoryId]=selectedCategoryId *ngIf="selectedCategoryId==tab.id"></dsod-sponsor-category-content>
     </tab>
   </tabset>
-<dsod-sponsor-category-content></dsod-sponsor-category-content>
 </div>
