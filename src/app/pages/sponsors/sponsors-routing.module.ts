@@ -7,18 +7,8 @@ import { DSODSponsorContainerComponent } from './container/sponsor/sponsor-conta
 
 const routes: Routes = [
   {
-    path: '',
-    component: DSODSponsorsPageComponent,
-    children: [
-      {
-        path: '',
-        component: DSODSponsorsContainerComponent
-      },
-      {
-        path: ':name',
-        component: DSODSponsorContainerComponent
-      }
-    ]
+    path: ':name',
+    component: DSODSponsorContainerComponent,
   }
 ];
 

@@ -18,14 +18,17 @@
         color: $color-primary;
         font-size: 22px;
        &.aln {
-          color: #3d3935;
+          color: #212529;
+          font-weight: bold;
         }
 
         &.nbl {
+          font-weight: bold;
           color: #ed1b2f;
         }
 
         &.gsk {
+          font-weight: bold;
           color: #f15d22;
         }
       }

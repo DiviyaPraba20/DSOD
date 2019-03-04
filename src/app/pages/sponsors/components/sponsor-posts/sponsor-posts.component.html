@@ -21,14 +21,6 @@
       <div class="col-xl-6 thumbnail">
         <div class="img-container">
           <dsod-feartured-media [featuredMedia]="post.featuredMedia"></dsod-feartured-media>
-          <!-- <img *ngIf="post.featuredMedia && post.featuredMedia?.type !== '6'"
-            class="img-fluid"
-            src="{{post.featuredMedia.code.originalUrl}}"
-            alt="" />
-          <div *ngIf="post.featuredMedia && post.featuredMedia?.type === '6'"
-            class="img-fluid"
-            [innerHTML]="getIFrameCode(post.featuredMedia.code.iFrameCode)">
-          </div> -->
         </div>
       </div>
     </div>
