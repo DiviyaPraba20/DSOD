@@ -31,7 +31,7 @@ export class DSODSponsorContainerComponent implements OnInit{
       actionName: 'Learn More',
       actionLink: '/',
       contentType: DSODContentType.Image,
-      src: 'assets/images/sponsor-images/gsk-banner-1 .png',
+      src: 'assets/images/sponsor-images/gsk-banner-1.png',
       url: '',
       logo:'assets/images/gsk-icon-sm.png',
       sponsoredBy:'Sponsored content from GlaxoSmithKline',
