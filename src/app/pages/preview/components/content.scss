@@ -147,6 +147,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 0 20px;
      .speaker-thumbnail {
       width: 200px;
       img {
@@ -206,6 +207,9 @@ h2.section-title {
   }
   .author-container {
     flex-direction: column;
+    .author-info {
+      padding: 20px;
+    }
     .content-title {
       padding: 20px;
     }
