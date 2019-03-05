@@ -9,7 +9,7 @@
     <div *ngIf="latestTopics[0].featuredMedia" class="latest-block-thumbnail" (click)="navigateTo(latestTopics[0])">
       <img *ngIf="latestTopics[0].featuredMedia?.type !== '6'" class="img-fluid" [src]="getImageUrl(latestTopics[0].featuredMedia.code.original)"
         alt="Feautred Thumbnail Large">
-      <div *ngIf="latestTopics[0].featuredMedia?.type === '6'" class="img-fluid" [innerHTML]="iFrameCode"></div>
+      <div *ngIf="latestTopics[0].featuredMedia?.type === '6'" class="iframe-container" [innerHTML]="iFrameCode"></div>
       <a *ngIf="latestTopics[0].contentTypeName" href="javascript:void(0)" class="read-about">
         <img src="assets/images/icons/{{latestTopics[0].contentTypeName}}.png" alt="">
       </a>

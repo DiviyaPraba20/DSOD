@@ -16,7 +16,9 @@ import { DomSanitizer } from '@angular/platform-browser';
       <div *ngIf="topic.featuredMedia?.type !== '6'" class="trending-block-video">
         <img src="{{placeholderImageSrc}}" alt="" />
       </div>
-      <div *ngIf="topic.featuredMedia?.type === '6'" class="iframe-container w-100 mt-2 mb-3" [innerHTML]="iFrameCode"></div>
+      <div *ngIf="topic.featuredMedia?.type === '6'" class="trending-block-video">
+      <div  class="iframe-container" [innerHTML]="iFrameCode"></div>
+      </div>
       <div *ngIf="caption" class="trending-block-caption">
         <h4>{{ caption }}</h4>
       </div>

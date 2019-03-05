@@ -7,7 +7,7 @@
           class="img-fluid" alt="Feautred Thumbnail Large"
           (click)="navigateTo(latestTopic)" />
         <div *ngIf="latestTopic.featuredMedia && latestTopic.featuredMedia.type === '6'"
-          class="img-fluid"
+          class="iframe-container"
           [innerHTML]="iFrameCode">
         </div>
         <a *ngIf="latestTopic.contentTypeName" href="javascript:void(0)" (click)="navigateTo(latestTopic)" class="read-about">
