@@ -10,7 +10,7 @@
           class="iframe-container"
           [innerHTML]="iFrameCode">
         </div>
-        <a href="javascript:void(0)" (click)="navigateTo(latestTopic)" class="read-about">
+        <a *ngIf="latestTopic.contentTypeName" href="javascript:void(0)" (click)="navigateTo(latestTopic)" class="read-about">
           <img src="assets/images/icons/{{latestTopic.contentTypeName}}.png" alt="">
         </a>
       </div>

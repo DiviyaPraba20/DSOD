@@ -17,7 +17,7 @@ export class DSODTopicComponent implements OnInit {
   @Input() showRating: boolean;
   @Input() imgLarge?: boolean;
   @Input() contentLength?: number;
-  @Input() sponsorName:string;
+  @Input() sponsorName: string;
 
   iFrameCode: any;
 
@@ -46,8 +46,8 @@ export class DSODTopicComponent implements OnInit {
     this.router.navigate(['./category', e]);
   }
 
-  onClickAuthor(id){
-    this.router.navigate(['contents/author', id])
+  onClickAuthor(id) {
+    this.router.navigate(['contents/author', id]);
   }
 
   getImageUrl(id: string) {
