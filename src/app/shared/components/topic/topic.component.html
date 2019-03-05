@@ -16,7 +16,7 @@
           <img [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid" alt="Feautred Thumbnail small">
         </ng-template>
       </a>
-      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)">
+      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)" *ngIf="topic.contentTypeName">
         <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
       </a>
     </div>
@@ -24,7 +24,7 @@
       <a role="button" (click)="navigateTo($event)">
         <div class="iframe-container w-100 mt-2 mb-3" [innerHTML]="iFrameCode"></div>
       </a>
-      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)">
+      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)" *ngIf="topic.contentTypeName">
         <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
       </a>
     </div>

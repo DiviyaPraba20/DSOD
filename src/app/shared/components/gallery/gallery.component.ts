@@ -17,8 +17,8 @@ export class DSODGalleryComponent implements OnInit {
   ngOnInit() {
     this.photos.map(photo => {
       this.galleryImages.push({
-        originalID: photo.original,
-        originalUrl: `${environment.url}/file/downloadFileByObjectId?objectId=${photo.original}`
+        originalID: photo.thumbnail,
+        originalUrl: `${environment.url}/file/downloadFileByObjectId?objectId=${photo.thumbnail}`
       });
     });
   }

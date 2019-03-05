@@ -14,7 +14,6 @@ export class DSODEssayImagesComponent implements OnInit, AfterViewInit {
   imageIndex = 0;
 
   ngOnInit() {
-    console.log(this.visualEssayImages);
     this.changeImage.emit(this.visualEssayImages[0].originalID);
   }
 
