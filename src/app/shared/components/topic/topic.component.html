@@ -22,7 +22,7 @@
     </div>
     <div class="topic-block-thumbnail iframe-section" *ngIf="topic.featuredMedia && topic.featuredMedia.type === '6' && showImage">
       <a role="button" (click)="navigateTo($event)">
-        <div class="iframe-container w-100 mt-2 mb-3" [innerHTML]="iFrameCode"></div>
+        <div class="iframe-container w-100" [innerHTML]="iFrameCode"></div>
       </a>
       <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)">
         <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
