@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Login } from '../actions';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { Logout } from '../actions/auth.actions';
 
 export class CustomValidators {
   public static pattern(reg: RegExp): ValidatorFn {
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.store.dispatch(new Logout(false));
   }
 
   ngOnDestroy() {

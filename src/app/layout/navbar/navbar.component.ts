@@ -42,7 +42,9 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe(() => {
       this.isOpen = false;
     });
-    this.isOpenedProfilePanel$ = this.store.select(state => state.layout.isOpenedProfilePanel);
+    this.isOpenedProfilePanel$ = this.store.select(
+      state => state.layout.isOpenedProfilePanel
+    );
   }
 
   toggleProfilePanel() {
@@ -55,8 +57,18 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.store.dispatch(new authActions.Logout());
+    this.router.navigate(['/login']);
+  }
+  menuStatus: boolean = false;
+  toggleMenu() {
+     this.menuStatus = !this.menuStatus;
   }
 
+  navigateTo(link){
+    if(link){
+      this.router.navigate([link])
+    }
+  }
   onClickedOutProfilePanel() {
     this.store.dispatch(new layoutActions.ChangeProfilePanelStatus(false));
   }

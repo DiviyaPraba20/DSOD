@@ -4,9 +4,7 @@
       [isBookmark]="content.isBookmark"
       (changeBookmark)="onChangeBookmark($event)">
     </dsod-bookmark>
-    <dsod-download>
-    </dsod-download>
-    <dsod-share>
-    </dsod-share>
+    <dsod-download></dsod-download>
+    <dsod-share [content]="content"></dsod-share>
   </ul>
 </div>

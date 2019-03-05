@@ -1,22 +1,36 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CMSPageContent } from 'src/app/cms/models';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'dsod-topic',
   templateUrl: './topic.component.html',
   styleUrls: ['./topic.component.scss']
 })
-export class DSODTopicComponent {
+export class DSODTopicComponent implements OnInit {
   @Input() topic: CMSPageContent;
   @Input() showImage?: boolean;
   @Input() showHeader?: boolean;
   @Input() styleFor: string;
   @Input() showRating: boolean;
   @Input() imgLarge?: boolean;
-  @Input() contentLength?:number;
+  @Input() contentLength?: number;
+  @Input() sponsorName: string;
 
-  constructor(private router: Router) {}
+  iFrameCode: any;
+
+  constructor(
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  ngOnInit() {
+    if (this.topic.featuredMedia.type === '6') {
+      this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.topic.featuredMedia.code.iFrameCode);
+    }
+  }
 
   navigateTo(e) {
     if (this.topic.contentTypeName === 'Videos') {
@@ -27,7 +41,16 @@ export class DSODTopicComponent {
       this.router.navigate(['./article', this.topic.id]);
     }
   }
-  onClickCategory(e){
+
+  onClickCategory(e) {
     this.router.navigate(['./category', e]);
+  }
+
+  onClickAuthor(id) {
+    this.router.navigate(['contents/author', id]);
+  }
+
+  getImageUrl(id: string) {
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
   }
 }

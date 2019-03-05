@@ -1,10 +1,33 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'dsod-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class DSODGalleryComponent {
-  @Input() photosUrls: any;
+export class DSODGalleryComponent implements OnInit {
+  @Input() photos: any;
+
+  selectedCarouselImage = null;
+  galleryImages: any[] = [];
+
+  constructor() { }
+
+  ngOnInit() {
+    this.photos.map(photo => {
+      this.galleryImages.push({
+        originalID: photo.thumbnail,
+        originalUrl: `${environment.url}/file/downloadFileByObjectId?objectId=${photo.thumbnail}`
+      });
+    });
+  }
+
+  getUrl(id) {
+    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
+  }
+
+  onChangeImage(carouselImage) {
+    this.selectedCarouselImage = carouselImage;
+  }
 }

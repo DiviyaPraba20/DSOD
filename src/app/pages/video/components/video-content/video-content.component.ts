@@ -8,9 +8,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./video-content.component.scss']
 })
 export class DSODVideoContentComponent implements OnInit {
-  @Input()
-  content: string;
-  contentString:any
+  @Input() content: string;
+
+  contentString: any;
+
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {

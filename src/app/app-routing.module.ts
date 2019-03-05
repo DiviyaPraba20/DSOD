@@ -11,6 +11,10 @@ const routes: Routes = [
     path: '',
     children: [
       {
+        path: 'contents/author',
+        loadChildren: './pages/author-posts/author-posts.module#AuthorPostsModule'
+      },
+      {
         path: 'education',
         loadChildren: './pages/education/education.module#EducationModule'
       },
@@ -68,7 +72,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'})
   ],
   exports: [RouterModule]
 })

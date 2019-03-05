@@ -34,15 +34,18 @@ export class CMSService {
     );
   }
 
+  findAllSponsoredCategory(id) {
+    return this.http.post(
+      `${environment.url}/category/findAllCatogoryBySponsor?sponsorId=${id}`,
+      {}
+    );
+  }
+
   findAllContents<T>(params: CMSContentParams) {
     let url = '';
     const isLoggedIn = this.store.selectSnapshot<boolean>(AuthState.isLoggedIn);
     isLoggedIn ? (url = 'findAllContents') : (url = 'public/findAllContents');
-    return this.http.post(
-      `${environment.url}/content/${url}`,
-      params,
-      isLoggedIn ? { withCredentials: true } : {}
-    );
+    return this.http.post(`${environment.url}/content/${url}`, params, isLoggedIn ? { withCredentials: true } : {});
   }
 
   findOneContents<T>(id: string, isPreview?: boolean) {
@@ -117,4 +120,11 @@ export class CMSService {
     const url = `${environment.url}/magazine/findOneById?id=${id}`;
     return this.http.post(url, null, { withCredentials: true });
   }
+
+  getVisualEssay(id: string): Observable <any> {
+    const url = `${environment.url}/content/visualEssay/findOneById`;
+    const form = new FormData();
+    form.append('id', id);
+    return this.http.post(url, form);
+   }
 }

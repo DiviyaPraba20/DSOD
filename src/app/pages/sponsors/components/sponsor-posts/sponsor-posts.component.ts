@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CMSPageContent } from 'src/app/cms/models';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { CMSPageContent } from 'src/app/cms/models';
 
 @Component({
   selector: 'dsod-sponsor-posts',
@@ -12,7 +14,8 @@ export class SponsorPostsComponent implements OnInit {
   @Output() loadMore: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() { }
@@ -22,6 +25,8 @@ export class SponsorPostsComponent implements OnInit {
       this.router.navigate(['./video', e.id]);
     } else if (e.contentTypeName === 'Podcasts') {
       this.router.navigate(['./podcast', e.id]);
+    } else if (e.contentTypeName === 'Visual Essay') {
+      this.router.navigate(['./visual-essay', e.id]);
     } else {
       this.router.navigate(['./article', e.id]);
     }
@@ -29,5 +34,9 @@ export class SponsorPostsComponent implements OnInit {
 
   onLoadMore() {
     this.loadMore.emit();
+  }
+
+  getIFrameCode(iFrameCode) {
+    return this.sanitizer.bypassSecurityTrustHtml(iFrameCode);
   }
 }

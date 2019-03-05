@@ -1,13 +1,15 @@
 @import 'variables';
 
 .event-card {
+  height: 100%;
+  background: $alabaster_white;
+  margin: 12px 0 0;
+
   &.focused {
     -webkit-box-shadow: 0px 0px 18px 0px rgba(24, 152, 205, 0.5);
     box-shadow: 0px 0px 18px 0px rgba(24, 152, 205, 0.5);
   }
 
-  background: $alabaster_white;
-  margin: 12px 0;
   cursor: pointer;
 
   .event-card-header {
@@ -312,6 +314,7 @@
         span {
           font-size: 14px;
         }
+
         .form-control-small {
           width: 50px;
           padding-left: 0;

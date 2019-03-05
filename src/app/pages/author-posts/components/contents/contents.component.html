@@ -1,0 +1,31 @@
+<div class="post-container">
+  <div *ngFor="let post of (posts$ | async); let i = index">
+    <div class="row post-container flex-sm-column-reverse flex-xl-row" [ngClass]="{'last-post': i >= (posts$ | async)?.length - 2}">
+      <div class="col-xl-6">
+        <div class="sponsor-desc">
+          <div class="sponsor-header">
+            <img class="mb-3 img-fluid" src="assets/images/icons/{{post.sponsorName}}-bar.jpg" alt="">
+          </div>
+          <h2>{{post.title}}</h2>
+          <span>{{post.author.fullName}}</span>
+          <div class="d-flex justify-content-between align-items-center date-wrap">
+            <span>{{post.publishDate | date:'mediumDate'}}</span>
+            <a href="#" class="implant-btn">{{post.categoryName}}</a>
+          </div>
+          <div class="excerpt" [innerHtml]="post.excerpt"></div>
+          <hr class="mt-2 mb-2">
+          <a href="javascript:void(0)" (click)="navigateTo(post)" class="read-more-btn">Read More <span><i class="fa fa-arrow-right"
+                aria-hidden="true"></i></span></a>
+        </div>
+      </div>
+      <div class="col-xl-6 thumbnail">
+        <div class="img-container">
+          <dsod-feartured-media [featuredMedia]="post.featuredMedia"></dsod-feartured-media>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="load-more-container" *ngIf="(posts$ | async)?.length">
+    <button class="btn btn-primary btn-load-more" (click)="onLoadMore()">Load More</button>
+  </div>
+</div>

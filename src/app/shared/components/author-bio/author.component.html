@@ -1,0 +1,9 @@
+<div *ngIf="authorDetails" class="author-details d-flex">
+  <div class="author-avi">
+    <img [src]="authorDetails.objectId?getUrl(authorDetails.objectId):'assets/images/no-avatar.png'" alt="">
+  </div>
+  <div class="author-bio">
+    <h4>{{authorDetails.fullName}}</h4>
+    <p>{{authorDetails.authorDetails}}</p>
+  </div>
+</div>

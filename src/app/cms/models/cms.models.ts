@@ -34,6 +34,7 @@ export interface DSODFeaturedMedia {
     original: string;
     thumbnailUrl: string;
     originalUrl: string;
+    iFrameCode?: string;
   };
 }
 
@@ -80,6 +81,7 @@ export interface CMSPageContent {
   excerpt?: any;
   countOfEssay?: number;
   visualEssays?: any;
+  visualEssayIds?: string[];
   relativeTopics?: any;
   relativeTopicList?: any;
   references?: any;
@@ -147,4 +149,23 @@ export interface UniteMagazine {
   status: number;
   pdfId: string;
   version: number;
+}
+
+export interface EssayImages {
+  alternateText?: string;
+  caption?: string;
+  originalID?: string;
+  thumbnailID?: string;
+  title?: string;
+}
+
+export interface Essay {
+  id?: string;
+  authorImage?: EssayImages;
+  authorDetails?: string;
+  authorName?: string;
+  description?: string;
+  title?: string;
+  createTime?: string;
+  visualEssayImages?: EssayImages[];
 }

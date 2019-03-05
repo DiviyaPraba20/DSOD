@@ -12,8 +12,9 @@ import { CMSPageContent } from 'src/app/cms/models';
         <img src="assets/images/podcast-icon.png" alt="" />
         <h3>Podcasts</h3>
       </div>
-      <span>{{ content.publishDate | date: 'mediumDate' }}</span>
-      <span><dsod-bookmark></dsod-bookmark></span>
+      <span>{{content.categoryName}}</span>
+      <span>{{content.title}}</span>
+      <span><dsod-rating [avgRating]="content.avgCommentRating"></dsod-rating></span>
     </div>
   `,
   styleUrls: ['./podcast-header.component.scss']

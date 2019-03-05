@@ -25,9 +25,11 @@ export interface State {
   sponsoredTopics: CMSPageContent[];
   podcasts: CMSPageContent[];
   DSOPractices: CMSPageContent[];
+  contents: CMSPageContent[];
   searchResults: CMSResponse<CMSPageContent>;
   uniteMagzazines: UniteMagazine[];
   uniteContent: CMSPageContent;
+  sponsoredCategories: CMSContentTypeModel[];
   isLoading: boolean;
   error: Error;
 }
@@ -49,7 +51,11 @@ export interface State {
     uniteContent: null,
     searchResults: null,
     isLoading: false,
-    error: null
+    error: null,
+    contents:[],
+    sponsoredCategories:[]
+
+
   }
 })
 export class CMSState {
@@ -466,7 +472,8 @@ export class CMSState {
       sponsoredTopics: [],
       pageContent: null,
       podcasts: [],
-      uniteMagzazines: []
+      uniteMagzazines: [],
+      contents:[]
     });
   }
 
@@ -682,4 +689,84 @@ export class CMSState {
       error: action.payload
     });
   }
+
+  // contents action decorators
+  @Action(actions.FetchContents)
+  fetchContents(
+    { dispatch, patchState }: StateContext<State>,
+    action: actions.FetchContents
+  ) {
+    return this.service.findAllContents(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchContentsSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchContentsFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchContentsSuccess)
+  fetchContentsSuccess(
+    { patchState, getState }: StateContext<State>,
+    action: actions.FetchContentsSuccess
+  ) {
+    let contents = getState().contents;
+    contents = [...contents, ...action.payload];
+    return patchState({ contents: contents });
+  }
+
+  @Action(actions.FetchContentsFailure)
+  fetchContentsFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchContentsFailure
+  ) {
+    return patchState({
+      error: action.payload
+    });
+  }
+
+  // sponsored categories action decorators
+  @Action(actions.FetchSponsoredCategories)
+  fetchSponsoredCategories(
+    { dispatch, patchState }: StateContext<State>,
+    action: actions.FetchSponsoredCategories
+  ) {
+    return this.service.findAllSponsoredCategory(action.payload).pipe(
+      map(a => {
+        if (a.code === 0) {
+          return a.resultMap;
+        }
+        throwError(new Error(a.msg));
+      }),
+      exhaustMap(result =>
+        dispatch(new actions.FetchSponsoredCategoriesSuccess(result.data))
+      ),
+      catchError(err => dispatch(new actions.FetchSponsoredCategoriesFailure(err)))
+    );
+  }
+
+  @Action(actions.FetchSponsoredCategoriesSuccess)
+  fetchSponsoredCategoriesSuccess(
+    { patchState, getState }: StateContext<State>,
+    action: actions.FetchSponsoredCategoriesSuccess
+  ) {
+
+    return patchState({ sponsoredCategories: action.payload });
+  }
+
+  @Action(actions.FetchSponsoredCategoriesFailure)
+  fetchSponsoredCategoriesFailure(
+    { patchState }: StateContext<State>,
+    action: actions.FetchSponsoredCategoriesFailure
+  ) {
+    return patchState({
+      error: action.payload
+    });
+  }
+
 }

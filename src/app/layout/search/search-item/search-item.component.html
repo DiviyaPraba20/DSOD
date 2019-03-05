@@ -2,8 +2,13 @@
   <div class="row">
     <div class="col-5">
       <div class="search-item-thumbnail">
-        <img (click)="navigateTo(topic)" src={{topic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail Large">
-        <a href="javascript:void(0)" (click)="navigateTo(topic)" class="read-about">
+        <img *ngIf="topic.featuredMedia?.type !== '6'"
+          (click)="navigateTo(topic)"
+          src={{topic.featuredMedia.code.originalUrl}}
+          class="img-fluid"
+          alt="Feautred Thumbnail Large" />
+        <div *ngIf="topic.featuredMedia?.type === '6'" class="img-fluid" [innerHTML]="iFrameCode"></div>
+        <a *ngIf="topic.contentTypeName" href="javascript:void(0)" (click)="navigateTo(topic)" class="read-about">
           <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
         </a>
       </div>

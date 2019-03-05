@@ -1,81 +1,83 @@
 <div class="page-content">
-  <div class="container" *ngIf="(pageContent$ | async)">
+  <div class="container" *ngIf="pageContent && pageContent.id">
     <div class="row">
-      <div class="col-9">
+      <div class="col-lg-9 pr-3 pr-lg-4">
         <div class="video-content">
           <div class="top-head d-flex justify-content-between">
             <ul>
               <li>Education /</li>
-              <li>{{(pageContent$ | async)?.categoryName}}</li>
+              <li>{{pageContent?.categoryName}}</li>
             </ul>
             <div>
-              <div *ngIf="(pageContent$ | async)?.sponsorName==='ALN'">
+              <div *ngIf="pageContent?.sponsorName==='ALN'">
                 <img src="assets/images/align-logo.png" alt="">
                 Sponsored content from Align Technology, Inc.
               </div>
-              <div *ngIf="(pageContent$ | async)?.sponsorName==='NBL'">
+              <div *ngIf="pageContent?.sponsorName==='NBL'">
                 <img src="assets/images/nb-logo.png" alt="">
                 Sponsored content from Nobel Biocare, N.A.
               </div>
-              <div *ngIf="(pageContent$ | async)?.sponsorName==='GSK'">
+              <div *ngIf="pageContent?.sponsorName==='GSK'">
                 <img src="assets/images/gsk-icon-sm.png" alt="">
                 Sponsored content from GlaxoSmithKline
               </div>
             </div>
-            <dsod-rating [avgRating]="!avgRating?(pageContent$ | async)?.avgCommentRating:avgRating"></dsod-rating>
+            <dsod-rating [avgRating]="!avgRating ? pageContent?.avgCommentRating : avgRating"></dsod-rating>
           </div>
           <div class="video-header article-header">
             <div class="row">
               <div class="col-10">
-                <dsod-video-title [content]="pageContent$ | async"></dsod-video-title>
+                <dsod-video-title [content]="pageContent"></dsod-video-title>
               </div>
               <div class="col-2">
-                <dsod-content-actions [content]="pageContent$ | async"></dsod-content-actions>
+                <dsod-content-actions [content]="pageContent"></dsod-content-actions>
               </div>
             </div>
           </div>
-          <dsod-feartured-media [featuredMedia]="(pageContent$ | async).featuredMedia"></dsod-feartured-media>
-          <dsod-video-content [content]="(pageContent$ | async)?.content"></dsod-video-content>
-          <dsod-references [references]="(pageContent$ | async)?.references"></dsod-references>
-          <div class="row" *ngFor="let essay of (pageContent$ | async)?.visualEssays">
-            <div class="col-lg-12" *ngIf="essay.visualEssayImages">
-              <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
+          <dsod-feartured-media [featuredMedia]="pageContent.featuredMedia"></dsod-feartured-media>
+          <dsod-video-content [content]="pageContent?.content"></dsod-video-content>
+          <dsod-gallery [photos]="pageContent?.photos"></dsod-gallery>
+          <dsod-references [references]="pageContent?.references"></dsod-references>
+          <div class="row essay-container" *ngIf="pageContent?.visualEssays.length">
+            <div class="col-12">
+              <h3 class="essay-title">Visual Essay</h3>
             </div>
-            <div class="col-lg-12">
-              <div class="article-content">
-                <p>{{essay.description}}</p>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="row">
-                <div class="col-md-8">
-                  <dsod-essay-author [essay]="essay"></dsod-essay-author>
-                </div>
-              </div>
+            <div class="col-lg-12" *ngFor="let essay of pageContent?.visualEssays">
+              <a class="essay-item" [routerLink]="['/visual-essay', essay.id]">{{essay.title}}</a>
             </div>
           </div>
         </div>
-        <div class="related-content" *ngIf="(pageContent$ | async)?.relativeTopicList.length">
+      </div>
+      <div class="col-lg-3">
+        <section class="trending-videos" *ngIf="(trendingTopics$ |async)?.length">
+          <h2 class="section-title">Trending Topics</h2>
+          <div class="row">
+            <div class="col-lg-12 col-md-7">
+              <div *ngFor="let topic of trendingTopics$ |async">
+                <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
+                  [showRating]=true></dsod-topic>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-5">
+              <dsod-sponsored-ad></dsod-sponsored-ad>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="related-content" *ngIf="pageContent?.relativeTopicList.length">
           <h2 class="section-title">Related Content</h2>
           <div class="row">
-            <div class="col-4" *ngFor="let topic of (pageContent$ | async)?.relativeTopicList">
-              <dsod-related-content [content]="topic" [contentTypeName]="(pageContent$ | async)?.contentTypeName"></dsod-related-content>
+            <div class="col-4" *ngFor="let topic of pageContent?.relativeTopicList">
+              <dsod-related-content [content]="topic" [contentTypeName]="pageContent?.contentTypeName"></dsod-related-content>
             </div>
           </div>
         </div>
         <div *ngIf="isLoggedIn">
-          <dsod-article-reviews [content]="pageContent$ | async" (updateRating)="updateRating($event)"></dsod-article-reviews>
+          <dsod-article-reviews [content]="pageContent" (updateRating)="updateRating($event)"></dsod-article-reviews>
         </div>
-      </div>
-      <div class="col-3">
-        <section class="trending-videos" *ngIf="(trendingTopics$ |async)?.length">
-          <h2 class="section-title">Trending Topics</h2>
-          <div *ngFor="let topic of trendingTopics$ |async">
-            <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
-              [showRating]=true></dsod-topic>
-          </div>
-          <dsod-sponsored-ad></dsod-sponsored-ad>
-        </section>
       </div>
     </div>
   </div>

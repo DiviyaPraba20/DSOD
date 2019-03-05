@@ -21,6 +21,24 @@
         font-size: 16px;
         margin: 0;
         line-height: 20px;
+
+        &.nbl {
+          color: #ed1b2f;
+          font-weight: bold;
+
+        }
+
+        &.gsk {
+          color: #f15d22;
+          font-weight: bold;
+
+        }
+
+        &.aln {
+          color: #212529;
+          font-weight: bold;
+
+        }
       }
     }
 
@@ -29,6 +47,10 @@
       border-top: 3px solid $mine_grey;
       padding-top: 57%;
       width: 100%;
+
+      &.iframe-section {
+        // padding-top: 0;
+      }
 
       a {
         >img {
@@ -90,6 +112,7 @@
         font-weight: 600;
         display: block;
         margin-bottom: 5px;
+        cursor: pointer;
 
         a.read-about {
           margin-left: 10px;
@@ -117,13 +140,7 @@
 
   .topic-block-lg {
     .topic-block-thumbnail {
-      padding-top: 0;
-
-      a {
-        img {
-          position: relative !important;
-        }
-      }
+      padding-top: 66.6%;
     }
 
     /deep/ em {
@@ -246,6 +263,20 @@
               max-width: 32px;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:1366px) and (min-width:991px) {
+  :host {
+
+    .topic-block {
+      .topic-block-header {
+
+        h4 {
+          font-size: 11px;
         }
       }
     }

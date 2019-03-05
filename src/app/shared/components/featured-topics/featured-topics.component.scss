@@ -1,0 +1,37 @@
+@import 'variables.scss';
+
+// Featured Topics Section
+.feautred-topics {
+  font-family: $Arial;
+
+  .content-lg {
+    height: 100%;
+
+    /deep/ .topic-block {
+      height: 100%;
+    }
+  }
+
+  .no-thumbnail {
+    /deep/ .topic-title-large.topic-title-small {
+      border: none !important;
+      padding-top: 0 !important;
+      max-height: 50px !important;
+
+
+    }
+
+    /deep/ .topic-block {
+      .topic-block-header {
+        border-width: 0 0 3px 0 !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:1600px) {
+  .feautred-wrap {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+  }
+}

@@ -7,13 +7,7 @@
 
     >img {
       width: 100%;
-      -o-object-fit: cover;
-      object-fit: cover;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
       margin: auto;
-      max-height: 400px;
     }
 
     .slide-caption {
@@ -75,6 +69,14 @@
           max-width: 100%;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width:1199px) {
+  :host {
+    .glide__slide {
+      height: auto;
     }
   }
 }

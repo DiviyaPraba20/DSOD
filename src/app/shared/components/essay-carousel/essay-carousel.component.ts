@@ -1,29 +1,26 @@
-import {
-  Component,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-  Input
-} from '@angular/core';
-import Glide, {
-  Controls,
-  Autoplay,
-  Anchors
-} from '@glidejs/glide/dist/glide.modular.esm';
+import { Component, AfterViewInit, ViewChild, ElementRef, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import Glide, { Controls, Autoplay, Anchors } from '@glidejs/glide/dist/glide.modular.esm';
 
 @Component({
   selector: 'dsod-essay-images-carousel',
   templateUrl: './essay-carousel.component.html',
   styleUrls: ['./essay-carousel.component.scss']
 })
-export class DSODEssayImagesComponent implements AfterViewInit {
+export class DSODEssayImagesComponent implements OnInit, AfterViewInit {
   @Input() visualEssayImages: any;
-  @ViewChild('slider')
-  slider: ElementRef;
+  @Output() changeImage: EventEmitter<string> = new EventEmitter();
+  @ViewChild('slider') slider: ElementRef;
+
+  imageIndex = 0;
+
+  ngOnInit() {
+    this.changeImage.emit(this.visualEssayImages[0].originalID);
+  }
+
   ngAfterViewInit() {
     const elems = this.slider.nativeElement;
     if (elems.children.length > 0) {
-      new Glide('.home-banner', {
+      const glide = new Glide('.home-banner', {
         type: 'carousel',
         autoheight: false,
         animationTimingFunc: 'ease',
@@ -31,7 +28,12 @@ export class DSODEssayImagesComponent implements AfterViewInit {
         perView: 3,
         focusAt: 'center',
         dragDistance: 100
-      }).mount({ Autoplay, Controls, Anchors });
+      })
+      .mount({ Autoplay, Controls, Anchors });
+
+      glide.on(['mount.after', 'run'], () => {
+        this.changeImage.emit(this.visualEssayImages[glide.index].originalID);
+      });
     }
   }
 }

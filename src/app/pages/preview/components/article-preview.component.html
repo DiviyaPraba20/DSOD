@@ -7,16 +7,15 @@
       </div>
     </div>
   </div>
-  <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
-    <div *ngIf="content.featuredMedia" class="article-thumbnail" style="margin-top:20px;">
-      <img *ngIf="content.featuredMedia?.type === '1' || content.featuredMedia?.type === '4'" [src]="getUrl(content.featuredMedia.code.thumbnail)" />
-      <audio *ngIf="content.featuredMedia?.type === '2'" controls>
-        <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="audio/mp3">
-      </audio>
-      <video *ngIf="content.featuredMedia?.type === '3'" width="100%" controls>
-        <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="video/mp4">
-      </video>
-    </div>
+  <div *ngIf="content.featuredMedia" class="featured-media-container">
+    <img *ngIf="content.featuredMedia?.type === '1' || content.featuredMedia?.type === '4'" [src]="getUrl(content.featuredMedia.code.thumbnail)" />
+    <div class="iframe-container" *ngIf="content.featuredMedia?.type === '6'" [innerHTML]="iFrameCode"></div>
+    <audio *ngIf="content.featuredMedia?.type === '2'" controls>
+      <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="audio/mp3">
+    </audio>
+    <video *ngIf="content.featuredMedia?.type === '3'" width="100%" controls>
+      <source [src]="getUrl(content.featuredMedia.code.thumbnail)" type="video/mp4">
+    </video>
   </div>
   <div class="row">
     <div class="col-12">
@@ -24,31 +23,24 @@
       <div class="speakers-content mt-5" [innerHTML]="contentString"></div>
     </div>
   </div>
+  <dsod-gallery [photos]="content.photos"></dsod-gallery>
   <dsod-references [references]="content.references"></dsod-references>
-  <div class="row" *ngFor="let essay of content.visualEssays">
-    <div class="col-12" *ngIf="essay.visualEssayImages">
-      <dsod-essay-images-carousel [visualEssayImages]="essay.visualEssayImages"></dsod-essay-images-carousel>
-    </div>
+  <div class="row essay-container" *ngIf="content.visualEssays.length">
     <div class="col-12">
-      <div class="article-content">
-        <p>{{essay.description}}</p>
-      </div>
+      <h3 class="essay-title">Visual Essay</h3>
     </div>
-    <div class="col-12">
-      <div class="row">
-        <div class="col-8">
-          <dsod-essay-author [essay]="essay"></dsod-essay-author>
-        </div>
-      </div>
+    <div class="col-lg-12" *ngFor="let essay of content.visualEssays">
+      <a class="essay-item" [routerLink]="['/preview/visual-essay', essay.id]">{{essay.title}}</a>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <dsod-gallery [photosUrls]="content.photoUrls"></dsod-gallery>
-      <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
-      <div class="row">
-        <div class="col-4" *ngFor="let topic of content.relativeTopicList">
-          <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
+      <div class="related-content" *ngIf="content?.relativeTopicList.length">
+        <h2 class="section-title" *ngIf="content.relativeTopicList">Related Content</h2>
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4" *ngFor="let topic of content.relativeTopicList">
+            <dsod-related-content [content]="topic" [contentTypeName]="content.contentTypeName"></dsod-related-content>
+          </div>
         </div>
       </div>
     </div>

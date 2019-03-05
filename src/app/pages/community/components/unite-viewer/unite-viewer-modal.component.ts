@@ -1,10 +1,13 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Store } from '@ngxs/store';
-import { FetchUniteContent } from 'src/app/cms/actions';
-import { skip } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
+
 import { Subscription } from 'rxjs';
+import { skip } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { environment } from 'src/environments/environment';
+import { FetchUniteContent } from 'src/app/cms/actions';
 
 @Component({
   selector: 'dsod-unite-magazine-viewer',
@@ -20,7 +23,8 @@ export class DSODUniteMagazineViewerComponent implements OnInit, OnDestroy {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private store: Store
+    private store: Store,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -43,6 +47,10 @@ export class DSODUniteMagazineViewerComponent implements OnInit, OnDestroy {
     } else {
       this.pageIndex += 1;
     }
+  }
+
+  getIFrameCode(iFrame) {
+    return this.sanitizer.bypassSecurityTrustHtml(iFrame);
   }
 
   ngOnDestroy() {

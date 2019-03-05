@@ -2,31 +2,40 @@
   <div class="topic-block" [ngClass]="{'topic-block-sm':styleFor==='content-sm','topic-block-lg':styleFor=='content-lg'}">
     <div class="topic-block-header" *ngIf="showHeader">
       <a href="javascript:void(0)" (click)="onClickCategory(topic.categoryId)">
-        <h4>{{topic.categoryName}}</h4>
+        <h4 [ngClass]="{'aln':sponsorName=='ALN','nbl':sponsorName=='NBL','gsk':sponsorName=='GSK'}">{{topic.categoryName}}</h4>
       </a>
       <dsod-rating *ngIf="showRating" [avgRating]="topic.avgCommentRating" readingType="short" [clickAble]="true"
-        [contentId]="topic.id" [title]="topic.title" [commentsCount]="topic.countOfComment"></dsod-rating>
+[contentId]="topic.id" [title]="topic.title" [commentsCount]="topic.countOfComment" [sponsorName]="sponsorName"></dsod-rating>
       <h4 *ngIf="!showRating">{{topic.publishDate | date:'mediumDate'}}</h4>
     </div>
-    <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && showImage">
-      <a role="button" (click)="navigateTo($event)"><img *ngIf="imgLarge; else imgsm" src={{topic.featuredMedia.code.originalUrl}}
-          class="img-fluid img-lg" alt="Feautred Thumbnail Large">
+    <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && topic.featuredMedia.type !== '6' && showImage">
+      <a role="button" (click)="navigateTo($event)">
+        <img *ngIf="imgLarge; else imgsm" [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid img-lg"
+          alt="Feautred Thumbnail Large">
         <ng-template #imgsm>
-          <img src={{topic.featuredMedia.code.originalUrl}} class="img-fluid" alt="Feautred Thumbnail small">
+          <img [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid" alt="Feautred Thumbnail small">
         </ng-template>
       </a>
-      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)">
-
+      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)" *ngIf="topic.contentTypeName">
+        <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
+      </a>
+    </div>
+    <div class="topic-block-thumbnail iframe-section" *ngIf="topic.featuredMedia && topic.featuredMedia.type === '6' && showImage">
+      <a role="button" (click)="navigateTo($event)">
+        <div class="iframe-container w-100" [innerHTML]="iFrameCode"></div>
+      </a>
+      <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)" *ngIf="topic.contentTypeName">
         <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
       </a>
     </div>
     <div class="topic-block-content">
       <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-sm'}" (click)="navigateTo($event)">{{topic.title}}</h2>
-      <em *ngIf="topic.author">By&nbsp;{{topic.author.fullName}}
+      <em *ngIf="topic.author" (click)="onClickAuthor(topic.authorId)">By&nbsp;{{topic.author.fullName}}
         <a role="button" class="read-about" *ngIf="styleFor==='content-sm'&& (!topic.featuredMedia || !showImage)"
           (click)="navigateTo(topic)">
           <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="" (click)="navigateTo($event)">
-        </a> </em>
+        </a>
+      </em>
       <dsod-excerpt [topic]="topic" [contentLength]="contentLength" [styleFor]="styleFor"></dsod-excerpt>
     </div>
   </div>
