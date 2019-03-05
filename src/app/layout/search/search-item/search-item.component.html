@@ -8,7 +8,7 @@
           class="img-fluid"
           alt="Feautred Thumbnail Large" />
         <div *ngIf="topic.featuredMedia?.type === '6'" class="img-fluid" [innerHTML]="iFrameCode"></div>
-        <a href="javascript:void(0)" (click)="navigateTo(topic)" class="read-about">
+        <a *ngIf="topic.contentTypeName" href="javascript:void(0)" (click)="navigateTo(topic)" class="read-about">
           <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="">
         </a>
       </div>

@@ -57,7 +57,6 @@ export class DSODArticelComponent implements OnInit, OnDestroy {
       }),
       tap(res => {
         this.pageContent = res;
-        console.log(this.pageContent);
       })
     ).subscribe();
   }
