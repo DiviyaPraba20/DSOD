@@ -1,6 +1,7 @@
 <div class="article-thumbnail" *ngIf="featuredMedia">
   <img *ngIf="featuredMedia?.type === '1' || featuredMedia?.type === '4'" class="img-fluid w-100 mt-2 mb-3" [src]="getUrl(featuredMedia.code.thumbnail)"  alt="" />
-  <div class="iframe-container w-100 mt-2 mb-3" *ngIf="featuredMedia?.type === '6'" [innerHTML]="iFrameCode"></div>
+<div class="iframe-container w-100 mt-2 mb-3" [ngClass]="{'iframe-wrap':styleFor&&styleFor=='header'}" *ngIf="featuredMedia?.type === '6'"
+  [innerHTML]="iFrameCode"></div>
   <video *ngIf="featuredMedia?.type === '3'" width="100%" controls>
     <source [src]="getUrl(featuredMedia.code.thumbnail)" type="video/mp4">
   </video>

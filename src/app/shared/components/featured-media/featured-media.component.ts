@@ -14,6 +14,7 @@ export class DSODFeaturedMediaComponent implements OnInit {
   @Input() featuredMedia: DSODFeaturedMedia;
 
   iFrameCode: any;
+  @Input() styleFor:string;
 
   constructor(
     private sanitizer: DomSanitizer
