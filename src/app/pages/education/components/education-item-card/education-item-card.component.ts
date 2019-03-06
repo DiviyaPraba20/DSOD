@@ -18,9 +18,12 @@ export class EducationItemCardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
     this.video = this.myDiv.nativeElement
     this.video.removeAttribute('controls');
-    this.video.addEventListener('ended', ()=> {
+    this.video.addEventListener('loadeddata', ()=> {
+     this.video.removeAttribute('poster');
+    }, false);
+    this.video.addEventListener('ended', () => {
       this.video.play();
-    });
+    }, false);
   }
 
   onMouseOver(e) {

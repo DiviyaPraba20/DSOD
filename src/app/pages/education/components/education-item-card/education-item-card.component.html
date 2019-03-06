@@ -1,6 +1,6 @@
 <div class="card-item-container" (mouseenter)="onMouseOver($event)" (mouseleave)="onMouseLeave($event)">
   <div class="video-wrapper">
-    <video #video width="320" height="" controls muted>
+    <video #video width="320" height="174" preload="auto" poster="assets/images/icons/loading.gif" controls muted>
       <source src={{sampleVideo.url}} type="video/webm">
     </video>
   </div>

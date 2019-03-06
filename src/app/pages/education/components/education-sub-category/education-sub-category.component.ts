@@ -20,7 +20,7 @@ export class EducationSubCategoryComponent implements OnInit {
     },
     {
       url:
-        'https://ak0.picdn.net/shutterstock/videos/13949960/preview/stock-footage-creative-business-team-brainstorming-ideas-working-together-sharing-data-late-at-night-after-hours.webm',
+        'https://ak1.picdn.net/shutterstock/videos/4488161/preview/stock-footage-small-business-team-in-creative-discussion-casual-young-downtown-workers-in-chic-loft-or-warehouse.webm',
       title:
         'stock-footage creative business team brainstorming ideas working together'
     },
@@ -32,21 +32,21 @@ export class EducationSubCategoryComponent implements OnInit {
     },
     {
       url:
-        'https://ak0.picdn.net/shutterstock/videos/13949570/preview/stock-footage-creative-business-team-meeting-in-trendy-hipster-office-discussing-new-ideas-female-manager-or.webm',
+        'https://ak8.picdn.net/shutterstock/videos/22522198/preview/stock-footage-seven-stylish-diverse-people-lean-on-a-conference-table-while-energetically-discussing-daily.webm',
       title:
-        'Creative business team meeting in trendy hipster office discussing new ideas'
+        'Seven Stylish Diverse People Lean on a Conference Table While Energetically Discussing Daily Business Plans'
     },
     {
       url:
-        'https://ak0.picdn.net/shutterstock/videos/13949960/preview/stock-footage-creative-business-team-brainstorming-ideas-working-together-sharing-data-late-at-night-after-hours.webm',
+        'https://ak1.picdn.net/shutterstock/videos/5762801/preview/stock-footage-happy-and-enthusiastic-group-of-male-and-female-students-studying-together-in-their-shared.webm',
+      title:
+        'Happy and enthusiastic group of male and female students studying togethe'
+    },
+    {
+      url:
+        'https://ak1.picdn.net/shutterstock/videos/4488161/preview/stock-footage-small-business-team-in-creative-discussion-casual-young-downtown-workers-in-chic-loft-or-warehouse.webm',
       title:
         'stock-footage creative business team brainstorming ideas working together'
-    },
-    {
-      url:
-        'https://ak0.picdn.net/shutterstock/videos/13949570/preview/stock-footage-creative-business-team-meeting-in-trendy-hipster-office-discussing-new-ideas-female-manager-or.webm',
-      title:
-        'Creative business team meeting in trendy hipster office discussing new ideas'
     },
     {
       url:
