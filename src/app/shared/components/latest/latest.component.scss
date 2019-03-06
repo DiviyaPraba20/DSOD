@@ -37,7 +37,7 @@
     .latest-block-thumbnail {
       position: relative;
       border-top: 3px solid $mine_grey;
-      padding-top: 66.6%;
+      padding-top: 66%;
       >img {
         width: 100%;
         width: 100%;
@@ -96,7 +96,7 @@
       &.aln {
         background: #3d3935;
       }
-      padding: 5px 15px;
+      padding: 8px 15px 7px;
       h4 {
         color: $color-white;
         font-size: 20px;
