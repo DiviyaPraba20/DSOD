@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { debug } from 'util';
 
 @Component({
   selector: 'dsod-education-item-card',
@@ -7,6 +8,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '
 })
 export class EducationItemCardComponent implements OnInit, AfterViewInit {
   video:any;
+  bufferdLength:any;
   @ViewChild('video') myDiv: ElementRef;
   @Input() sampleVideo:any;
   constructor() {}
@@ -14,28 +16,23 @@ export class EducationItemCardComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit(){
-    this.video = this.myDiv.nativeElement;
+    this.video = this.myDiv.nativeElement
     this.video.removeAttribute('controls');
-    this.video.addEventListener('ended', ()=> {
+    this.video.addEventListener('loadeddata', ()=> {
+     this.video.removeAttribute('poster');
+    }, false);
+    this.video.addEventListener('ended', () => {
       this.video.play();
-    });
+    }, false);
   }
 
   onMouseOver(e) {
-    let playPromise = this.video.play();
-
-    if (playPromise !== undefined) {
-      playPromise.then(_ => {
-        this.video.play()
-      })
-        .catch(error => {
-        });
-    }
-    
+      this.video.play();
   }
 
   onMouseLeave(e) {
     this.video.currentTime=0
     this.video.pause();
   }
+
 }

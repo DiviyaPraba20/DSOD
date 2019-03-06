@@ -63,17 +63,13 @@
     }
   }
 
-  // .video-wrapper {
-  //   -webkit-transition: 0.3s all ease;
-  //   transition: 0.3s all ease;
-  //   position: relative;
-  // }
-
-  // &:hover {
-  //   .video-wrapper {
-  //     z-index: 5;
-  //     -webkit-transform: scale(1.1);
-  //     transform: scale(1.22);
-  //   }
-  // }
+  .video-wrapper {
+    max-height: 180px;
+    video[poster]{
+      width: 320px;
+    }
+    video{
+      max-width: 100%;
+    }
+  }
 }
