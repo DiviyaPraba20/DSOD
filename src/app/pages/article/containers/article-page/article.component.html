@@ -6,8 +6,8 @@
           <dsod-article-media [content]="pageContent" [rating]="!avgRating ? pageContent?.avgCommentRating : avgRating"
             [isLoggedIn]="isLoggedIn"></dsod-article-media>
           <dsod-article-content [content]="pageContent?.content"></dsod-article-content>
-          <dsod-gallery *ngIf="pageContent.photos.length" [photos]="pageContent?.photos"></dsod-gallery>
-          <dsod-references *ngIf="pageContent.references.length" [references]="pageContent?.references"></dsod-references>
+          <dsod-gallery [photos]="pageContent?.photos"></dsod-gallery>
+          <dsod-references [references]="pageContent?.references"></dsod-references>
           <div class="row essay-container" *ngIf="pageContent?.visualEssays.length">
             <div class="col-12">
               <h3 class="essay-title">Visual Essay</h3>
