@@ -1,6 +1,6 @@
 <div class="content-actions">
   <ul>
-    <dsod-bookmark
+<dsod-bookmark *ngIf="isLoggedIn"
       [isBookmark]="content.isBookmark"
       (changeBookmark)="onChangeBookmark($event)">
     </dsod-bookmark>

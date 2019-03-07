@@ -13,13 +13,14 @@ import { AddBookmark, RemoveBookmark } from '../../../cms/actions/cms.actions';
 })
 export class DSODContentActionComponent implements OnInit {
   @Input() content: CMSPageContent;
+  @Input() isLoggedIn:boolean;
 
   userInfo: UserProfileData = null;
 
   constructor(
     private store: Store,
-    private toastr: ToastrService
-  ) { }
+    private toastr: ToastrService,
+  ) {}
 
   ngOnInit() {
     this.store.select(state => state.auth.userInfo).subscribe(res => {
@@ -42,7 +43,7 @@ export class DSODContentActionComponent implements OnInit {
       postId: this.content.id,
       categoryId: this.content.categoryId,
       contentTypeId: this.content.contentTypeId,
-      url: 'http://www.dsodentist.com',
+      url: window.location.href,
       status: '1'
     })).subscribe(res => {
       if (this.content.isBookmark) {

@@ -18,28 +18,34 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 h1 {
   font-size: 20px;
   font-weight: 600;
 }
+
 h2 {
   font-size: 17px;
   font-weight: 500;
 }
+
 body {
   font-size: 13px;
-  overflow:  auto;
+  overflow: auto;
   position: relative;
 }
+
 a {
   text-decoration: none !important;
 }
+
 .container {
   margin: 0 auto;
   padding: 0 15px;
 }
+
 h2.section-title {
   font-size: 24px;
   color: $boulder_grey;
@@ -49,23 +55,30 @@ h2.section-title {
   font-weight: bold;
   margin-bottom: 15px;
 }
-ul, li, ul li {
+
+ul,
+li,
+ul li {
   list-style: none;
 }
+
 .glide__arrows {
   .glide__arrow {
     padding: 0;
     border: 0;
     outline: none;
     -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
   }
 }
+
 .p-t-115 {
   padding-top: 115px;
 }
+
 .top-head {
   padding: 20px 150px 20px 0;
+
   ul {
     li {
       display: inline-block;
@@ -74,33 +87,41 @@ ul, li, ul li {
     }
   }
 }
+
 .block-wrap {
   height: 100%;
   padding-bottom: 30px;
 }
+
 .page-content {
   padding-top: 50px;
 }
+
 .hide-loader {
   display: none;
 }
+
 .viewer-modal {
   .modal-dialog {
     max-width: 100%;
     width: 100%;
     margin: 0;
+
     .modal-content {
       border: none;
       border-radius: 0;
+
       .modal-body {
         height: calc(100vh - 153px);
         overflow: hidden auto;
       }
+
       .modal-footer {
         .btn {
           width: auto;
           min-width: 120px;
         }
+
         .text-black {
           color: #000;
         }
@@ -108,39 +129,46 @@ ul, li, ul li {
     }
   }
 }
+
 .datepicker-wrap {
   /deep/ .ngb-dp-arrow-btn {
     height: auto;
     color: $text-main;
   }
 }
+
 .datepicker-wrap {
   /deep/ .dropdown-menu {
     font-size: 13px;
     font-weight: 400;
   }
 }
+
 .create-event {
   .modal-dialog {
     max-width: 1000px;
   }
+
   .modal-body {
     padding: 50px;
   }
 }
+
 .iframe-container {
- p{
-   margin: 0;
-   iframe{
-     width: 100%;
-     height: 100%;
-   }
- }
+  p {
+    margin: 0;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
 }
 
-.iframe-wrap{
-   position: relative;
-   padding-top: 57%;
+.iframe-wrap {
+  position: relative;
+  padding-top: 57%;
 }
 
 @media only screen and (min-width:1440px) {

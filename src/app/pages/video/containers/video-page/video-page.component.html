@@ -30,11 +30,11 @@
                 <dsod-video-title [content]="pageContent"></dsod-video-title>
               </div>
               <div class="col-2">
-                <dsod-content-actions [content]="pageContent"></dsod-content-actions>
+                <dsod-content-actions [content]="pageContent" [isLoggedIn]="isLoggedIn"></dsod-content-actions>
               </div>
             </div>
           </div>
-            <dsod-feartured-media [featuredMedia]="pageContent.featuredMedia" styleFor="header"></dsod-feartured-media>
+          <dsod-feartured-media [featuredMedia]="pageContent.featuredMedia" styleFor="header"></dsod-feartured-media>
           <dsod-video-content [content]="pageContent?.content"></dsod-video-content>
           <dsod-gallery [photos]="pageContent?.photos"></dsod-gallery>
           <dsod-references [references]="pageContent?.references"></dsod-references>

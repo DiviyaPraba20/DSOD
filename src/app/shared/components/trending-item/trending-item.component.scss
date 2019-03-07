@@ -8,7 +8,8 @@
   /deep/ iframe {
     width: 100% !important;
     position: relative !important;
-    height: 223px !important;
+    height: 227px !important;
+    border: none !important;
   }
 
   .trending-block-header {
@@ -69,7 +70,7 @@
   .trending-block-caption {
     background: $regent-gray;
     padding: 9px 15px;
-
+    margin-top: -4px;
     &.nbl {
       background: #ed1b2f;
     }

@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-lg-9 article-content-wrap pr-3 pr-lg-4">
         <div class="article-content">
-          <dsod-article-media [content]="pageContent" [rating]="!avgRating ? pageContent?.avgCommentRating : avgRating"></dsod-article-media>
+          <dsod-article-media [content]="pageContent" [rating]="!avgRating ? pageContent?.avgCommentRating : avgRating"
+            [isLoggedIn]="isLoggedIn"></dsod-article-media>
           <dsod-article-content [content]="pageContent?.content"></dsod-article-content>
           <dsod-gallery *ngIf="pageContent.photos.length" [photos]="pageContent?.photos"></dsod-gallery>
           <dsod-references *ngIf="pageContent.references.length" [references]="pageContent?.references"></dsod-references>
