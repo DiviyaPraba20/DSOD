@@ -38,12 +38,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   };
   podcastType: CMSContentTypeModel;
   videoType: CMSContentTypeModel;
-  storeSub: Subscription;
+  storeSub1: Subscription;
+  storeSub2: Subscription;
 
   constructor(private store: Store, private authService: AuthService) {
     store.dispatch(new actions.FetchContentTypes());
     store.dispatch(new actions.FetchSponsorsList());
-    this.storeSub = store.select(state => state.cms.contentTypes)
+    this.storeSub1 = store.select(state => state.cms.contentTypes)
       .pipe(skip(1)).subscribe(item => {
         this.podcastType = item.filter(o => o.name === 'Podcasts');
         this.videoType = item.filter(o => o.name === 'Videos');
@@ -53,14 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             isFeatured: true,
             limit: 6
           })
-        );
-        this.store.dispatch(
-          new FetchLatestTopics({
-            ...this.params,
-            isFeatured: false,
-            limit: 6
-          })
-        );
+        );  
         this.store.dispatch(
           new FetchTrendingTopics({
             ...this.params,
@@ -68,28 +62,46 @@ export class HomeComponent implements OnInit, OnDestroy {
             contentTypeId: this.videoType[0].id
           })
         );
-        this.store.dispatch(
-          new FetchSponsoredTopics({
-            ...this.params,
-            limit: 1,
-            sponsorId: '260'
-          })
-        );
-        this.store.dispatch(
-          new FetchSponsoredTopics({
-            ...this.params,
-            limit: 1,
-            sponsorId: '502'
-          })
-        );
-        this.store.dispatch(
-          new FetchSponsoredTopics({
-            ...this.params,
-            limit: 1,
-            sponsorId: '197'
-          })
-        );
+        
       });
+
+    this.storeSub2=this.store.select(state => state.cms.sponsorsList).pipe(skip(1)).subscribe(sponsors=>{
+      const gsk=sponsors.filter(sponsor=>sponsor.name==='GSK')
+      const nbl = sponsors.filter(sponsor => sponsor.name === 'NBL')
+      const aln = sponsors.filter(sponsor => sponsor.name === 'ALN')
+      const tnmg = sponsors.filter(sponsor => sponsor.name === 'TNMG')
+      this.store.dispatch(
+        new FetchLatestTopics({
+          ...this.params,
+          isFeatured: false,
+          limit: 6,
+          sponsorId: tnmg[0].id
+        })
+      );
+      this.store.dispatch(
+        new FetchSponsoredTopics({
+          ...this.params,
+          limit: 1,
+          sponsorId: aln[0].id
+        })
+      );
+      this.store.dispatch(
+        new FetchSponsoredTopics({
+          ...this.params,
+          limit: 1,
+          sponsorId: nbl[0].id
+        })
+      );
+      this.store.dispatch(
+        new FetchSponsoredTopics({
+          ...this.params,
+          limit: 1,
+          sponsorId: gsk[0].id
+        })
+      );
+    })
+
+
   }
 
   ngOnInit() {
@@ -117,6 +129,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(new actions.ResetState());
-    this.storeSub.unsubscribe();
+    this.storeSub1.unsubscribe();
+    this.storeSub2.unsubscribe();
   }
 }
+
+

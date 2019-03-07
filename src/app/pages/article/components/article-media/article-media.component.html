@@ -12,7 +12,7 @@
       <span class="by" *ngIf="content.author">by {{content.author.fullName}}</span>
     </div>
     <div class="col-2">
-      <dsod-content-actions [content]="content"></dsod-content-actions>
+<dsod-content-actions [content]="content" [isLoggedIn]="isLoggedIn"></dsod-content-actions>
     </div>
   </div>
 </div>
