@@ -3,7 +3,13 @@
 :host {
   .slide-content-wrap {
     position: relative;
-
+    height:100%;
+    >img{
+      height:100%;
+      widows: 100%;
+      -o-object-fit: cover;
+         object-fit: cover;
+    }
     .sponsored-by-tag span {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -36,7 +42,7 @@
       position: absolute;
       max-width: 1300px;
       width: 100%;
-      bottom: 77px;
+      bottom: 20%;
       left: 50%;
       -webkit-transform: translateX(-50%);
       transform: translateX(-50%);

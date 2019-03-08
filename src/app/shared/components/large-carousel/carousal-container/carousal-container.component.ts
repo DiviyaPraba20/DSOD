@@ -4,7 +4,8 @@ import {
   OnInit,
   AfterViewInit,
   ElementRef,
-  ViewChild
+  ViewChild,
+  OnDestroy
 } from '@angular/core';
 import Glide, {
   Controls,
@@ -17,16 +18,18 @@ import Glide, {
   templateUrl: './carousal-container.component.html',
   styleUrls: ['./carousal-container.component.scss']
 })
-export class DSODCarousalLargeComponent implements OnInit, AfterViewInit {
+export class DSODCarousalLargeComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() carousalItems: any;
   @ViewChild('slider') slider: ElementRef;
+  @ViewChild('sliderRef') sliderRef: ElementRef;
+  glide:Glide;
   constructor() {}
   ngOnInit() {}
 
   ngAfterViewInit() {
     const elems = this.slider.nativeElement as HTMLUListElement;
     if (elems.children.length > 0) {
-      new Glide('.banner', {
+      this.glide= new Glide(this.sliderRef.nativeElement, {
         type: 'carousel',
         autoheight: false,
         autoplay: 8000,
@@ -37,5 +40,9 @@ export class DSODCarousalLargeComponent implements OnInit, AfterViewInit {
         dragDistance: 100
       }).mount({ Autoplay, Controls, Anchors });
     }
+  }
+
+  ngOnDestroy(){
+    this.glide.destroy();
   }
 }
