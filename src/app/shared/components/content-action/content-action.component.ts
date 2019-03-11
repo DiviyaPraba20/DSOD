@@ -13,7 +13,7 @@ import { AddBookmark, RemoveBookmark } from '../../../cms/actions/cms.actions';
 })
 export class DSODContentActionComponent implements OnInit {
   @Input() content: CMSPageContent;
-  @Input() isLoggedIn:boolean;
+  @Input() isLoggedIn: boolean;
 
   userInfo: UserProfileData = null;
 
