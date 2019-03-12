@@ -1,6 +1,7 @@
-<div class="banner">
+<div class="banner" #sliderRef>
   <div class="glide__track" data-glide-el="track">
     <ul class="glide__slides" #slider>
+      
       <dsod-carousal-lg-item [content]="con" *ngFor="let con of carousalItems">
       </dsod-carousal-lg-item>
     </ul>

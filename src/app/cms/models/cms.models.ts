@@ -88,6 +88,7 @@ export interface CMSPageContent {
 }
 
 export interface CMSContentParams {
+  title?:string
   authorId?: string;
   categoryId?: string;
   contentTypeId?: string;
