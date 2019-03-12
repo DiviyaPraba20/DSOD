@@ -56,7 +56,6 @@ export class DSODVideoPageComponent implements OnInit {
       }),
       tap(res => {
         this.pageContent = res;
-        console.log(this.pageContent);
       })
     ).subscribe();
   }

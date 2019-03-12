@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             isFeatured: true,
             limit: 6
           })
-        );  
+        );
         this.store.dispatch(
           new FetchTrendingTopics({
             ...this.params,
@@ -62,14 +62,13 @@ export class HomeComponent implements OnInit, OnDestroy {
             contentTypeId: this.videoType[0].id
           })
         );
-        
       });
 
-    this.storeSub2=this.store.select(state => state.cms.sponsorsList).pipe(skip(1)).subscribe(sponsors=>{
-      const gsk=sponsors.filter(sponsor=>sponsor.name==='GSK')
-      const nbl = sponsors.filter(sponsor => sponsor.name === 'NBL')
-      const aln = sponsors.filter(sponsor => sponsor.name === 'ALN')
-      const tnmg = sponsors.filter(sponsor => sponsor.name === 'TNMG')
+    this.storeSub2 = this.store.select(state => state.cms.sponsorsList).pipe(skip(1)).subscribe(sponsors => {
+      const gsk = sponsors.filter(sponsor => sponsor.name === 'GSK');
+      const nbl = sponsors.filter(sponsor => sponsor.name === 'NBL');
+      const aln = sponsors.filter(sponsor => sponsor.name === 'ALN');
+      const tnmg = sponsors.filter(sponsor => sponsor.name === 'TNMG');
       this.store.dispatch(
         new FetchLatestTopics({
           ...this.params,
@@ -99,9 +98,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           sponsorId: gsk[0].id
         })
       );
-    })
-
-
+    });
   }
 
   ngOnInit() {

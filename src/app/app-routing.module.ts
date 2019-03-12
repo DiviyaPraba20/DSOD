@@ -5,6 +5,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TermsComponent } from './pages/terms/terms.component';
+import { AdPolicyComponent } from './pages/ad-policy/ad-policy.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
       {
         path: 'terms',
         component: TermsComponent
+      },
+      {
+        path: 'adpolicy',
+        component: AdPolicyComponent
       },
       {
         path: '',
