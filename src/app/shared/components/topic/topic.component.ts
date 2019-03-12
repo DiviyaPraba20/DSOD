@@ -20,6 +20,7 @@ export class DSODTopicComponent implements OnInit {
   @Input() sponsorName: string;
 
   iFrameCode: any;
+  featuredImageUrl: string;
 
   constructor(
     private router: Router,
@@ -30,6 +31,7 @@ export class DSODTopicComponent implements OnInit {
     if (this.topic.featuredMedia.type === '6') {
       this.iFrameCode = this.sanitizer.bypassSecurityTrustHtml(this.topic.featuredMedia.code.iFrameCode);
     }
+    this.featuredImageUrl = `${environment.url}/file/downloadFileByObjectId?objectId=${this.topic.featuredMedia.code.original}`;
   }
 
   navigateTo(e) {

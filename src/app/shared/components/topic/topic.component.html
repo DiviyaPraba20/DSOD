@@ -10,10 +10,10 @@
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && topic.featuredMedia.type === '1' && showImage">
       <a role="button" (click)="navigateTo($event)">
-        <img *ngIf="imgLarge; else imgsm" [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid img-lg"
+        <img *ngIf="imgLarge; else imgsm" [src]="featuredImageUrl" class="img-fluid img-lg"
           alt="Feautred Thumbnail Large">
         <ng-template #imgsm>
-          <img [src]="getImageUrl(topic.featuredMedia.code.original)" class="img-fluid" alt="Feautred Thumbnail small">
+          <img [src]="featuredImageUrl" class="img-fluid" alt="Feautred Thumbnail small">
         </ng-template>
       </a>
       <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)" *ngIf="topic.contentTypeName">
@@ -23,11 +23,11 @@
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && topic.featuredMedia.type === '3' && showImage">
       <a role="button" (click)="navigateTo($event)">
         <video *ngIf="imgLarge; else imgsm" class="featured-video img-fluid img-lg" width="100%" controls>
-          <source [src]="getImageUrl(topic.featuredMedia.code.original)" type="video/mp4">
+          <source [src]="featuredImageUrl" type="video/mp4">
         </video>
         <ng-template #imgsm>
-          <video *ngIf="imgLarge; else imgsm" class="featured-video img-fluid" width="100%" controls>
-            <source [src]="getImageUrl(topic.featuredMedia.code.original)" type="video/mp4">
+          <video class="featured-video img-fluid" width="100%" controls>
+            <source [src]="featuredImageUrl" type="video/mp4">
           </video>
         </ng-template>
       </a>
