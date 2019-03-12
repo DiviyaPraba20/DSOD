@@ -49,12 +49,14 @@
     border-top: 3px solid $mine_grey;
     position: relative;
 
-    >img {
-      width: 100%;
-    }
-
     /deep/ iframe {
       width: 100%;
+    }
+    /deep/ p{
+      margin-bottom: 0;
+      iframe {
+        width: 100%;
+      }
     }
 
     a.play-icon {
@@ -70,7 +72,7 @@
   .trending-block-caption {
     background: $regent-gray;
     padding: 9px 15px;
-    margin-top: -4px;
+    margin-top: -5px;
     &.nbl {
       background: #ed1b2f;
     }
