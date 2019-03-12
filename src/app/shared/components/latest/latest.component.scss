@@ -32,14 +32,13 @@
           color: #f15d22;
         }
       }
-      
+
     }
     .latest-block-thumbnail {
       position: relative;
       border-top: 3px solid $mine_grey;
       padding-top: 66%;
       >img {
-        width: 100%;
         width: 100%;
         height: 100%;
         -o-object-fit: cover;
@@ -48,8 +47,12 @@
         top: 0;
         left: 0;
       }
-      >Video {
+      >video {
         width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
       a.read-about {
         position: absolute;
