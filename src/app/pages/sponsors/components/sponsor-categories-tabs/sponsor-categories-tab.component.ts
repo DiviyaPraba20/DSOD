@@ -39,6 +39,7 @@ export class DSODSponsorCategoriesTabsCompnonent implements OnInit, OnDestroy {
       .subscribe(items => {
         if (items.length) {
           const sponsor = items.filter(item => item.name == this.sponsorName);
+          console.log("================[ "+JSON.stringify(sponsor) + " ]=======");
           this.extractedId = sponsor[0].id;
           this.store.dispatch(
             new actions.FetchSponsoredCategories(sponsor[0].id)
@@ -55,5 +56,25 @@ export class DSODSponsorCategoriesTabsCompnonent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
     this.storeSub.unsubscribe();
+  }
+
+  getTabNamesForSponsor(sponsorName: string) : string[] {
+      let alignTabs: string[] = ["iTero Protocols", "Invisalign Processes", "Practice Building"];
+      let gskTabs: string[] = ["Oral Health", "Gingival Care", "Denture Care"];
+      let nblTabs: string[] = ["Implant Therapy", "Diagnosis & Treatment Planning", "Site Development", "Implant Practice"];
+
+      if(sponsorName === 'ALN'){
+         return alignTabs;
+      }
+
+      if(sponsorName === 'GSK'){
+         return gskTabs;
+      }
+
+      if(sponsorName === 'NBL'){
+         return nblTabs;
+      }
+
+      return alignTabs;
   }
 }

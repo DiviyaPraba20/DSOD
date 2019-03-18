@@ -26,7 +26,7 @@ export class DSODPracticesTabComponent implements OnInit {
         ...this.params,
       contentTypeId: this.contentTypeId,
       categoryId: this.categoryId
-      }));
+    }));
     this.DSOPracicesPost$ = this.store.select(state => state.cms.DSOPractices);
   }
 }

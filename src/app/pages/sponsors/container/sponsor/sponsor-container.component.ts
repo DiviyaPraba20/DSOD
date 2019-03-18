@@ -12,9 +12,21 @@ export class DSODSponsorContainerComponent implements OnInit {
   sponsorName: any;
   //ALN banners contets
   ALNcontents: DSODSliderContent[] = [
-    {
+    /**{
       title: 'Assessment of the Implant Patient:',
       description: 'Review criteria for DSO dentists',
+      actionName: 'Learn More',
+      actionLink: '/',
+      contentType: DSODContentType.Image,
+      src: 'assets/images/sponsor-images/align-banner-1.png',
+      url: '',
+      logo: 'assets/images/sponsor-images/ALN-logo-white.png',
+      sponsoredBy: 'Sponsored content from Align',
+      filterby: 'ALN'
+    },*/
+    {
+      title: 'Sequential Distalization',
+      description: 'Treating the Class II Teen Patient',
       actionName: 'Learn More',
       actionLink: '/',
       contentType: DSODContentType.Image,
@@ -63,7 +75,7 @@ export class DSODSponsorContainerComponent implements OnInit {
   ];
   // GSK Banners Contents
   GSKcontents: DSODSliderContent[] = [
-    {
+    /*{
       title: 'Dentin Hypersensitivity:',
       description: 'Your refrence to the hydrodynamic theory',
       actionName: 'Learn More',
@@ -74,7 +86,7 @@ export class DSODSponsorContainerComponent implements OnInit {
       logo: 'assets/images/gsk-icon-sm.png',
       sponsoredBy: 'Sponsored content from GlaxoSmithKline',
       filterby: 'GSK'
-    },
+    },*/
     {
       title: 'Edentulism and the Denture Patient Journey',
       description: '',
@@ -116,6 +128,7 @@ export class DSODSponsorContainerComponent implements OnInit {
   //NBL banners contents
 
   NBLcontents: DSODSliderContent[] = [
+    /**
     {
       title: 'Sequential Distalization',
       description: 'Treating the Class II Teen Patient',
@@ -127,7 +140,19 @@ export class DSODSponsorContainerComponent implements OnInit {
       logo: 'assets/images/sponsor-images/NBL-logo-white.png',
       sponsoredBy: 'Sponsored content from Noble Biocare, N.A.',
       filterby: 'NBL'
-    },
+    }, */
+   /* {
+      title: 'Assessment of the Implant Patient:',
+      description: 'Review criteria for DSO dentists',
+      actionName: 'Learn More',
+      actionLink: '/',
+      contentType: DSODContentType.Image,
+      src: 'assets/images/sponsor-images/noble-banner-1.png',
+      url: '',
+      logo: 'assets/images/sponsor-images/NBL-logo-white.png',
+      sponsoredBy: 'Sponsored content from Noble Biocare, N.A.',
+      filterby: 'NBL'
+    },*/
     {
       title: 'The Importance of Primary Stability',
       description: '',
@@ -141,7 +166,7 @@ export class DSODSponsorContainerComponent implements OnInit {
       filterby: 'NBL'
     },
     {
-      title: 'Socket Augmentation 5 Clinical Pearls',
+      title: 'Socket Augmentation: 5 Clinical Pearls',
       description: '',
       actionName: 'Learn More',
       actionLink: '/',

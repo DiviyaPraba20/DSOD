@@ -55,6 +55,8 @@
         &:first-child {
           .nav-link::before {
             content: url(../../../../../assets/images/sponsor-images/aln-icon-md.png);
+            padding-top: 10px;
+            padding-right: 10px;
           }
         }
       }

@@ -42,6 +42,8 @@ export class DSODLatestComponent implements OnInit, OnChanges {
   }
 
   getImageUrl(id: string) {
-    return `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
+    let url = `${environment.url}/file/downloadFileByObjectId?objectId=${id}`;
+    console.log("getImageUrl() called URL populated ==> " + url)
+    return url;
   }
 }

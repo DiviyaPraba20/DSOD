@@ -48,7 +48,12 @@ export class DSODSponsorCategoryContentComponent implements OnInit , OnDestroy {
     });
   }
 
+  //stringify(obj){
+  //   return JSON.stringify(obj);
+  //}
+
   getSponsorContent(categoryId?:string){
+    console.log("**sponsorName-->"+ this.sponsorName +" -> getSponsorContent called for categoryID: " + categoryId);
     this.storeSub = this.store.select(state => state.cms.sponsorsList)
       .pipe(takeUntil(this._unsubscribeAll)).subscribe(item => {
         if(item.length){
