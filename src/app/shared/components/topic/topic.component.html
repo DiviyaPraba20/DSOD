@@ -10,10 +10,9 @@
     </div>
     <div class="topic-block-thumbnail" *ngIf="topic.featuredMedia && topic.featuredMedia.type === '1' && showImage">
       <a role="button" (click)="navigateTo($event)">
-        <img *ngIf="imgLarge; else imgsm" [src]="featuredImageUrl" class="img-fluid img-lg"
-          alt="Feautred Thumbnail Large">
+        <img *ngIf="imgLarge; else imgsm" [src]="featuredImageUrl" class="img-fluid img-lg" alt="Feautred Thumbnail Large">
         <ng-template #imgsm>
-          <img [src]="featuredImageUrl" class="img-fluid" alt="Feautred Thumbnail small">
+           <img [src]="featuredImageUrl" class="img-fluid" alt="Feautred Thumbnail small">
         </ng-template>
       </a>
       <a role="button" class="read-about thumbnail-link" (click)="navigateTo($event)" *ngIf="topic.contentTypeName">
@@ -44,6 +43,12 @@
       </a>
     </div>
     <div class="topic-block-content">
+      <!-- RK: FOR DEMO - HARDCODED THIS URL FOR NBL - IT SHOULD BE FIXED ASAP. BEGIN -->
+      <ng-template [ngIf]="topic.title === 'A Lens into Clinical Photography'">
+        <img class="img-fluid w-100 mt-2 mb-3 ng-star-inserted" src="https://cmsapi1.dsodentist.com/content/contentservice/v1/file/downloadFileByObjectId?objectId=5c8fb2bcd57eb44d9ce7cbb7">
+      </ng-template>
+      <!-- RK: FOR DEMO - HARDCODED THIS URL FOR NBL - IT SHOULD BE FIXED ASAP. END -->
+
       <h2 class="topic-title-large mb-1" [ngClass]="{'topic-title-small':styleFor=='content-sm'}" (click)="navigateTo($event)">{{topic.title}}</h2>
       <em *ngIf="topic.author" (click)="onClickAuthor(topic.authorId)">By&nbsp;{{topic.author.fullName}}
         <a role="button" class="read-about" *ngIf="styleFor==='content-sm'&& (!topic.featuredMedia || !showImage)"
@@ -51,6 +56,7 @@
           <img src="assets/images/icons/{{topic.contentTypeName}}.png" alt="" (click)="navigateTo($event)">
         </a>
       </em>
+
       <dsod-excerpt [topic]="topic" [contentLength]="contentLength" [styleFor]="styleFor"></dsod-excerpt>
     </div>
   </div>
