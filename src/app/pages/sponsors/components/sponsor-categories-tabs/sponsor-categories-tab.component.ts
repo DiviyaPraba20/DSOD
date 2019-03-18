@@ -61,7 +61,7 @@ export class DSODSponsorCategoriesTabsCompnonent implements OnInit, OnDestroy {
   getTabNamesForSponsor(sponsorName: string) : string[] {
       let alignTabs: string[] = ["iTero Protocols", "Invisalign Processes", "Practice Building"];
       let gskTabs: string[] = ["Oral Health", "Gingival Care", "Denture Care"];
-      let nblTabs: string[] = ["Implant Therapy", "Diagnosis & Treatment Planning", "Site Development", "Implant Practice"];
+      let nblTabs: string[] = [""];//["Implant Therapy", "Diagnosis & Treatment Planning", "Site Development", "Implant Practice"];
 
       if(sponsorName === 'ALN'){
          return alignTabs;
