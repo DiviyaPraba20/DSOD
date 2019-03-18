@@ -24,8 +24,9 @@
           <div class="row">
             <div class="col-lg-12 col-md-7">
               <div *ngFor="let topic of trendingTopics$ | async">
-                <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
-                  [showRating]=true></dsod-topic>
+                <ng-template *ngIf="topic?.authorId">xc[{{topic.authorId}}]fx</ng-template>
+                  <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
+                    [showRating]=true *ngIf="topic?.authorId"></dsod-topic>
               </div>
             </div>
             <div class="col-lg-12 col-md-5">
