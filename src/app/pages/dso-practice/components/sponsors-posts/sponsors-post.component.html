@@ -1,8 +1,9 @@
 <div class="practice-sponsors">
   <div class="container-fluid">
-    <div class="row mb-5 flex-sm-column-reverse flex-xl-row" *ngFor="let topic of (sponsoredTopics$ | async)">
-      <div class="col-xl-6">
+    <div class="row mb-5 flex-sm-column-reverse flex-xl-row"  *ngFor="let topic of (sponsoredTopics$ | async)">
+      <div class="col-xl-6" *ngIf="BLOCK_HARDCODED_CODE_FOR_DEMO">
         <div class="sponsor-desc">
+
           <div class="sponsor-header mb-3">
             <img class="img-fluid" src="assets/images/icons/{{topic.sponsorName}}-bar.jpg" alt="">
           </div>
@@ -17,8 +18,9 @@
           <a href="javascript:void(0)" (click)="navigateTo(topic)" class="read-more-btn">Read More <span><i class="fa fa-arrow-right"
                 aria-hidden="true"></i></span></a>
         </div>
+
       </div>
-      <div class="col-xl-6 thumbnail">
+      <div class="col-xl-6 thumbnail"  *ngIf="BLOCK_HARDCODED_CODE_FOR_DEMO">
         <dsod-feartured-media [featuredMedia]="topic.featuredMedia"></dsod-feartured-media>
         <!-- <img *ngIf="topic.featuredMedia && topic.featuredMedia.type !== '6'"
           class="img-fluid"

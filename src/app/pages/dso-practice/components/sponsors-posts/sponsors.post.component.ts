@@ -17,6 +17,8 @@ export class DSODPracticesSponsorsComponent implements OnInit, OnDestroy {
   @Input() contentTypeId: string;
   @Input() categoryId: string;
 
+  public BLOCK_HARDCODED_CODE_FOR_DEMO = false;
+
   storeSub: Subscription;
   sponsoredTopics$: Observable<CMSResponse<CMSPageContent[]>>;
   params: CMSContentParams = {
