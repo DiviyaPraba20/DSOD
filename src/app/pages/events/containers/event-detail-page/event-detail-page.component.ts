@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgbDateAdapter, NgbDateNativeAdapter, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Glide, { Controls, Autoplay, Anchors } from '@glidejs/glide/dist/glide.modular.esm';
 
@@ -21,6 +21,9 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
   isdeletionEnable = false;
   isLoggedIn$ = this.authService.isLoggedIn$;
 
+  private sub: any;
+  selectedEvent: any;
+
   @ViewChild('slider') slider: ElementRef;
   @ViewChildren(DSODEventCardComponent) childrenCardComponents: QueryList<DSODEventCardComponent>;
 
@@ -30,14 +33,22 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       image: 'assets/images/event-4-lg.png',
       title: 'The Importance of Oral Hygiene for the Pediatric Patient',
       author: 'Dr. Greg Psaltis',
-      content: `This webinar will discuss how primary dental care plays a vital role in children's dental health as they grow and will`,
+      content: `This webinar will discuss how primary dental care plays a vital role in children’s dental health as they grow
+                        and
+                        will cover ways to instill good oral hygiene habits in these children. Developing good oral hygiene habits at a
+                        young
+                        age is the first step in securing a safe future from many common dental issues such as plaque, gum disease, and
+                        cavities. If these habits are not enforced at a young age, the same poor hygiene habits could negatively impact
+                        their
+                        oral health as an adult and impact their daily lives as well. `,
       date: 'Feb 10 2018 12:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
       time: '9pm EST',
       eventType: 'In-Person Event',
       level: 'Advanced',
-      price: 'Free'
+      price: 'Free',
+      attendees: '50'
     },
     {
       id: 2,
@@ -51,7 +62,8 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'Virtual Event',
       level: 'Beginner',
-      price: 'Free'
+      price: 'Free',
+      attendees: '150'
     },
     {
       id: 3,
@@ -59,13 +71,14 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       title: 'Managing the Relationship Between the Teeth and the Oral Environment',
       author: 'Dr. Kenneth Markowitz ',
       content: `This webinar will explain the relationship between a patient's saliva`,
-      date: 'Apr 11 2018 12:00:00 GMT-0500',
+      date: 'Sept 10 2019 10:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
       time: '10am EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price: 'Free'
+      price: 'Free',
+      attendees: '70'
     },
     {
       id: 4,
@@ -79,7 +92,8 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price: 'Free'
+      price: 'Free',
+      attendees: '50'
     },
     {
       id: 5,
@@ -93,7 +107,8 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       time: '3pm EST',
       eventType: 'In-Person Event',
       level: 'Advanced',
-      price: 'Free'
+      price: 'Free',
+      attendees: '200'
     },
     {
       id: 6,
@@ -107,7 +122,8 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       time: '11am EST',
       eventType: 'In-Person Event',
       level: 'Beginner',
-      price: 'Free'
+      price: 'Free',
+      attendees: '200'
     },
     {
       id: 7,
@@ -121,7 +137,8 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'Virtual Event',
       level: 'Beginner',
-      price: 'Free'
+      price: 'Free',
+      attendees: '150'
     },
     {
       id: 8,
@@ -135,7 +152,8 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       time: '11am EST',
       eventType: 'In-Person Event',
       level: 'Beginner',
-      price: 'Free'
+      price: 'Free',
+      attendees: '250'
     },
     {
       id: 9,
@@ -149,8 +167,55 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       time: '1pm EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price: 'Free'
+      price: 'Free',
+      attendees: '50'
+    },
+    {
+      id:10,
+      image: 'assets/images/event-1.png',
+      title:'Vital First Steps for a New Dentist',
+      author: 'Dr. Shach Bahadur',
+      content: 'Vital First Steps for a New Dentist...',
+      date: 'June 15 2010 12:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '1pm EST',
+      eventType: 'In-Person Event',
+      level: 'Expert',
+      price: 'Free',
+      attendees: '50'
+    },
+    {
+      id:11,
+      image: 'assets/images/event-2.png',
+      title:'Improving Oral Hygiene and Health by Reducing Dental Plaque Biofilm',
+      author: 'Christine Hovliaras, RDH',
+      content: 'Vital First Steps for a New Dentist...',
+      date: 'July, 7 2019 11:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '10am EST',
+      eventType: 'In-Person Event',
+      level: 'Expert',
+      price: 'Free',
+      attendees: '100'
+    },
+    {
+      id:12,
+      image: 'assets/images/event-3.png',
+      title:'Key Questions to Ask When Considering an Associateship',
+      author: 'Dr. Niv Rajagopalan',
+      content: 'Key Questions to Ask When Considering an Associateship...',
+      date: 'July, 26 2019 11:00:00 GMT-0500',
+      duration: '1hr',
+      place: 'New York, NY',
+      time: '10am EST',
+      eventType: 'In-Person Event',
+      level: 'Expert',
+      price: 'Free',
+      attendees: '100'
     }
+
   ];
 
   content: DSODSliderContent[] = [
@@ -168,8 +233,19 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
   constructor(
     private modalService: NgbModal,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
+
+  ngOnInit() {
+     this.sub = this.route.params.subscribe(params => {
+        let pathEventId = +params['id'];
+        if(pathEventId) {
+           let filteredEvents = this.events.filter(event => event.id == pathEventId);
+           this.selectedEvent = filteredEvents[0];
+        }
+     });
+  }
 
   ngAfterViewInit() {
     const elems = this.slider.nativeElement as HTMLUListElement;
@@ -185,6 +261,9 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
         dragDistance: 100
       }).mount({ Autoplay, Controls, Anchors });
     }
+  }
+  stringify(obj){
+     return JSON.stringify(obj);
   }
 
   onSelectDate(e) {
@@ -220,4 +299,5 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       return;
     }
   }
+
 }

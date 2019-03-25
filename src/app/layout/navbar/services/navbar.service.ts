@@ -7,9 +7,9 @@ export class NavbarService {
   getNavItems(): Navigation[] {
     return [
       { title: 'Home', link: './' },
-      {
-        title: 'Education',
-        link: 'education',
+      //{
+      //  title: 'Education',
+      //  link: 'education',
       //   children: [
       //     { title: 'Latest', link: 'latest' },
       //     { title: 'Articles', link: 'articles' },
@@ -27,7 +27,7 @@ export class NavbarService {
       //     { title: 'Job Alerts', link: 'job-alerts' },
       //     { title: 'Search', link: 'search' }
       //   ]
-      },
+      //},
       {
         title: 'From Our Sponsors',
         children: [

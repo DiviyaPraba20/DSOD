@@ -154,13 +154,22 @@ export class DSODEventsPageComponent{
   contents: DSODSliderContent[] = [
     {
       title: '4 Important "Must Do" Steps for New Dentists',
-      description: 'November 15, 2018 | 9 pm EST',
+      description: 'August 15, 2019 | 1 pm EST',
       actionName: 'Learn More',
-      actionLink: '/',
+      actionLink: '/events/10',
       contentType: DSODContentType.Image,
       src: 'assets/images/event-banner-slide1.png',
       url: ''
-    }
+    },
+    {
+          title: 'The Importance of Oral Health for the Pediatric Patient',
+          description: 'August 10, 2019 | 10 am EST',
+          actionName: 'Learn More',
+          actionLink: '/events/1',
+          contentType: DSODContentType.Image,
+          src: 'assets/images/event-banner-slide2.png',
+          url: '/events/1'
+        }
   ];
   constructor(
     private modalService: NgbModal,
@@ -195,10 +204,11 @@ export class DSODEventsPageComponent{
   }
 
   navigateTo(e) {
-    if (e.id === 1) {
-      this.router.navigate(['events', e.id]);
-    } else {
-      return;
-    }
+    //if (e.id === 1) {
+    //  this.router.navigate(['events', e.id]);
+    //} else {
+    //  return;
+    //}
+    this.router.navigate(['events', e.id]);
   }
 }

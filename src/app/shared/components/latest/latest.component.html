@@ -7,9 +7,25 @@
         [title]="latestTopics[0].title" [commentsCount]="latestTopics[0].countOfComment" [sponsorName]="sponsorName"></dsod-rating>
     </div>
 
-    <!-- DEBUG URL - {{getImageUrl(latestTopics[0].featuredMedia.code.original)}} -->
-    <div *ngIf="latestTopics[0].featuredMedia" class="latest-block-thumbnail" (click)="navigateTo(latestTopics[0])">
+    <!-- DEBUG POINT
+    ID - {{latestTopics[0].featuredMedia?.type}}
+    >>featuredMedia.code.thumbnail => {{getImageUrl(latestTopics[0].featuredMedia.code.thumbnail)}}
+    <br/>
+    >>featuredMedia.code.original => {{getImageUrl(latestTopics[0].featuredMedia.code.original)}} -->
+    <!-- div *ngIf="latestTopics[0].featuredMedia" class="latest-block-thumbnail" (click)="navigateTo(latestTopics[0])">
       <img *ngIf="latestTopics[0].featuredMedia?.type === '1'" class="featured-img img-fluid" [src]="getImageUrl(latestTopics[0].featuredMedia.code.original)" alt="Feautred Thumbnail Large">
+      <video *ngIf="latestTopics[0].featuredMedia?.type === '3'" class="featured-video" width="100%" controls>
+        <source [src]="getImageUrl(latestTopics[0].featuredMedia.code.original)" type="video/mp4">
+      </video>
+      <div *ngIf="latestTopics[0].featuredMedia?.type === '6'" class="iframe-container" [innerHTML]="iFrameCode"></div>
+      <a *ngIf="latestTopics[0].contentTypeName" href="javascript:void(0)" class="read-about">
+        <img src="assets/images/icons/{{latestTopics[0].contentTypeName}}.png" alt="">
+      </a>
+    </div -->
+
+    <div *ngIf="latestTopics[0].featuredMedia" class="latest-block-thumbnail" (click)="navigateTo(latestTopics[0])">
+      <img *ngIf="latestTopics[0].featuredMedia?.type === '1' || latestTopics[0].featuredMedia?.type === '4'"
+           class="featured-img img-fluid" [src]="getImageUrl(latestTopics[0].featuredMedia.code.thumbnail)"   alt="Feautred Thumbnail Large">
       <video *ngIf="latestTopics[0].featuredMedia?.type === '3'" class="featured-video" width="100%" controls>
         <source [src]="getImageUrl(latestTopics[0].featuredMedia.code.original)" type="video/mp4">
       </video>
