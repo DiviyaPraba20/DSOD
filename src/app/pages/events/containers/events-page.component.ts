@@ -54,7 +54,7 @@ export class DSODEventsPageComponent{
     {
       id: 3,
       image: 'assets/images/event-6-lg.png',
-      title: 'Managing the Relationship Between the Teeth and the Oral Environment',
+      title: 'Managing the Relationship Between the Teeth and the Oral Environment',
       author: 'Dr. Kenneth Markowitz ',
       content: `This webinar will explain the relationship between a patient's saliva`,
       date: 'Apr 11 2019 12:00:00 GMT-0500',
@@ -63,7 +63,8 @@ export class DSODEventsPageComponent{
       time: '10am EST',
       eventType: 'In-Person Event',
       level: 'Expert',
-      price: 'Free'
+      price: 'Free',
+      attendees: '70'
     },
     {
       id: 4,
@@ -96,7 +97,7 @@ export class DSODEventsPageComponent{
     {
       id: 6,
       image: 'assets/images/event-9-lg.png',
-      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
+      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
       author: 'John Fazio, DMD ',
       content: 'The objective of this webinar is to help attendees gain an accurate',
       date: 'Jul 11 2018 12:00:00 GMT-0500',
@@ -107,54 +108,54 @@ export class DSODEventsPageComponent{
       level: 'Beginner',
       price: 'Free'
     },
-    {
-      id: 7,
-      image: 'assets/images/event-5-lg.png',
-      title: 'Simple Steps for Managing Student Loan Debt',
-      author: 'Dr. Ashley Keen',
-      content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
-      date: 'Mar 22 2018 12:00:00 GMT-0500',
-      duration: '1hr 30m',
-      place: 'Online',
-      time: '1pm EST',
-      eventType: 'Virtual Event',
-      level: 'Beginner',
-      price: 'Free'
-    },
-    {
-      id: 8,
-      image: 'assets/images/event-9-lg.png',
-      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
-      author: 'John Fazio, DMD ',
-      content: 'The objective of this webinar is to help attendees gain an accurate',
-      date: 'Jul 11 2019 12:00:00 GMT-0500',
-      duration: '1hr',
-      place: 'New York, NY',
-      time: '11am EST',
-      eventType: 'In-Person Event',
-      level: 'Beginner',
-      price: 'Free'
-    },
-    {
-      id: 9,
-      image: 'assets/images/event-7-lg.png',
-      title: 'Self-service Analytics for Dental Support Organizations',
-      author: 'Dr Mark Hodge',
-      content: 'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
-      date: 'May 10 2018 12:00:00 GMT-0500',
-      duration: '1hr',
-      place: 'New York, NY',
-      time: '1pm EST',
-      eventType: 'In-Person Event',
-      level: 'Expert',
-      price: 'Free'
-    }
+    // {
+    //   id: 7,
+    //   image: 'assets/images/event-5-lg.png',
+    //   title: 'Simple Steps for Managing Student Loan Debt',
+    //   author: 'Dr. Ashley Keen',
+    //   content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
+    //   date: 'Mar 22 2018 12:00:00 GMT-0500',
+    //   duration: '1hr 30m',
+    //   place: 'Online',
+    //   time: '1pm EST',
+    //   eventType: 'Virtual Event',
+    //   level: 'Beginner',
+    //   price: 'Free'
+    // },
+    // {
+    //   id: 8,
+    //   image: 'assets/images/event-9-lg.png',
+    //   title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
+    //   author: 'John Fazio, DMD ',
+    //   content: 'The objective of this webinar is to help attendees gain an accurate',
+    //   date: 'Jul 11 2019 12:00:00 GMT-0500',
+    //   duration: '1hr',
+    //   place: 'New York, NY',
+    //   time: '11am EST',
+    //   eventType: 'In-Person Event',
+    //   level: 'Beginner',
+    //   price: 'Free'
+    // },
+    // {
+    //   id: 9,
+    //   image: 'assets/images/event-7-lg.png',
+    //   title: 'Self-service Analytics for Dental Support Organizations',
+    //   author: 'Dr Mark Hodge',
+    //   content: 'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
+    //   date: 'May 10 2018 12:00:00 GMT-0500',
+    //   duration: '1hr',
+    //   place: 'New York, NY',
+    //   time: '1pm EST',
+    //   eventType: 'In-Person Event',
+    //   level: 'Expert',
+    //   price: 'Free'
+    // }
   ];
 
   contents: DSODSliderContent[] = [
     {
       title: '4 Important "Must Do" Steps for New Dentists',
-      description: 'August 15, 2019 | 1 pm EST',
+      description: 'June 15, 2019 | 1 pm EST',
       actionName: 'Learn More',
       actionLink: '/events/10',
       contentType: DSODContentType.Image,
@@ -162,14 +163,14 @@ export class DSODEventsPageComponent{
       url: ''
     },
     {
-          title: 'The Importance of Oral Health for the Pediatric Patient',
-          description: 'August 10, 2019 | 10 am EST',
-          actionName: 'Learn More',
-          actionLink: '/events/1',
-          contentType: DSODContentType.Image,
-          src: 'assets/images/event-banner-slide2.png',
-          url: '/events/1'
-        }
+      title: 'The Importance of Oral Health for the Pediatric Patient',
+      description: 'August 10, 2019 | 10 am EST',
+      actionName: 'Learn More',
+      actionLink: '/events/1',
+      contentType: DSODContentType.Image,
+      src: 'assets/images/event-slide-5a.jpg',
+      url: '/events/1'
+    }
   ];
   constructor(
     private modalService: NgbModal,

@@ -36,14 +36,14 @@ export class NavbarService {
           { title: 'Nobel Biocare, N.A', link: 'sponsors/NBL' }
         ]
       },
-      {
-        title: 'DSO Practice',
-        link: 'practice',
+      // {
+      //   title: 'DSO Practice',
+      //   link: 'practice',
         // children: [
         //   { title: 'Resources', link: 'recorcers' },
         //   { title: 'Legislation', link: 'legislation' }
         // ]
-      },
+      // },
       // {
       //   title: 'Development',
       //   link: 'development',

@@ -11,7 +11,8 @@
             <i *ngIf="isPlaying" class="fa fa-pause" aria-hidden="true"></i>
             <!-- <img *ngIf="isPlaying" src="assets/images/media-pause.png" alt=""> -->
           </a>
-          <div class="pod-timings ml-5 d-none d-lg-none d-md-block">
+          
+          <div class="pod-timings d-none d-md-block ">
             <span #curretTime class="playin-time">0:00</span>
             <span #trackLength class="total-time">0:00</span>
           </div>
@@ -20,16 +21,16 @@
       <div class="col-lg-9 bb-grey">
         <h3>Episode #001</h3>
         <h3>{{content.title}}&nbsp;with&nbsp;{{content.author.fullName}}</h3>
-        <div class="row">
+        <div class="row"> 
           <div class="col-lg-10">
             <div id="playerContainer"></div>
           </div>
-          <div class="col-lg-2 d-flex align-items-center justify-content-end">
-            <div class="pod-timings  d-none d-lg-block ">
+          <!-- <div class="col-lg-2 d-flex align-items-center justify-content-end">
+            <div class="pod-timings ml-5 d-none d-lg-none d-md-block d-md-none">
               <span #curretTime class="playin-time">0:00</span>
               <span #trackLength class="total-time">0:00</span>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

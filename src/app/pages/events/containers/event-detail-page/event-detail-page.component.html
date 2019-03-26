@@ -48,11 +48,15 @@
                   <span class="text-black">{{selectedEvent?.author}}</span>
                 </li>
                 <li>
-                  <span>{{selectedEvent?.time}}</span>
+                  <span>Date</span>
                   <span class="text-black">{{selectedEvent?.date|date}}</span>
                 </li>
                 <li>
-                  <span>Starting</span>
+                  <span>Time</span>
+                  <span class="text-black">{{selectedEvent?.time}}</span>
+                </li>
+                <li>
+                  <span>Type</span>
                   <span class="text-black">{{selectedEvent?.eventType}}</span>
                 </li>
                 <li>
@@ -64,7 +68,7 @@
                   <span class="text-black">{{selectedEvent?.price}}</span>
                 </li>
                 <li>
-                  <a href="#" class="btn btn-block btn-primary">Register</a>
+                  <a class="btn btn-block btn-primary">Register</a>
                 </li>
               </ul>
             </div>
