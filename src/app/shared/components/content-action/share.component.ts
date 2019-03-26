@@ -10,7 +10,7 @@ import { CMSPageContent } from '../../../cms/models/cms.models';
           <span>
             <img src="assets/images/share-icon.png" alt="">
           </span>
-          share
+          <span *ngIf="!plain">share</span>
         </a>
         <ul class="share-dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li>
@@ -52,7 +52,8 @@ import { CMSPageContent } from '../../../cms/models/cms.models';
 })
 export class DSODShareComponent implements OnInit {
   @Input() content: CMSPageContent;
-
+  @Input() plain: boolean;
+ 
   currentUrl = window.location.href;
   title = '';
   description = '';

@@ -39,7 +39,7 @@ export class DSODPodcastItemsComponent {
     this.timerMap.set("Forestalling the Onset of Gingivitis", "2:49");
     this.timerMap.set("Seeking Mentorship & Developing Leadership Skills", "6:03");
     this.timerMap.set("A Lesson in Credit Health Monitoring & Protection", "6:49");
-    this.timerMap.set("How to Prevent Dental Erosion", "3:29");
+    this.timerMap.set("How To Prevent Dental Erosion", "3:29");
     this.timerMap.set("The Pros and Cons of Endodontic Therapy", "3:35");
     this.timerMap.set("The Two-Implant Overdenture", "2:59");
   }

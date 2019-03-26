@@ -6,7 +6,9 @@ import { Component, Input } from '@angular/core';
           <div class="form-group">
           <label for="">{{label}}</label>
           <select class="form-control" name="">
-            <option>1</option>
+            <option>Speaker</option>
+            <option>Date</option>
+            <option>Type</option>
           </select>
           </div>
           `,
