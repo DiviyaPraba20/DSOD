@@ -64,7 +64,7 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
         { path: 'student-loan-slide-1.jpg' },
         { path: 'student-loan-slide-2.jpg' }
       ],
-      title: 'Simple Steps for Managing Student Loan Debt',
+      title: 'Tips for Keeping Student Loan Debt in Check',
       author: 'Dr. Ashley Keen',
       content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
       date: 'Aug 23 2019 12:00:00 GMT-0500',
@@ -83,7 +83,7 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
         { path: 'managing-slide-1.jpg' },
         { path: 'managing-slide-2.jpg' }
       ],
-      title: 'Managing the Relationship Between the Teeth and the Oral Environment',
+      title: 'The Oral Environment and its Effect on Teeth',
       author: 'Dr. Kenneth Markowitz ',
       content: `This webinar will explain the relationship between a patient's saliva`,
       date: 'Apr 11 2019 12:00:00 GMT-0500',
@@ -99,11 +99,9 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       id: 4,
       image: 'assets/images/event-7-lg.png',
       sliderImages: [
-        { path: 'event-slide-1.jpg' },
-        { path: 'event-slide-2.jpg' },
-        { path: 'event-slide-3.jpg' },
-        { path: 'event-slide-4.jpg' },
-        { path: 'event-slide-5.jpg' }
+        { path: 'self-service-slide-1.jpg' },
+        { path: 'self-service-slide-2.jpg' },
+        { path: 'self-service-slide-3.jpg' }
       ],
       title: 'Self-service Analytics for Dental Support Organizations',
       author: 'Dr Mark Hodge',
@@ -119,7 +117,7 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     },
     {
       id: 5,
-      image: 'assets/images/event-8-lg.png',
+      image: 'assets/images/photography-slide-1.jpg',
       sliderImages: [
         { path: 'photography-slide-1.jpg' },
         { path: 'photography-slide-2.jpg' },
@@ -139,7 +137,7 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     },
     {
       id: 6,
-      image: 'assets/images/event-9-lg.png',
+      image: 'assets/images/stepping-stone-slide-1.jpg',
       sliderImages: [
         { path: 'stepping-stone-slide-1.jpg' },
         { path: 'stepping-stone-slide-2.jpg' },

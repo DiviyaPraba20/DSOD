@@ -40,7 +40,7 @@ export class DSODEventsPageComponent{
     {
       id: 2,
       image: 'assets/images/event-5-lg.png',
-      title: 'Simple Steps for Managing Student Loan Debt',
+      title: 'Tips for Keeping Student Loan Debt in Check',
       author: 'Dr. Ashley Keen',
       content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
       date: 'Aug 23 2019 12:00:00 GMT-0500',
@@ -54,7 +54,7 @@ export class DSODEventsPageComponent{
     {
       id: 3,
       image: 'assets/images/event-6-lg.png',
-      title: 'Managing the Relationship Between the Teeth and the Oral Environment',
+      title: 'The Oral Environment and its Effect on Teeth',
       author: 'Dr. Kenneth Markowitz ',
       content: `This webinar will explain the relationship between a patient's saliva`,
       date: 'Apr 11 2019 12:00:00 GMT-0500',
@@ -68,7 +68,7 @@ export class DSODEventsPageComponent{
     },
     {
       id: 4,
-      image: 'assets/images/event-7-lg.png',
+      image: 'assets/images/event-7-lg.jpg',
       title: 'Self-service Analytics for Dental Support Organizations',
       author: 'Dr Mark Hodge',
       content: 'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
@@ -82,7 +82,7 @@ export class DSODEventsPageComponent{
     },
     {
       id: 5,
-      image: 'assets/images/event-8-lg.png',
+      image: 'assets/images/event-8-lg.jpg',
       title: 'Excellence in Digital Photography & Case Acceptance',
       author: 'Jack D. Griffin Jr., DMD',
       content: 'This presentation will highlight the benefits of digital scanning and shows how it is a better option for your new or future',
@@ -96,7 +96,7 @@ export class DSODEventsPageComponent{
     },
     {
       id: 6,
-      image: 'assets/images/event-9-lg.png',
+      image: 'assets/images/event-9-lg.jpg',
       title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
       author: 'John Fazio, DMD ',
       content: 'The objective of this webinar is to help attendees gain an accurate',
@@ -124,7 +124,7 @@ export class DSODEventsPageComponent{
     // },
     // {
     //   id: 8,
-    //   image: 'assets/images/event-9-lg.png',
+    //   image: 'assets/images/stepping-stone-slide-1.jpg',
     //   title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
     //   author: 'John Fazio, DMD ',
     //   content: 'The objective of this webinar is to help attendees gain an accurate',
