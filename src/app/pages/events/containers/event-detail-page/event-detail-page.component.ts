@@ -31,6 +31,13 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id: 1,
       image: 'assets/images/event-4-lg.png',
+      sliderImages: [
+        { path: 'event-slide-1.jpg' },
+        { path: 'event-slide-2.jpg' },
+        { path: 'event-slide-3.jpg' },
+        { path: 'event-slide-4.jpg' },
+        { path: 'event-slide-5.jpg' }
+      ],
       title: 'The Importance of Oral Hygiene for the Pediatric Patient',
       author: 'Dr. Greg Psaltis',
       content: `This webinar will discuss how primary dental care plays a vital role in children’s dental health as they grow
@@ -53,10 +60,14 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id: 2,
       image: 'assets/images/event-5-lg.png',
+      sliderImages: [
+        { path: 'student-loan-slide-1.jpg' },
+        { path: 'student-loan-slide-2.jpg' }
+      ],
       title: 'Simple Steps for Managing Student Loan Debt',
       author: 'Dr. Ashley Keen',
       content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
-      date: 'Mar 22 2019 12:00:00 GMT-0500',
+      date: 'Aug 23 2019 12:00:00 GMT-0500',
       duration: '1hr 30m',
       place: 'Online',
       time: '1pm EST',
@@ -68,6 +79,10 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id: 3,
       image: 'assets/images/event-6-lg.png',
+      sliderImages: [
+        { path: 'managing-slide-1.jpg' },
+        { path: 'managing-slide-2.jpg' }
+      ],
       title: 'Managing the Relationship Between the Teeth and the Oral Environment',
       author: 'Dr. Kenneth Markowitz ',
       content: `This webinar will explain the relationship between a patient's saliva`,
@@ -83,6 +98,13 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id: 4,
       image: 'assets/images/event-7-lg.png',
+      sliderImages: [
+        { path: 'event-slide-1.jpg' },
+        { path: 'event-slide-2.jpg' },
+        { path: 'event-slide-3.jpg' },
+        { path: 'event-slide-4.jpg' },
+        { path: 'event-slide-5.jpg' }
+      ],
       title: 'Self-service Analytics for Dental Support Organizations',
       author: 'Dr Mark Hodge',
       content: 'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
@@ -98,6 +120,11 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id: 5,
       image: 'assets/images/event-8-lg.png',
+      sliderImages: [
+        { path: 'photography-slide-1.jpg' },
+        { path: 'photography-slide-2.jpg' },
+        { path: 'photography-slide-3.jpg' }
+      ],
       title: 'Excellence in Digital Photography & Case Acceptance',
       author: 'Jack D. Griffin Jr., DMD',
       content: 'This presentation will highlight the benefits of digital scanning and shows how it is a better option for your new or future',
@@ -113,7 +140,12 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id: 6,
       image: 'assets/images/event-9-lg.png',
-      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
+      sliderImages: [
+        { path: 'stepping-stone-slide-1.jpg' },
+        { path: 'stepping-stone-slide-2.jpg' },
+        { path: 'stepping-stone-slide-3.jpg' }
+      ],
+      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
       author: 'John Fazio, DMD ',
       content: 'The objective of this webinar is to help attendees gain an accurate',
       date: 'Jul 11 2019 12:00:00 GMT-0500',
@@ -126,53 +158,13 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
       attendees: '200'
     },
     {
-      id: 7,
-      image: 'assets/images/event-5-lg.png',
-      title: 'Simple Steps for Managing Student Loan Debt',
-      author: 'Dr. Ashley Keen',
-      content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
-      date: 'Mar 29 2019 12:00:00 GMT-0500',
-      duration: '1hr 30m',
-      place: 'Online',
-      time: '1pm EST',
-      eventType: 'Virtual Event',
-      level: 'Beginner',
-      price: 'Free',
-      attendees: '150'
-    },
-    {
-      id: 8,
-      image: 'assets/images/event-9-lg.png',
-      title: 'Not Just a Stepping Stone: Ownership in the DSO Supported Practice ',
-      author: 'John Fazio, DMD ',
-      content: 'The objective of this webinar is to help attendees gain an accurate',
-      date: 'Jul 11 2019 12:00:00 GMT-0500',
-      duration: '1hr',
-      place: 'New York, NY',
-      time: '11am EST',
-      eventType: 'In-Person Event',
-      level: 'Beginner',
-      price: 'Free',
-      attendees: '250'
-    },
-    {
-      id: 9,
-      image: 'assets/images/event-slide-lg.png',
-      title: 'Self-service Analytics for Dental Support Organizations',
-      author: 'Dr Mark Hodge',
-      content: 'In this webinar, you’ll hear how one major DSO made the shift to cloud data visualization with Tableau',
-      date: 'May 10 2019 12:00:00 GMT-0500',
-      duration: '1hr',
-      place: 'New York, NY',
-      time: '1pm EST',
-      eventType: 'In-Person Event',
-      level: 'Expert',
-      price: 'Free',
-      attendees: '50'
-    },
-    {
       id:10,
       image: 'assets/images/event-1.png',
+      sliderImages: [
+        { path: 'stepping-stone-slide-1.jpg' },
+        { path: 'stepping-stone-slide-2.jpg' },
+        { path: 'stepping-stone-slide-3.jpg' }
+      ],
       title:'Vital First Steps for a New Dentist',
       author: 'Dr. Shach Bahadur',
       content: 'Vital First Steps for a New Dentist...',
@@ -188,10 +180,17 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id:11,
       image: 'assets/images/event-2.png',
+      sliderImages: [
+        { path: 'event-slide-1.jpg' },
+        { path: 'event-slide-2.jpg' },
+        { path: 'event-slide-3.jpg' },
+        { path: 'event-slide-4.jpg' },
+        { path: 'event-slide-5.jpg' }
+      ],
       title:'Improving Oral Hygiene and Health by Reducing Dental Plaque Biofilm',
       author: 'Christine Hovliaras, RDH',
       content: 'Vital First Steps for a New Dentist...',
-      date: 'July 7 2019 11:00:00 GMT-0500',
+      date: 'July 06 2019 10:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
       time: '10am EST',
@@ -203,13 +202,20 @@ export class DSODEventDetailPageComponent implements AfterViewInit {
     {
       id:12,
       image: 'assets/images/event-3.png',
+      sliderImages: [
+        { path: 'event-slide-1.jpg' },
+        { path: 'event-slide-2.jpg' },
+        { path: 'event-slide-3.jpg' },
+        { path: 'event-slide-4.jpg' },
+        { path: 'event-slide-5.jpg' }
+      ],
       title:'Key Questions to Ask When Considering an Associateship',
       author: 'Dr. Niv Rajagopalan',
       content: 'Key Questions to Ask When Considering an Associateship...',
-      date: 'July 26 2019 11:00:00 GMT-0500',
+      date: 'July 26 2019 9:00:00 GMT-0500',
       duration: '1hr',
       place: 'New York, NY',
-      time: '10am EST',
+      time: '9am EST',
       eventType: 'In-Person Event',
       level: 'Expert',
       price: 'Free',

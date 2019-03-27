@@ -43,7 +43,7 @@ export class DSODEventsPageComponent{
       title: 'Simple Steps for Managing Student Loan Debt',
       author: 'Dr. Ashley Keen',
       content: 'Dr Keen will discuss debt and compounding interest management, the pros and cons of loan consolidation, and the',
-      date: 'Mar 22 2019 12:00:00 GMT-0500',
+      date: 'Aug 23 2019 12:00:00 GMT-0500',
       duration: '1hr 30m',
       place: 'Online',
       time: '1pm EST',

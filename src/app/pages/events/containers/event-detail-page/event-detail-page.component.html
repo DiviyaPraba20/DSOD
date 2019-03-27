@@ -3,10 +3,10 @@
     <div class="events-banner">
       <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides" #slider>
-          <li class="glide__slide">
-            <img src="assets/images/event-slide-1.jpg" alt="">
+          <li class="glide__slide" *ngFor="let slide of selectedEvent?.sliderImages">
+            <img src="assets/images/{{slide.path}}" alt="">
           </li>
-          <li class="glide__slide">
+          <!-- <li class="glide__slide">
             <img src="assets/images/event-slide-2.jpg" alt="">
           </li>
           <li class="glide__slide">
@@ -20,7 +20,7 @@
           </li>
           <li class="glide__slide">
             <img src="assets/images/event-slide-6.jpg" alt="">
-          </li>
+          </li> -->
 
         </ul>
       </div>
