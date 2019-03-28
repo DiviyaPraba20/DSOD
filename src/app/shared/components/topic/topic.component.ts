@@ -45,7 +45,7 @@ export class DSODTopicComponent implements OnInit {
   }
 
   onClickCategory(e) {
-    this.router.navigate(['./category', e]);
+    // this.router.navigate(['./category', e]);
   }
 
   onClickAuthor(id) {

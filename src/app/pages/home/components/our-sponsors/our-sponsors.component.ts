@@ -9,5 +9,7 @@ import { CMSPageContent } from 'src/app/cms/models';
 export class DSODOurSponsorsComponent {
   @Input()
   sponsoredTopics: CMSPageContent[];
+  @Input()
+  featuredTopics: CMSPageContent[];
   constructor() {}
 }

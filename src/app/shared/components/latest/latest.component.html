@@ -39,7 +39,7 @@
       <h4>{{latestTopics[0].title}}</h4>
     </div>
   </a>
-  <div *ngFor="let topic of latestTopics | slice:1:6">
+  <div *ngFor="let topic of latestTopics | slice:1:5">
     <dsod-latest-item [latestTopic]="topic" [sponsorName]="sponsorName"></dsod-latest-item>
   </div>
 </section>
