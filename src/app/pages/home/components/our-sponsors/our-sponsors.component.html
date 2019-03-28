@@ -1,9 +1,9 @@
 <h2 class="section-title">From Our Sponsors </h2>
 <div class="row">
-  <div class="col-12">
+  <div class="col-12" *ngFor="let topic of sponsoredTopics | slice:0:3">
     <div class="row">
       <div class="col-6">
-        <div class="our-sponsors" *ngFor="let topic of sponsoredTopics | slice:0:3">
+        <div class="our-sponsors">
           <div class="our-sponsors-header">
             <h4 *ngIf="topic.sponsorName==='ALN'">
               <a [routerLink]="['/sponsors/ALN']"><img src="assets/images/align-logo.png" alt=""></a>
@@ -22,18 +22,13 @@
         </div>
       </div>
       <div class="col-6">
-        <section class="sponsors-ortho" *ngFor="let topic of featuredTopics | slice : 3:6">
+        <section class="sponsors-ortho">
           <div>
-            <!-- <dsod-media-content [placeholderImageSrc]="topic.featuredMedia.code.originalUrl"
+            <dsod-media-content [placeholderImageSrc]="topic.featuredMedia.code.originalUrl"
               [title]="topic.categoryName" [topic]="topic">
-            </dsod-media-content> -->
-            <!-- <div class="content-lg"> -->
-              <dsod-topic [topic]="topic" [contentLength]=268 [showImage]="false" [showHeader]="true" styleFor="content-lg"
-                [showRating]=true [imgLarge]=true [sponsorName]="sponsorName"></dsod-topic>
-            <!-- </div> -->
+            </dsod-media-content>
           </div>
         </section>
       </div>
     </div>
   </div>
-</div>
