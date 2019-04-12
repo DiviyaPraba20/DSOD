@@ -32,7 +32,7 @@
             <a (click)="isShowPassword = !isShowPassword" class="action">{{isShowPassword ? 'Hide' : 'Show'}}</a>
           </div>
           <div class="invalid-msg-container" *ngIf="password.invalid && (password.dirty || password.touched)">
-            <span class="invalid-input" *ngIf="password.errors.required">The pasword can't be blank.</span>
+            <span class="invalid-input" *ngIf="password.errors.required">The password can't be blank.</span>
             <span class="invalid-input" *ngIf="password.value.length && password.errors">
               Password should be at least 8-16 characters in length with at least one uppercase letter and one number.
             </span>
