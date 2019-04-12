@@ -1,40 +1,67 @@
 <div class="page-content">
-  <div class="container" *ngIf="visualEssay">
-    <div class="row">
-      <div class="col-9">
-        <div class="essay-container">
-          <div class="row">
-            <div class="col-12" *ngIf="visualEssay.visualEssayImages.length">
-              <div class="carousel-image-container">
-                <img [src]="getUrl(selectedCarouselImage)" />
+    <div class="container" *ngIf="pageContent && pageContent.id">
+      <div class="row">
+        <div class="col-lg-9 article-content-wrap pr-3 pr-lg-4">
+          <div class="essay-content">
+            <dsod-essay-content [content]="pageContent" [rating]="!avgRating ? pageContent?.avgCommentRating : avgRating"
+              [isLoggedIn]="isLoggedIn"></dsod-essay-content>
+              <div *ngIf="pageContent?.visualEssays.length">
+                <!-- <div class="col-12">
+                  <h3 class="essay-title">Visual Essay</h3>
+                </div> -->
+                <!-- <div class="col-lg-12" *ngFor="let essay of pageContent?.visualEssays"> -->
+                  <!-- <a class="essay-item" [routerLink]="['/visual-essay', essay.id]">{{essay.title}}</a> -->
+                  <dsod-essay-media [visualEssayId]="pageContent?.visualEssays[0].id"></dsod-essay-media>
+                <!-- </div> -->
               </div>
-              <dsod-essay-images-carousel [visualEssayImages]="visualEssay.visualEssayImages" (changeImage)="onChangeImage($event)"></dsod-essay-images-carousel>
-            </div>
-            <div class="col-lg-12">
-              <div class="article-content">
-                <p>{{visualEssay.description}}</p>
-              </div>
-            </div>
+            <!-- <dsod-article-content [content]="pageContent?.content"></dsod-article-content> -->
+            <div class="essay-content" *ngIf="pageContent?.content" [innerHTML]="pageContent?.content"></div>
+            <!-- <dsod-gallery [photos]="pageContent?.photos"></dsod-gallery> -->
+            
             <div class="col-lg-12">
               <div class="row section-container">
                 <div class="col-md-8">
-                  <dsod-essay-author [essay]="visualEssay"></dsod-essay-author>
+                  <dsod-essay-author [essay]="pageContent?.visualEssays[0]"></dsod-essay-author>
                 </div>
               </div>
             </div>
+            <dsod-references [references]="pageContent?.references"></dsod-references>
+            
+          </div>
+        </div>
+        <div class="col-lg-3 trending-videos-wrap">
+          <section class="trending-videos" *ngIf="(trendingTopics$ | async)?.length">
+            <h2 class="section-title">Trending Topics</h2>
+            <div class="row">
+              <div class="col-lg-12 col-md-7">
+                <div *ngFor="let topic of trendingTopics$ | async">
+                  <ng-template *ngIf="topic?.authorId">xc[{{topic.authorId}}]fx</ng-template>
+                    <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
+                      [showRating]=true *ngIf="topic?.authorId"></dsod-topic>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-5">
+                <dsod-sponsored-ad></dsod-sponsored-ad>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="related-content" *ngIf="pageContent?.relativeTopicList.length">
+            <h2 class="section-title">Related Content</h2>
+            <div class="row">
+              <div class="col-4" *ngFor="let topic of pageContent?.relativeTopicList">
+                <dsod-related-content [content]="topic" [contentTypeName]="pageContent?.contentTypeName"></dsod-related-content>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isLoggedIn">
+            <dsod-article-reviews [content]="pageContent" (updateRating)="updateRating($event)"></dsod-article-reviews>
           </div>
         </div>
       </div>
-      <div class="col-3">
-        <section class="trending-videos" *ngIf="(trendingTopics$ | async)">
-          <h2 class="section-title">Trending Topics</h2>
-          <div *ngFor="let topic of trendingTopics$ | async">
-            <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
-              [showRating]=true></dsod-topic>
-          </div>
-          <dsod-sponsored-ad></dsod-sponsored-ad>
-        </section>
-      </div>
     </div>
   </div>
-</div>
+  

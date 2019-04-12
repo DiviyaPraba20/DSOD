@@ -1,0 +1,36 @@
+<div class="page-content">
+    <div class="container" *ngIf="visualEssay">
+      <div class="row">
+        <!-- <div class="col-9"> -->
+          <!-- <div class="essay-container"> -->
+            <!-- <div class="row"> -->
+              <div class="col-12" *ngIf="visualEssay.visualEssayImages.length">
+                <div class="carousel-image-container">
+                  <img class="img-fluid w-100 mt-2 mb-3 ng-star-inserted" [src]="getUrl(selectedCarouselImage)" />
+                </div>
+                <dsod-essay-images-carousel [visualEssayImages]="visualEssay.visualEssayImages" (changeImage)="onChangeImage($event)"></dsod-essay-images-carousel>
+              </div>
+              <div class="col-lg-12">
+                <div class="article-content">
+                  <p>{{visualEssay.description}}</p>
+                </div>
+              </div>
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class="col-3">
+          <section class="trending-videos" *ngIf="(trendingTopics$ | async)">
+            <h2 class="section-title">Trending Topics</h2>
+            <div *ngFor="let topic of trendingTopics$ | async">
+              <div *ngIf="topic.categoryName != 'Uncategorized'">
+                <dsod-topic [topic]="topic" [contentLength]=117 [showImage]="true" [showHeader]="true" styleFor="content-sm"
+                  [showRating]=true></dsod-topic>
+              </div>
+            </div>
+            <dsod-sponsored-ad></dsod-sponsored-ad>
+          </section>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  

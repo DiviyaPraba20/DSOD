@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { VisualEssayRoutingModule } from './visual-essay-routing.module';
-import { VisualEssayComponent } from './containers/visual-essay/visual-essay.component';
 import { SharedModule } from '../../shared/shared.module';
-import { ArticleModule } from '../article/article.module';
+import { ESSAY_COMPONENTS } from './components';
+import { ESSAY_CONTAINERS } from './containers';
 
 @NgModule({
   imports: [
@@ -12,6 +12,6 @@ import { ArticleModule } from '../article/article.module';
     VisualEssayRoutingModule,
     SharedModule
   ],
-  declarations: [VisualEssayComponent]
+  declarations: [...ESSAY_COMPONENTS, ...ESSAY_CONTAINERS]
 })
 export class VisualEssayModule { }

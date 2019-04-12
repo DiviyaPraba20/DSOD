@@ -39,6 +39,8 @@ export class DSODTopicComponent implements OnInit {
       this.router.navigate(['./video', this.topic.id]);
     } else if (this.topic.contentTypeName === 'Podcasts') {
       this.router.navigate(['./podcast', this.topic.id]);
+    } else if (this.topic.contentTypeName === 'Visual Essay') {
+      this.router.navigate(['./visual-essay', this.topic.id]);
     } else {
       this.router.navigate(['./article', this.topic.id]);
     }
