@@ -22,7 +22,7 @@ export class DSODUniteMagazinePageComponent implements OnInit {
     private actions$: Actions,
     private spinnerService: NgxSpinnerService
   ) {
-    this.store.dispatch(new FetchUnites({ skip: 0, limit: 10 }));
+    // this.store.dispatch(new FetchUnites({ skip: 0, limit: 10 }));
   }
 
   ngOnInit() {
