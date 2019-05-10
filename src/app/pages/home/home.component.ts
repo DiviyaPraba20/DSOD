@@ -5,19 +5,8 @@ import * as actions from '../../cms/actions';
 import { Observable, Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { GetUserInfo } from '../auth/actions/auth.actions';
-import {
-  CMSResponse,
-  CMSPageContent,
-  CMSContentParams,
-  CMSContentTypeModel
-} from 'src/app/cms/models';
-import {
-  FetchLatestTopics,
-  FetchFeaturedTopics,
-  FetchPodcasts,
-  FetchTrendingTopics,
-  FetchSponsoredTopics
-} from '../../cms/actions';
+import { CMSResponse,CMSPageContent,CMSContentParams,CMSContentTypeModel } from 'src/app/cms/models';
+import { FetchLatestTopics,FetchFeaturedTopics,FetchPodcasts,FetchTrendingTopics,FetchSponsoredTopics} from '../../cms/actions';
 
 @Component({
   selector: 'dsod-home',

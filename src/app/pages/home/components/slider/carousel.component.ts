@@ -33,7 +33,7 @@ export class DSODCarouselComponent implements AfterViewInit {
       actionName: 'Join',
       actionLink: '/signup',
       contentType: DSODContentType.Image,
-      src: 'assets/images/home-slide.png',
+      src: 'assets/images/banner-images/dsopractice-2.jpg',
       url: ''
     },
     {
@@ -43,7 +43,7 @@ export class DSODCarouselComponent implements AfterViewInit {
       actionName: null,
       actionLink: null,
       contentType: DSODContentType.Image,
-      src: 'assets/images/home-slide-4.jpg',
+      src: 'assets/images/banner-images/dsopractice-1.jpg',
       url: ''
     }
   ];

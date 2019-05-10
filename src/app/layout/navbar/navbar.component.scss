@@ -59,6 +59,7 @@
 
           &:hover {
             border-bottom: 1px solid $color-white;
+            transform: scale(1.1);
           }
 
           &.active {
@@ -346,7 +347,7 @@
 }
 
 .bg-dark-scroll {
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(39, 39, 39, 0.95);
 
   .notify-wrapper {
     .icon-bell {
@@ -355,6 +356,8 @@
     }
   }
 }
+
+
 
 li.sub-menu-child>a::after {
   content: "\f0da";
@@ -552,4 +555,7 @@ li.sub-menu-child>a:hover::after {
   }
 }
 
-
+.shrink{
+    min-height: 35px;
+    padding: 0px;
+}

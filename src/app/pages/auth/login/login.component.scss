@@ -1,7 +1,7 @@
 @import "variables";
 
 .login-container {
-  background-image: url('../../../../assets/images/login.png');
+  background-image: url('../../../../assets/images/banner-images/sponsor-3.jpg');
   height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
@@ -92,14 +92,14 @@
           border-radius: 0;
           background-color: $color-white;
           width: 48px;
-          height: 48px;
+          height: 55px;
           justify-content: center;
           align-items: center;
           display: flex;
         }
         input {
           border: 0;
-          height: 48px;
+          height: 55px;
           border-radius: 0;
         }
       }
